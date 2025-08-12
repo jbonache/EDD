@@ -1,0 +1,707 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../annex1_cmd/">
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>1. Edició de codi amb vim - Desenvolupament de programari</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#annex-2-editors-de-fitxers-de-text-vim" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Desenvolupament de programari" class="md-header__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desenvolupament de programari
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Edició de codi amb vim
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Desenvolupament de programari" class="md-nav__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Desenvolupament de programari
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entorns Integrats de Denvolupament. VSCode
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vscode i Python
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex1_cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Annex 2. Editors de fitxers de text: vim
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 2. Editors de fitxers de text: vim
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annex-2-editors-de-fitxers-de-text-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annex 2. Editors de fitxers de text: vim
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annex 2. Editors de fitxers de text: vim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduccio-a-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes-de-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modes de Vim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annex-2-editors-de-fitxers-de-text-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annex 2. Editors de fitxers de text: vim
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annex 2. Editors de fitxers de text: vim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduccio-a-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes-de-vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modes de Vim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Annex 2. Editors de fitxers de text: vim</h1>
+
+<h2 id="annex-2-editors-de-fitxers-de-text-vim">Annex 2. Editors de fitxers de text: vim</h2>
+<p>Quan treballem des de la línia d'ordres, sovint cal editar fitxers, bé per tal de realitzar alguna modificació en un programa o directament, per programar a través de la consola.</p>
+<p>En apartats posteriors veurem eines per editar els nostres programes dins un entorn gràfic, però ara anem a fer ús d'un editor de fitxers en mode text: <strong>vim</strong>. Tot i que al principi pot resultar una miqueta costós i <em>dur</em>, quan ens acostumem a ell solem ser més productius, ja que ens permet editar fitxers sense moure pràcticament els dits del teclat. A més, en algunes ocasions, com quan ens connectem remotament a un ordinador, no disposem d'eines gràfiques per a l'edició de text, i aquest tipus d'editors ens poden ser de gran ajuda.</p>
+<div class="admonition note">
+<p class="admonition-title">Font original</p>
+<p>Aquesta pràctica es basa en el *webinar <a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">Vim, manual de uso básico*</a>, però d'una forma més simplificada. </p>
+</div>
+<h3 id="introduccio-a-vim">Introducció a vim</h3>
+<p><em>Vim</em> és una versió millorada de l'editor <em>vi</em>, el primer editor de text a pantalla completa de sistemes Unix.</p>
+<p>Si al nostre ordinador no tenim instal·lat <em>vim</em>, podem fer-ho amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>vim
+</span></code></pre></div>
+<p>Quan ja disposem del <em>vim</em> instal·lat al sistema, per tal d'accedir només haurem d'invocar l'ordre <code>vim</code> des de la terminal. Si no indiquem res, se'ns mostrarà informació sobre algunes ordres bàsiques i sobre la versió. El més habitual, per contra, serà invocar <em>vim</em> passant-li el nom de fitxer que volem editar o crear:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ vim fitxer
+</span></code></pre></div>
+<p>Si <code>fitxer</code> existeix, l'obrirà per editar-lo, i si no, obrirà l'editor en blanc, i guardarà el fitxer quan indiquem l'ordre de guardar.</p>
+<h3 id="modes-de-vim">Modes de Vim</h3>
+<p>Vim té tres modes principals de treball:</p>
+<ul>
+<li>El <strong>mode ordres</strong>, que ens permet navegar pel document i introduïr ordres a executar dins el propi fitxer (buscar, reemplaçar, guardar). En aquest mode <strong>no s'interpreten les tecles del teclar pels seus caràcters, sinò per les funcions o ordres assignades a cada tecla</strong>. Aquestes ordres seran combinacions de lletres sensible a les majúscules, i podran anar precedides pel nombre de vegades que desitgem repetir l'acció a executar. <strong>Per accedir a aquest mode des de qualsevol altre, polsarem la tecla <code>Esc</code> (escape)</strong>.</li>
+<li>El <strong>mode ex</strong>, que ens permet manipular els fitxers (guardar, eixir, etc.). Per accedir a aquest mètode escrivim dos punts <code>:</code> seguit pel nom de l'ordre <code>ex</code> que volem executar. Després d'executar l'ordre, torna automàticament al mode comando.</li>
+<li>El <strong>mode inserció</strong>, que serveix per afegir text al fitxer. Per tal d'accedir a aquest mode, des del <em>mode d'ordres</em>, polsem la tecla <code>i</code> (<em>de insert</em>) o bé la tecla d'inserció <code>Ins</code>. Per tal de tornar de nou al mode d'ordres, utilitzarem la tecla <code>Esc</code>.</li>
+</ul>
+<h4 id="el-mode-dordres">El mode d'ordres</h4>
+<p>Les ordres de més utilitat en el mode d'ordres són:</p>
+<table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>Desplaçament cap a  l'esquerra (igual que el cursor)</td>
+</tr>
+<tr>
+<td>l</td>
+<td>Desplaçament cap a la dreata (igual que el cursor)</td>
+</tr>
+<tr>
+<td>j</td>
+<td>Desplaçament cap avall (igual que el cursor avall)</td>
+</tr>
+<tr>
+<td>k</td>
+<td>Desplaçament cap amunt (igual queel cursos cap amunt)</td>
+</tr>
+<tr>
+<td>w</td>
+<td>Desplaça una paraula a la dreta</td>
+</tr>
+<tr>
+<td>b</td>
+<td>Desplaça una paraula a  l'esquerra</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Mou el cursor al principi de la línia actual</td>
+</tr>
+<tr>
+<td>$</td>
+<td>Mou el cursos al final de la línia actual</td>
+</tr>
+<tr>
+<td>i</td>
+<td>Permet <strong>passar a mode d'inserció</strong>, i començar a escriure text en la posició actual del cursor</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Permet <strong>passar a mode d'inserció</strong>, i començar a escriure text a principi de la línia en què ens trobem</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Permet <strong>passar a mode d'inserció</strong>, afegint una línia en blanc davant d'on estem, per començar a escriure</td>
+</tr>
+<tr>
+<td>o</td>
+<td>Permet <strong>passar a mode d'inserció</strong>, afegint una línia en blanc després d'on estem, per començar a escriure</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>Retalla la línia actual, i la deixa al portapapers</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Apega el contingut del portapapers en la línia d'abans d'on ens trobem</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Apega el contingut del portapapers en la línia de després d'on ens trobem</td>
+</tr>
+<tr>
+<td>u</td>
+<td>Desfà l'última ordre</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Troba la següent coincidència en una búsqueda</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Troba la coincidència anterior en una búsqueda</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>Guarda el fitxer actual. Amb <code>:w Fitxer</code> el guarda amb altre nom</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>Ix de <em>Vim</em> si no hi ha canvis pendents al fitxer</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>Ix de <em>Vim</em> encara que hi hagen canvis pendents al fitxer</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>Guarda els canvis i ix de <em>Vim</em></td>
+</tr>
+<tr>
+<td>:<em>número</em></td>
+<td>Va directament al número de línia indicat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Buscar i reemplaçar text</strong></p>
+<p>Per tal de buscar i reemplaçar text en vim, fem ús de <code>/</code>, que porta el cursor directament a la ubicació que li indiquem. A més, també podem indicar fent ús de <code>%s</code> que reemplace text. De forma ressumida, tenim:</p>
+<table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/<em>patró</em></td>
+<td>Busca el patró en el fitxer a mesura que escrivim</td>
+</tr>
+<tr>
+<td>:/<em>patró</em></td>
+<td>Busca el patró en el text. Cal que donem a la tecla <em>intro</em> per comencar a buscar</td>
+</tr>
+<tr>
+<td>:%s/<em>patró</em>/<em>text</em></td>
+<td>Busca el patró i el reemplaça pel text indicat, %s indica que busca en tot el document</td>
+</tr>
+<tr>
+<td>:%s/<em>patró</em>/<em>text</em>/gc</td>
+<td>Com l'anterior, però ara ens demanarà confirmació</td>
+</tr>
+</tbody>
+</table>
+<p>Quan busquem un text per reemplaçar-lo amb <code>gc</code> ens demana confirmació, donant diverses opcions:</p>
+<ul>
+<li><code>y</code>: Confirma l'acció</li>
+<li><code>n</code>: No fa la substitució i segueix buscant</li>
+<li><code>a</code>: Confirmem l'acció per a totes le següents coincidències</li>
+<li><code>q</code>: Aturem la búsqueda</li>
+<li><code>l</code>: Confirmem la substitució i parem la búsqueda, tornant al mode editor</li>
+<li><code>Ctrl+e</code>: Avancem cap avall en el document per localitzar el context de la coincidència</li>
+<li><code>Ctrl+y</code>: Retrocedim per localitzar el context de la coincidència</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

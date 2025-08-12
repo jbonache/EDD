@@ -1,0 +1,562 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>4.2.patrons comportament - U6. Refactorització i patrons de disseny</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#patrons-de-comportament" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="U6. Refactorització i patrons de disseny" class="md-header__button md-logo" aria-label="U6. Refactorització i patrons de disseny" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            U6. Refactorització i patrons de disseny
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.2.patrons comportament
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="U6. Refactorització i patrons de disseny" class="md-nav__button md-logo" aria-label="U6. Refactorització i patrons de disseny" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    U6. Refactorització i patrons de disseny
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.introduccio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introducció
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.principis_solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Principis SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.patrons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Introducció als patrons de disseny
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4. Patrons de disseny
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Patrons de disseny
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.patrons_creacionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.1. Patrons creacionals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patrons-de-comportament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrons de comportament
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrons de comportament">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-patro-observer" class="md-nav__link">
+    <span class="md-ellipsis">
+      El patró Observer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>4.2.patrons comportament</h1>
+
+<h2 id="patrons-de-comportament">Patrons de comportament</h2>
+<p>Els <a href="https://refactoring.guru/es/design-patterns/structural-patterns"><strong>patrons de comportament</strong></a> s’ocupen de <strong>com els objectes interactuen entre ells</strong> i com es distribueixen les responsabilitats dins del sistema. Aquests patrons són útils per gestionar la <strong>comunicació entre objectes</strong>, la <strong>distribució de responsabilitats</strong> i l’<strong>organització d’algoritmes dins del sistema</strong>.</p>
+<p>Existeixen diversos patrons de comportament. A Refactoring Guru es comenten els patrons:</p>
+<ul>
+<li><a href="http://refactoring.guru/es/design-pa()tterns/chain-of-responsibility">Chain of Responsibility</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/command">Command</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/iterator">Iterator</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/mediator">Mediator</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/memento">Memento</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/observer">Observer</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/state">State</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/strategy">Strategy</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/template-method">Template Method</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/visitor">Visitor</a></li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Et sona algun d'aquests?</p>
+<p>Us sona el nom d'algun d'aquests patrons?</p>
+<p>Consulteu-ne la descripcio al lloc web de <a href="https://refactoring.guru/es/design-patterns/behavioral-patterns">Refactoring Guru</a> i comproveu-ho.</p>
+</div>
+<h3 id="el-patro-observer">El patró Observer</h3>
+<p>Un dels patrons de comportament bastant interessant, és el patró <a href="https://refactoring.guru/es/design-patterns/observer"><strong>Observer</strong></a>. Aquest patró permet que un objecte <strong>notifique a altres objectes</strong> quan el seu estat canvia. Aquest patró és útil quan un <strong>canvi d'estat en un objecte</strong> ha de reflectir-se en altres objectes, però sense que aquests estiguen fortament acoblats.</p>
+<p>Un cas típic d'aquest patró són els sistemes de notificació a diversos components quan es produeix un canvi. Un exemple real que es planteja a Refactoring Guru seria un sistema de <strong>gestió de notícies</strong> on els usuaris <strong>subscriptors</strong> reben actualitzacions quan hi ha una nova notícia o producte.</p>
+<h4 id="elements-i-funcionament">Elements i funcionament</h4>
+<p>L'objecte que té un estat que volem compartir sol dir-se <em>notificador</em> o <em>publicador</em>. La resta d'objectes que volen conéixer els canvis d'estat s'anomenen <em>subscriptors</em>.</p>
+<p>Quan utilitzem el patró Observer, se'ns suggereix afegir un mecanisme de subscripció a la classe <em>notificador</em>, per a que altres objectes individuals es puguen subscriure o cancel·lar les subscripcions al flux d'esdeveniments que provenen del notificador.</p>
+<p>Per fer això:</p>
+<ol>
+<li>El <em>notificador</em> manté una llista per guardar totes les referències als objectes subscriptors.</li>
+<li>El <em>notificador</em> conté diversos mètodes públics que permeten que altres components se <em>subscriguen</em> o <em>cancel·len les subscripcions</em>, de maner aque s'afigen o eliminen de la llista, respectivament.</li>
+<li>Quan cal enviar una notificació, es recorre la llist, i es notifica de manera individual cada component de la llista de subscripts.</li>
+</ol>
+<p>Perfecte! Aquí tens la continuació de l'apartat que comentes, amb les explicacions de com es pot aplicar el patró <strong>Observer</strong> en diversos àmbits i com el mecanisme d'events del navegador (com <code>EventTarget</code>) s'adapta a aquest patró. Finalment, afegirem l'exemple de la <strong>pizzeria</strong> i identificarem els elements del patró <strong>Observer</strong> en aquest context.</p>
+<h4 id="ambits-daplicacio"><strong>Àmbits d'aplicació</strong></h4>
+<p>Aquest patró és molt versàtil i es pot utilitzar en una gran varietat de sistemes. Vegem alguns exemples:</p>
+<h5 id="sistema-de-notificacions-xat-o-missatgeria">Sistema de Notificacions (Xat o Missatgeria)</h5>
+<p>Imagina un sistema de <strong>missatgeria en grup</strong> o un <strong>xat</strong>. En aquest cas, el servidor actua com a <strong>notificador</strong> i manté una llista de tots els <strong>clients</strong> (subscriptors). Quan es rep un missatge, el servidor <strong>notifica tots els clients</strong> del missatge enviat, actualitzant les seves interfícies d'usuari.</p>
+<ul>
+<li><strong>Notificador</strong>: El servidor que rep i distribueix els missatges.</li>
+<li><strong>Subscriptors</strong>: Els clients que estan connectats al servidor, cada un amb la seva pròpia interfície d'usuari per mostrar els missatges.</li>
+</ul>
+<p>Per implementar-ho:</p>
+<ul>
+<li>El servidor manté una <strong>llista de clients</strong> a qui notificar.</li>
+<li>Cada vegada que arriba un nou missatge, el servidor <strong>recorre la llista de clients</strong> i els notifica.</li>
+</ul>
+<p>Aquest sistema té una <strong>complexitat afegida</strong>:</p>
+<ul>
+<li>Els clients han de tenir informació sobre el <strong>port de comunicació</strong> (IP, port) per poder establir connexió amb el servidor i rebre els missatges de manera efectiva, i al mateix temps, el servidor ha de conéixer les adreces IP i el port pel que s'estan connectant els clients.</li>
+<li>Això pot implicar l'ús de protocols de comunicació com <strong>WebSockets</strong> o directament <strong>sockets</strong> a més baix nivell, per mantenir la connexió oberta entre el servidor i els clients.</li>
+</ul>
+<h5 id="carret-de-la-compra">Carret de la compra</h5>
+<p>Un exemple més senzill és el cas del <strong>carret de la compra</strong>: Posem com a exemple el nostre carret de l'aplicació de la pizzeria. Imaginem que el carret té una <strong>llista de components</strong> subscrits (com el component que mostra el total de la comanda, els comptadors de cada producte o la pestanya que conté el contingut del carret).</p>
+<p>Quan el carret es modifica (per exemple, s'afegeix o elimina una pizza), el carret <strong>notifica a tots els components subscrits</strong> que l'estat ha canviat, i aquests actualitzen les seves interfícies en conseqüència.</p>
+<p><strong>Com s'aplica el patró Observer cquí?</strong></p>
+<ul>
+<li>El <strong>carret</strong> seria el <strong>notificador</strong> que manté una llista de components que volen rebre notificacions quan el contingut del carret canvie.</li>
+<li>Els <strong>components</strong> (per exemple, la vista del carret) seran <strong>subscriptors</strong> que escolten els canvis i actualitzen la seva visualització quan el carret s'actualitza.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Ús d'<code>EventTarget</code> del navegador</p>
+<p>En el nostre exemple de la pizzeria, on estem fent ús de la <strong>classe <code>EventTarget</code></strong> del navegador, el mecanisme d'events ja implementa internament el patró <strong>Observer</strong>. El carret <strong>emet un esdeveniment</strong> quan el contingut canvia (per exemple, <code>"carretActualitzat"</code>) i els <strong>components subscrits</strong> (com el component de la vista) reaccionen a aquest esdeveniment actualitzant la seva visualització. Aquesta <em>reacció</em> la programem amb el mètode <code>AddEventListener</code>.</p>
+<p><strong>La gestió de la llista de subscripcions</strong></p>
+<p>Quan utilitzem <strong><code>EventTarget</code></strong> per a gestionar esdeveniments (com el mètode <code>addEventListener</code>), el navegador s'encarrega automàticament de mantenir la llista de <strong>subscriptors</strong> i de <strong>gestionar les notificacions</strong> quan l'esdeveniment és emès. En aquest cas, no hem de preocupar-nos per gestionar manualment la llista de subscripcions com fariem en una implementació pròpia del patró <strong>Observer</strong>. El <strong>navegador</strong> s'encarrega d'aquesta tasca internament.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Identifica els diferents elements d'observer al carret</p>
+<p>Analitza el codi de l'aplicació del carret per a la pizzeria, i identifica el següent:</p>
+<ul>
+<li>Quina és la classe <em>Notificadora</em>? Com hem definit aquesta per poder enviar esdeveniments?</li>
+<li>Quines són les classes Subscriptores? Què fa cadascuna d'elles (identifca el codi) per <em>subscriure's</em> a les notificacions?</li>
+<li>Quin mètode utilitza la classe Notificadora que hereta de la classe pare per poder enviar notificacions?</li>
+<li>Observa l'<a href="https://refactoring.guru/es/design-patterns/observer#structure">estructura que es defineix a Refactoring Guru d'aquest patró</a>, i redefineix-la aplicant-la a caquest exemple del carret. Incorpora a la teua explicació el diagrama de classes del patró, adaptant-lo a aquest cas.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

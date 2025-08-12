@@ -1,0 +1,39 @@
+site_name: Entorns de Desenvolupament - 1r DAM/DAW
+site_url: https://github.com/jbonache/EDD.git
+theme:
+  name: material
+  language: es
+  logo: 'img/logo.png'
+  favicon: 'img/logo.png'
+
+  palette:
+    accent: purple
+    primary: deep purple
+
+nav:
+  - Entorns de Desenvolupament: index.md
+
+extra_css:
+  - styles/landingR.css  # CSS personalizado para diseño de la página principal
+  - styles/material-just.css
+
+plugins:
+ # - glightbox   # Per vore les imatges en gran quan fas clic en elles.
+ # - pandoc
+
+markdown_extensions:
+  - attr_list           # Permet incorporar atributs a les imatges { width=100px }
+  - md_in_html # Junt a attr_list per afegir peus a les imatges
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - toc:
+      baselevel: 2
+      toc_depth: 3
+  

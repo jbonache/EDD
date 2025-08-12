@@ -1,0 +1,652 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../2.vscode/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>La plataforma Java - La plataforma Java. Eines d’automatització.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#la-plataforma-java" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-header__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            La plataforma Java. Eines d’automatització.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              La plataforma Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-nav__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    La plataforma Java. Eines d’automatització.
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1. La plataforma Java
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. La plataforma Java
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#la-plataforma-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      La plataforma Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La plataforma Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacions-del-jdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementacions del JDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installacio-dopenjdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació d'OpenJDK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. VSCode i Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.netbeans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Netbeans
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.Eines_Automatitzacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Eines d'automatització
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.gradle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#la-plataforma-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      La plataforma Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La plataforma Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacions-del-jdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementacions del JDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installacio-dopenjdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació d'OpenJDK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>1. La plataforma Java</h1>
+
+<h2 id="la-plataforma-java">La plataforma Java</h2>
+<p>La <strong><em>plataforma Java</em></strong> és un entorn per al desenvolupament d’aplicacions multiplataforma, que té com a llenguatge de desenvolupament principal el propi llenguatge Java. Com ja comentàrem en la primera unitat, les aplicacions Java són compilades a un llenguatge intermedi o bytecode, que s’executen sobre la màquina virtual de Java (JVM).</p>
+<p>Aquesta màquina virtual, juntament amb les biblioteques de Java, conformen el que és l’entorn d’execució de Java, Java Runtime Environment o JRE, que és l’entorn que necessitarem per a executar qualsevol aplicació Java en un equip.</p>
+<p>Ara bé, quan ens dediquem al desenvolupament d’aplicacions Java, necessitarem un altre component de la plataforma, el <em>JDK</em>, <em>Java Development Kit</em> o <em>Kit de desenvolupament de Java</em>. Aquest component és el que contindrà les eines necessàries per a compilar a bytecode els nostres programes en llenguatge font. En general, a aquest conjunt d’eines de desenvolupament se’ls coneix de forma genèrica com a <em>Software Development Kits</em> (SDK).</p>
+<p><a class="glightbox" href="../img/jdk.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="JDK, JRE i JVM" src="../img/jdk.png" width="350px" /></a></p>
+<p>Quan instal·lem Java en el nostre ordinador, a més de la màquina virtual, s’instal·len una sèrie de biblioteques; programari addicional que ens proporciona certes funcionalitats d’ús comú, i que es coneixen com <em>la biblioteca estàndard de Java</em>. Aquestes biblioteques proporcionen una interfície de programació d’aplicacions o API (<em>Application Programming Interface</em>).</p>
+<p>Existeixen, a més, diverses edicions de la plataforma Java. La que utilitzarem habitualment serà l’edició <strong><em>estàndard</em></strong>, <em>JavaSE</em> (Java Standard Edition). Quan parlem habitualment de JDK, solem referir-nos a aquesta edició, que ofereix una API per al desenvolupament d’aplicacions d’escriptori independents i basades en interfícies gràfiques. Per a aplicacions comercials a major escala, com aplicacions web o aplicacions distribuïdes, la plataforma Java compta amb l’edició empresarial Java Enterprise Edition o JavaEE. Aquesta edició està construïda sobre JavaSE, a la qual incorpora una API d’alt nivell. Empreses com Oracle, RedHat i IBM ofereixen implementacions pròpies d’aquesta API. Per altra banda, cal mencionar JavaME, o l’edició Micro, amb una API pensada específicament per al desenvolupament d’aplicacions en dispositius mòbils i integrats.</p>
+<h3 id="implementacions-del-jdk">Implementacions del JDK</h3>
+<p>Java va ser desenvolupat en la dècada dels 90 per Sun Microsystems. L’any 2010, Sun va ser adquirida per Oracle, i amb ella, totes les seues tecnologies, Java inclosa. Abans d’això, en 2007, Sun va llicenciar la majoria de les seues tecnologies sota la Llicència Pública General de GNU (GNU/GPL).</p>
+<p>Així doncs, existeixen actualment dues versions principals del JDK: la mantinguda per Oracle (<em>Oracle JDK</em>) i <em>OpenJDK</em>, la versió lliure, fruit d’aquest esforç de Sun abans de la seua venda a Oracle, mantinguda per la comunitat <em>OpenJDK</em>.</p>
+<p>Respecte al llançament de versions del JDK d’Oracle, des de Java 10 es llancen noves versions cada 6 mesos, amb un període de suport curt, mentre que les versions LTS (Long Term Support), es llancen cada 3 anys. Les últimes versions del JDK d’Oracle són:</p>
+<ul>
+<li>JavaSE 21 (LTS), Setembre de 2023.</li>
+<li>JavaSE 22, Març de 2024.</li>
+<li>JavaSE 23, Octubre de 2024.</li>
+</ul>
+<p>A més, des de Gener de 2019, es requereix d’una llicència d’Oracle per a accedir a les actualitzacions i el suport.</p>
+<p>Per la seua banda, OpenJDK, encara que siga de codi obert, no deixa de ser una implementació oficial de JavaSE. De fet, el JDK d’Oracle es basa en OpenJDK, i igual que aquest, ofereix noves versions cada 6 mesos, corresponent-se el número de versió amb el del JDK d’Oracle.</p>
+<p>A més d’aquestes, existeixen altres implementacions de Java, com Amazon Corretto, IBM JDK o Azul Zulu, entre altres.</p>
+<h3 id="installacio-dopenjdk">Instal·lació d'OpenJDK</h3>
+<h4 id="installacio-en-sistemes-linux">Instal·lació en sistemes Linux</h4>
+<p>OpenJDK es troba disponible en tots els repositoris de programari de les principals distribucions de GNU/Linux. Anem a instal·lar la versió 21 de l’OpenJDK en un sistema basat en Ubuntu. Per a això, podem fer-ho bé des del centre de programari que ofereix la distribució, o mitjançant la línia d'ordres. Utilitzarem aquest segon mètode, per ser més genèric.</p>
+<p>Obrirem una nova terminal, i en primer lloc actualitzem la memòria cau de paquets de programari amb l'ordre (escrivim l'ordre sense el prompt $ i premem intro):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update
+</span></code></pre></div>
+<p>Això ens demanarà la contrasenya d’administrador, i després d’això, descarregarà l’última llista de paquets disponibles per a la nostra distribució.</p>
+<p>Una vegada tinguem la memòria caché de paquets actualitzada, instal·lem la versió LTS més recent del JDK amb:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt install default-jdk
+</span></code></pre></div>
+<p>En aquest cas, la versió que instal·la de l’OpenJDK és la 21 (<code>openjdk-21-jdk</code>), que es correspon amb l’última LTS. Fixeu-vos que a part d’aquest, la instal·lació arrossega diversos paquets com a dependències (és a dir, que OpenJDK requereix d’ells per a funcionar). Entre ells es troba el paquet <code>openjdk-21-jre</code>, que és el que implementa el <em>Java Runtime Environment</em>, que com hem dit anteriorment, forma part del <em>JDK</em>.</p>
+<p>En Ubuntu, la instal·lació es realitza per defecte en la carpeta <code>/usr/lib/jvm/java-21-openjdk-amd64</code>. A més, es genera l’enllaç <code>/usr/bin/java</code> que apunta a <code>/etc/alternatives/java</code>, que al seu torn és també un enllaç a /<code>usr/lib/jvm/java-21-openjdk-amd64/bin/java</code>. Els <em>alternatives</em> ens serviran per a utilitzar diversos entorns Java en el nostre ordinador. Igual que s’ha fet amb l'ordre <code>java</code>, que és qui invoca la màquina virtual, s’han generat els enllaços corresponents per al compilador <code>javac</code>. Podem comprovar les versions d'ambdós escrivint en un terminal:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ java --version
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>...
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$javac --version
+</span></code></pre></div>
+<p>Si bé amb això ja tenim disponibles des de qualsevol lloc les ordres java i javac, configurarem la variable d'entorn <code>JAVA_HOME</code>, necessària en algunes aplicacions Java, i que conté la carpeta d'instal·lació. A més, actualitzarem la variable del sistema <code>PATH</code> perquè incloga també aquesta carpeta. Per això, a la nostra carpet ad'usuari editaríem el fitxer <code>~/.bashrc</code> i afegirem al final les següents línies (no ho feu encara!):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># JAVA_HOME</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/usr/lib/jvm/java-21-openjdk-amd64/<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;/usr/lib/jvm/java-21-openjdk-amd64/&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">fi</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Afegim el path dels binaris per a Java</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">fi</span>
+</span></code></pre></div>
+<p>Amb això establiríem Java 21 com a Java predeterminat. Ara bé, si modifiquem la versió de java predeterminada amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>Selecció<span class="w">    </span>Camí<span class="w">                                        </span>Prioritat<span class="w">  </span>Estat
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>------------------------------------------------------------
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>*<span class="w"> </span><span class="m">0</span><span class="w">            </span>/usr/lib/jvm/java-21-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>automàtic
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="m">1</span><span class="w">            </span>/usr/lib/jvm/java-17-openjdk-amd64/bin/java<span class="w">   </span><span class="m">1711</span><span class="w">      </span>mode<span class="w"> </span>manual
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="m">2</span><span class="w">            </span>/usr/lib/jvm/java-21-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>manual
+</span></code></pre></div>
+<p>I seleccionem una versió diferent a la 21, el <code>$JAVA_HOME</code> ja no es modificaría. Una forma diferent de fer-ho seria afegint al <code>~/.bashrc</code> el següent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Estableix JAVA_HOME basat en l&#39;alternativa seleccionada</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>java<span class="k">))))</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Afegim el path dels binaris per a Java</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+</span></code></pre></div>
+<p>Amb això, agafaria el JAVA que hàgem configurat amb l'<code>update-alternatives</code>. De tota manera, i per tal que els canvis tinguen efecte, caldrà fer un <em>source</em> d'aquest fitxer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<p>O bé obrir una terminal nova.</p>
+<h4 id="installacio-a-windows">Instal·lació a Windows</h4>
+<p>Per a la instal·lació i configuració del JDK a Windows començarem descarregant l'OpenJDK des del lloc web de l'arxiu de version: <a href="https://jdk.java.net/archive/">https://jdk.java.net/archive/</a>. Els binaris de la versió 21 estaran a <a href="https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_windows-x64_bin.zip">l'apartat 21.0.2 (build 21.0.2+13)</a>.</p>
+<p><a class="glightbox" href="../img/java_win1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Descàrrega del JDK per a Windows" src="../img/java_win1.png" width="400px" /></a></p>
+<p>Des d'aquesta pàgina, descarreguem el binari per a Windows/x64, i el descomprimim des d'on l'hàgem descarregat (botó dret del ratolí, i Extraure-ho tot). Si, per exemple, ho hem descomprimit a C:\java, de manera que ens genera la carpeta per al JDK C:\java\jdk-21.0.1. Podem descomprimir-lo on siga, sempre que recordem aquesta ruta per establir les variables corresponents.</p>
+<p>Per poder accedir al JDK des de qualsevol lloc, cal crear la variable d'entorn <code>JAVA_HOME</code> i actualitzar el <code>PATH</code>, per llançar java des de qualsevol ubicació.</p>
+<p>Per crear <code>JAVA_HOME</code>, haurem d'obrir la finestra de configuració de variables del sistema. Per això, des del menú d'inici, busquem <em>Sistema de Windows &gt; Panell de Control</em>. I des d'aquest panell de Control, <em>Sistema i Seguretat</em> &gt; <em>Seguretat i Manteniment</em> &gt; <em>Configuració avançada del sistema</em>. I a la finestra que apareix, disposem d'un botó per configurar les variables d'entorn. També podrem accedir-hi més fàcilment cercant amb la lupa Editar les variables d'entorn.</p>
+<p><a class="glightbox" href="../img/path.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint la variable d'entorn JAVA_HOME" src="../img/path.png" width="100%" /></a></p>
+<p>A la finestra per establir les variables, ens situarem a la part de Variables del Sistema, i seleccionarem Nova. El nom d'aquesta nova variable serà <code>JAVA_HOME</code>, i us donarem per valor la ubicació de la carpeta on es va instal·lar el JDK (en el nostre cas <code>C:\java\jdk-21.0.1</code>):</p>
+<p><a class="glightbox" href="../img/path2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 21" src="../img/path2.png" width="500px" /></a></p>
+<p>Ara ens queda modificar la variable PATH. Per això, des de la finestra anterior, busquem la variable Path a les variables del sistema, la seleccionem i fem clic al botó d'Editar. A la finestra d'edició de la variable, seleccionarem l'opció Examinar per cercar el directori bin de la instal·lació del JDK i afegir-lo al Path.</p>
+<p><a class="glightbox" href="../img/path3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 21" src="../img/path3.png" width="500px" /></a></p>
+<p>Donem a acceptar a totes les finestres, i ja tindrem disponible el nostre JDK en tot el sistema. Per exemple, podem obrir una terminal i escriure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>C:\Users\Alumne&gt; java --version
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,977 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../mockito/">
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>4. Jest - U7. Testing</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proves-amb-javascript-jest" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="U7. Testing" class="md-header__button md-logo" aria-label="U7. Testing" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            U7. Testing
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Jest
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="U7. Testing" class="md-nav__button md-logo" aria-label="U7. Testing" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    U7. Testing
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introducció
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Junit Jupiter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mockito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Dobles de prova: Mockito
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4. Jest
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Jest
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#proves-amb-javascript-jest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proves amb Javascript: Jest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proves amb Javascript: Jest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plantejament-general-del-projecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plantejament general del projecte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#proves-amb-javascript-jest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proves amb Javascript: Jest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proves amb Javascript: Jest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plantejament-general-del-projecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plantejament general del projecte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>4. Jest</h1>
+
+<h2 id="proves-amb-javascript-jest">Proves amb Javascript: Jest</h2>
+<p><a href="https://jestjs.io/es-ES/">Jest</a> és un framework de proves per a JavaScript desenvolupat per Facebook. És especialment popular en projectes basats en React, però també es pot utilitzar per provar aplicacions de Node.js o qualsevol codi JavaScript.</p>
+<p>Jest és molt fàcil d'utilitzar, permet escriure proves unitàries, de mòduls i d'integració amb mocks, spies i altres tècniques per aïllar les dependències durant les proves.</p>
+<p><strong>Per què utilitzar Jest?</strong></p>
+<ul>
+<li>Rapidesa i facilitat de configuració.</li>
+<li>Suporta tant frontend com backend.</li>
+<li><em>Mocking</em> i <em>spies</em> per a provar codi amb dependències externes (per exemple, API, base de dades).</li>
+<li>Instantaneous HMR (Hot Module Replacement) durant el desenvolupament.</li>
+<li>Integració senzilla amb eines com React Testing Library, Supertest, etc.</li>
+<li>Cobertura de codi integrada per mesurar la qualitat de les proves.</li>
+</ul>
+<h3 id="plantejament-general-del-projecte">Plantejament general del projecte</h3>
+<p>Anem a crear un projecte que conste d'un backend bàsic en NodeJS i d'un frontend, basat en webComponents, de manera que provem tant el servidor com els components.</p>
+<p>Per a ambdós casos farem ús de Jest, aprofitant les seues capacitats de <em>mocking</em> i testing per a Javascript pur.</p>
+<div class="admonition warning">
+<p class="admonition-title">Actualitzant node i npm</p>
+<p>Anem a treballara amb les últimes versions de node i npm des de Linux.</p>
+<p>Per a això farem ús de l'eina <a href="https://github.com/nvm-sh/nvm"><code>nvm</code> (Node Version Manager)</a>.</p>
+<p>Per descarregar aquesta eina ho farem des del seu script d'instal·lació, que descarregarem amb <code>curl -o-</code> o bé amb <code>wget -qO-</code> i executar-lo. Ho podem fer en una ordre amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span></code></pre></div>
+<p>Aquest script ja descarrega, instal·la i configura <em>nvm</em>, pel que si obrim una nova terminal ja la tindrem disponible.</p>
+<p>Ara podem veure la versió de nvm instal·lada amb:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ nvm --version
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>0.40.3
+</span></code></pre></div>
+<p>Ara amb <code>lvm ls</code> podem veure la versió del sistema i amb <code>lvm ls-remote</code> les versions disponibles.</p>
+<p>Per tal d'instal·lar la última versió, farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nvm<span class="w"> </span>install<span class="w"> </span><span class="m">22</span>.15.0
+</span></code></pre></div>
+<p>Comproveu amb <code>node -v</code> que hem instal·lat aquesta versió.</p>
+<p>I per instal·lar la última versió de <code>npm</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>nvm<span class="w"> </span>install-latest-npm<span class="w"> </span>
+</span></code></pre></div>
+<p>Podem comprovar amb <code>npm -v</code> que tenim la versió 11.0.3.</p>
+</div>
+<h4 id="configuracio-basica-de-jest-en-un-projecte">Configuració bàsica de Jest en un projecte</h4>
+<ol>
+<li>Crear i inicialitzar el projecte:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>projecte-test
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>projecte-test
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>$<span class="w">  </span>npm<span class="w"> </span>init<span class="w"> </span>-y
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">ES Module!</p>
+<p>Recordeu-vos-en d'editar la configuració del projecte i definir-lo com un ES-Module, no com commonJS!</p>
+</div>
+<ol>
+<li>Instal·lació de les dependències:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>jest<span class="w"> </span>supertest<span class="w"> </span>babel-jest<span class="w"> </span>@babel/preset-env<span class="w"> </span>jsdom
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>jest-environment-jsdom
+</span></code></pre></div>
+<ul>
+<li><code>jest</code>: és el framework de proves.</li>
+<li><code>supertest</code>: Ens serveix per fer proves en nodejs.</li>
+<li>Les llibreríes <code>babel-jest</code> i <code>@babel/preset-env</code> ens serviran per fer compatible jest amb els mòduls ESModules, ja que no ho són de manera predeterminada.</li>
+<li><code>jsdom</code> és un entorn de test per simular un navegador virtual.</li>
+<li><code>jest-environment-jsdom</code> és una llibreria de desenvolupament per treballar un entorn JSDOM des de Jest.</li>
+</ul>
+<p>Jest es configura automàticament amb una configuració bàsica i funcional. Si volem personalitzar la configuració, podem afegir un fitxer de configuració, tal i com <a href="https://jestjs.io/es-ES/docs/configuration">s'indica a la documentació</a>.</p>
+<p>Al nostre cas, anem a afegir un fitxer <code>babel.config.js</code> amb el següent contingut:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">presets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="s1">&#39;@babel/preset-env&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Transforma codi modern (ES6+) a codi compatible amb Node.js</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">];</span>
+</span></code></pre></div>
+<p>I el fitxer <code>jest.config.js</code> amb:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">transform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="s1">&#39;^.+\\.js$&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;babel-jest&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Transforma els fitxers .js amb Babel</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">};</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">testEnvironment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;node&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Amb el primer script, configurem l'eina <em>Babel</em> per transformar el codi que utilitza ESModules en codi compatible amb Node.js. El segon script, Jest farà servir <em>Babel</em> per transformar tots els fitxers Javascript abans d'executar les proves, i defineix l'entorn de test amb node.</p>
+<p>Fet això, editarem la configuració, ens assegurarem que estiga tot correcte, i modificarem els scripts amb:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">  </span><span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="s2">&quot;test&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jest&quot;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="p">},</span>
+</span></code></pre></div>
+<p>Per utilitzar Jest quan fem un <code>npm run test</code> (o simplement <code>npm test</code>).</p>
+<h4 id="codi-del-backend">Codi del backend</h4>
+<p>Crearem un fitxer <code>backend/server.js</code> amb el següent contingut:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;http&#39;</span><span class="p">;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">// Creem un servidor HTTP bàsic</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;/greeting&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">);</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello from Node.js!&#39;</span><span class="w"> </span><span class="p">}));</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">404</span><span class="p">;</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">});</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server is running on http://localhost:3000&#39;</span><span class="p">);</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="p">});</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">server</span><span class="p">;</span><span class="w"> </span>
+</span></code></pre></div>
+<p>Aquest codi crea un servidor HTTP molt bàsic (sense necessitat d'Express), fent ús de la llibreria http.</p>
+<p>El servidor està configurat per respondre a peticions de tipus GET i a l'url '/greeting'. En aquest cas, retornarà un codi 200 i un JSON amb el contingut <code>{ message: 'Hello from Node.js!' }</code>.</p>
+<p>Obseveu que a la última línia, exportem el component <code>server</code>.</p>
+<h4 id="configurant-les-proves-per-al-backend">Configurant les proves per al backend</h4>
+<p>Ara, utilitzarem Jest i Supertest per provar l'API de Node.js. Supertest ens permet fer peticions HTTP al servidor i verificar les respostes de manera senzilla.</p>
+<p>Generem el següent fitxer <code>backend/server.test.js</code>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;supertest&#39;</span><span class="p">;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./server.js&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Importem el servidor</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /greeting&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Deuria retornar un missatge de benvinguda&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">server</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/greeting&#39;</span><span class="p">);</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">message</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;Hello from Node.js!&#39;</span><span class="p">);</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Deuria retornar un error 404 de ruta no vàlida&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">server</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/invalid-route&#39;</span><span class="p">);</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">404</span><span class="p">);</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">});</span>
+</span></code></pre></div>
+<ul>
+<li>Amb <code>request(server).get('/greeting')</code> simulem una petició HTTP de tipus GET al servidor a la ruta /greeting.</li>
+<li><code>expect(response.status).toBe(200)</code>: Comprova que el codi de resposta siga 200 OK.</li>
+<li><code>expect(response.body.message).toBe('Hola des de Node.js!')</code>: Verifica que el missatge retornat siga el correcte.</li>
+<li>També es comprova que una ruta no vàlida retorne un codi 404.</li>
+</ul>
+<p>Amb tot això, realitzarem la prova amb <code>npm test</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>npm<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>&gt;<span class="w"> </span>projecte-test@1.0.0<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>&gt;<span class="w"> </span>jest
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>console.log
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span>Server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>on<span class="w"> </span>http://localhost:3000
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">      </span>at<span class="w"> </span>Server.log<span class="w"> </span><span class="o">(</span>backend/server.js:16:11<span class="o">)</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w"> </span>PASS<span class="w">  </span>backend/server.test.js
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span>GET<span class="w"> </span>/greeting
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span>✓<span class="w"> </span>Deuria<span class="w"> </span>retornar<span class="w"> </span>un<span class="w"> </span>missatge<span class="w"> </span>de<span class="w"> </span>benvinguda<span class="w"> </span><span class="o">(</span><span class="m">49</span><span class="w"> </span>ms<span class="o">)</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span>✓<span class="w"> </span>Deuria<span class="w"> </span>retornar<span class="w"> </span>un<span class="w"> </span>error<span class="w"> </span><span class="m">404</span><span class="w"> </span>de<span class="w"> </span>ruta<span class="w"> </span>no<span class="w"> </span>vàlida<span class="w"> </span><span class="o">(</span><span class="m">4</span><span class="w"> </span>ms<span class="o">)</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>Test<span class="w"> </span>Suites:<span class="w"> </span><span class="m">1</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>total
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>Tests:<span class="w">       </span><span class="m">2</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">2</span><span class="w"> </span>total
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>Snapshots:<span class="w">   </span><span class="m">0</span><span class="w"> </span>total
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>Time:<span class="w">        </span><span class="m">0</span>.658<span class="w"> </span>s
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>Ran<span class="w"> </span>all<span class="w"> </span><span class="nb">test</span><span class="w"> </span>suites.
+</span></code></pre></div>
+<p>Com veiem, ha llançat tots els tests i aquests han estat exitosos. Podeu provar a modificar el missatge i veure'n l'efecte.</p>
+<!--
+1. Frontend: Web Components amb Vanilla JavaScript
+Ara, farem servir Web Components en JavaScript pur per crear un component senzill que pugui mostrar un missatge i després escriurem proves per verificar el seu comportament.
+
+2.1. Codi frontend (Web Component)
+frontend/app.js:
+
+javascript
+Copia
+class GreetingComponent extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });  // Utilitzem Shadow DOM
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+      <div>
+        <p id="message">Default message</p>
+        <button id="changeGreeting">Change Greeting</button>
+      </div>
+    `;
+    this.shadowRoot.querySelector('#changeGreeting').addEventListener('click', this.changeGreeting);
+  }
+
+  changeGreeting() {
+    this.shadowRoot.querySelector('#message').textContent = 'Hello from Web Components!';
+  }
+}
+
+// Definim el component personalitzat
+customElements.define('greeting-component', GreetingComponent);
+
+En aquest exemple, creem un Web Component anomenat <greeting-component>. Aquest component conté un missatge per defecte i un botó. Quan es clica el botó, el missatge canvia a "Hello from Web Components!".
+
+2.2. Prova per al Web Component
+
+
+Utilitzarem Jest i @testing-library/web-components per provar el comportament del component.
+
+frontend/app.test.js:
+
+javascript
+Copia
+import '@testing-library/jest-dom';
+import { render, fireEvent, screen } from '@testing-library/web-components';
+import './app';  // Importem el component
+
+test('changes greeting when button is clicked', async () => {
+  // Renderitzem el component en el document
+  render('<greeting-component></greeting-component>');
+
+  // Busquem el missatge i el botó
+  const message = screen.getByText('Default message');
+  const button = screen.getByText('Change Greeting');
+
+  // Comprovem el text inicial
+  expect(message).toBeInTheDocument();
+
+  // Simulem un clic al botó
+  fireEvent.click(button);
+
+  // Comprovem que el missatge ha canviat
+  expect(screen.getByText('Hello from Web Components!')).toBeInTheDocument();
+});
+Explicació de la prova:
+render('<greeting-component></greeting-component>'): Renderitza el component Web en el DOM.
+
+screen.getByText('Default message'): Busquem el missatge inicial del component.
+
+fireEvent.click(button): Simulem un clic al botó.
+
+expect(screen.getByText('Hello from Web Components!')): Comprovem que el text ha canviat després del clic.
+
+3. Configuració de Jest
+El fitxer de configuració de Jest segueix sent el mateix. Si vols personalitzar la configuració de Jest, pots afegir el fitxer jest.config.js.
+
+jest.config.js:
+
+javascript
+Copia
+module.exports = {
+  testEnvironment: 'jsdom',  // Necessitem un entorn de navegador simulat
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],  // Afegim extensions per treballar amb el DOM
+};
+4. Executar les proves
+5. 
+Finalment, pots executar totes les proves amb Jest utilitzant la comanda següent:
+
+bash
+Copia
+npm run test
+Aquesta comanda executarà totes les proves del backend i del frontend, i t'indicarà si les proves passen o fallen.
+
+Resum de la solució
+Backend (Node.js): Creem una API simple amb Node.js i escrivim proves utilitzant Supertest per fer peticions HTTP.
+
+Frontend (Web Components): Creem un Web Component en Vanilla JS i escrivim proves per verificar el comportament del component amb Jest i @testing-library/web-components.
+
+Jest: Utilitzem Jest com a eina de proves per a ambdós entorns, amb una configuració senzilla i fàcil d'entendre.
+
+Aquesta solució és fàcil d'entendre per als alumnes, ja que no utilitza frameworks complexos com React o Express, i se centra en tecnologies bàsiques de JavaScript com Node.js, Web Components, i Jest.
+
+
+
+
+
+
+
+
+
+
+backend/server.js (Servidor Express):
+
+javascript
+Copia
+const express = require('express');
+const app = express();
+
+app.get('/greeting', (req, res) => {
+  res.status(200).send({ message: 'Hello from Express!' });
+});
+
+module.exports = app;
+Prova per a Express amb Jest i Supertest:
+
+backend/server.test.js:
+
+javascript
+Copia
+const request = require('supertest');
+const app = require('./server');  // Importem l'aplicació Express
+
+describe('GET /greeting', () => {
+  it('should return a greeting message', async () => {
+    const response = await request(app).get('/greeting');
+    expect(response.status).toBe(200);  // Verifiquem que el codi de resposta sigui 200
+    expect(response.body.message).toBe('Hello from Express!');  // Verifiquem que el missatge sigui correcte
+  });
+});
+Explicació de les proves:
+request(app).get('/greeting'): Simula una petició GET a l'API Express.
+
+expect(response.status).toBe(200): Comprova que el codi de resposta HTTP sigui 200.
+
+expect(response.body.message).toBe('Hello from Express!'): Comprova que el cos de la resposta conté el missatge esperat.
+
+4. Frontend: Proves amb React i Jest
+Per al frontend, utilitzarem React Testing Library per provar els components React.
+
+frontend/App.js (Component React):
+
+javascript
+Copia
+import React from 'react';
+
+const App = () => {
+  return <div>Hello from React!</div>;
+};
+
+export default App;
+Prova per al component React amb Jest i React Testing Library:
+
+frontend/App.test.js:
+
+javascript
+Copia
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders hello message', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/Hello from React!/i);  // Busquem el text "Hello from React!"
+  expect(linkElement).toBeInTheDocument();  // Comprovem que el text està en el document
+});
+Explicació de les proves:
+render(<App />): Renderitza el component App en un entorn de prova.
+
+screen.getByText(/Hello from React!/i): Busca un element en el DOM que contingui el text "Hello from React!".
+
+expect(linkElement).toBeInTheDocument(): Comprova que l'element existeix en el DOM.
+
+5. Scripts i execució de les proves
+Afegirem scripts al fitxer package.json per facilitar l'execució de les proves.
+
+package.json:
+
+json
+Copia
+{
+  "scripts": {
+    "test": "jest",  // Executa totes les proves amb Jest
+    "test:backend": "jest backend",  // Executa només les proves del backend
+    "test:frontend": "jest frontend"  // Executa només les proves del frontend
+  }
+}
+6. Executar les proves
+Ara pots executar les proves amb les següents comandes:
+
+Proves completes (backend i frontend):
+
+bash
+Copia
+npm run test
+Proves només del backend (Express):
+
+bash
+Copia
+npm run test:backend
+Proves només del frontend (React):
+
+bash
+Copia
+npm run test:frontend
+7. Cobertura de codi amb Jest
+Jest té integrat el sistema de cobertura de codi. Pots executar les proves i obtenir un informe de cobertura amb aquesta comanda:
+
+bash
+Copia
+npm run test -- --coverage
+Jest generarà un informe que t'indicarà quantes línies de codi han estat cobertes per les proves.
+
+8. Mocks i Spies amb Jest
+Una de les característiques més potents de Jest és la seva capacitat per crear mocks i spies per simular dependències i verificar interaccions entre components.
+
+Exemple de Mocking amb Jest
+Imagina que tens una classe UserService que depèn d'un repositori per obtenir dades d'usuari.
+
+UserRepository.js:
+
+javascript
+Copia
+class UserRepository {
+  findById(id) {
+    // Simula una crida a la base de dades
+    return { id, name: "John Doe" };
+  }
+}
+
+module.exports = UserRepository;
+UserService.js:
+
+javascript
+Copia
+const UserRepository = require('./UserRepository');
+
+class UserService {
+  constructor(userRepository) {
+    this.userRepository = userRepository;
+  }
+
+  getUserName(id) {
+    const user = this.userRepository.findById(id);
+    return user.name;
+  }
+}
+
+module.exports = UserService;
+Prova per a la classe UserService amb mocking:
+
+UserService.test.js:
+
+javascript
+Copia
+const UserService = require('./UserService');
+const UserRepository = require('./UserRepository');
+jest.mock('./UserRepository');  // Creem un mock de UserRepository
+
+test('should return user name', () => {
+  const mockUserRepo = new UserRepository();
+  mockUserRepo.findById.mockReturnValue({ id: 1, name: 'Jane Doe' });
+
+  const userService = new UserService(mockUserRepo);
+  const userName = userService.getUserName(1);
+
+  expect(userName).toBe('Jane Doe');
+});
+jest.mock(): Substitueix la implementació real de UserRepository per una versió simulada (mock).
+
+mockReturnValue(): Defineix el valor que ha de retornar el mètode findById quan s'invoqui durant les proves.
+
+Conclusió
+Amb Jest tenim una solució senzilla i poderosa per fer proves tant de backend com de frontend:
+
+Backend: Proves amb Express utilitzant Supertest.
+
+Frontend: Proves de components React amb React Testing Library.
+
+Mocks i spies per simular dependències externes i verificar interaccions.
+
+Cobertura de codi integrada per mesurar l'eficàcia de les nostres proves.
+
+
+
+
+<!--
+Cobertura de codi amb Jacoco (VSCode):
+Afegim la dependència jacoco al build.gradle per mesurar la cobertura del codi:
+
+gradle
+Copia
+plugins {
+    id 'jacoco'
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+Executa les proves amb ./gradlew test.
+
+Genera el report de cobertura amb ./gradlew jacocoTestReport i visualitza el resultat en format HTML.
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

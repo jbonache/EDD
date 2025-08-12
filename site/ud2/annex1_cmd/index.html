@@ -1,0 +1,793 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../python/">
+      
+      
+        <link rel="next" href="../annex2_vim/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Annex 1. Eines bàsiques des de l'intèrpret d'ordres - Desenvolupament de programari</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linterpret-dordres-i-el-sistema-de-fitxers" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Desenvolupament de programari" class="md-header__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desenvolupament de programari
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Desenvolupament de programari" class="md-nav__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Desenvolupament de programari
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entorns Integrats de Denvolupament. VSCode
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vscode i Python
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linterpret-dordres-i-el-sistema-de-fitxers" class="md-nav__link">
+    <span class="md-ellipsis">
+      L'intèrpret d'ordres i el sistema de fitxers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L&#39;intèrpret d&#39;ordres i el sistema de fitxers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acces-a-la-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accés a la terminal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comencant-amb-les-ordres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Començant amb les ordres
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taula-ressum-de-les-ordres-tractades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taula ressum de les ordres tractades
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex2_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 2. Editors de fitxers de text: vim
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linterpret-dordres-i-el-sistema-de-fitxers" class="md-nav__link">
+    <span class="md-ellipsis">
+      L'intèrpret d'ordres i el sistema de fitxers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L&#39;intèrpret d&#39;ordres i el sistema de fitxers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acces-a-la-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accés a la terminal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comencant-amb-les-ordres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Començant amb les ordres
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taula-ressum-de-les-ordres-tractades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taula ressum de les ordres tractades
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Annex 1. Eines bàsiques des de l'intèrpret d'ordres</h1>
+
+<h2 id="linterpret-dordres-i-el-sistema-de-fitxers">L'intèrpret d'ordres i el sistema de fitxers</h2>
+<p>La <em>shell</em> del sistema o <em>intèrpret d'ordres</em> és la part del sistema operatiu que ens permet interactuar amb ell a través d'ordres, de forma completament textual, a través d'un terminal.</p>
+<p>Als sistemes GNU/Linux existeixen diverses <em>shells</em>: <em>sh</em>, <em>bash</em>, <em>csh</em>, <em>ksh</em>... per defecte, la shell en Ubuntu és <em>bash</em>.</p>
+<p>Per tal d'accedir a la shell des d'un entorn gràfic, ho fem a través de diverses aplicacions, anomenades <em>emuladors de terminal</em>. Cada entorn gràfic utilitza els seus propis emuladors de terminal. Així, Gnome ofereix <em>Gnome Terminal</em>, Mate ofereix <em>Mate Terminal</em>, KDE amb <em>Konsole</em>... </p>
+<p>En programació, tot i que els entorns de desenvolupament moderns ens permeten crear i executar projectes de forma gràfica, sovint resulta més còmode realitzar xicotetes modificacions del codi i realitzar el procés de compilació i construcció de d'aplicacions des de la línia d'ordres. Tot i que en sistemes operatius veureu a fons aquesta part del sistema, en aquest document de caràcter més pràctic anem a veure una xicoteta introducció per moure'ns pel sistema de directoris, crear una estrucutra, i llegir fitxers. Més endavant veurem com editar-los, també des de la línia d'ordres.</p>
+<h3 id="acces-a-la-terminal">Accés a la terminal</h3>
+<p>Per tal d'accedir a la terminal, ho podem fer de diverses formes:</p>
+<ol>
+<li>
+<p><strong>A través del menú o el <em>dock</em> del sistema</strong>: Generalment en l'apartat d'<em>Eines del sistema</em>.</p>
+</li>
+<li>
+<p><strong>A través d'estalvis de teclat</strong>: Generalment amb la combinació de tecles <code>Ctrl+Alt+T</code> o bé amb <code>Alt+F2</code> i escrivim el nom de l'aplicació.</p>
+</li>
+</ol>
+<p>Una vegada hem acedit a l'emulador de terminal, veurem el <em>prompt</em> del sistema, amb un aspecte semblant al següent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>usuari@ordinador:ruta$
+</span></code></pre></div>
+<p>Per exemple:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>profe@profeDAM:~$
+</span></code></pre></div>
+<p>Com veiem, apareix el <strong>nom de l'usuari</strong> i de l'<strong>ordinador</strong> al què està connectat. Tot seguit veiem el <em>path</em> o <em>camí</em> en l'arbre de directoris on ens trobem. En aquest cas, veiem el símbol especial <code>~</code>, que representa el directori <code>home</code> o d'<em>inici</em> de l'usuari. Finalment, el símbol <code>$</code> ens indica que estem executant  <code>bash</code> com a un usuari del sistema (l'altra opció sería el símbol <code>#</code> que indicaria que estem com a administradors)</p>
+<p>Bé, ara ja podem començar a interactuar amb el sistema. El mecanisme és tan fàcil com <strong>escriure l'ordre</strong> amb els paràmetres que necessitem, i polsar la tecla <strong>intro</strong>.</p>
+<h3 id="comencant-amb-les-ordres">Començant amb les ordres</h3>
+<p><strong>On estem</strong></p>
+<p>Si utilitzem l'ordre <code>pwd</code>, el prompt ens diu el directori en el què estem actualment:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>profe@profeDAM:~$<span class="w"> </span><span class="nb">pwd</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/home/profe
+</span></code></pre></div>
+<p>Com veiem, ens indica que ens trobem a una carpeta anomenada <code>home</code>, i dins d'ella, una carpeta amb el nostre nom d'usuari. El primer símbol que apareix és la <code>/</code>, o <em>arrel del sistema</em>, a partir del qual s'expandeix tot l'arbre de directoris. El treball d'aqueta pràctica el realitzarem a partir d'aquesta mateixa carpeta d'usuari.</p>
+<p><strong>Veient el contingut dels directoris</strong></p>
+<p>L'ordre <code>ls</code>, abreviatura de <em>list</em>, ens mostra el <em>llistat</em> de fitxers i directoris del directori on ens trobem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>ls
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Baixades<span class="w">   </span>Escriptori<span class="w">  </span>Música<span class="w">            </span>Plantilles<span class="w">  </span>Vídeos
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Documents<span class="w">  </span>Imatges<span class="w">     </span>NetBeansProjects<span class="w">  </span>Públic
+</span></code></pre></div>
+<p>Com veiem, si no hem creat res més, ens mostra les carpetes i els fitxers que tenim al nostre <em>home</em>.</p>
+<p>També podem indicar-li a <code>ls</code> de quina carpeta volem que ens mostre els fitxers. Per exemple, si escrivim:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>ls<span class="w"> </span>/
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>bin<span class="w">    </span>dev<span class="w">   </span>initrd.img<span class="w">      </span>lib64<span class="w">       </span>mnt<span class="w">   </span>root<span class="w">  </span>snap<span class="w">      </span>sys<span class="w">  </span>var
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>boot<span class="w">   </span>etc<span class="w">   </span>initrd.img.old<span class="w">  </span>lost+found<span class="w">  </span>opt<span class="w">   </span>run<span class="w">   </span>srv<span class="w">       </span>tmp<span class="w">  </span>vmlinuz
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>cdrom<span class="w">  </span>home<span class="w">  </span>lib<span class="w">             </span>media<span class="w">       </span>proc<span class="w">  </span>sbin<span class="w">  </span>swapfile<span class="w">  </span>usr<span class="w">  </span>vmlinuz.old
+</span></code></pre></div>
+<p>Ens mostra el contingut de la carpeta <em>arrel</em> del sistema. Com veieu, a l'arrel apareixen diversos directoris i fitxers, comuns en moltes distribucions GNU/Linux. Aquesta estructura segueix un estàndard conegut com FHS <em>FHS (Filesystem Hierarchy Standard)</em>, que defineix el contingut que ha d'haver en aquestes carpetes. En unitats posteriors, tornarem a reprendre aquest estàndard.</p>
+<p>Per altra banda, l'ordre <code>ls</code> accepta també diverses <em>opcions</em>. Les opcions, generalment indicades amb un <code>-</code> al davant, i separades per espais, serveixen per tal de modificar el comportament de l'ordre. Una opció bastant habitual és utilitzar <code>ls -l</code>, per tal d'obtenir un llistat en <em>format llarg</em>, que ens indica, a més del nom de carpetes i directoris, informació addicional, com els permissos, l'usuari i grup propietari, el tamany i la data de la última modificació.</p>
+<p><strong>Movent-nos per l'arbre de directoris</strong></p>
+<p>Una altra ordre interessant és l'ordre <code>cd</code> (<em>change directory</em>), que com el nom indica, serveix per canviar el directori actual. Per exemple si escrivim:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Baixades
+</span></code></pre></div>
+<p>Accedirem a la carpeta <code>Baixades</code></p>
+<p>Si ara escrivim:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/
+</span></code></pre></div>
+<p>Accedirem a l'<em>arrel</em> del sistema. Per tal d'accedir al nostre home, podem fer-ho de dos formes:</p>
+<ul>
+<li>
+<p>Indicant la ruta completa:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/el_meu_usuari
+</span></code></pre></div>
+</li>
+<li>
+<p>Amb l'abreviatura <code>~</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ cd ~
+</span></code></pre></div>
+</li>
+</ul>
+<p>Com hem comentat, l'estrucutra de directoris té forma d'<em>arbre</em>. Aixó vol dir, que existeix un directori, anomenat <em>arrel</em>, del que <em>naixen</em> tots els directoris, i de cada directori, <em>creixen</em> més directoris, <em>ramificant</em> l'estructura. Quan ens trobem a un directori concret, el directori immediatament anterior en l'estrucutura de directoris s'anomena <em>directori pare</em> (i per analogia, els directoris continguts dins un directori <em>directoris fills</em>). Tant el <em>directori pare</em> com el <em>directori actual</em> dins de cada directori tenen noms especials: <code>..</code> per al directori pare i <code>.</code> per al directori actual (més endavant li veurem més utilitats a aquesta abreviatura).</p>
+<p>A efectes pràctics, si tenim la següent estructura de directoris:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>moduls/
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">|</span>--<span class="w"> </span>EDD
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">|</span>--<span class="w"> </span>ISO
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">|</span>--<span class="w"> </span>LMI
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="se">\-</span>-<span class="w"> </span>PRG
+</span></code></pre></div>
+Si ens trobem dins el directori EDD, per tornar al directori moduls, farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+</span></code></pre></div>
+<p>Un error freqüent sol ser no posar l'espai entre <code>cd</code> i <code>..</code>. Tingueu-ho en compte.</p>
+<p><strong>Creació, modificació i esborrat de carpetes</strong></p>
+<p>Per tal de crear un directori, fem ús de l'ordre <code>mkdir</code> (<em>make directory</em>), seguida del nom del directori que volem.</p>
+<p>Per exemple, des del nostre <em>home</em> escrivim:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls
+</span></code></pre></div>
+<p>per crear la carpeta <em>moduls</em> en la carpeta on estem. Si ara volem crear més carpetes dins d'aquesta, podem fer-ho de dos formes:</p>
+<ol>
+<li>Accedint a la carpeta moduls i creant dins d'ella altres carpetes:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>moduls
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>EDD
+</span></code></pre></div>
+<ol>
+<li>Creant les carpetes a partir del directori <em>pare</em>, especificant la ruta:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls/EDD
+</span></code></pre></div>
+<p>Per altra banda, és interessant tindre en compte el següent:</p>
+<ul>
+<li>
+<p>Podem crear diversos directoris en una maeixa ordre mkdir, indicant-los tots com a arguments separats per espai:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls/EDD<span class="w"> </span>moduls/PRG<span class="w"> </span>moduls/LMI<span class="w"> </span>moduls/ISO
+</span></code></pre></div>
+* Podem crear una estructura completa amb l'opció <code>-p</code> (de <em>path</em>). Per exemple, en lloc de fer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls/EDD
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls/EDD/Practica1
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>$<span class="w"> </span>mkdir<span class="w"> </span>moduls/EDD/Practica1/part1
+</span></code></pre></div>
+<p>Podem fer directament:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>moduls/EDD/Practica1/part1
+</span></code></pre></div>
+<p>Per a que ens cree l'estructura completa, sense haver de crear pas a pas els directoris intermitjos.</p>
+</li>
+</ul>
+<p>Per altra banda, podem fer ús del que s'anomena <em>expansió de claus</em>, que ens permet generar múltiples expressions d'una. Per exemple, podem fer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>moduls/EDD/Practica1/<span class="o">{</span>part1,part2,part3<span class="o">}</span>
+</span></code></pre></div>
+<p>Que ens generaría la següent estrucutra de directoris:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>moduls/
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="se">\-</span>-<span class="w"> </span>EDD
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="se">\-</span>-<span class="w"> </span>Practica1
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">        </span><span class="p">|</span>--<span class="w"> </span>part1
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">        </span><span class="p">|</span>--<span class="w"> </span>part2
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="se">\-</span>-<span class="w"> </span>part3
+</span></code></pre></div>
+Com veieu, quan tenim una miqueta de pràctica, resulta bastant més ràpid que crear estructures de carpetes mitjançant el navegador de fitxers.</p>
+<p>Anem a passar ara a <strong>esborrar directoris</strong>. Per a això, farem ús de l'ordre <code>rmdir</code>, seguida del nom de la carpeta a eliminar. Cal tindre en compte que <strong>per tal d'eliminar un directori, aquest ha d'estar buit</strong>. En cas contrari, se'ns mostrarà el següent error:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span>rmdir<span class="w"> </span>/tmp/moduls/EDD/Practica1/
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>rmdir:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;/tmp/moduls/EDD/Practica1/&#39;</span>:<span class="w"> </span>Directory<span class="w"> </span>not<span class="w"> </span>empty
+</span></code></pre></div>
+<p>En aquest cas, caldria esborrar les carpetes <code>part1</code>, <code>part2</code> i <code>part3</code> per poder esborrar el directori <code>Practica1</code>. Proveu a fer-ho.</p>
+<p>Altra opció, és utilitzar l'ordre <code>rm</code>, que serveix per eliminar tant directoris com fitxers, i indicar-li l'argument <code>-r</code> (<em>esborrat recursiu</em>), de la següent forma:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>/tmp/moduls/EDD/Practica1/
+</span></code></pre></div>
+<p>I per acabar aquesta secció, es queda modificar o renomenar el nom dels directoris. Per a això, farem ús de l'ordre <code>mv</code>(<em>move</em>), amb la sintaxi següent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>mv<span class="w"> </span>fitxer_o_directori_original<span class="w"> </span>fitxer_o_directori_amb_el_nom_nou
+</span></code></pre></div>
+<p>Per exemple, per renomenar el directori <code>part1</code> com a <code>part01</code>, farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>mv<span class="w"> </span>moduls/EDD/Practica1/part1/<span class="w"> </span>moduls/EDD/Practica1/part01/
+</span></code></pre></div>
+<p><strong>Consultant el contingut dels fitxers</strong></p>
+<p>Veiem com consultar el contingut de fitxers. Como que encara no hem creat cap fitxer, anem a fer ús d'un fitxer del sistema, com per exemple puga ser el fitxer <code>/etc/apt/sources.list</code>,on s'indiquen les diferents fonts de programari que tenim configurades al sistema.</p>
+<p>Per tal de <strong>consultar el contingut</strong> del fitxer, fem ús de l'ordre <code>cat</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/apt/sources.list
+</span></code></pre></div>
+<p>Com veureu, es tracta d'un fitxer un tant llarg, i per llegir-lo tot, ens haurem de desplaçar cap amunt amb la barra de desplaçament lateral. Si volem evitar això, i que ens mostre el resultat <em>paginat</em>, farem ús de l'ordre <code>more</code> en lloc de <code>cat</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$<span class="w"> </span>more<span class="w"> </span>/etc/apt/sources.list
+</span></code></pre></div>
+<p>Amb açò veurem tantes línies del fitxer com ens càpiguen en pantalla i podrem desplaçar-nos cap avall amb la tecla <code>intro</code>, per avançar una línia, o la tecla <code>espai</code>, per avançar tantes línies més com càpiguen.</p>
+<p>El que no podem fer amb <code>more</code> és <em>tornar cap amunt</em> en el fitxer. Si volem poder moure'ns amunt i avall pel fitxer, podem fer ús de l'ordre <code>less</code>, de la mateixa manera:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>$<span class="w"> </span>less<span class="w"> </span>/etc/apt/sources.list
+</span></code></pre></div>
+<p>Amb aquesta ordre, a més de l'<code>espai</code> i l'<code>intro</code>, podem utilitzar els <em>cursors</em> amunt i avall per desplaçar-nos pel document. <strong>Per tal de poder eixir del que ens mostra <code>less</code>, hem de prémer la tecla <code>q</code></strong>.</p>
+<p>Altres ordres interessants per consultar fitxers són <code>head</code> i <code>tail</code>, que ens permeten consultar les primeres i les últimes línies dels fitxers. Podeu consultar-ne l'ajuda (<code>man head</code> o <code>man tail</code>) per veure les diverses opcions que tenen.</p>
+<h3 id="taula-ressum-de-les-ordres-tractades">Taula ressum de les ordres tractades</h3>
+<table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Mostra el directori on ens trobem actualment</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>Mostra el contingut d'un directori</td>
+</tr>
+<tr>
+<td><code>ls -l</code></td>
+<td>Mostra el contingut d'un directori en format llarg</td>
+</tr>
+<tr>
+<td><code>cd directori_o_ruta</code></td>
+<td>Accedim al directori indicat</td>
+</tr>
+<tr>
+<td><code>cd ~</code></td>
+<td>Accedim al nostre <em>home</em></td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Accedim al directori pare de l'actual</td>
+</tr>
+<tr>
+<td><code>mkdir directori</code></td>
+<td>Crea un directori</td>
+</tr>
+<tr>
+<td><code>mkdir -p ruta</code></td>
+<td>Crea la ruta completa, incloent subdirectoris</td>
+</tr>
+<tr>
+<td><code>rmdir directori</code></td>
+<td>Elimina un directori buit</td>
+</tr>
+<tr>
+<td><code>rm fitxer</code></td>
+<td>Elimina fitxer</td>
+</tr>
+<tr>
+<td><code>rm -r directori</code></td>
+<td>Elimina un directori recursivament</td>
+</tr>
+<tr>
+<td><code>mv origen destí</code></td>
+<td>Mou/Renomena un fitxer o directori</td>
+</tr>
+<tr>
+<td><code>cat fitxer</code></td>
+<td>Mostra el contingut d'un fitxer</td>
+</tr>
+<tr>
+<td><code>more fitxer</code></td>
+<td>Mostra el contingut d'un fitxer paginat</td>
+</tr>
+<tr>
+<td><code>less fitxer</code></td>
+<td>Mostra el contingut d'un fitxer navegable</td>
+</tr>
+<tr>
+<td><code>head fitxer</code></td>
+<td>Mostra les (10) primeres línies del fitex</td>
+</tr>
+<tr>
+<td><code>tail fitxer</code></td>
+<td>Mostra les (10) últimes del fitex</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

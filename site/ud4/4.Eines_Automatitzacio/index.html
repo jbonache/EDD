@@ -1,0 +1,844 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3.netbeans/">
+      
+      
+        <link rel="next" href="../5.Maven/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Eines d'automatització - La plataforma Java. Eines d’automatització.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#presentacio" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-header__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            La plataforma Java. Eines d’automatització.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Eines d'automatització
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-nav__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    La plataforma Java. Eines d’automatització.
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. La plataforma Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. VSCode i Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.netbeans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Netbeans
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4. Eines d'automatització
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Eines d'automatització
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#presentacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presentació
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eines-dautomatitzacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eines d'automatització
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-ant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache ant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i VSCode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.gradle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#presentacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presentació
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eines-dautomatitzacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eines d'automatització
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-ant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache ant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i VSCode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>4. Eines d'automatització</h1>
+
+<h3 id="presentacio">Presentació</h3>
+<p>Una altra de les tasques d'especial importància en la fase d'implementació, i a la qual generalment no es presta l'atenció que requeriria és l'<strong>automatització de tasques de construcció i gestió de dependències</strong>. Estes eines ens ajudaran d'una banda a gestionar projectes amb múltiples fitxers font, gestionar les dependències que té el nostre programari respecte a biblioteques de tercers, així com a <strong>generar l'empaquetat  de les nostres aplicacions</strong>.</p>
+<p>En el món de Java existixen principalment tres eines d'este tipus: Apache Ant, Apache Maven i Gradle. Veurem les principals característiques que tenen estes eines i aprendrem a crear i gestionar el cicle de construcció de l'aplicació en cadascuna d'elles.</p>
+<h3 id="eines-dautomatitzacio">Eines d'automatització</h3>
+<p>Com hem comentat, les eines d'automatització comencen a ser d'utilitat quan els nostres programes comencen a créixer i a dependre de llibreries de tercers. Per a exemplificar totes les eines, anem a partir d'un senzill programa, a l'estil “Hola Món”, però amb tots els ingredients necessaris.</p>
+<h4 id="exemple-de-partida-un-hola-mon-amb-dos-fitxers">Exemple de partida: un Hola Món amb dos fitxers</h4>
+<p>Disposem de dos fitxers <code>Main.java</code> i <code>Saluda.java</code>, organitzats en la següent estructura de directoris en la carpeta <code>saludaBase</code>:
+.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>└── src
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    └── com
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        └── ieseljust
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            └── edd
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                ├── Hola.java
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                └── Saluda.java
+</span></code></pre></div></p>
+<p>I amb el següent contingut:</p>
+<ul>
+<li>Fitxer <code>src/com/ieseljust/edd/Saluda.java</code></li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.ieseljust.edd</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Saluda</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saluda</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola &quot;</span><span class="o">+</span><span class="n">nombre</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>Fitxer <code>src/com/ieseljust/Hola.java</code></li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.ieseljust.edd</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Hola</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">?</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">Saluda</span><span class="p">.</span><span class="na">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Expliquem un poc el contingut. En primer lloc, quan treballem amb diversos fitxers font a Java, podem organitzar el codi en carpetes, que donen lloc al que es coneix com a paquets (<code>package</code> en anglés). Els noms de paquets s'escriuen en minúscula, i generalment, les empreses utilitzen el seu domini d'Internet a la inversa, com a part d'aquest. Per exemple, si el nostre domini fora <code>ieseljust.com</code>, el paquet de la nostra aplicació podria ser <code>com.ieseljust.edd</code>. Això té dos implicacions en els fitxers font:</p>
+<ul>
+<li>D'una banda, cal indicar que pertanyen a aquest paquet, mitjançant la directiva al principi del fitxer: <code>package com.ieseljust.edd</code>.</li>
+<li>D'altra banda, ha d'existir esta correlació entre el nom del paquet i l'estructura de carpetes al que es correspon: <code>com/ieseljust/edd</code> amb <code>com.ieseljust.edd</code>. Observeu que hem situat el directori <code>com</code>, dins d'un altre directori <code>src</code>. Este directori <code>src</code> (abreviatura de <em>source</em>) serà el directori arrel per al nostre codi font.</li>
+</ul>
+<p>D'altra banda, observem que el programa es compon de dos fitxers: el principal (<code>Hola.java</code>) que és qui conté el mètode <code>main</code>, i d'altra banda, el fitxer <code>Saluda.java</code>, que oferix la funcionalitat saluda. A més, el mètode principal <em>Main</em> recull un argument opcional de la línia d'ordes per a personalitzar el missatge que mostrarà per pantalla.</p>
+<p>Per a compilar el codi anterior, podriem situar-nos en la carpeta arrel del codi <code>saludaBase/src</code> i fer:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ javac com/ieseljust/edd/Saluda.java
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$ javac com/ieseljust/edd/Hola.java
+</span></code></pre></div>
+<p>Amb això generem en la carpeta <code>com/ieseljust/edd</code> els dos fitxers en <em>btyecode</em> Saluda.class i Hola.class.</p>
+<p>Realment, només amb la segona orde, és a dir, compilant el fitxer <code>Hola.java</code> hauria sigut suficient, ja que el compilador detecta que s'utilitza una funcionalitat que està implementada en un altre fitxer font del mateix paquet i compilarà també aquest.</p>
+<p>Finalment, per a executar el codi anterior, utilitzarem:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ java com.ieseljust.edd.Hola Jose
+</span></code></pre></div>
+<p>Fixeu-vos que ara per a executar el nostre programa hem utilitzat el nom de la classe Hola precedida del nom del paquet. A més, podem passar-li qualsevol argument al nostre programa perquè emeta una salutació personalitzada.</p>
+<h4 id="classpath-i-desti-de-la-compilacio">Classpath i destí de la compilació</h4>
+<p>Generalment, no és bona idea mantenir el codi font i les classes generades al mateix directori. Per això, sol generar-se un directori específica per a aquestes classes generades.</p>
+<p>Anem a crear un directori que anomenarem <code>build</code>, i utilitzarem aquest com a destí de la compilació. Des de l'arrel del projecte, farem:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir build
+</span></code></pre></div>
+<p>de manera que tindrem:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>.
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── build
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>└── src
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    └── com
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        └── ieseljust
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>            └── edd
+</span></code></pre></div>
+<p>Per a la compilació, anem a introduir dos arguments a <code>javac</code>:</p>
+<ul>
+<li><code>-d</code>, que ens permet especificar el <em>destí</em> dels fitxers en bytecode; al nostre cas utilitzarem <code>-d build</code>, i</li>
+<li><code>-classpath</code>, per especificar el ClassPath, o el directori on estaran les classes que necessitem, que en aquest cas, també serà el directori build.</li>
+</ul>
+<p>Així, per compilar el nostre exemple, farem, des de l'arrel del projecte el següent:</p>
+<ul>
+<li>Compilem el fitxer <code>Saluda.java</code> indicant que guarde les classes en bytecode en la carpeta <code>build</code>:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ javac -d build/ src/com/ieseljust/edd/Saluda.java 
+</span></code></pre></div>
+<ul>
+<li>Compilem el fitxer <code>Hola.java</code> indicant que guarde les classes en bytecode en la carpeta <code>build</code> i indicant, a més que aquesta és la que conté les classes que necessitarem per al nostre programa:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ javac -d build -classpath build src/com/ieseljust/edd/Hola.java 
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Compte!</p>
+<p>Si no especifiquem el Classpath, ens donarà el següent error:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$ javac -d build src/com/ieseljust/edd/Hola.java 
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a> src/com/ieseljust/edd/Hola.java:6: error: cannot find symbol
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>         Saluda.saluda(nombre);
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>         ^
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a> symbol:   variable Saluda
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a> location: class Hola
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a> 1 error
+</span></code></pre></div>
+ Que inndica que no troba què és <code>Saluda</code>, ja que la busca al mateix directori. Per indicar-li on estarà la classe, cal indicar necessàriament el classpath.</p>
+</div>
+<p>Amb tot, això ens generarà la següent estructura:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>.
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>├── build
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>│   └── com
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>│       └── ieseljust
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>│           └── edd
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>│               ├── Hola.class
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>│               └── Saluda.class
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>└── src
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    └── com
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        └── ieseljust
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>            └── edd
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>                ├── Hola.java
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>                └── Saluda.java
+</span></code></pre></div>
+<p>Ara, per tal d'executar el nostre codi, caldrà indicar també on es troba el classpath, de manera que farem:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ java -cp build com.ieseljust.edd.Hola 1DAM!
+</span></code></pre></div>
+<p>Si no especifiquem el classpath, ens donarà l'error:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Error: Could not find or load main class com.ieseljust.edd.Hola
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Caused by: java.lang.ClassNotFoundException: com.ieseljust.edd.Hola
+</span></code></pre></div>
+<p>I de fet, no ens deixarà ni autocompletar el nom del paquet.</p>
+<p>De moment, hem utilitzat dos fitxers, i la compilació podria fer-se de forma manual sense problemes, però quan el nostre codi font comença a créixer, i definim subpaquets i llibreries de tercers, el manteniment manual pot resultar més complex. Per a això, i partint d'aquest exemple base, anem a veure com podriem automatitzar tot el procés.</p>
+<div class="admonition question">
+<p class="admonition-title">Activitat</p>
+<p>Crea una classe anomenada <code>Calculadora</code> en un paquet format pel teu nom (per exemple <code>com.jose.edd</code>) amb els següents mètodes (funcions):</p>
+<ul>
+<li><code>public static int suma(int a, int b)</code>: Que suma a i b i retorna el resultat,</li>
+<li><code>public static int resta(int a, int b)</code>: Que resta a i b i retorna el resultat,</li>
+<li><code>public static int multiplica(int a, int b)</code>: Que multiplica a i b i retorna el resultat,</li>
+<li><code>public static int divideix(int a, int b)</code>: Que divideix a entre b i retorna el resultat. Si b és 0, mostra l'error i torna un 0.</li>
+</ul>
+<p>I una altra classe que a la funció principal faça ús d'aquestes funcions, i mostre els resultats per pantalla.</p>
+<p>Crea el directori build, i fes ús d'aquest com a classpath.</p>
+<p>Indica a un fitxer Markdown el procés que has seguit, incloent el codi font, les ordres per compilar i per executar, i l'estructura de carpetes resultant. Fes una breu explicació de cada cosa.</p>
+</div>
+<h3 id="apache-ant">Apache ant</h3>
+<p><em>Apache Ant</em> és una llibreria de Java que ens permet automatitzar el procés de construcció d'aplicacions. Encara que s'utilitza principalment a Java, també suporta altres llenguatges. Inicialment, va formar part del projecte <em>Apache Tomcat</em>, però l'any 2000 es va llançar com a projecte independent.</p>
+<h4 id="installacio-en-linux">Instal·lació en Linux</h4>
+<p><em>Apache Ant</em> està disponible en els repositoris de totes les distribucions GNU/Linux. Per a la seua instal·lació en <em>Ubuntu</em> o derivades, utilitzarem l'eina de línia d'ordres <em>Advanced Package Tool</em>, més coneguda com <em>apt</em>. En primer lloc, refresquem la llista de paquets amb:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$ sudo apt update
+</span></code></pre></div>
+<p>I després instal·lem <em>ant</em> amb:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$ sudo apt install ant
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Documentació</p>
+<p>Teniu disponible <a href="https://ant.apache.org/manual/install.html">a la documentació oficial d'Ant</a> el procés detallat d'instal·lació en els diferents sistemes.</p>
+<p>Cal tindre en compte que la majoria d'IDEs per a Java (Eclipse, Netbeans, IntelliJ), ja porten <em>ant</em> incorporat, pel que probablement podrieu utilitzar aquesdt.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Instal·lació al <em>Home</em> d'usuari</p>
+<p>Si no podem o no desitgem instal·lar <code>ant</code> com a administradors, podem fer-ho a la nostra carpeta d'usuaris, i incloure la ruta als executables des del PATH.</p>
+<p>Per a això seguim els següents pasos:</p>
+<ol>
+<li>
+<p>Descarreguem <a href="https://ant.apache.org/bindownload.cgi">Apache Ant des de la web</a>. Anem a descarregar, per exemple el fitxer <a href="https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.15-bin.tar.gz">apache-ant-1.10.15-bin.tar.gz</a>, i el deixarem a la nostra carpeta <code>~/devtools</code>.</p>
+</li>
+<li>
+<p>Fet això, ans situem en aquesta carpeta i descomprimim el fitxer:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>~$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/devtools/
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>~/devtools$<span class="w"> </span>tar<span class="w"> </span>-xvzf<span class="w"> </span>apache-ant-1.10.15-bin.tar.gz<span class="w"> </span>
+</span></code></pre></div>
+<ol>
+<li>Afegim al fitxer .bashrc el següent fragment:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Ant</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/devtools/apache-ant-1.10.15/bin&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">        </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/devtools/apache-ant-1.10.15/bin:<span class="nv">$PATH</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">fi</span>
+</span></code></pre></div>
+<p>Fet això, ja podem obrir una nova terminal i comprovar la versió:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>~$<span class="w"> </span>ant<span class="w"> </span>-v
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Apache<span class="w"> </span>Ant<span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.10.15<span class="w"> </span>compiled<span class="w"> </span>on<span class="w"> </span>August<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">2024</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Trying<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>build<span class="w"> </span>file:<span class="w"> </span>build.xml
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>Buildfile:<span class="w"> </span>build.xml<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist!
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Build<span class="w"> </span>failed
+</span></code></pre></div>
+</div>
+<h4 id="el-fitxer-buildxml">El fitxer <em>build.</em>xml</h4>
+<p>Tot projecte en <em>Ant</em> es basa en un fitxer de construcció, anomenat generalment <em>build.xml</em>, situat en l'arrel del projecte, i que conté els diferents objectius o <em>targets</em>, que no són més que les diferents fases de construcció del projecte.</p>
+<p>Veiem estos <em>targets</em> mitjançant el següent exemple de fitxer per a un nou projecte que anomenarem <em>saludaAnt</em>:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;saludaAnt&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clean&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">        </span><span class="nt">&lt;delete</span><span class="w"> </span><span class="na">dir=</span><span class="s">&quot;build&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;compile&quot;</span><span class="w"> </span><span class="na">depends=</span><span class="s">&quot;clean&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="nt">&lt;mkdir</span><span class="w"> </span><span class="na">dir=</span><span class="s">&quot;build&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nt">&lt;javac</span><span class="w"> </span><span class="na">includeantruntime=</span><span class="s">&quot;false&quot;</span><span class="w"> </span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">        </span><span class="na">srcdir=</span><span class="s">&quot;src/com/ieseljust/edd&quot;</span><span class="w"> </span><span class="na">destdir=</span><span class="s">&quot;build&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;run&quot;</span><span class="w"> </span><span class="na">depends=</span><span class="s">&quot;compile&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;arg0&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">        </span><span class="nt">&lt;java</span><span class="w"> </span><span class="na">classpath=</span><span class="s">&quot;build&quot;</span><span class="w"> </span><span class="na">classname=</span><span class="s">&quot;com.ieseljust.edd.Hola&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">            </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${arg0}&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">        </span><span class="nt">&lt;/java&gt;</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></div>
+<p>Com podem veure, este fitxer <em>XML</em> conté un element arrel <code>&lt;project&gt;</code> amb l'atribut <code>name=”saludaAnt”</code>, i que conté tres elements <code>target</code> amb diferent valor per a <code>name</code>. Com hem comentat, estos <code>targets</code> es correspondran a diferents fases del projecte de construcció:</p>
+<ul>
+<li><code>clean</code>: S'encarrega de netejar el projecte. Com podem veure, conté un element <code>delete</code> amb un atribut <code>dir</code>, amb valor <code>build</code>. Amb això, el que indiquem és que en la fase de <em>neteja</em> del projecte, el que es farà serà esborrar la carpeta anomenada <em>build</em>.</li>
+<li><code>compile</code>: S'encarrega de la compilació del nostre projecte. En primer lloc, observeu que té l'atribut <code>depends=”clean”</code>, que indica que la fase de compilació, depén de la fase de neteja Això és, per a compilar el nostre projecte, necessitem netejar-lo abans. Aquest <em>target</em> inclou dos etiquetes: <code>mkdir</code> i <code>javac</code>. Amb la primera, el que fa és crear una nova carpeta anomenada <code>build</code>, en la qual situarem els arxius compilats, i amb l'etiqueta <code>javac</code>, el que fa és configurar la compilació: Amb l'atribut <code>includeantruntime="false"</code> indiquem que no incloga les biblioteques d'<code>ant</code> en la carpeta <em>build</em> i evitar un missatge d'alerta posterior. Amb <code>srcdir</code>, indiquem quina és la carpeta on es troba el codi font (<em>Sourcedir</em>), al nostre cas, <code>src/com/ieseljust/edd</code>. També indiquem quina serà la carpeta de destí de les classe scompilades. En aquest cas, la carpeta <code>build</code>. <strong>Si observeu, estem generant amb això el mateix esquema que fèiem de forma manual</strong>.</li>
+<li><code>run</code>: S'encarrega de l'execució de l'aplicació. Com veiem, depén de la fase de compilació, ja que, per a executar nostre <em>bytecode</em> haurem de compilar-ho prèviament. Aquuest <em>target</em> conté l'etiqueta <code>&lt;java&gt;</code> que invoca a la màquina virtual de Java per a llançar la classe <code>com.ieseljust.edd.Hola</code>, on se situa el nostre mètode <em>Main</em>. A més, establix l'atribut <code>classpath</code> al valor <code>build</code>, per a indicar que la resta de recursos del programa estaran en esta carpeta <em>build</em> que hem creat. Dins d'esta etiqueta, també hem afegit una altra etiqueta <code>&lt;arg&gt;</code>, amb valor "<code>${arg0}"</code>, amb el que indiquem que es passarà al programa principal el primer argument que es proporcione en la invocació d'<code>ant</code>. A més, s'ha afegit un valor per defecte per a este argument que serà la cadena buida, mitjançant l'etiqueta <code>&lt;property name="*arg0" value=""/&gt;</code>.</li>
+</ul>
+<h4 id="us-dant-i-el-fitxer-buildxml">Ús d'<code>ant</code> i el fitxer <code>build.xml</code></h4>
+<p>Una vegada generat el fitxer <code>build.xml</code> en el nostre projecte, podem invocar a <code>ant</code> proporcionant-li els diferents <code>targets</code>:</p>
+<ul>
+<li>Si desitgem compilar el projecte, des d'una terminal, farem:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$ ant compile
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Buildfile: /home/joamuran/tmp/SaludaAnt/build.xml
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>clean:
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>compile:
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    [mkdir] Created dir: /home/joamuran/tmp/SaludaAnt/build
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    [javac] Compiling 2 source files to /home/joamuran/tmp/SaludaAnt/build
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>BUILD SUCCESSFUL
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>Total time: 0 seconds
+</span></code></pre></div>
+<p>Com veiem en els missatges que ens retorna <code>ant</code>, en primer lloc es llança la tasca <code>clean</code>. Si és la primera vegada que ho executem, esta tasca no fa res, ja que no tenim res a netejar. Si ja existira la carpeta <code>build</code> d'altres compilacions, en este pas esborraria.</p>
+<p>Una vegada feta la neteja, es fa la tasca de compilació, amb el que es crearà la carpeta <code>build</code>, i després s'invoca al compilador de java per a generar els fitxers en <em>bytecode</em></p>
+<p>Després de la compilació, l'estructura del nostre projecte queda com seguix:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>.
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>├── build
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>│   └── com
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>│       └── ieseljust
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>│           └── edd
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>│               ├── Hola.class
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>│               └── Saluda.class
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>├── build.xml
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>└── src
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    └── com
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        └── ieseljust
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>            └── edd
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>                ├── Hola.java
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>                └── Saluda.java
+</span></code></pre></div>
+<p>Com podem veure, s'ha generat la carpeta <em>build</em> indicada en el target <em>compile</em> del fitxer <em>build.xml</em>. Dins d'esta carpeta, s'ha replicat tota l'estructura de carpetes corresponent al paquet, però que conté els fitxers .*class.</p>
+<p>Si ara volem executar el projecte, farem:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$ ant run -Darg0=Jose
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>Buildfile: /home/joamuran/tmp/SaludaAnt/build.xml
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>clean:
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>   [delete] Deleting directory /home/joamuran/tmp/SaludaAnt/build
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>compile:
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    [mkdir] Created dir: /home/joamuran/tmp/SaludaAnt/build
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    [javac] Compiling 2 source files to /home/joamuran/tmp/SaludaAnt/build
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>run:
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>     [java] Hola Jose
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>BUILD SUCCESSFUL
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>Total time: 0 seconds
+</span></code></pre></div>
+<p>Observeu que a l'ordre <code>ant run</code> hem d'oferir-li els arguments mitjançant <code>Darg0=Jose</code>. És a dir, afegim l'opció <code>-D</code>, seguida del nom d'argument usat en el <code>build.xml</code></p>
+<p>A més, en este cas, com no hem llançat <code>ant clean</code> prèviament, la tasca <code>clean</code> si que ha esborrat la carpeta de classes, posteriorment realitza la compilació i finalment l'execució. Si desitjàrem netejar tot el projecte, sí que realitzaríem ara el  <code>ant clean</code>.</p>
+<h3 id="ant-i-vscode">Ant i VSCode</h3>
+<p>Com hem vist, <code>ant</code> pot usar-se de forma pràctica des de la línia d'ordres. De totes maneres, podem fer ús d'<code>ant</code> de manera integrada amb l'entorn de desenvolupament.</p>
+<p>La forma més senzilla d'utilitzar <em>ant</em> amb Visual Studio Code és mitjançant la terminal integrada. No obstant això, disposem de l'extensió <em>Ant Target Runner</em>, que ens afig una nova vista en la barra lateral on se'ns mostren els diferents <em>targets</em>, i de forma niuada, les dependències entre estos. A més, en esta vista, si polsem el botó dret del ratolí sobre un <em>target</em> d'esta vista, ens dona la possibilitat d'executar el <em>target</em> (<em>Run Ant Target</em>) o bé d'anar a la seua definició (<em>Reveal Definition</em>).</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,761 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>4.3.patrons estructurals - U6. Refactorització i patrons de disseny</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#patrons-estructurals" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="U6. Refactorització i patrons de disseny" class="md-header__button md-logo" aria-label="U6. Refactorització i patrons de disseny" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            U6. Refactorització i patrons de disseny
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.3.patrons estructurals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="U6. Refactorització i patrons de disseny" class="md-nav__button md-logo" aria-label="U6. Refactorització i patrons de disseny" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    U6. Refactorització i patrons de disseny
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.introduccio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introducció
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.principis_solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Principis SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.patrons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Introducció als patrons de disseny
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4. Patrons de disseny
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Patrons de disseny
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.patrons_creacionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.1. Patrons creacionals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patrons-estructurals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrons Estructurals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrons Estructurals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patro-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patró Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-patro-decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Patró Decorator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>4.3.patrons estructurals</h1>
+
+<h2 id="patrons-estructurals">Patrons Estructurals</h2>
+<p>Els <strong>patrons estructurals</strong> s'ocupen de com organitzar i <strong>compondre les classes i els objectes</strong> en sistemes complexos. Aquests patrons ajuden a <strong>simplificar l'estructura de classes</strong> i <strong>reutilitzar el codi</strong> mitjançant la creació d'estructures més eficients i modulars. Els patrons estructurals són especialment útils quan tenim una arquitectura complexa o quan necessitem adaptar components ja existents.</p>
+<p>Els principals patrons estructurals que es comenten a <a href="https://refactoring.guru/es/design-patterns/structural-patterns">Refactoring Guru</a> són:</p>
+<ul>
+<li><a href="https://refactoring.guru/es/design-patterns/adapter">Adapter</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/bridge">Bridge</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/composite">Composite</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/decorator">Decorator</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/facade">Facade</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/flyweight">Flyweight</a></li>
+<li><a href="https://refactoring.guru/es/design-patterns/proxt">Proxy</a></li>
+</ul>
+<p>D'entre ells anem a centrar-nos en un parell de patorns, i veurem com es poden aplicar en situacions comunes. </p>
+<ul>
+<li><strong>Adapter</strong>, que ens permetrà que dues classes incompatibles treballen jnuntes, a través d'una interfície comuna,</li>
+<li><strong>Decorator</strong>: Afegeix funcionalitat addicional a un objecte de manera flexible sense modificar la seva estructura.</li>
+</ul>
+<p>En aquest apartat ens centrarem en <strong>Adapter</strong> i <strong>Decorator</strong>, explicant com es poden aplicar en situacions comunes, com en l'exemple de tractament de fluxos a Java.</p>
+<h3 id="patro-adapter">Patró Adapter</h3>
+<p>El <strong>patró Adapter</strong> s'utilitza quan <strong>necessitem que dues classes que no són compatibles treballin conjuntament</strong>. Aquest patró crea una <strong>interfície comuna</strong> entre les dues classes que tenen interfícies incompatibles, i adapta una classe perquè puga ser utilitzada per l’altra.</p>
+<p>El <strong>patró Adapter</strong> és una solució ideal per als tipus de casos en què necessitem <strong>adaptar representacions de dades</strong> en formats diferents. Per exemple, podriem crear un <em>Adaptador</em> que convertisca dades en format XML que obtinim d'una API a format JSON perqupe la nostra aplicació treballe amb ells.</p>
+<p>Una altra situació on ens trobem aquest patrons és en el desenvolupament d'aplicaicons en Android, on per crear desplegables o llistes a partir d'informació variada (un XML, un vector...), necessitem un Adaptador que agafe la informació en el format original i l'adapte o genere els components corresponents (items del desplegable o la llista).</p>
+<h4 id="exemple-practic-una-api-per-a-les-pizzes-en-xml"><strong>Exemple pràctic: Una API per a les pizzes en XML</strong></h4>
+<p>Imaginem que l'API de la pizzeria, en lloc de retornar-nos la informació en JSON ho fa en XML. La nostra aplicació espera rebre-les en JSON, pel que necessitarem  fer ús d'aquest patró per adaptar l'XML a JSON.</p>
+<p>Per a això, farem ús d'una URL que ens proporcione la informació de les pizzes en format XML pur. </p>
+<div class="admonition note">
+<p class="admonition-title">Projecte d'exemple</p>
+<p>Deixarem l'exemple que anem treballant al repositori del projecte de la pizzeria (webapp_eljust_eat_pizza), concretament, dins la carpeta <em>Sprint5_Adapters</em>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">El patró Repository</p>
+<p>El patró <em>Respository</em> no és un patró de disseny com a tal (per això no el voreu a Refactoring Guru), sinò un patró arquitectònic. Es tracta d'una abstracció per gestionar l'accés a les dades, que es fa servir per millorar l'escalabilitat i tindre un codi més mantenible.</p>
+<p>Comentem aquest patró <em>repository</em> perquè anem a introduir aquesta nova capa al nostre exemple de la pizzeria abans d'abordar el patró Adapter.</p>
+<p>La nostra aplicació, arquitectònicament s'estructurava en les següents capes:</p>
+<ul>
+<li><strong>components</strong> : amb els webcomponents, que són les vistes,</li>
+<li><strong>libcomponents</strong>: amb la lliberria base de components,</li>
+<li><strong>models</strong>: Amb els models del domini de l'aplicació (pizzes, etc)</li>
+<li><strong>services</strong>: Amb  la funcionalitat d'accés al servei</li>
+<li><strong>state</strong>: Amb l'estat de l'aplicació (classe carret)</li>
+</ul>
+<p>Al nostre codi, des del mateix <em>main</em> i les diferents <em>vistes</em> (webComponents), hem estat accedint directament a la capa de servei, suposant que aquesta ja ens retorna la representació en JSON esperada.</p>
+<p>Si ara canviarem la forma de representació de les dades, i haverem de modificar aquest servei per un altre, hauriem de modificar totes les referències a aquest servei que tinguerem pel codi.</p>
+<p>Per afegir un major nivell d'abstracció i <em>desentendre'ns</em> del servei que hi ha per baix, afegim una nova capa de repositori, que centraritzarà la informació que necessita la nostra aplicació, de manera independent a la capa de serveis.</p>
+<p>Inicialment, aquesta capa serà un <em>pont</em> entre la nostra aplicació i la pròpia capa de servei.</p>
+<p>Aquesta capa contindrà una classe <code>PizzeriaRepository</code> amb el següent codi (observeu que té els mateixos mètodes que <code>PizzaService</code>, i que l'únic que fa és retornar el que retornen estos):</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PizzeriaService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../services/pizzeriaService.js&#39;</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">PizzeriaRepository</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">getAllPizzes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">PizzeriaService</span><span class="p">.</span><span class="nx">getAllPizzes</span><span class="p">();</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">getAllEntrants</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">PizzeriaService</span><span class="p">.</span><span class="nx">getAllEntrants</span><span class="p">();</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">getAllDrinks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">PizzeriaService</span><span class="p">.</span><span class="nx">getAllDrinks</span><span class="p">();</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">sendOrder</span><span class="p">(</span><span class="nx">comanda</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">PizzeriaService</span><span class="p">.</span><span class="nx">sendOrder</span><span class="p">(</span><span class="nx">comanda</span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Per utlitzar aquest <em>repository</em>, el que gem és reemplazar totes les referències a <code>PizzeriaService</code> de la resta de codi per referències a <code>PizzeriaRepository</code></p>
+</div>
+<p>Una vegada tenim clara l'explicació anterior, anem a implementar un nou mètode en el servei, que accedisca i ens retorne una representació en XML de les dades.</p>
+<h4 id="codi-dexemple"><strong>Codi d'exemple:</strong></h4>
+<ol>
+<li>
+<p><strong>API que retorna dades en XML</strong>:
+   L'API de la pizzeria retorna una llista de pizzes en XML, i nosaltres volem convertir aquesta resposta a JSON per poder treballar amb ella.</p>
+</li>
+<li>
+<p><strong>Adapter per convertir XML a JSON</strong>:
+   Crearem un adaptador per convertir l'XML a JSON.</p>
+</li>
+</ol>
+<h4 id="implementacio-del-patro-adapter"><strong>Implementació del patró Adapter</strong>:</h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.w3c.dom.*</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.xml.parsers.*</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.json.JSONObject</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// Classe base per representar una pizza (format JSON)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">class</span> <span class="nc">Pizza</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">preu</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pizza</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">preu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">preu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">preu</span><span class="p">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNom</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getPreu</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">preu</span><span class="p">;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">}</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1">// Adaptador per convertir XML a JSON</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="kd">interface</span> <span class="nc">PizzaAdapter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="n">JSONObject</span><span class="w"> </span><span class="nf">adaptarAJSON</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="p">);</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="p">}</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="kd">class</span> <span class="nc">PizzaXMLAdapter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PizzaAdapter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JSONObject</span><span class="w"> </span><span class="nf">adaptarAJSON</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">            </span><span class="c1">// Convertir XML a JSONObject</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">            </span><span class="n">DocumentBuilderFactory</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DocumentBuilderFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">            </span><span class="n">DocumentBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory</span><span class="p">.</span><span class="na">newDocumentBuilder</span><span class="p">();</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">            </span><span class="n">InputStream</span><span class="w"> </span><span class="n">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">            </span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">inputStream</span><span class="p">);</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">            </span><span class="n">doc</span><span class="p">.</span><span class="na">getDocumentElement</span><span class="p">().</span><span class="na">normalize</span><span class="p">();</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">            </span><span class="c1">// Suposant que l&#39;XML té una estructura similar a:</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">            </span><span class="c1">// &lt;pizza&gt;</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">            </span><span class="c1">//    &lt;nom&gt;Margarita&lt;/nom&gt;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">            </span><span class="c1">//    &lt;preu&gt;8.5&lt;/preu&gt;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">            </span><span class="c1">// &lt;/pizza&gt;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">            </span><span class="n">NodeList</span><span class="w"> </span><span class="n">nodeList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getElementsByTagName</span><span class="p">(</span><span class="s">&quot;pizza&quot;</span><span class="p">);</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">            </span><span class="n">JSONObject</span><span class="w"> </span><span class="n">pizzaJSON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JSONObject</span><span class="p">();</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nodeList</span><span class="p">.</span><span class="na">getLength</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">                </span><span class="n">Node</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodeList</span><span class="p">.</span><span class="na">item</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getNodeType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Node</span><span class="p">.</span><span class="na">ELEMENT_NODE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">                    </span><span class="n">Element</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Element</span><span class="p">)</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">                    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element</span><span class="p">.</span><span class="na">getElementsByTagName</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">).</span><span class="na">item</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getTextContent</span><span class="p">();</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">                    </span><span class="kt">double</span><span class="w"> </span><span class="n">preu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="na">getElementsByTagName</span><span class="p">(</span><span class="s">&quot;preu&quot;</span><span class="p">).</span><span class="na">item</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getTextContent</span><span class="p">());</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">                    </span><span class="c1">// Creem el JSON a partir de l&#39;XML</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">                    </span><span class="n">pizzaJSON</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">);</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">                    </span><span class="n">pizzaJSON</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;preu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">preu</span><span class="p">);</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">pizzaJSON</span><span class="p">;</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="p">}</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="c1">// Exemple d&#39;ús: convertim un XML a JSON</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">        </span><span class="c1">// Exemples d&#39;XML que retorna l&#39;API</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;pizza&gt;&lt;nom&gt;Margarita&lt;/nom&gt;&lt;preu&gt;8.5&lt;/preu&gt;&lt;/pizza&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">        </span><span class="c1">// Utilitzant el adaptador</span>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">        </span><span class="n">PizzaAdapter</span><span class="w"> </span><span class="n">adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PizzaXMLAdapter</span><span class="p">();</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">        </span><span class="n">JSONObject</span><span class="w"> </span><span class="n">pizzaJSON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adapter</span><span class="p">.</span><span class="na">adaptarAJSON</span><span class="p">(</span><span class="n">xml</span><span class="p">);</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">        </span><span class="c1">// Mostra el resultat en JSON</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">pizzaJSON</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="diagrama-uml-del-patro-adapter"><strong>Diagrama UML del patró Adapter</strong>:</h4>
+<p><a class="glightbox" href="../diagrames/4.3.patrons_estructurals/diagram_299880168294477014.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.3.patrons_estructurals/diagram_299880168294477014.svg" /></a></p>
+<h4 id="explicacio-del-patro-adapter-en-aquest-exemple"><strong>Explicació del patró Adapter en aquest exemple</strong>:</h4>
+<ul>
+<li><strong>PizzaAdapter</strong>: És una interfície que defineix el mètode <code>adaptarAJSON()</code>, que és el que permetrà adaptar l'XML al format JSON.</li>
+<li><strong>PizzaXMLAdapter</strong>: És l'adaptador concret que converteix l'XML rebut de l'API a JSON. Aquest adaptador processa l'XML i crea un objecte <code>JSONObject</code> que l'aplicació pot utilitzar.</li>
+<li><strong>Pizza</strong>: Aquesta classe representa la pizza amb els atributs <code>nom</code> i <code>preu</code>. Tot i que no s'utilitza explícitament a l'exemple, el JSON resultant de l'adaptador podria ser usat per crear instàncies de <code>Pizza</code>.</li>
+</ul>
+<h4 id="com-funciona-ladaptador"><strong>Com funciona l'adaptador?</strong></h4>
+<ul>
+<li>L'<strong>API original</strong> retorna les dades de les pizzes en format XML, però la nostra aplicació espera un objecte en format JSON.</li>
+<li>El <strong>PizzaXMLAdapter</strong> adapta les dades XML a una estructura JSON, permetent que la nostra aplicació treballi amb el format esperat.</li>
+<li>El codi fa servir el <strong>mètode <code>adapatarAJSON</code></strong> per convertir l'XML en un <code>JSONObject</code> que conté la informació de la pizza.</li>
+</ul>
+<hr />
+<h4 id="conclusio"><strong>Conclusió</strong>:</h4>
+<p>El <strong>patró Adapter</strong> és molt útil en situacions on necessitem <strong>convertir entre formats incompatibles</strong>, com en aquest cas, convertir dades d'una <strong>API XML</strong> a un format que la nostra aplicació pot manejar (<strong>JSON</strong>). El patró permet que la nostra aplicació sigui <strong>flexible</strong> i <strong>adaptable</strong> a canvis de format sense modificar el codi existent.</p>
+<hr />
+<p><strong>T'agrada aquest enfocament per al patró Adapter? Vols afegir més detalls o ajustar alguna cosa en l'exemple?</strong> 😊</p>
+<h3 id="2-patro-decorator"><strong>2. Patró Decorator</strong></h3>
+<p>El <strong>patró Decorator</strong> s’utilitza per <strong>afegir funcionalitat a un objecte de manera dinàmica</strong>. El principal avantatge d’aquest patró és que ens permet <strong>modificar el comportament d’un objecte sense modificar la seva classe base</strong>, cosa que el fa extremadament flexible.</p>
+<h4 id="exemple-de-codi-decorator"><strong>Exemple de codi (Decorator)</strong>:</h4>
+<p>Un exemple clàssic del patró <strong>Decorator</strong> es troba en el tractament de <strong>fluxos de dades</strong> a <strong>Java</strong>. Les classes <code>InputStream</code> i <code>OutputStream</code> utilitzen <strong>decoradors</strong> per afegir funcionalitat extra, com la <strong>lectura de dades en un format determinat</strong> (per exemple, llegir dades comprimides o encriptades).</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// Component base</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">class</span> <span class="nc">Coffee</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">serve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Cafè&quot;</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">// Decorador base</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CoffeeDecorator</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Coffee</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Coffee</span><span class="w"> </span><span class="n">decoratedCoffee</span><span class="p">;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CoffeeDecorator</span><span class="p">(</span><span class="n">Coffee</span><span class="w"> </span><span class="n">coffee</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">decoratedCoffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coffee</span><span class="p">;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">serve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">decoratedCoffee</span><span class="p">.</span><span class="na">serve</span><span class="p">();</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="c1">// Decorador concret 1</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="kd">class</span> <span class="nc">MilkDecorator</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CoffeeDecorator</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MilkDecorator</span><span class="p">(</span><span class="n">Coffee</span><span class="w"> </span><span class="n">coffee</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">coffee</span><span class="p">);</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">serve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">decoratedCoffee</span><span class="p">.</span><span class="na">serve</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; amb llet&quot;</span><span class="p">;</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="p">}</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="c1">// Decorador concret 2</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="kd">class</span> <span class="nc">SugarDecorator</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CoffeeDecorator</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SugarDecorator</span><span class="p">(</span><span class="n">Coffee</span><span class="w"> </span><span class="n">coffee</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">coffee</span><span class="p">);</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">serve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">decoratedCoffee</span><span class="p">.</span><span class="na">serve</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; amb sucre&quot;</span><span class="p">;</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="p">}</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="c1">// Exemple d&#39;ús</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">        </span><span class="n">Coffee</span><span class="w"> </span><span class="n">coffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Coffee</span><span class="p">();</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">coffee</span><span class="p">.</span><span class="na">serve</span><span class="p">());</span><span class="w"> </span><span class="c1">// Cafè</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">        </span><span class="n">coffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MilkDecorator</span><span class="p">(</span><span class="n">coffee</span><span class="p">);</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">coffee</span><span class="p">.</span><span class="na">serve</span><span class="p">());</span><span class="w"> </span><span class="c1">// Cafè amb llet</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">        </span><span class="n">coffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SugarDecorator</span><span class="p">(</span><span class="n">coffee</span><span class="p">);</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">coffee</span><span class="p">.</span><span class="na">serve</span><span class="p">());</span><span class="w"> </span><span class="c1">// Cafè amb llet amb sucre</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="explicacio-del-patro-decorator"><strong>Explicació del patró Decorator</strong>:</h4>
+<ul>
+<li><strong>Coffee</strong> és el component base, que serveix un cafè senzill.</li>
+<li><strong>CoffeeDecorator</strong> és una classe abstracta que permet afegir funcionalitat extra a qualsevol <strong>objecte Coffee</strong> de manera dinàmica.</li>
+<li><strong>MilkDecorator</strong> i <strong>SugarDecorator</strong> són decoradors concrets que afegeixen la llet i el sucre, respectivament.</li>
+<li>El comportament de <strong>serve()</strong> es modifica dinàmicament sense haver de modificar el comportament original de la classe <strong>Coffee</strong>.</li>
+</ul>
+<h4 id="diagrama-uml-del-patro-decorator"><strong>Diagrama UML del patró Decorator</strong>:</h4>
+<p><a class="glightbox" href="../diagrames/4.3.patrons_estructurals/diagram_3223431226622648747.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.3.patrons_estructurals/diagram_3223431226622648747.svg" /></a></p>
+<hr />
+<h4 id="conclusio_1"><strong>Conclusió:</strong></h4>
+<p>Els <strong>patrons estructurals</strong> com <strong>Adapter</strong> i <strong>Decorator</strong> són extremadament útils per <strong>millorar la flexibilitat del codi</strong> i permetre la <strong>modificació de comportaments</strong> sense tocar el codi original.</p>
+<ul>
+<li><strong>Adapter</strong> és ideal quan tens <strong>classes incompatibles</strong> i necessites <strong>adaptar-les</strong> per poder treballar amb elles de manera conjunta.</li>
+<li><strong>Decorator</strong> és perfecte quan necessites <strong>afegir funcionalitats</strong> a un objecte sense canviar la seva classe base, com en el cas de la manipulació de <strong>fluxos de dades</strong> a Java.</li>
+</ul>
+<hr />
+<p><strong>Què et sembla aquesta explicació? Vols que aprofundim més en algun d'aquests patrons o que modifiquem algun detall?</strong> 😊</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,649 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../python/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>1. Edició amb VSCode - Desenvolupament de programari</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entorns-integrats-de-denvolupament" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Desenvolupament de programari" class="md-header__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desenvolupament de programari
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Edició amb VSCode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Desenvolupament de programari" class="md-nav__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Desenvolupament de programari
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Entorns Integrats de Denvolupament. VSCode
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entorns Integrats de Denvolupament. VSCode
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entorns-integrats-de-denvolupament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entorns Integrats de Denvolupament
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descarrega-i-installacio-de-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descàrrega i instal·lació de VS Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presa-de-contacte-amb-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presa de contacte amb VSCode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-de-plugins-en-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació de plugins en VSCode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vscode-i-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode i HTML
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vscode i Python
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex1_cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex2_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 2. Editors de fitxers de text: vim
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entorns-integrats-de-denvolupament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entorns Integrats de Denvolupament
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descarrega-i-installacio-de-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descàrrega i instal·lació de VS Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presa-de-contacte-amb-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presa de contacte amb VSCode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-de-plugins-en-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació de plugins en VSCode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vscode-i-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode i HTML
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Entorns Integrats de Denvolupament. VSCode</h1>
+
+<h3 id="entorns-integrats-de-denvolupament">Entorns Integrats de Denvolupament</h3>
+<p>El desenvolupament d'aplicacions informàtiques implica diverses tasques relacionades entre si: codificació, compilació, depuració o realització de proves. Cadascuna d'aquestes tasques requereix aplicacions específiques: editors de codi, compiladors o depuradors, entre d'altres.</p>
+<p>Els entorns de desenvolupament integrats (IDE) són aplicacions informàtiques que integren gran part d'aquestes eines.</p>
+<p>En aquesta unitat, anirem veien a mesura que comencem a utilitzar-los diferents entorns i quines possibilitats ens ofereixen. Començarem amb VSCode, que, tot i no tractar-se d'un IDE en sí mateix, ofereix moltes de les eines que aquests ofereixen, i s'utilitza en molts àmbits de desenvolupament.</p>
+<p>A la unitat disposeu de dos annexos:</p>
+<ul>
+<li>L'annex I, que us presenta, de manera ressumida i pràctica les eines que necessitareu per treballar de forma eficient des del sistema de fitxers, i</li>
+<li>L'annex II, que us presenta l'eina <em>vim</em>, un editor de text des de la línia d'ordres, molt utilitzat quan no disposem d'entorn gràfic.</li>
+</ul>
+<h3 id="introduccio-a-visual-studio-code">Introducció a Visual Studio Code</h3>
+<p>Visual Studio Code és un editor de codi lleuger multiplataforma, de gran popularitat en el món del desenvolupament multiplataforma en general i de serveis i web en particular. Per defecte suporta llenguatges com JavaScript, TypeScript i Node.js, i és extensible a altres llenguatges, com C++, C#, Java, Python, etc.</p>
+<p>D'entre les principals característiques de l'editor, podem destacar:</p>
+<ul>
+<li>Ofereix una interfície simple i neta.</li>
+<li>Disposa d'una paleta d'ordres des d'on podem accedir a totes les opcions de l'editor.</li>
+<li>Ofereix una terminal integrada.</li>
+<li>Ofereix suport a Git per al control de versions.</li>
+<li>Integra Emmet (Zen Coding), per generar codi web de forma àgil.</li>
+<li>Cursors múltiples, per a l'edició massiva de codi.</li>
+<li>Fàcilment personalitzable a través d'un fitxer JSON.</li>
+<li>Autocompletat i ressaltat de sintaxi amb IntelliSense.</li>
+<li>Suporta un gran nombre de temes i extensions que amplien la seua funcionalitat.</li>
+</ul>
+<p>També cal remarcar que no es tracta d'un entorn de desenvolupament (IDE) com a tal, com puga ser Eclipse, Netbeans o IntelliJ, pel que no ofereix tota la funcionalitat que ofereixen aquests (construcció, compilació, depuració, frameworks). Tot i això, es tracta d'un entorn molt més lleuger que aquests, i que amb les extensions adequades, podem fer que la seua funcionalitat siga pràcticament la mateixa que ofereix un IDE.</p>
+<h3 id="descarrega-i-installacio-de-vs-code">Descàrrega i instal·lació de VS Code</h3>
+<h4 id="installacio-de-vscode">Instal·lació de VSCode</h4>
+<p>Podeu descarregar VSCode des de la seua web <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>, tant en format .deb (per a Debian/Ubuntu) com en format .rpm (Fedora) o exe (Windows.)</p>
+<p>En el cas de GNU/Linux, això ens afig el fitxet <code>/etc/apt/sources.list.d/vscode.list</code> al sistema, de manera que el sistema estarà assabentat quan hi haja una versió nova de l'eina.</p>
+<div class="admonition note">
+<p class="admonition-title">Instal·lació manual</p>
+<p>Si voleu fer la instal·lació de forma manual, disposeu de la informació necessària en:
+* <a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a>
+* <a href="https://code.visualstudio.com/docs/setup/windows">https://code.visualstudio.com/docs/setup/windows</a></p>
+</div>
+<h3 id="presa-de-contacte-amb-vscode">Presa de contacte amb VSCode</h3>
+<p>Una vegada instal·lat, tenim el Visual Studio Code accessible des del menú principal del sistema, dins de <em>Programació</em>.</p>
+<p>Quan l'obrim, veurem una interfície semblant a la <strong>figura següent</strong>, a la que podem distingir:</p>
+<p><a class="glightbox" href="../img/UI.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Interfície de VSCode" src="../img/UI.png" width="450px" /></a></p>
+<ul>
+<li>La <strong>barra d'activitats</strong>, situada a l'esquerra, amb cinc activitats principals: L'<strong>explorador de fitxers</strong>, la de <strong>Búsqueda de text</strong>, la de <strong>control de versions amb Git</strong>, la de <strong>depuració</strong>, i la d'<strong>extensions.</strong> Cadascuna d'aquestes activitats, ens obrirà una altra barra lateral al costat amb les diferents possibilitats que ofereix l'activitat.</li>
+<li>La <strong>finestra de benvinguda</strong>, situada a la part principal de l'editor, que ocupa la part superior, i que ens ofereix algunes <strong>opcions d'inici</strong> com crear un fitxer nou, obrir una carpeta o afegir un espai de treball. A més, disposem també d'una secció de <strong>fitxers recents</strong>, inicialment buida, i de diversos <strong>opcions de personalització</strong>, com extensions per suportar alters llenguatges, dreceres de teclat, i temàtica de l'editor. En aquesta finestra, també disposem d'algunes opcions d'<strong>Ajuda</strong>, i alguns tips per aprendre, com la llista d'ordres o una ullada a la interfície.</li>
+<li>Diversos <strong>panells</strong>, situats al davall de la finestra principal de l'editor, i que mostraran informació sobre la depuració, errors, avisos, o bé la terminal integrada a VSCode.</li>
+<li>A la part inferior, distingim finalment la barra d'estat, amb informació sobre el projecte i els fitxers oberts.</li>
+</ul>
+<p>Disposeu de més informació sobre la interfície de VSCode en:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/getstarted/userinterface">https://code.visualstudio.com/docs/getstarted/userinterface</a></li>
+</ul>
+<h3 id="installacio-de-plugins-en-vscode">Instal·lació de plugins en VSCode</h3>
+<p>Com hem comentat, VSCode és un editor lleuger, i alhora extremadament flexible mitjançant plugins. A banda de suportar altres llenguatges de programació, també ens permet extensions, per treballar, per exemple amb el llenguatge Markdown.</p>
+<p>Per a això, fem clic a l'<strong>activitat d'extensions</strong>, ubicada cap a la part inferior de la barra d'activitats, i al quadre de cerca d'extensions escrivim <em>Markdown</em>.</p>
+<p><a class="glightbox" href="../img/mdlint.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Extensions markdown" src="../img/mdlint.png" width="500px" /></a></p>
+<p>Veurem que ens apareix gran quantitat d'extensions per a Markdown. Podeu donar un cop d'ull a totes elles, però de moment, instal·larem l'extensió <code>markdownlint</code>, que ens ajuda a comprovar la correcta sintaxi del codi Markdown i ens ofereix la possibilitat de previsualitzar el resultat al temps que escrivim. Per a això, només haurem de <em><em>fer click en el botó <code>Install</code> que apareix bé al costat de l'extensió o en la descripció d'aquesta`. Si ho desitgeu, podeu instal·lar també l'extensió </em>Markdown PDF</em> que us permet guardar els fitxers creats en format <em>md</em> a <em>pdf</em>.</p>
+<p>Per tal de començar a treballar amb algun exemple, podem anar a l'activitat de <em>l'Explorador de fitxers</em> i prémer el botó <em>Open Folder</em> per tal d'obrir una carpeta de treball, o fer-ho directament a través del menú <em>File &gt; Open Folder</em>.</p>
+<p>Així doncs, podeu obrir la carpeta on teníeu les primeres pràctiques amb Markdown. Comproveu si el VSCode us detecta alguna incorrecció i quines suggerències us fa per corregir-les. Fixeu-vos també en què ha aparegut una icona a la part superior dreta de la finestra d'edició, amb una lupa davant una finestra, que ens serivrà per dividir la vista de l'editor i veure a la part dreta el resultat del què estem escrivint en Markdown.</p>
+<p>Per altra banda, doneu una ullada a les possibilitats que ens ofereix el gestor de fitxers: navegar per la carpeta, buscar fitxers o carpetes,i crear tant fitxers com carpetes noves dins l'estructura en la què estem.</p>
+<h3 id="vscode-i-html">VSCode i HTML</h3>
+<p>Visual Studio Code proporciona un suport bàsic per treballar amb HTML. Hi ha ressaltat de sintaxi, completat intel·ligent amb IntelliSense (suggeriments, etiquetes de tancament, etc.) i format personalitzable.</p>
+<p>A més, els diferents elements HTML que afegim a un document ens permetran navegar entre els nodes DOM (Model d'Objectes del Doument), i treballar amb CSS i JS incroustats.</p>
+<p>Si voleu més informació al respecte, podeu consultar la documentació oficial de <a href="https://code.visualstudio.com/docs/languages/html">VSCode per a HTML</a>.</p>
+<h4 id="previsualitzacio">Previsualització</h4>
+<p>A diferència del que ocorre amb Markwown, no tenim una previsualització específica d'allò que gem amb HTML. Si voleu previsualitzar els documents HTML, podem fer ús de l'extensió <em>live Preview</em>:</p>
+<p><a class="glightbox" href="../img/livepreview.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/livepreview.png" width="450px" /></a></p>
+<p>Aquesta extensió ens afig un servidor web local, per tal de previsualitzar els projectes web. Per fer la previsualització, farem ús de la mateixa icona que per a Markdown: la icona a la part superior dreta amb la pantalla partida i la lupa.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

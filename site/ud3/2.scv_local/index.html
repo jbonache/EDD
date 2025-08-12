@@ -1,0 +1,759 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1.intro/">
+      
+      
+        <link rel="next" href="../3.scv_centralitzat/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2. Sistemes control de versions locals - Sistemes de control de versions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sistemes-de-control-de-versions-local" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Sistemes de control de versions" class="md-header__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemes de control de versions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Sistemes control de versions locals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Sistemes de control de versions" class="md-nav__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Sistemes de control de versions
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Sistemes de Control de versions
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2. Sistems de Control de versions locals
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Sistems de Control de versions locals
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistemes-de-control-de-versions-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistemes de control de versions local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-scv-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      El SCV RCS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.scv_centralitzat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Sistems de Control de versions centralitzats
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.scv_distribuit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Sistems de Control de versions distribuïts
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.svc_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. El sistema de control de versions distribuit git
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.branques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Treballant amb branques
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Repositoris remots amb Git. Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.github_practic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. Treballant en remot amb Git i Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistemes-de-control-de-versions-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistemes de control de versions local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-scv-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      El SCV RCS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>2. Sistems de Control de versions locals</h1>
+
+<h3 id="sistemes-de-control-de-versions-local">Sistemes de control de versions local</h3>
+<p>Els sistemes de control de versions locals foren els primers a aparéixer, i el seu funcionament és bastant senzill: per a les diferents versions guardem les diferències que existeixen entre els fitxers de manera que, per a obtindre una versió qualsevol, es calculen les diferències sobre el fitxer base.</p>
+<p>Podem veure aquest procés de manera gràfica com segueix:</p>
+<p><a class="glightbox" href="../img/scv_local.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Funcionament d'un CVS local" src="../img/scv_local.png" width="400px" /></a></p>
+<p>Com veiem, en un primer moment es crea una instantània d'un fitxer o conjunt de fitxers en el nostre equip local (versió 1). Posteriorment, es realitzen canvis i es genera una altra instantània. En aquest moment, el SCV guarda les diferències entre aquesta segona instantània i la primera, de manera que, des d'aquesta segona versió, podem tornar a la primera revertint aquests canvis. Finalment, es crea una tercera instantània guardant també les diferències respecte a la segona en la base de dades del SCV.</p>
+<h3 id="el-scv-rcs">El SCV RCS</h3>
+<p>En aquest apartat aprofundirem en el sistema de control de versions de tipus local <strong>RCS</strong> del projecte <strong>GNU</strong> (<a href="https://www.gnu.org/software/rcs/">https://www.gnu.org/software/rcs/</a>).</p>
+<h4 id="pas-1-installacio">Pas 1. Instal·lació</h4>
+<p>Per instal·lar els paquets de <strong>rcs</strong> en <strong>Debian/Ubuntu</strong> i derivats, utilitzarem l'eina de línia d'ordres <strong>apt</strong>. Com sempre, en primer lloc actualitzem la llista de paquets:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div>
+<p>I ara instal·lem els paquets <strong>rcs</strong> i <strong>rcs-blame</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>rcs<span class="w"> </span>rcs-blame
+</span></code></pre></div>
+<p>Una vegada instal·lats, començarem amb el control de versions.</p>
+<h4 id="pas-2-preparacio-del-directori-de-treball">Pas 2. Preparació del directori de treball</h4>
+<p>Creem un directori de treball anomenat, per exemple, <strong>projecteExt1</strong> i dins d'ell un fitxer que anomenarem <strong>fitxer.md</strong> amb el següent contingut:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gh"># Entorns de desenvolupament</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Aquesta és la primera versió del document per treballar el control de versions.
+</span></code></pre></div>
+<p>El guardem i eixim de l'editor. Si fem un <code>ls -l</code> en aquest directori, veurem que disposem dels següents permisos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>total<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>dam<span class="w"> </span>dam<span class="w"> </span><span class="m">20</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">07</span>:30<span class="w"> </span>fitxer.md<span class="w"> </span>
+</span></code></pre></div>
+<p>La cadena <code>-rw-rw-r--</code> representa els permisos d'accés al fitxer. Això indica que tant l'usuari propietari (els tres primers dígits) com els usuaris del grup al qual pertany (els tres dígits següents) tenen permisos de lectura (r) i d'escriptura (w), però no d'execució (ja que es tracta d'un fitxer no executable). La resta d'usuaris del sistema (els tres últims dígits) només tindran permisos de lectura (r--).</p>
+<h4 id="pas-3-registrant-contingut-en-el-scv">Pas 3. Registrant contingut en el SCV</h4>
+<p>Per dur el control de versions sobre el fitxer que hem creat, l'hem de registrar (<em>check-in</em>) en el sistema de control de versions. Per a això, utilitzarem l'ordre <strong>ci</strong> de la següent manera. Fixa't que ens demanarà una descripció per a aquest <em>check-in</em>. Aquesta descripció podrà tindre diverses línies, de manera que, per indicar el final de la descripció, utilitzarem una línia amb un únic punt.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>ci<span class="w"> </span>-u<span class="w"> </span>fitxer.md
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>fitxer.mdv<span class="w">  </span>&lt;--<span class="w">  </span>fitxer.md
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>enter<span class="w"> </span>description<span class="w"> </span>terminated<span class="w"> </span>with<span class="w"> </span>single<span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span>or<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>file:
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>NOTE:<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>NOT<span class="w"> </span>the<span class="w"> </span>log<span class="w"> </span>message!
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>&gt;&gt;<span class="w"> </span>versió<span class="w"> </span>inicial<span class="w"> </span>del<span class="w"> </span>nostre<span class="w"> </span>fitxer
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>&gt;&gt;<span class="w"> </span>.
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>initial<span class="w"> </span>revision:<span class="w"> </span><span class="m">1</span>.1
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">done</span>
+</span></code></pre></div>
+<p>Amb aquesta ordre <strong>ci</strong> (<em>check-in</em>) hem registrat el fitxer sota el control de versions. Si veiem ara el contingut del directori, podem fer un parell d'observacions:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>total<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-r--r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>dam<span class="w"> </span>dam<span class="w"> </span><span class="m">196</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">08</span>:10<span class="w"> </span>fitxer.md
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>-r--r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>dam<span class="w"> </span>dam<span class="w"> </span><span class="m">413</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">08</span>:10<span class="w"> </span>fitxer.mdv
+</span></code></pre></div>
+<p>En primer lloc, s'ha creat un nou fitxer anomenat <strong>fitxer.mdv</strong>, que és el que porta el control de versions del nostre fitxer (observa que això se'ns indica en la primera línia que ens mostra quan fem el <em>check-in</em>). Si el directori en el qual estem conté una carpeta anomenada <strong>RCS</strong>, aquest fitxer es crearà dins d'ella.</p>
+<p>A més, tots dos fitxers tenen ara únicament permisos de lectura (r). Per defecte, <strong>RCS</strong> elimina el fitxer original, deixant únicament el fitxer del control de versions. En utilitzar l'opció <strong>-u</strong>, li indiquem a <strong>RCS</strong> que no esborre el fitxer original, encara que aquest ara no tindrà permisos d'escriptura per evitar que modifiquem la instantània que hem generat.</p>
+<h4 id="pas-4-realitzant-canvis-checkout">Pas 4. Realitzant canvis. <em>Checkout</em></h4>
+<p>Una vegada tenim el fitxer sota el control de versions, cada vegada que vulguem fer una modificació haurem de fer un <em>checkout</em>. Per a això, utilitzem l'ordre <strong>co</strong> de la següent manera:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>co<span class="w"> </span>-l<span class="w"> </span>fitxer.md<span class="w"> </span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>fitxer.mdv<span class="w">  </span>--&gt;<span class="w">  </span>fitxer.md
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>revision<span class="w"> </span><span class="m">1</span>.1<span class="w"> </span><span class="o">(</span>locked<span class="o">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">done</span>
+</span></code></pre></div>
+<p>Com podem veure, ara s'ha generat el fitxer <strong>fitxer.md</strong> a partir del fitxer de canvis <strong>fitxer.mdv</strong>. A més, si veiem el contingut del directori:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>total<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>dam<span class="w"> </span>dam<span class="w"> </span><span class="m">196</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">08</span>:32<span class="w"> </span>fitxer.md
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>-r--r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>dam<span class="w"> </span>dam<span class="w"> </span><span class="m">427</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">08</span>:32<span class="w"> </span>fitxer.mdv
+</span></code></pre></div>
+<p>Podem veure que ja tenim permís d'escriptura sobre el fitxer generat.</p>
+<p>Amb l'opció <strong>-l</strong> (de <em>lock</em>), en el <strong>co</strong> indiquem que es bloquege el fitxer, de manera que un altre usuari del sistema no el puga modificar mentre es fan els canvis.</p>
+<p>Modificarem el fitxer <strong>fitxer.md</strong> amb el següent contingut:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh"># Entorns de desenvolupament</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Aquesta és la segona versió del document per treballar el control de versions.
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>A més, afegirem una nova línia.
+</span></code></pre></div>
+<p>I tornem a fer un <em>check-in</em> per confirmar els canvis:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>ci<span class="w"> </span>-u<span class="w"> </span>./fitxer.md<span class="w"> </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>./fitxer.mdv<span class="w">  </span>&lt;--<span class="w">  </span>./fitxer.md
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>new<span class="w"> </span>revision:<span class="w"> </span><span class="m">1</span>.2<span class="p">;</span><span class="w"> </span>previous<span class="w"> </span>revision:<span class="w"> </span><span class="m">1</span>.1
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>enter<span class="w"> </span>log<span class="w"> </span>message<span class="w"> </span>terminated<span class="w"> </span>with<span class="w"> </span>single<span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span>or<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>file:
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>&gt;&gt;<span class="w"> </span>Revisió<span class="w"> </span>del<span class="w"> </span>fitxer.md
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>&gt;&gt;<span class="w"> </span>.
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">done</span>
+</span></code></pre></div>
+<p>Com podem veure, es torna a generar el fitxer <strong>fitxer.mdv</strong> i, a més, ens indica que la nova revisió serà la <strong>1.2</strong> en comparació amb l'anterior, que era la <strong>1.1</strong>.</p>
+<h4 id="pas-5-revisant-canvis">Pas 5. Revisant canvis</h4>
+<p>Si explorem ara el contingut del fitxer del control de versions <strong>fitxer.mdv</strong>, podem veure com emmagatzema de forma eficient les modificacions que es realitzen en cada revisió, que a més tindrà un número de revisió que es guardarà juntament amb els comentaris afegits en cada <em>check-in</em>.</p>
+<p>A partir de la informació emmagatzemada en aquest fitxer, disposem d'eines per revisar els canvis realitzats. Per a això, tenim l'ordre <strong>rlog</strong>, que utilitzem de la següent manera:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>rlog<span class="w"> </span>./fitxer.md<span class="w"> </span>
+</span></code></pre></div>
+<p>Ens retornarà alguna cosa semblant a això:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>RCS file: ./fitxer.mdv
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Working file: ./fitxer.md
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>head: 1.2
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>branch:
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>locks: strict
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>access list:
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>symbolic names:
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>keyword substitution: kv
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>total revisions: 2; selected revisions: 2
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>description:
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>versió inicial del nostre fitxer
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>----------------------------
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>revision 1.2
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>date: 2021/06/20 06:41:52;  author: dam;  state: Exp;  lines: +3 -1
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>Revisió del fitxer.md
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>----------------------------
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>revision 1.1
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>date: 2021/06/20 06:10:24;  author: dam;  state: Exp;
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>Initial revision
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>======================================================================
+</span></code></pre></div>
+<p>Com podem veure, es compon d'una capçalera inicial seguida de blocs amb les diferents revisions del fitxer.</p>
+<p>Si el que desitgem és consultar una versió concreta, podem utilitzar l'ordre <strong>co -p</strong> seguida del número de versió (sense espais) i el nom del fitxer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>co<span class="w"> </span>-p1.1<span class="w"> </span>./fitxer.md<span class="w"> </span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>./fitxer.mdv<span class="w">  </span>--&gt;<span class="w">  </span>standard<span class="w"> </span>output
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>revision<span class="w"> </span><span class="m">1</span>.1
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Entorns de desenvolupament</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Aquesta<span class="w"> </span>és<span class="w"> </span>la<span class="w"> </span>primera<span class="w"> </span>versió<span class="w"> </span>del<span class="w"> </span>document<span class="w"> </span>per<span class="w"> </span>treballar<span class="w"> </span>el<span class="w"> </span>control<span class="w"> </span>de<span class="w"> </span>versions.
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>~
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>$<span class="w"> </span>co<span class="w"> </span>-p1.2<span class="w"> </span>./fitxer.md<span class="w"> </span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>./fitxer.mdv<span class="w">  </span>--&gt;<span class="w">  </span>standard<span class="w"> </span>output
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>revision<span class="w"> </span><span class="m">1</span>.2
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="c1"># Entorns de desenvolupament</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>Aquesta<span class="w"> </span>és<span class="w"> </span>la<span class="w"> </span>segona<span class="w"> </span>versió<span class="w"> </span>del<span class="w"> </span>document<span class="w"> </span>per<span class="w"> </span>treballar<span class="w"> </span>el<span class="w"> </span>control<span class="w"> </span>de<span class="w"> </span>versions.
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>A<span class="w"> </span>més,<span class="w"> </span>afegirem<span class="w"> </span>una<span class="w"> </span>nova<span class="w"> </span>línia.
+</span></code></pre></div>
+<p>D'altra banda, si el que desitgem és veure quines diferències hi ha entre dues versions, podem utilitzar l'ordre <strong>rcsdiff</strong> de la següent manera:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>rcsdiff<span class="w"> </span>-r1.1<span class="w"> </span>-r1.2<span class="w"> </span>./fitxer.md<span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="o">===================================================================</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>RCS<span class="w"> </span>file:<span class="w"> </span>./fitxer.mdv
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>retrieving<span class="w"> </span>revision<span class="w"> </span><span class="m">1</span>.1
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>retrieving<span class="w"> </span>revision<span class="w"> </span><span class="m">1</span>.2
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>diff<span class="w"> </span>-r1.1<span class="w"> </span>-r1.2
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>3c35
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>&lt;<span class="w"> </span>Aquesta<span class="w"> </span>és<span class="w"> </span>la<span class="w"> </span>primera<span class="w"> </span>versió<span class="w"> </span>del<span class="w"> </span>document<span class="w"> </span>per<span class="w"> </span>treballar<span class="w"> </span>el<span class="w"> </span>control<span class="w"> </span>de<span class="w"> </span>versions.
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>---
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>&gt;<span class="w"> </span>Aquesta<span class="w"> </span>és<span class="w"> </span>la<span class="w"> </span>segona<span class="w"> </span>versió<span class="w"> </span>del<span class="w"> </span>document<span class="w"> </span>per<span class="w"> </span>treballar<span class="w"> </span>el<span class="w"> </span>control<span class="w"> </span>de<span class="w"> </span>versions.
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>&gt;<span class="w"> </span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>&gt;<span class="w"> </span>A<span class="w"> </span>més,<span class="w"> </span>afegirem<span class="w"> </span>una<span class="w"> </span>nova<span class="w"> </span>línia.
+</span></code></pre></div>
+<p>Tal com podem comprovar, aquesta sortida és com si férem una operació <strong>diff</strong> entre les dues revisions de l'arxiu.</p>
+<h4 id="conclusio">Conclusió</h4>
+<p>En aquest cas pràctic hem vist el sistema de control de versions <strong>RCS</strong>. Amb ell hem treballat diverses operacions que ens seran d'utilitat, sobretot a nivell conceptual, per introduir altres sistemes de control de versions més potents.</p>
+<p>Com a principals conclusions d'aquest apartat podem considerar que:</p>
+<ul>
+<li>Quan creem un fitxer i volem que estiga sota el control de versions, haurem de fer un <strong>check-in</strong> del fitxer.</li>
+<li>Quan vulguem realitzar canvis sobre un fitxer que estiga sota el control de versions, haurem de fer prèviament un <strong>checkout</strong>.</li>
+<li>Una vegada realitzats els canvis, generem una nova revisió fent de nou un <strong>check-in</strong> per confirmar aquests canvis.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

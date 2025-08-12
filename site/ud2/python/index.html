@@ -1,0 +1,638 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../code/">
+      
+      
+        <link rel="next" href="../annex1_cmd/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>1. Edició amb VSCode - Desenvolupament de programari</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vscode-i-python" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Desenvolupament de programari" class="md-header__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desenvolupament de programari
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Edició amb VSCode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Desenvolupament de programari" class="md-nav__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Desenvolupament de programari
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entorns Integrats de Denvolupament. VSCode
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Vscode i Python
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vscode i Python
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vscode-i-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode i Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quaderns-interactius-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quaderns interactius. Jupyter Notebooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execucio-del-codi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execució del codi
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex1_cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex2_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex 2. Editors de fitxers de text: vim
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vscode-i-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode i Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quaderns-interactius-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quaderns interactius. Jupyter Notebooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execucio-del-codi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execució del codi
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Vscode i Python</h1>
+
+<h3 id="vscode-i-python">VSCode i Python</h3>
+<p>Per tal de crear i depurar codi en python necessitem les extensions de <em>Python</em> i <em>Python Debugger</em>:</p>
+<p><a class="glightbox" href="../img/python.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/python.png" width="500px" /></a></p>
+<p><a class="glightbox" href="../img/python_dbg.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/python_dbg.png" width="500px" /></a></p>
+<p>Des de VSCode, de manera nativa podem inspeccionar variables o establir punts d'interrrupció, que són tasques de depuració independents del llenguatge.</p>
+<h4 id="depurant-codi">Depurant codi</h4>
+<p>De manera predeterminada, el depurador utilitza el mateix intèrpret seleccionat a l'espai de espai de treball, igual que altres funcions de l'extensió Python per a VS Code. PPer utilitzar un intèrpret diferent per a la depuració específicament, podriem fer-ho configurant el fitxer <code>launch.json</code>.</p>
+<p>Per depurar un script de python, la manera més senzilla és seleccionar la fletxa cap avall al costat del botó d'execució de l'editor i seleccionar <em>Python Debugger: Debug Python File.</em></p>
+<p>Quan estem depurant, podem veure a la part superior les opcions habituals de depuració <em>Continue</em>, <em>Step Over</em>, <em>Step Into</em>, o <em>Step Out</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Opció de depuració</th>
+<th>Significat</th>
+<th>Quan s'usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continue</td>
+<td>Indica al depurador que continue l'execució del programa fins que arribe al següent punt d'interrupció (breakpoint) o fins que el programa acabe.</td>
+<td>Auan vols seguir l'execució completa sense anar pas a pas.</td>
+</tr>
+<tr>
+<td>Step Over</td>
+<td>Executa la línia actual de codi, però si aquesta línia conté una funció, el depurador executa la funció completament sense entrar dins d'ella. Després, avança a la següent línia de codi dins del mateix nivell.</td>
+<td>Quan no t'interessa el detall del que passa dins d'una funció i només vols veure el resultat final i com afecta el flux global.</td>
+</tr>
+<tr>
+<td>Step Into</td>
+<td>Executa la línia actual de codi. Si aquesta línia conté una funció, el depurador entra dins d'aquesta funció i continua depurant pas a pas dins de la funció.</td>
+<td>Quan vols veure com s'executa cada línia d'una funció, seguint el seu flux de manera detallada.</td>
+</tr>
+<tr>
+<td>Step Out</td>
+<td>Si estàs dins d'una funció, aquesta opció permet que el depurador continue executant fins que acabe la funció actual i torne al nivell superior (la funció que la va cridar).</td>
+<td>Quan ja no t'interessa seguir la depuració dins d'una funció i vols veure què passa després de sortir d'ella.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Informació addicional</p>
+<p>Disposeu de més informació a l'article <a href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">Getting Started with Python in VS Code</a>.</p>
+</div>
+<h3 id="quaderns-interactius-jupyter-notebooks">Quaderns interactius. Jupyter Notebooks</h3>
+<p>El desenvolupament amb Python compta amb una eina molt interessant: Els quaderns. Un quadern en python es pot definir com un entorn interactiu en el que podem executar blocs de codi i afegir àrees de documentació, per tal d'explicar el propi codi i la lògica d'aquest. Els quaderns, a més, també poden incloure equacions o representacions gràfiques.</p>
+<p>Els quaderns poden generar-se i executar-se de diverses formes, bé dins un entorn online o bé de manera local, fent ús d'eines com Jupyter Notebook o el propi VSCode.</p>
+<h4 id="installacio-dels-paquets-i-extensions-necessaries">Instal·lació dels paquets i extensions necessàries</h4>
+<p>Per tal d'utilitzar Jupyter Notebook en VSCode necessitem per una banda el <a href="https://pypi.org/project/ipykernel/">paquet <code>ipykernel</code></a> en l'entorn que anem a treballar, a més de la pròpia extensió de Jupyter Notebook per a VSCode.</p>
+<p>Per tal d'instal·lar el paquet <code>ipykernel</code> només caldrà activar l'entorn on el desitgem instal·lar, per exemple el que vam crear per a mkdocs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>usuari@host:~$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.local/mkdocsenv/bin/activate
+</span></code></pre></div>
+<p>I fer la instal·lació d'aquest amb <code>pip</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">(</span>mkdocsenv<span class="o">)</span><span class="w"> </span>usuari@hist:~$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipykernel
+</span></code></pre></div>
+<p>Amb això descarregarà tots els paquets necessaris per a l'execució de quaderns de Jupyter en l'entorn escollit, en aquest cas, el mkdocsenv (o si ho desitgeu, podeu generra altre entorn).</p>
+<p>Anem ara amb les extensions de VSCode per a Jupyter. Si ja tenim instal·lat l'editor al nostre equip, podem instal·lar l'extensió <em>Jupyter</em>:</p>
+<p><a class="glightbox" href="../img/jupyter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img 550px="550px" alt="Extensió Jupyter Notebook" src="../img/jupyter.png" width:="width:" /></a></p>
+<p>Aquesta extensió és un pack compost per quatre extensions: <em>Jupyter Keymap</em>, per a les dreceres de teclat de Jupyter, <em>Jupyter Notebook Renderers</em>, per a la visualitazació dels quaderns, <em>Jupyter Slide Show</em>, per al suport de diapositives i <em>Jupyter Cell Tags</em>, per tal de donar suport a certs paquets que requereixen d'etiquetes a les cel·les.</p>
+<p>És interessant que feu una ullada a la descripció de l'extensió en sí per tal de veure totes les seues possibilitats.</p>
+<h4 id="creant-quaderns-interactius">Creant quaderns interactius</h4>
+<p>Com hem dit, un quadern és un entorn interactiu on podem escriure codi i documentar-lo. L'organització dels continguts del quadern serà a base de blocs.</p>
+<p>L'extensió dels quaderns és <code>.ipynb</code>, que prové de la denominació anterior <em>iPython notebooks</em>.</p>
+<p>Si volem crear un quadern, creem un fitxer amb aquesta extensió, per exemple <code>proves.ipynb</code>. També podem fer-ho amb la paleta d'ordres (`Ctrl + Shift + P) i escriure <em>Create: New Jupyter Notebook</em>.</p>
+<p>Una vegada creat, el podem obrir amb VSCode i ens mostrarà un fitxer en blanc amb l'opció d'afegir diferents blocs, bé de codi o de contingut.</p>
+<p><a class="glightbox" href="../img/AfegirBlocs.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Blocs de Jupyter" src="../img/AfegirBlocs.png" width="400px" /></a></p>
+<p>Els blocs de contingut s'expressen en llenguatge <a href="https://www.ibm.com/docs/en/watson-studio-local/1.2.3?topic=notebooks-markdown-jupyter-cheatsheet"><em>Markdown</em></a>, i els blocs de codi font, tot i que s'admeten altres llenguatges, es generaran amb <em>Python</em>. Per tal d'afegir algun d'aquests blocs, farem clic al botó <code>+</code> ubicat al seu costat.</p>
+<p>Per exemple, anem a afegir un bloc Markdown, amb el següent contingut:</p>
+<div class="language-md highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gh"># Exemple 1</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Aquest és un text markdown d&#39;exemple, anem a fer un simple <span class="ge">*Hola món*</span> en Python.
+</span></code></pre></div>
+<p>Si ara deixem d'editar, amb el primer botó de la barra que apareix a la part superior del quadre:</p>
+<p><a class="glightbox" href="../img/opcionsQuadre.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Aturar edició de cel·la" src="../img/opcionsQuadre.png" width="350px" /></a></p>
+<p>Veurem com el bloc es renderitza, i es visualitza amb els formats que hem inclòs al text:</p>
+<p><a class="glightbox" href="../img/exempleMD.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Renderitzacó de text Markdown" src="../img/exempleMD.png" /></a></p>
+<p>En el panell de botons de la part superior del quadre, a més de l'opció d'aturar l'edició podem veure altres opcions com dividir la cel·la, realitzar accions d'edició sobre ella, combinar-la o afegir noves cel·les tant dalt com baix, entre d'altres opions.</p>
+<p>Si ara afegim un bloc de codi amb python, amb el botó <code>+ Código</code>, podem incorporar codi python, per exemple un senzill Hola Món:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Hola Món&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>:::note
+<strong><em>Recursos</em></strong></p>
+<p>Disposeu del quadern <a href="rsc/ipynb/exemple1.PytonWidgets.ipynb">exemple1.PytonWidgets.ipynb</a> amb el que anem a treballar en aquet apartat. <strong><em>Feu clic amb el botó dret i seleccioneu "Anomena i desa el contingut de l'enllaç"</em></strong>
+:::</p>
+<h3 id="execucio-del-codi">Execució del codi</h3>
+<p>Per tal d'executar el codi necessitarem un <em>Kernel</em> de Python, que podem trobar bé en el nostre sistema, en algun entorn de Python o en el núvol. Per tal de seleccionar el kernel, ho fem des de l'opció corresponent a la part superior dreta de VSCode:</p>
+<p><a class="glightbox" href="../img/selKernel.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecció del kernel" src="../img/selKernel.png" width="400px" /></a></p>
+<p>Com veiem, podem escollir entre un entorn de Python (a nivell local) o un servidor de Jupyter (a través d'una URL).</p>
+<p>Si seleccionem <em>Entorns de Python</em> ens dóna a triar entre els diferents entorns, entre els que trobem la instal·lació de Python del propi sistema, l'entorn de <em>base</em> de Conda, o l'entorn de proves que hem creat:</p>
+<p><a class="glightbox" href="../img/entornsPy.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecció d'entorns de Python" src="../img/entornsPy.png" /></a></p>
+<p>En principi, podem triar quasevol Kernel, sempre i quan treballe amb Python3 i tinga instal·lat el paquet <em>ipykernel</em>. Seleccionem doncs, l'entorn amb què volguem treballar, de manera que a la part superior dreta el veiem ja seleccionat (a l'exemple apareix un entorn anomenat <em>base</em>):</p>
+<p><a class="glightbox" href="../img/selBase.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Entorn de base" src="../img/selBase.png" width="350px" /></a></p>
+<p>Si tot va bé, podem fer clic en el botó amb el triangle del costat de la cel·la amb codi per executar aquesta, o bé prémer <em>Shift + Enter</em>:</p>
+<p><a class="glightbox" href="../img/exec1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Execució de cel·les de codi" src="../img/exec1.png" width="300px" /></a></p>
+<p>Amb la qual cosa, s'executarà dins l'entorn el codi de la cel·la.</p>
+<div class="admonition note">
+<p class="admonition-title">Important!</p>
+<p>El codi que creem dins les diferents cel·les estarà relacionat entre sí, de manera que podem, per exemple definir variables, classes o funcions en un bloc de codi, i fer ús d'elles en altres blocs de codi.</p>
+</div>
+<p>!!! warning "Compte!
+    Si executem el codi en un entorn que no disposa del paquet <code>ipykernel</code>, ens donaria error. No obstant això, el propi entorn ens avisa que per executar-se en un entorn, ha de tindre instal·lat <code>ipykernel</code>, i que aquest serà instal·lat quan l'activem.</p>
+<h4 id="altres-opcions-dexecucio">Altres opcions d'execució</h4>
+<p>A banda d'executar el contingut de la cel·la, Jupyter ens permet realitzar diverses accioins amb l'execució, que tenim accessibles tant a la part superior de l'editor com de manera flotant en la pròpia cel·la:</p>
+<p><a class="glightbox" href="../img/barraSupExec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/barraSupExec.png" width="600px" /></a></p>
+<p>Com veiem, tenim l'opció d'executar totes les cel·les de codi o esborrar totes les eixides</p>
+<p><a class="glightbox" href="../img/cel_laExec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/cel_laExec.png" width="300px" /></a></p>
+<p>I des d'aci podem executar línia per línia, els blocs fins el bloc actual, o els blocs a partir del  bloc actual.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
