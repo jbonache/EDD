@@ -1,0 +1,1040 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../7.github/">
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>8. Treballant en remot amb Git i Github. - Sistemes de control de versions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#repositoris-remots" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Sistemes de control de versions" class="md-header__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemes de control de versions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. Treballant en remot amb Git i Github.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Sistemes de control de versions" class="md-nav__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Sistemes de control de versions
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Sistemes de Control de versions
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.scv_local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Sistems de Control de versions locals
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.scv_centralitzat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Sistems de Control de versions centralitzats
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.scv_distribuit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Sistems de Control de versions distribuïts
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.svc_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. El sistema de control de versions distribuit git
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.branques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Treballant amb branques
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Repositoris remots amb Git. Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    8. Treballant en remot amb Git i Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. Treballant en remot amb Git i Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#repositoris-remots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repositoris remots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Github
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#repositoris-remots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repositoris remots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Github
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>8. Treballant en remot amb Git i Github.</h1>
+
+<h3 id="repositoris-remots">Repositoris remots</h3>
+<p>Anteriorment hem vist com crear un repositori a partir d'un directori de treball en la màquina local.</p>
+<p>Ara veurem com obtenir un repositori ubicat en una altra màquina. A aquesta operació se li coneix com a <em>clonació d'un repositori</em>.</p>
+<p>Quan parlem de <em>clonar un repositori</em> ens referim a portar al nostre equip un espai de treball remot complet, incloses totes les confirmacions i branques realitzades en l'altre equip.</p>
+<p>Encara que Git treballa de forma distribuïda, necessitarem un repositori de referència, que faça de servidor.</p>
+<h4 id="pas-1-creacio-del-servidor">Pas 1. Creació del servidor</h4>
+<p>Quan utilitzem <code>git init</code>, establim el directori actual com a directori de treball. Això implica la creació d'un subdirectori ocult <code>.git</code> amb tota la informació sobre el control de les versions. Això ens serveix per treballar localment, creant els nostres commits, branques, etc. però no ens serveix d'aquesta manera per treballar de forma distribuïda.</p>
+<p>Perquè en el directori actual es genere un repositori que puguem compartir, necessitem el que es coneix com un <em>repositori descobert</em> (bare), que tindrà una estructura diferent als directoris de treball, ja que prescindirà de la carpeta <code>.git</code> i utilitzarà el propi directori base per guardar el seu contingut.</p>
+<p>En primer lloc, creem el directori en el qual desitgem crear el repositori:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>projecteCompartit
+</span></code></pre></div>
+<p>Una vegada creat, accedim al directori i inicialitzem el repositori descobert:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>projecteCompartit
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>$<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>--bare
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>consell:<span class="w"> </span>S<span class="s1">&#39;està utilitzant «master» com a nom de la branca inicial. Aquest nom de branca</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s1">consell: per defecte es pot canviar. Per a configurar el nom inicial de la branca que</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s1">consell: s&#39;</span>utilitzarà<span class="w"> </span>en<span class="w"> </span>tots<span class="w"> </span>els<span class="w"> </span>repositoris<span class="w"> </span>nous,<span class="w"> </span>i<span class="w"> </span>que<span class="w"> </span>suprimirà<span class="w"> </span>aquest<span class="w"> </span>avís,<span class="w"> </span>useu:
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>consell:<span class="w"> </span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>consell:<span class="w">        </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>&lt;nom&gt;
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>consell:<span class="w"> </span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>consell:<span class="w"> </span>Els<span class="w"> </span>noms<span class="w"> </span>més<span class="w"> </span>usats<span class="w"> </span>habitualment<span class="w"> </span>en<span class="w"> </span>lloc<span class="w"> </span>de<span class="w"> </span>«master»<span class="w"> </span>són<span class="w"> </span>«main»,<span class="w"> </span>«trunk»<span class="w"> </span>i
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>consell:<span class="w"> </span>«development».<span class="w"> </span>La<span class="w"> </span>branca<span class="w"> </span>acabada<span class="w"> </span>de<span class="w"> </span>crear<span class="w"> </span>es<span class="w"> </span>pot<span class="w"> </span>canviar<span class="w"> </span>de<span class="w"> </span>nom<span class="w"> </span>amb<span class="w"> </span>l<span class="s1">&#39;ordre:</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s1">consell: </span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s1">consell:        git branch -m &lt;nom&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s1">S&#39;</span>ha<span class="w"> </span>inicialitzat<span class="w"> </span>un<span class="w"> </span>repositori<span class="w"> </span>buit<span class="w"> </span>del<span class="w"> </span>Git<span class="w"> </span>en<span class="w"> </span>/tmp/projecteCompartit/
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nom de la branca inicial</p>
+<p>Tal i com ens indica a l'avís, podem canviar el nom predeterminat de les branques inicials configurant el paràmetre de git <code>init.defaultBranch</code>. </p>
+<p>Si ja hem creat el repositori i volem canviar el nom d'aquesta branca, ho fem amb <code>git branch -m nom</code>. Si pe rexemple volem utilitzar <code>main</code> en lloc de <code>master</code>, tal i com fa github, podem fer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-m<span class="w"> </span>main
+</span></code></pre></div>
+</div>
+<p>Si consultem el contingut del directori, veurem que té la mateixa estructura que el directori <code>.git</code> en un repositori local.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>ls
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>branches<span class="w"> </span>config<span class="w"> </span>description<span class="w"> </span>HEAD<span class="w"> </span>hooks<span class="w"> </span>info<span class="w"> </span>objects<span class="w"> </span>refs
+</span></code></pre></div>
+<h4 id="pas-2-clonacio-del-repositori-en-lordinador-local">Pas 2. Clonació del repositori (en l'ordinador local)</h4>
+<p>En general, per clonar un projecte farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>origen<span class="w"> </span><span class="o">[</span>destí<span class="o">]</span>
+</span></code></pre></div>
+<p>D'aquesta manera, si per exemple desitgem clonar un repositori que es troba en una carpeta del nostre propi equip, farem, per exemple:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>~/scv/projecteCompartit<span class="w"> </span>~/scv/projecte3
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>S<span class="err">&#39;</span>està<span class="w"> </span>clonant<span class="w"> </span>a<span class="w"> </span>«/home/dam/scv/projecte3»...
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>warning:<span class="w"> </span>Sembla<span class="w"> </span>que<span class="w"> </span>heu<span class="w"> </span>clonat<span class="w"> </span>un<span class="w"> </span>repositori<span class="w"> </span>buit.
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>fet.
+</span></code></pre></div>
+<p>Amb això hem clonat el projecte <code>projecteCompartit</code> en una carpeta anomenada <code>projecte3</code>. Si ometem aquesta segona carpeta, el repositori es clonarà en el directori actual amb el mateix nom que la carpeta original.</p>
+<p>D'altra banda, si el que volem és clonar un repositori remot, el que farem serà connectar-nos a ell, bé a través dels protocols HTTPS, o SSH.</p>
+<p>Suposem que l'ordinador on hem creat el repositori compartit té l'adreça IP <code>192.168.1.132</code>. En aquest cas hauriem d'utilitzar l'adreça IP de l'ordinador al qual ens volem connectar. Podem utilitzar fins i tot nostra pròpia màquina consultant la nostra adreça IP o directament utilitzant l'adreça IP local de l'equip <code>127.0.0.1</code>.</p>
+<p>Ens connectaríem a ell amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>ssh://dam@192.168.1.132/home/dam/scv/projecteCompartit
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Cloning<span class="w"> </span>into<span class="w"> </span><span class="s1">&#39;projecteCompartit&#39;</span>...
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>dam@192.168.1.132<span class="err">&#39;</span>s<span class="w"> </span>password:<span class="w"> </span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>warning:<span class="w"> </span>You<span class="w"> </span>appear<span class="w"> </span>to<span class="w"> </span>have<span class="w"> </span>cloned<span class="w"> </span>an<span class="w"> </span>empty<span class="w"> </span>repository.
+</span></code></pre></div>
+<p>Observa que no hem indicat una ruta de destí, amb la qual cosa es clonarà el repositori compartit en una carpeta amb el mateix nom en el directori actual.</p>
+<p>Això ens demanarà la contrasenya de l'usuari amb el qual ens hem connectat per SSH. Si no desitgem utilitzar el mateix usuari que en local, podríem crear un nou usuari per realitzar aquestes tasques.</p>
+<p>Finalment, el sistema ens avisa que hem clonat un repositori buit. Això es deu al fet que el repositori ha estat inicialitzat, però encara no disposa de contingut.</p>
+<h4 id="pas-3-afegint-contingut-al-repositori">Pas 3. Afegint contingut al repositori</h4>
+<p>Ara, des de l'ordinador local, ens situem en la carpeta on hàgem clonat el repositori:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>projecteCompartit/
+</span></code></pre></div>
+<p>Afegim contingut, per exemple un fitxer anomenat <code>fitxer1.md</code> amb el contingut “# Projecte Compartit”:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Projecte Compartit&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>fitxer1.md
+</span></code></pre></div>
+<p>L'afegim per confirmar en el següent commit:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>fitxer1.md<span class="w"> </span>
+</span></code></pre></div>
+<p>I fem la confirmació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit fitxer1.md&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>root-commit<span class="o">)</span><span class="w"> </span>c76e80e<span class="o">]</span><span class="w"> </span>Afegit<span class="w"> </span>fitxer1.md
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>fitxer1.md
+</span></code></pre></div>
+<p>Fixa't que ens mostra el commit <code>[master (root-commit) c76e80e]</code> (<code>[main (comissió arrel) 8fbbb4c]</code>), indicant que es tracta de la branca <code>master</code> (o <code>main</code> si hem canviat el nom), i a més és el commit arrel. Això està relacionat amb l'avís de repositori buit que ens ha mostrat quan hem clonat el repositori, i indica que es tracta del primer commit que es fa en ell.</p>
+<p>Si ara comprovem l'estat del repositori:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span>,<span class="w"> </span>but<span class="w"> </span>the<span class="w"> </span>upstream<span class="w"> </span>is<span class="w"> </span>gone.
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git branch --unset-upstream&quot;</span><span class="w"> </span>to<span class="w"> </span>fixup<span class="o">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div></p>
+<p>O bé:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>En la branca main
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>La vostra branca està basada en «origin/main», però la font no hi és.
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  (useu «git branch --unset-upstream» per a arreglar-ho)
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>no hi ha res a cometre, l&#39;arbre de treball està net
+</span></code></pre></div>
+<p>Ens indica que ens trobem en la branca <code>master</code>/<code>main</code>, però que aquesta no existeix en <code>upstream</code> (l'origen de la clonació). En aquesta situació, això és normal, ja que no hem sincronitzat encara aquest primer commit en el servidor.</p>
+<h4 id="pas-4-enviant-el-commit-al-servidor">Pas 4. Enviant el commit al servidor</h4>
+<p>Els canvis realitzats s'han fet en la nostra còpia local del projecte, per la qual cosa si volem compartir-los amb la resta de col·laboradors del projecte, haurem de sincronitzar-la amb el servidor. Per enviar aquests canvis al servidor, utilitzarem l'ordre <code>git push</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>dam@192.168.1.132<span class="err">&#39;</span>s<span class="w"> </span>password:<span class="w"> </span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">261</span><span class="w"> </span>bytes<span class="w"> </span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w"> </span><span class="m">261</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>To<span class="w"> </span>ssh://192.168.1.132/home/dam/scv/projecteCompartit
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w"> </span>*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w"> </span>master<span class="w"> </span>-&gt;<span class="w"> </span>master
+</span></code></pre></div>
+<p>O bé:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>S<span class="s1">&#39;estan enumerant els objectes: 3, fet.</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="s1">S&#39;</span>estan<span class="w"> </span>comptant<span class="w"> </span>els<span class="w"> </span>objectes:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span>fet.
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>S<span class="err">&#39;</span>estan<span class="w"> </span>escrivint<span class="w"> </span>els<span class="w"> </span>objectes:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">245</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">245</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span>fet.
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>diferències<span class="o">)</span>,<span class="w"> </span>reusats<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>diferències<span class="o">)</span>,<span class="w"> </span>paquets<span class="w"> </span>reusats<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>To<span class="w"> </span>ssh://192.168.1.132/home/dam/scv/projecteCompartit
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w"> </span>*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">      </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
+</span></code></pre></div>
+<p>Amb això, indiquem que pujarem a l'origen (<code>origin</code>) la nostra branca <code>master</code>/<code>main</code>. Fixa't que amb això, s'ha creat la branca nova <code>master</code>/<code>main</code>, que encara no existia en el repositori.</p>
+<p>Les opcions <code>origin</code> i <code>master</code>/<code>main</code> poden eliminar-se, deixant únicament l'ordre com <code>git push</code>. Si no indiquem el servidor <code>remote</code>, git escollirà el que tinguem configurat, que en aquest cas és <code>origin</code>. Podem comprovar quin o quins són els nostres servidors remots amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>git<span class="w"> </span>remote
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>origin
+</span></code></pre></div>
+<p>I obtenir més informació sobre ells amb:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>origin<span class="w">  </span>ssh://dam@192.168.1.132/home/dam/scv/projecteCompartit<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>origin<span class="w">  </span>ssh://dam@192.168.1.132/home/dam/scv/projecteCompartit<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></div></p>
+<p>Amb el que obtenim també quin és l'usuari, el host i el directori dels repositoris.</p>
+<p>Si ara comprovem de nou l'estat:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span>.
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<p>o bé:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>En<span class="w"> </span>la<span class="w"> </span>branca<span class="w"> </span>main
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>La<span class="w"> </span>vostra<span class="w"> </span>branca<span class="w"> </span>està<span class="w"> </span>al<span class="w"> </span>dia<span class="w"> </span>amb<span class="w"> </span>«origin/main».
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>no<span class="w"> </span>hi<span class="w"> </span>ha<span class="w"> </span>res<span class="w"> </span>a<span class="w"> </span>cometre,<span class="w"> </span>l<span class="err">&#39;</span>arbre<span class="w"> </span>de<span class="w"> </span>treball<span class="w"> </span>està<span class="w"> </span>net
+</span></code></pre></div>
+<p>Ens indica que ja estem actualitzats (<code>up to date</code>) amb la branca <code>master</code>/<code>main</code> del nostre origen.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercici 1. Clona el repositori <code>projecteCompartit</code> en el teu ordinador, però guarda'l amb el nom <code>projecteCompartit2</code>. Crea en ell un nou fitxer <code>fitxer2.md</code> amb el contingut “Fitxer creat des d'un altre lloc”, afig-lo al control de versions i envia'l al servidor (això podria fer-se també des d'un altre ordinador).</p>
+<p>Ens situem en la carpeta on desitgem fer la còpia, i llancem el clonat indicant la carpeta destí amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>ssh://
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>ssh://dam@192.168.1.132/home/dam/scv/projecteCompartit<span class="w"> </span>projecteCompartit2
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Cloning<span class="w"> </span>into<span class="w"> </span><span class="s1">&#39;projecteCompartit2&#39;</span>...
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>dam@192.168.1.132<span class="err">&#39;</span>s<span class="w"> </span>password:<span class="w"> </span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>Receiving<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">260</span><span class="w"> </span>bytes<span class="w"> </span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="m">260</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span></code></pre></div>
+<p>Ara entrem dins i creem el fitxer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>projecteCompartit2/
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fitxer creat des d&#39;un altre lloc&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>fitxer2.md
+</span></code></pre></div>
+<p>l'afegim al control de versions, i el confirmem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>fitxer2.md<span class="w"> </span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit fitxer2.md&quot;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="o">[</span>master<span class="w"> </span>4e23327<span class="o">]</span><span class="w"> </span>Afegit<span class="w"> </span>fitxer2.md
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>fitxer2.md
+</span></code></pre></div>
+<p>Observem l'estat ara:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>ahead<span class="w"> </span>of<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span><span class="w"> </span>by<span class="w"> </span><span class="m">1</span><span class="w"> </span>commit.
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git push&quot;</span><span class="w"> </span>to<span class="w"> </span>publish<span class="w"> </span>your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>commits<span class="o">)</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<p>Com veus, ens indica que la nostra branca <code>master</code> difereix de la branca <code>master</code> en origen. Per pujar aquests canvis a l'origen farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>git<span class="w"> </span>push
+</span></code></pre></div>
+</div>
+<h4 id="pas-5-portar-contingut-del-servidor">Pas 5. Portar contingut del servidor</h4>
+<p>Quan desitgem obtenir les modificacions que han fet sobre el projecte altres desenvolupadors, utilitzarem les ordres de <code>git fetch</code> i <code>git pull</code>.</p>
+<p>Per a això, partirem de les modificacions realitzades en el repositori en l'exercici anterior.</p>
+<ul>
+<li><code>git fetch [nom-remot]</code>: Permet obtenir els canvis realitzats en el projecte remot des que el vam clonar o des que vam obtenir els canvis per última vegada. Aquest comandament únicament porta les dades, però no les combina amb el nostre directori de treball. Serveix per veure els canvis, i aplicar-los manualment quan es cregui convenient.</li>
+<li><code>git pull [nom-remot]</code>: Permet obtenir els canvis realitzats en el projecte des que el vam clonar o des que vam obtenir els canvis per última vegada, i a més, combina aquests amb el nostre directori de treball. Aquest flux de treball serà bastant més còmode i ràpid que utilitzar <code>fetch</code>, encara que treu una mica de control sobre el repositori.</li>
+</ul>
+<p>Així doncs, per obtenir els últims canvis en el repositori remot, fem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$<span class="w"> </span>git<span class="w"> </span>fetch
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>dam@192.168.1.132<span class="err">&#39;</span>s<span class="w"> </span>password:<span class="w"> </span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>Unpacking<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">307</span><span class="w"> </span>bytes<span class="w"> </span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w"> </span><span class="m">307</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>From<span class="w"> </span>ssh://192.168.1.132/home/dam/scv/projecteCompartit
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w"> </span>fedaee7..4e23327<span class="w"> </span>master<span class="w"> </span>-&gt;<span class="w"> </span>origin/master
+</span></code></pre></div>
+<p>Podem obviar l'<code>origin</code>, ja que és el <code>remote</code> per defecte. Si ara consultem l'estat:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>behind<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span><span class="w"> </span>by<span class="w"> </span><span class="m">1</span><span class="w"> </span>commit,<span class="w"> </span>and<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>fast-forwarded.
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git pull&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>branch<span class="o">)</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<p>Ens indica que estem en la branca <code>master</code>, i que aquesta està per sota de la branca <code>master</code> en origen, diferint una confirmació.</p>
+<p>Si consultem el contingut del directori de treball actual, veurem que aquest encara conserva el contingut del commit inicial:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>$<span class="w"> </span>ls
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>fitxer1.md
+</span></code></pre></div>
+<p>Si ara utilitzem <code>pull</code> per obtenir els últims canvis i combinar-los:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>dam@192.168.1.132<span class="err">&#39;</span>s<span class="w"> </span>password:<span class="w"> </span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>Updating<span class="w"> </span>fedaee7..4e23327
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>Fast-forward
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w"> </span>fitxer2.md<span class="w"> </span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>+
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>fitxer2.md
+</span></code></pre></div>
+<p>Ja tindrem sincronitzada la nostra còpia local amb el contingut del servidor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>$<span class="w"> </span>ls
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>fitxer1.md<span class="w"> </span>fitxer2.md
+</span></code></pre></div>
+<p>I si consultem l'estat ja ens indica que estem actualitzats amb la branca <code>master</code> d'origen.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span>.
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<p>Podeu obtenir més informació sobre el treball amb repositoris remots en Git a la documentació <a href="http://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos">Fundamentos de Git - Trabajar con remotos, de la pròpia documentació del projecte</a></p>
+<h3 id="github">Github</h3>
+<p>La plataforma de desenvolupament col·laboratiu Github ens permet crear repositoris git centralitzats i compartits de tipus descobert (bare).</p>
+<p>En aquest apartat anem a crear un compte en aquesta plataforma i crearem el nostre primer repositori públic.</p>
+<h4 id="creacio-dun-compte">Creació d'un compte</h4>
+<p>En primer lloc, accedim al <a href="https://github.com/">lloc web de GitHub</a> i creem un compte gratuït. Per a això, no hem de fer més que introduir la nostra adreça de correu on se'ns demana i fer clic en el botó de <code>Sign up for Github</code> (Compte, les següents captures poden estar desactualitzades, però el procediment en general és el mateix).</p>
+<p><a class="glightbox" href="../img/github/alta_github1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alta en github" src="../img/github/alta_github1.png" width="500px" /></a></p>
+<p>S'iniciarà ara un petit assistent en el qual confirmem o introduïm el nostre correu si no ho havíem fet, escollim una contrasenya, un nom d'usuari, diem si volem rebre actualitzacions, i finalment verifiquem el compte resolent un petit trencaclosques.</p>
+<p><a class="glightbox" href="../img/github/alta_github2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alta en github" src="../img/github/alta_github2.png" width="500px" /></a></p>
+<p>Acabat aquest assistent, fem clic en <code>Create Account</code>. En aquest moment, se'ns enviarà al correu indicat un codi de verificació, per completar la creació del compte.</p>
+<p>Fet això, ja ens apareixerà la pantalla inicial de Github, presentant diverses opcions:</p>
+<p><a class="glightbox" href="../img/github/alta_github3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alta en github" src="../img/github/alta_github3.png" width="500px" /></a></p>
+<p>Des d'ací podríem crear ja un repositori, seleccionant l'opció <code>Create a Repository</code>. De moment, farem clic en <code>Skip this for now</code> per anar a la pantalla principal, des de la qual tindrem accés a totes les opcions que ens ofereix Github.</p>
+<p><a class="glightbox" href="../img/github/github_ppal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pàgina principal de Github" src="../img/github/github_ppal.png" width="600px" /></a></p>
+<p>D'aquesta pantalla principal de Github anem a destacar tres zones:</p>
+<ul>
+<li><strong>1.</strong> En la columna central, veurem tota l'activitat recent, tant pròpia com dels nostres contactes.</li>
+<li><strong>2.</strong> La columna de l'esquerra ens mostrarà algunes dades sobre els nostres repositoris, equips, etc. Des d'ací podem començar a crear repositoris.</li>
+<li>
+<p><strong>3.</strong> En la part superior, disposem d'una barra de menú, amb un enllaç a la pàgina principal, un quadre de cerca, un menú amb quatre entrades:</p>
+<ul>
+<li><code>Pull Requests</code>: Per accedir i validar les peticions de fusió de codi d'altres usuaris sobre els nostres repositoris,</li>
+<li><code>Issues</code>: Per gestionar anotacions i suggeriments que es fan sobre el nostre repositori, ja sigui per corregir errors, peticions de noves funcionalitats o preguntes sobre el funcionament entre altres.</li>
+<li><code>Marketplace</code>: Per afegir extensions i altres funcionalitats a Github.</li>
+<li><code>Explore</code>: Per explorar repositoris que Github considera que poden ser del nostre interès.</li>
+</ul>
+<p>A més, en aquesta barra superior, disposem de tres icones:</p>
+<ul>
+<li>La campana, que ens mostra si tenim alguna notificació,</li>
+<li>La icona d'Afegeix (signe “+”), que ens serveix per gestionar nous repositoris, organitzacions o projectes. En un projecte, a part de la gestió del repositori tindrem altres opcions relacionades amb la gestió de projectes, com pugui ser la gestió de tasques.</li>
+<li>La icona amb el nostre avatar, sobre el qual podem controlar diversos aspectes relacionats amb el nostre compte (perfil, repositoris, equips, etcètera).</li>
+</ul>
+</li>
+</ul>
+<h4 id="creacio-dun-token-dacces-personal">Creació d'un Token d'Accés Personal</h4>
+<p>Una vegada creat el nostre compte en Github i abans de començar a crear un repositori, anem a crear un token d'accés personal (<em>PAT, Personal Access Token</em>).</p>
+<p>Quan treballem des de la línia d'ordres amb Git sobre els nostres repositoris emmagatzemats en Github, necessitarem algun mode d'autenticar-nos en la pròpia plataforma. Tradicionalment, ha estat suficient amb indicar, en el moment de publicar els nostres canvis en el servidor, les nostres credencials. És a dir, el nostre usuari en Github i la nostra contrasenya.</p>
+<p>Amb la finalitat d'incrementar la seguretat en la plataforma, des del 13 d'agost de 2021, Github no permet aquest tipus d'autenticació des de la línia d'ordres, i requereix fer-ho mitjançant HTTPS amb un token d'accés generat per la pròpia plataforma.</p>
+<p>Anem a veure doncs, com generar aquest token, que haurem d'emmagatzemar en el nostre equip i utilitzar quan se'ns demani una contrasenya.</p>
+<ul>
+<li><strong>Pas 1.</strong> Localitzem la icona amb la nostra foto de perfil en la part superior dreta, i fem clic en ella per accedir a la nostra configuració de Github (<code>Settings</code>).</li>
+<li><strong>Pas 2.</strong> Fem clic en l'opció de paràmetres del desenvolupador (<code>Developer Settings</code>) en el panell de l'esquerra.</li>
+<li><strong>Pas 3.</strong> En la pàgina de paràmetres del desenvolupador, en el panell de l'esquerra fem clic en <code>Personal Access Tokens</code>.</li>
+<li><strong>Pas 4.</strong> En la secció de <code>Personal Access Tokens</code> seleccionem <code>Generate New Token</code>.</li>
+<li><strong>Pas 5.</strong> Indiquem una descripció per al nostre token, per exemple “Token per a l'accés per terminal”, així com l'àmbit o abast d'aquest token. Això determinarà què es podrà i què no es podrà fer amb aquest token. En el nostre cas, anem a seleccionar totes les opcions d'interacció amb el repositori (<code>repo</code>, <code>admin:repo_hook</code> i <code>delete_repo</code>), i fem clic en <code>Generate Token</code>.</li>
+<li><strong>Pas 6.</strong> Se'ns generarà un token que haurem de copiar i conservar per utilitzar com a contrasenya d'accés per terminal. Per copiar-lo podem fer clic en la icona de còpia que es troba a la seva dreta. <strong>Tingueu especial precaució amb ell i guardeu-lo bé</strong>, ja que per qüestions de seguretat, aquest token no se us tornarà a mostrar una vegada eixiu de la pàgina.</li>
+</ul>
+<p><a class="glightbox" href="../img/github/token_access.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generació d'un token" src="../img/github/token_access.png" width="600px" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Documentació oficial</p>
+<p>Disposeu de més informació sobre aquest procés en els següents enllaços:</p>
+<ul>
+<li><a href="https://github.blog/security/application-security/token-authentication-requirements-for-git-operations/">Token authentication requirements for Git operations</a></li>
+<li><a href="https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Crear un token d'accés personal</a></li>
+</ul>
+</div>
+<h4 id="creacio-dun-repositori">Creació d'un repositori</h4>
+<p>Anem a crear ara el nostre primer repositori en Github. Per a això, des de la finestra inicial, seguirem els següents passos.</p>
+<p><strong>Pas 1. Create Repository</strong>
+En primer lloc, bé des de la secció <code>Create your First Project</code> de la secció de l'esquerra, o bé des de la primera entrada del submenú d'Afegeix (<code>+</code>), fem clic en <code>Create Repository</code>.</p>
+<p>Això ens portarà a la pàgina de creació del nou repositori.</p>
+<p><strong>Pas 2. Emplenant les dades del repositori</strong></p>
+<p>Per crear el repositori haurem de facilitar certa informació sobre aquest:</p>
+<ul>
+<li>El nom,</li>
+<li>Una descripció,</li>
+<li>Si serà públic o privat,</li>
+<li>Opcions d'inicialització del repositori, com crear un fitxer <code>README.md</code>, un <code>.gitignore</code>, o una llicència.</li>
+</ul>
+<p>En el nostre cas, hem afegit les següents dades:</p>
+<p><a class="glightbox" href="../img/github/github2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Afegint dades al repositori" src="../img/github/github2.png" width="500px" /></a></p>
+<p>Fixa't en certs detalls:</p>
+<ul>
+<li>El nom del repositori està vinculat a l'usuari. D'aquesta manera, diferents usuaris podran tenir repositoris amb el mateix nom, i es facilita també la importació de repositoris d'altres usuaris. Aquest tindrà doncs un format tipus <code>nomDeUsuari/Repositori</code>, en el nostre cas, <code>AlumnoDAM-MGH/mi-primer-repo</code>. En el vostre cas, utilitzareu <code>elTeuNomDUsuari/el-meu-primer-repo</code>.</li>
+<li>Hem seleccionat que s'inicialitzi el repositori amb un fitxer <code>README</code>, però sense <code>.gitignore</code> ni llicència. Aquest pas podem ometre'l, en aquest cas, hauríem d'inicialitzar el repositori manualment. Si el deixem sense inicialitzar, Github ens indicarà quins passos hem de realitzar des de la terminal per completar la inicialització.</li>
+<li>D'altra banda, ens indica que la branca per defecte generada és <code>main</code>. Si recordeu, en git, aquesta branca principal per defecte es deia <code>master</code>, però es podia canviar. Inicialment, en Github també era així, però des d'octubre de 2020, s'utilitza <code>main</code> en lloc de <code>master</code>.</li>
+</ul>
+<p><strong>Pas 3. Creació del repositori</strong></p>
+<p>Una vegada tenim les dades emplenades, fem clic en <code>Create Repository</code>, amb el que ja tindrem llest el nostre repositori.</p>
+<p>Els repositoris que creem disposaran també d'una web des de la qual podrem consultar el codi del repositori, gestionar-lo i modificar-lo:</p>
+<p><a class="glightbox" href="../img/github/github3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Espai web per al repositori" src="../img/github/github3.png" width="500px" /></a></p>
+<p>En aquesta pàgina tenim diversos elements d'interès:</p>
+<ul>
+<li>En la part superior esquerra tenim la ruta al nostre repositori. Si ens trobem en qualsevol subcarpeta d'aquest, ens la mostrarà ací, donant la possibilitat de retrocedir en l'estructura de directoris.</li>
+<li>A la part superior dreta, tenim informació sobre el nombre d'usuaris que estan pendents del nostre projecte (<code>Watch/Unwatch</code>), els que l'han valorat positivament (<code>Star</code>) o les bifurcacions que altres usuaris hagin fet del projecte (<code>Fork</code>). Des d'aquests botons, també podem seguir o deixar de seguir el projecte, afegir-li estrelles o crear un fork.</li>
+<li>Després tenim un menú amb les diferents opcions del projecte: Explorar el codi (<code>code</code>), els assumptes pendents (<code>issues</code>), les peticions de fusió de codi (<code>pull requests</code>), la Wiki, o els ajustos (<code>Settings</code>) del projecte, entre altres.</li>
+<li>Posteriorment tenim diversos botons, entre els quals podrem canviar entre branques (ara se'ns mostra la branca <code>Main</code>), afegir fitxers, o bé obtenir el codi del repositori (<code>Code</code>).</li>
+<li>En la part central, i amb major grandària, observem el contingut del nostre repositori, juntament amb informació relativa als commits realitzats o el <code>HEAD</code>. Com podeu comprovar, també ens mostra el contingut del fitxer <code>README.md</code>. En general, en qualsevol carpeta que tinguem, podem afegir un fitxer <code>README.md</code>, que Github interpreta que és el document de descripció bé del projecte o repositori, o bé de la carpeta en la qual estiguem.</li>
+</ul>
+<p><strong>Pas 4. Clonant el repositori</strong>
+Una vegada creat aquest repositori, anem a descarregar-lo en el nostre equip. Per a això, busquem el botó verd amb el text <code>Code</code>, i despleguem el submenú amb les diferents opcions de clonació:</p>
+<p><a class="glightbox" href="../img/github/github4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Clonant el repositori" src="../img/github/github4.png" width="400px" /></a></p>
+<p>Des d'ací, podem clonar el repositori bé a través de HTTPS, SSH, o la interfície de línia d'ordres (CLI) de Github. També podem descarregar el contingut del projecte en format ZIP, sense informació sobre el control de versions.</p>
+<p>En el nostre cas utilitzarem la primera opció, per realitzar la clonació per HTTPS.</p>
+<p>Així doncs, seleccionarem el text <code>https://github.com/AlumnoDAM-MGH/mi-primer-repo.git</code> i el copiarem, o bé podem fer-ho directament amb el botó de copiar situat a la seva dreta.</p>
+<p>Amb aquest text copiat, obrim una terminal en el nostre equip i utilitzem aquesta adreça com a origen per fer la clonació:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AlumnoDAM-MGH/mi-primer-repo.git
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Cloning<span class="w"> </span>into<span class="w"> </span><span class="s1">&#39;mi-primer-repo&#39;</span>...
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>Unpacking<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">626</span><span class="w"> </span>bytes<span class="w"> </span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w"> </span><span class="m">626</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span></code></pre></div></p>
+<p>Una vegada clonat, podem consultar els nostres remotes, accedint a la carpeta prèviament:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mi-primer-repo/
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>origin<span class="w">  </span>https://github.com/AlumnoDAM-MGH/mi-primer-repo.git<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>origin<span class="w">  </span>https://github.com/AlumnoDAM-MGH/mi-primer-repo.git<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></div></p>
+<p><strong>Pas 5. Afegint contingut.</strong>
+En apartats anteriors ja hem vist com treballar amb repositoris remots. Anem a repassar-ho afegint una mica de contingut al nostre repositori git local i sincronitzant-lo amb el repositori d'origen.</p>
+<p>En primer lloc, anem a crear una carpeta nova dins de la carpeta de treball del nostre projecte, que anomenarem <code>imatges</code>. Dins d'ella ubicarem una imatge qualsevol. Pots descarregar-la d'Internet, utilitzar una del teu equip, o la mateixa que s'ha utilitzat en aquest exemple, descarregant-la del repositori de AlumnoDAM-MGH. Una vegada tinguem això preparat, afegirem la carpeta <code>imatges</code> al sistema de control de versions.</p>
+<p>Per a tot això, suposant que ja ens trobem en la carpeta del projecte i que la imatge que anem a utilitzar es troba en la nostra carpeta d'usuari i porta per nom <code>mgh_github.png</code>, farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>imatges
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>$<span class="w"> </span>cp<span class="w"> </span>~/mgh_github.png<span class="w"> </span>imatges/
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>imatges/
+</span></code></pre></div>
+<p>Fet això, editarem el fitxer <code>README.md</code> i li afegirem el següent contingut, amb el qual ampliem el paràgraf de presentació i embebem la imatge afegida en la carpeta d'imatges:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="gh"># El nostre primer repositori en Github</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>Aquest és el nostre primer repositori en Github, una plataforma de desenvolupament col·laboratiu que ens permet crear repositoris git centralitzats i compartits.
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>!Logo de McGraw Hill i Octocat
+</span></code></pre></div>
+<p>Ara, també afegim aquests canvis perquè s'incloguin en la següent confirmació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>README.md<span class="w"> </span>
+</span></code></pre></div>
+<h5 id="pas-6-confirmant-i-pujant-els-canvis">Pas 6. Confirmant i pujant els canvis.</h5>
+<p>Si ara comprovem l'estat del repositori, veurem que tenim preparats diversos arxius nous per a la següent confirmació, juntament amb modificacions en el fitxer <code>README.md</code>:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>On branch main
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>Your branch is up to date with &#39;origin/main&#39;.
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>Changes to be committed:
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a> (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    modified: README.md
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    new file: imatges/mgh_github.png
+</span></code></pre></div></p>
+<p>Així doncs, fem la confirmació:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;S&#39;ha afegit la carpeta d&#39;imatges&quot;</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>[main 0cf57c5] S&#39;ha afegit la carpeta d&#39;imatges
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a> 2 files changed, 7 insertions(+), 2 deletions(-)
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a> create mode 100644 imatges/mgh_github.png
+</span></code></pre></div></p>
+<p>Si ara comprovem de nou l'estat:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>On branch main
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>Your branch is ahead of &#39;origin/main&#39; by 1 commit.
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a> (use &quot;git push&quot; to publish your local commits)
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>nothing to commit, working tree clean
+</span></code></pre></div></p>
+<p>Com veiem, ens indica que la nostra branca <code>main</code> es troba a una confirmació per davant (<code>ahead by 1 commit</code>) de la branca <code>main</code> en origen, per la qual cosa haurem de publicar aquests canvis mitjançant l'ordre <code>git push</code>:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>$<span class="w"> </span>git<span class="w"> </span>push
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>Username for &#39;https://github.com&#39;: AlumnoDAM-MGH 
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>Password for &#39;https://AlumnoDAM-MGH@github.com&#39;: 
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>Enumerating objects: 7, done.
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>Counting objects: 100% (7/7), done.
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>Delta compression using up to 8 threads
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>Compressing objects: 100% (4/4), done.
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>Writing objects: 100% (5/5), 27.06 KiB 
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a> 2.71 MiB/s, done.
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>Total 5 (delta 0), reused 0 (delta 0)
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>To https://github.com/AlumnoDAM-MGH/mi-primer-repo.git
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a> e053842..0cf57c5 main -&gt; main
+</span></code></pre></div></p>
+<p>Com veiem, ens demanarà les nostres credencials de Github per poder fer el <code>push</code> sobre el nostre propi repositori. Recorda, que en lloc de la teva contrasenya al portal, has d'utilitzar el teu token d'accés personal, generat anteriorment. Si ara actualitzem la pàgina del repositori de Github, veurem que s'han actualitzat els continguts:</p>
+<p><a class="glightbox" href="../img/github/github5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Contingut afegit" src="../img/github/github5.png" width="500px" /></a></p>
+<h4 id="branques-i-forks">Branques i forks</h4>
+<p>Recordem que Github és una de les majors plataformes d'allotjament de projectes basats en programari lliure. Una de les premisses d'aquest tipus de projectes és la possibilitat de compartir el codi, modificar-lo i adaptar-lo a les nostres necessitats.</p>
+<p>Github ens brinda la possibilitat de crear còpies completes d'un projecte al nostre compte d'usuari. Això es coneix com a <code>fork</code>, i permet adaptar projectes a les nostres necessitats, o crear projectes nous basant-nos en un ja existent.</p>
+<p>Aquest concepte de <code>fork</code> és diferent del de crear una branca, ja que genera una còpia física completa del repositori, amb la intenció de començar un desenvolupament independent a l'original. En canvi, una branca suposa una bifurcació, però dins del repositori original, amb la intenció de realitzar canvis que després s'aplequin a la branca principal.</p>
+<p>No obstant això, mitjançant un <code>fork</code>, també podrem col·laborar amb el projecte original, encara que no siguem membres del seu equip de desenvolupament. Quan creiem que els canvis que hem realitzat poden ser positius, o resolen algun error del codi original, podem fer un <code>pull request</code> al projecte original perquè els desenvolupadors considerin combinar el seu codi amb el nostre.</p>
+<details class="question">
+<summary>Exercici 2. Crea un <code>fork</code> en el teu compte d'usuari d'un projecte d'algun company, o bé del propi repositori que s'ha creat d'exemple com AlumnoDAM-MGH. Clona'l en el teu equip, realitza canvis i puja'ls de nou al repositori en el teu compte. Disposes de més informació sobre els forks a <a href="https://docs.github.com/es/get-started/quickstart/fork-a-repo">la documentacio oficial de Github</a></summary>
+<p>Per a aquest exercici hauríem d'obrir la pàgina del repositori que vulguem bifurcar i fer clic en la icona de <code>Fork</code>, ubicada en la part superior dreta:</p>
+<p><a class="glightbox" href="../img/github/github6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github6.png" width="400px" /></a></p>
+<p>Fet això, ens demanarà en quina compte de grup o usuari anem a crear la bifurcació:</p>
+<p><a class="glightbox" href="../img/github/github7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github7.png" width="400px" /></a></p>
+<p>I després d'un breu temps d'espera, tindrem el repositori en el nostre compte, des d'on podrem clonar-lo en el nostre equip i treballar amb ell tal com hem fet al llarg dels exemples.</p>
+<p><a class="glightbox" href="../img/github/github8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github8.png" width="400px" /></a></p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

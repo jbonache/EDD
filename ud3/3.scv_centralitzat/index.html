@@ -1,0 +1,892 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.scv_local/">
+      
+      
+        <link rel="next" href="../4.scv_distribuit/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>3. Sistemes control de versions centralitzats - Sistemes de control de versions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sistemes-de-control-de-versions-centralitzats" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Sistemes de control de versions" class="md-header__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemes de control de versions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Sistemes control de versions centralitzats
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Sistemes de control de versions" class="md-nav__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Sistemes de control de versions
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Sistemes de Control de versions
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.scv_local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Sistems de Control de versions locals
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3. Sistems de Control de versions centralitzats
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Sistems de Control de versions centralitzats
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistemes-de-control-de-versions-centralitzats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistemes de control de versions centralitzats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-scv-subversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      El SCV Subversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El SCV Subversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparacio-creacio-del-compte-i-el-repositori" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparació: Creació del compte i el repositori
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.scv_distribuit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Sistems de Control de versions distribuïts
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.svc_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. El sistema de control de versions distribuit git
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.branques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Treballant amb branques
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Repositoris remots amb Git. Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.github_practic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. Treballant en remot amb Git i Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistemes-de-control-de-versions-centralitzats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistemes de control de versions centralitzats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-scv-subversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      El SCV Subversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El SCV Subversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparacio-creacio-del-compte-i-el-repositori" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparació: Creació del compte i el repositori
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>3. Sistems de Control de versions centralitzats</h1>
+
+<h2 id="sistemes-de-control-de-versions-centralitzats">Sistemes de control de versions centralitzats</h2>
+<p>Amb l'arribada d'Internet, va sorgir la possibilitat que diversos programadors pogueren treballar conjuntament en un projecte, gestionant el control de versions amb els canvis que cadascun feia. Aleshores apareix la necessitat de centralitzar el control de versions en un únic servidor que emmagatzene les diferents versions dels arxius.</p>
+<p>En aquests tipus de SCV, els programadors que desitgen treballar en un projecte utilitzaran una eina client amb la qual interactuaran amb el servidor, descarregant la darrera versió, actualitzant-la localment i enviant els canvis realitzats al servidor.</p>
+<p>Existeixen diversos sistemes de control de versions centralitzats, com <strong>Concurrent Versions System</strong> (CVS, 1986), <strong>Microsoft Visual SourceSafe</strong> (VSS, 1994), o amb el que veurem aquest apartat: <strong>Subversion</strong> (SVN, 2000).</p>
+<p>El funcionament general d'aquest tipus de sistemes de control de versions és el següent:</p>
+<p><a class="glightbox" href="../img/scv_centralitzat.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Funcionament d'un CVS centralitzat" src="../img/scv_centralitzat.png" width="500px" /></a></p>
+<p>Com podem veure, disposem d'un servidor central amb diverses versions d'un conjunt de fitxers anomenat <em>repositori</em>. Per a treballar, els clients obtenen la darrera versió dels fitxers (<em>operació de checkout</em>), treballen localment i actualitzen els canvis en el servidor (<em>commit</em>).</p>
+<p>Amb aquesta arquitectura, guanyem en versatilitat, ja que diversos desenvolupadors poden treballar de forma conjunta. El principal inconvenient que suposa aquest model és que, en cas de fallada, no podrem compartir les modificacions de codi i, si perdem la informació del servidor, també es perdrà tot l'historial de versions.</p>
+<h2 id="el-scv-subversion">El SCV Subversion</h2>
+<p>En aquest apartat treballarem amb el sistema de control de versions <strong>Subversion</strong>. Encara que la majoria de projectes i organitzacions utilitzen en la pràctica <strong>Git</strong>, que veurem en els següents apartats, conéixer <strong>Subversion</strong>, igual que <strong>RCS</strong>, ens serà útil com a bona introducció a altres sistemes.</p>
+<p>Donat que <strong>Subversion</strong> és un sistema centralitzat, necessitarem un servidor per emmagatzemar el repositori. Ací podem optar per crear el nostre propi servidor o bé utilitzar algun servei públic d'emmagatzematge amb <strong>Subversion</strong>, com per exemple <strong>SourceForge</strong>. Utilitzarem aquest últim.</p>
+<h3 id="preparacio-creacio-del-compte-i-el-repositori">Preparació: Creació del compte i el repositori</h3>
+<h4 id="pas-1-registre-en-sourceforge">Pas 1. Registre en SourceForge</h4>
+<p>En primer lloc, accedirem al lloc web de <strong>SourceForge</strong> (<a href="https://sourceforge.net/">https://sourceforge.net/</a>) per registrar-nos com a usuaris fent clic en l'enllaç <em>Join</em> o bé accedint a <a href="https://sourceforge.net/user/registration">https://sourceforge.net/user/registration</a>.</p>
+<p>En aquesta pàgina de registre introduirem les nostres dades (substitueix nom d'usuari, correu i contrasenya pels teus) i farem clic en <strong>Register</strong>:</p>
+<p><a class="glightbox" href="../img/registre_sourceforge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Registre en SourceForge" src="../img/registre_sourceforge.png" width="600px" /></a></p>
+<p>Una vegada completat el registre, se'ns enviarà un correu electrònic de confirmació per activar el nostre compte. Accedim al correu, consultem el missatge i fem clic en <strong>Activate Your Account</strong>.</p>
+<p><a class="glightbox" href="../img/activate_sfg.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Activació del compte" src="../img/activate_sfg.png" width="550px" /></a></p>
+<p>Fet això, se'ns redirigirà de nou a <strong>SourceForge</strong> i ens demanarà el nostre nom d'usuari i contrasenya per accedir-hi.</p>
+<h4 id="pas-2-creacio-del-repositori">Pas 2. Creació del repositori</h4>
+<p>Per crear un nou repositori, farem clic en l'enllaç <strong>Create</strong>, situat a la part superior dreta de la pàgina. Això ens portarà a la pàgina d'inici de creació de projectes, on haurem de seleccionar <strong>Create Your Project Now</strong>.</p>
+<p><a class="glightbox" href="../img/crea_projecte_sfg.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació d'un projecte" src="../img/crea_projecte_sfg.png" width="500px" /></a></p>
+<p>Això ens obrirà la pàgina de configuració del projecte. Com veurem, disposem de múltiples opcions per a ell (Wiki, pàgina web, etc.), així com l'accés mitjançant diferents sistemes de control de versions (<strong>Git</strong>, <strong>Subversion</strong>, <strong>Mercurial</strong>). De totes aquestes opcions, marcarem únicament l'opció de <strong>Subversion</strong>, desactivant la resta, ja que només utilitzarem aquesta opció. Si posteriorment voleu utilitzar <strong>SourceForge</strong> per emmagatzemar els vostres projectes, podeu explorar totes les opcions possibles.</p>
+<p><a class="glightbox" href="../img/acces_svn.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Configuració del projete" src="../img/acces_svn.png" width="600px" /></a></p>
+<p>Amb l'opció de <strong>Subversion</strong> marcada i acceptats els termes d'ús, creem el nostre projecte mitjançant el botó <strong>Create</strong>. És possible que en aquests moments se'ns demane un número de telèfon mòbil per enviar un PIN de validació. Això només es farà en aquest moment.</p>
+<p>Fet això, ja tindrem accés a la web del nostre projecte en <strong>SourceForge</strong>. Podem seguir un xicotet tour per la interfície.</p>
+<p><a class="glightbox" href="../img/1r_projecte.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Primer projecte en SourceForge" src="../img/1r_projecte.png" width="600px" /></a></p>
+<p>Si ho desitgeu, i tal com s'explica en el tour, podeu afegir informació al vostre projecte, utilitzar tiquets, incorporar col·laboradors, etc. Com que de moment només ens interessa treballar amb <strong>Subversion</strong>, anirem directament a l'apartat de <strong>Codi (Code)</strong>.</p>
+<h4 id="pas-3-creacio-dels-directoris-per-defecte">Pas 3. Creació dels directoris per defecte</h4>
+<p>Quan accedim a l'apartat de codi, <strong>SourceForge</strong> ens suggereix que creem certs directoris per defecte, indicant-nos els passos per fer-ho:</p>
+<p><a class="glightbox" href="../img/crea_dirs_svn.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació de directoris en Subversion" src="../img/crea_dirs_svn.png" width="400px" /></a></p>
+<p>L'estructura recomanada per a projectes en <strong>Subversion</strong> inclou les següents carpetes:</p>
+<ul>
+<li><strong>trunk</strong>: la línia principal o troncal de desenvolupament.</li>
+<li><strong>branches</strong>: diferents rames o bifurcacions de codi a partir de la branca principal, utilitzades per afegir noves funcionalitats a una aplicació (veurem aquest concepte amb més detall en <strong>Git</strong>).</li>
+<li><strong>tags</strong>: que representen instantànies (<em>snapshots</em>) preses del projecte en un moment determinat, per exemple, contenint les versions estables de l'aplicació.</li>
+</ul>
+<p>Així doncs, crearem aquestes carpetes en el repositori tal com ens indica. Per fer-ho, farem un <strong>checkout</strong> del repositori. Aquest concepte, que ja hem introduït en <strong>RCS</strong>, és molt semblant en <strong>Subversion</strong> i consisteix a obtenir una còpia local de treball des del repositori.</p>
+<div class="admonition note">
+<p class="admonition-title">El paquet subversion</p>
+<p>A partir d'ara anem a treballar amb l'ordre <code>svn</code> del paquet <code>subversion</code>.</p>
+<p>Si no el tenim instal·lat al nostre sistema, caldrà fer-ho amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>subversion
+</span></code></pre></div>
+</div>
+<p>En primer lloc, dins de la carpeta que vulguem utilitzar per al control de versions en el nostre equip, farem el <strong>checkout</strong> seguint la sintaxi:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>svn<span class="w"> </span>checkout<span class="w"> </span>--username<span class="o">=</span>Usuari<span class="w"> </span>Repositori_Remot<span class="w"> </span>Directori_Local
+</span></code></pre></div>
+<p>L'adreça del repositori remot s'especifica a través del protocol <strong>svn</strong> sobre un túnel <strong>SSH</strong> (svn+ssh://) per mantenir una comunicació segura. A més, aquest protocol requerirà d'autenticació.</p>
+<p>En el nostre cas, farem (recorda utilitzar el teu nom d'usuari i la ruta que t'indica <strong>SourceForge</strong>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>svn<span class="w"> </span>checkout<span class="w"> </span>--username<span class="o">=</span>alumno-dam-mgh<span class="w"> </span>svn+ssh://alumno-dam-mgh@svn.code.sf.net/p/primer-proyecto-en-svn/code/<span class="w"> </span>primer-proyecto-en-svn-code
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>...
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>The<span class="w"> </span>authenticity<span class="w"> </span>of<span class="w"> </span>host<span class="w"> </span><span class="s1">&#39;svn.code.sf.net (216.105.38.17)&#39;</span><span class="w"> </span>can<span class="err">&#39;</span>t<span class="w"> </span>be<span class="w"> </span>established.
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ECDSA<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is<span class="w"> </span>SHA256:FeVkoYYBjuQzb5QVAgm3BkmeN5TTgL2qfmqz9tCPRL4.
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Are<span class="w"> </span>you<span class="w"> </span>sure<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span><span class="w"> </span>connecting<span class="w"> </span><span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>?<span class="w"> </span>yes
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Password:<span class="w"> </span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Checked<span class="w"> </span>out<span class="w"> </span>revision<span class="w"> </span><span class="m">0</span>.
+</span></code></pre></div>
+<p>Com veiem, ens demanarà confirmació per connectar-nos a través de <strong>SSH</strong> amb el repositori, i també ens demanarà la nostra contrasenya en <strong>SourceForge</strong>.</p>
+<p>Fet això, ja ens diu que tenim la revisió <strong>0</strong>. Ara anem a crear les tres carpetes dins del directori:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>primer-proyecto-en-svn-code
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>trunk<span class="w"> </span>branches<span class="w"> </span>tags
+</span></code></pre></div>
+<p>I les afegim al sistema de control de versions. Per a això, utilitzarem l'ordre <strong>svn add</strong>, indicant els noms d'aquestes carpetes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>svn<span class="w"> </span>add<span class="w"> </span>trunk<span class="w"> </span>branches<span class="w"> </span>tags
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>A<span class="w">         </span>trunk
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>A<span class="w">         </span>branches
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>A<span class="w">         </span>tags
+</span></code></pre></div>
+<p>L'exida d'aquesta ordre ens mostra una línia per recurs afegit o modificat al control de versions. Quan la línia comença per la lletra <strong>A</strong>, ens indica que s'ha afegit el recurs.</p>
+<p>Ara ja tenim aquestes carpetes sota el control de versions, però ens falta sincronitzar-les amb el servidor. Això ho farem mitjançant un <strong>commit</strong> (<strong>svn ci</strong>), que és l'operació amb la qual enviem les dades que tenim en la carpeta local al repositori remot:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add initial directories&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Password:<span class="w"> </span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Adding<span class="w">         </span>branches
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Adding<span class="w">         </span>tags
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Adding<span class="w">         </span>trunk
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Committed<span class="w"> </span>revision<span class="w"> </span><span class="m">1</span>.
+</span></code></pre></div>
+<p>Amb això, veiem que ara el número de revisió ja és el <strong>1</strong> i es troba sincronitzada amb el repositori.</p>
+<p>Si ara tornem a la pàgina del nostre projecte en <strong>SourceForge</strong> i la refresquem en el navegador, veurem que ja tenim disponibles aquestes carpetes en el projecte.</p>
+<h4 id="treballant-en-equip-amb-el-repositori">Treballant en equip amb el repositori</h4>
+<p>En aquest apartat simularem el treball en equip o amb diversos ordinadors contra el servidor de <strong>Subversion</strong> del nostre projecte.</p>
+<p>Per a això, descarregarem de nou el repositori, però ho farem en un directori diferent del primer. Des d'aquesta segona còpia, el modificarem i pujarem els canvis. En el nostre cas, això serà una còpia en el nostre ordinador, però podria tractar-se d'una còpia en l'ordinador de qualsevol col·laborador del nostre projecte. Finalment, veurem com actualitzar aquests canvis des del servidor.</p>
+<h5 id="pas-1-obtenint-una-copia-local-nova-del-projecte">Pas 1. Obtenint una còpia local nova del projecte</h5>
+<p>Per obtenir una còpia local nova del projecte, farem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>svn<span class="w"> </span>checkout<span class="w"> </span>--username<span class="o">=</span>alumno-dam-mgh<span class="w"> </span>svn+ssh://alumno-dam-mgh@svn.code.sf.net/p/primer-proyecto-en-svn/code/<span class="w"> </span>copia_proyecto
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Password:<span class="w"> </span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>A<span class="w">    </span>copia_proyecto/branches
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>A<span class="w">    </span>copia_proyecto/tags
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>A<span class="w">    </span>copia_proyecto/trunk
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Checked<span class="w"> </span>out<span class="w"> </span>revision<span class="w"> </span><span class="m">1</span>.
+</span></code></pre></div>
+<p>Com veiem, s'ha creat la carpeta <strong>copia_proyecto</strong> amb la revisió <strong>1</strong>, incorporant les carpetes <strong>branches</strong>, <strong>tags</strong> i <strong>trunk</strong> creades anteriorment.</p>
+<h5 id="pas-2-afegint-contingut-i-pujant-lo-al-repositori-des-de-la-copia">Pas 2. Afegint contingut i pujant-lo al repositori des de la còpia</h5>
+<p>Crearem un fitxer nou en la carpeta <strong>trunk</strong> del projecte que anomenarem <strong>fitxer1.md</strong> amb el següent contingut. Pots utilitzar l'editor de text o codi que desitges:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gh"># Projecte amb Subversion</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Aquest és el nostre primer projecte en Sourceforge utilitzant Subversion per al mòdul d&#39;Entorns de Desenvolupament.
+</span></code></pre></div>
+<p>El guardem i tornem a la terminal per comprovar l'estat del SCV. Per a això, utilitzarem l'ordre <strong>svn st</strong> (de <em>status</em>) des del directori de treball:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>svn<span class="w"> </span>st
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>?<span class="w">       </span>trunk/fichero1.md
+</span></code></pre></div>
+<p>Com podem veure, ens mostra una línia que comença amb el signe d'interrogació i la ruta <strong>trunk/fichero1.md</strong>. Això significa que el fitxer <strong>fichero1.md</strong> dins del directori <strong>trunk</strong> no es troba encara sota el sistema de control de versions.</p>
+<p>Per afegir-lo, utilitzarem de nou l'ordre <strong>svn add</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>svn<span class="w"> </span>add<span class="w"> </span>trunk/fichero1.md<span class="w"> </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>A<span class="w">         </span>trunk/fichero1.md
+</span></code></pre></div>
+<p>Ara ja ens indica que el <strong>fitxer1.md</strong> ha sigut incorporat al SCV.</p>
+<p>Si ara consultem l'estat amb <strong>svn st</strong>, obtindrem la mateixa eixida, indicant que hem afegit aquest fitxer al control de versions.</p>
+<p>Així i tot, aquest fitxer està afegit en la nostra còpia de treball local, per la qual cosa hem d'enviar-lo al servidor. Per a això, fem un <em>commit</em> com en el pas anterior:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added fichero1.md&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Password:<span class="w"> </span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Adding<span class="w">         </span>trunk/fichero1.md
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Transmitting<span class="w"> </span>file<span class="w"> </span>data<span class="w"> </span>.done
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Committed<span class="w"> </span>revision<span class="w"> </span><span class="m">2</span>.
+</span></code></pre></div>
+<p>Amb això, ja tenim la segona revisió del projecte en el repositori. Si naveguem per la web, podrem trobar i consultar aquest fitxer. Observa que, en tractar-se d'un fitxer en format <strong>Markdown</strong>, la pàgina ja ens mostra el document formatat en lloc de mostrar el codi font.</p>
+<h4 id="pas-3-actualitzant-la-carpeta-de-treball-original">Pas 3. Actualitzant la carpeta de treball original</h4>
+<p>Quan treballem amb altres desenvolupadors en un mateix projecte, és habitual que cadascun tinga la seua còpia de treball local del repositori i l'actualitze cada vegada que realitze canvis en ell. En aquests casos, sempre és una bona pràctica actualitzar la nostra còpia de treball amb el contingut del repositori abans de realitzar qualsevol canvi.</p>
+<p>Tornem a la nostra carpeta original i actualitzem el contingut amb l'ordre <strong>update</strong> de Subversion (<strong>svn up</strong>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>primer-proyecto-en-svn-code/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>$<span class="w"> </span>svn<span class="w"> </span>up
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Updating<span class="w"> </span><span class="s1">&#39;.&#39;</span>:
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Password:<span class="w"> </span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>A<span class="w">    </span>trunk/fichero1.md
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>Updated<span class="w"> </span>to<span class="w"> </span>revision<span class="w"> </span><span class="m">2</span>.
+</span></code></pre></div>
+<p>Com podem veure, en actualitzar, la nostra còpia de treball local s'ha actualitzat afegint el <strong>fitxer1.md</strong> a la carpeta <strong>trunk</strong>.</p>
+<hr />
+<h5 id="pas-4-modificant-recursos-existents">Pas 4. Modificant recursos existents</h5>
+<p>Fins ara hem vist com afegir nous recursos al control de versions. Ara veurem com modificar fitxers existents i pujar-los.</p>
+<p>Des de la còpia inicial que acabem d'actualitzar, modifiquem el <strong>fitxer1.md</strong> amb el següent contingut:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="gh"># Projecte amb Subversion</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Aquest és el nostre primer projecte en Sourceforge utilitzant Subversion per al mòdul d&#39;Entorns de Desenvolupament.
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>En aquest cas pràctic estem treballant les diferents ordres de subversion:
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">*</span><span class="w"> </span><span class="sb">`svn co`</span>: Per fer un <span class="ge">*checkout*</span>.
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">*</span><span class="w"> </span><span class="sb">`svn ci`</span>: Per fer un <span class="ge">*commit*</span> sobre el repositori.
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">*</span><span class="w"> </span><span class="sb">`svn st`</span>: Per comprovar l&#39;estat.
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="k">*</span><span class="w"> </span><span class="sb">`svn add`</span>: Per afegir un recurs al control de versions.
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">*</span><span class="w"> </span><span class="sb">`svn up`</span>: Per actualitzar la nostra còpia de treball local des del repositori.
+</span></code></pre></div>
+<p>Guardem el fitxer i comprovem l'estat:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>svn<span class="w"> </span>st
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>M<span class="w">       </span>trunk/fichero1.md
+</span></code></pre></div>
+<p>Com podem veure, ara en lloc d'una <strong>A</strong>, ens mostra una <strong>M</strong>, indicant que el recurs ha sigut modificat. Ara només ens queda confirmar aquests canvis en el servidor amb un <strong>commit</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Modificat fichero1.md&quot;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Password:<span class="w"> </span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>Sending<span class="w">        </span>trunk/fichero1.md
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>Transmitting<span class="w"> </span>file<span class="w"> </span>data<span class="w"> </span>.done
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>Committed<span class="w"> </span>revision<span class="w"> </span><span class="m">3</span>.
+</span></code></pre></div>
+<p>Amb això obtenim la versió <strong>3</strong> del projecte en el repositori.</p>
+<h4 id="exercici-1">Exercici 1</h4>
+<p>Des de la segona còpia de treball que hem creat del repositori, crea un nou fitxer dins del directori <strong>trunk</strong> anomenat <strong>fichero2</strong>. Afig-lo al control de versions i puja'l al repositori.</p>
+<p>Ara, des de la primera còpia de treball del projecte, intenta crear el mateix fitxer amb alguna cosa de contingut i prova a pujar-lo al repositori. És possible? On ha estat l'error?</p>
+<hr />
+<h4 id="solucio">Solució</h4>
+<p>Creem el nou fitxer dins de la carpeta <strong>trunk</strong>. Per a això, podem utilitzar l'ordre <strong>touch</strong>, que ens crearà un fitxer sense contingut:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>touch<span class="w"> </span>trunk/fichero2
+</span></code></pre></div>
+<p>Si observem ara l'estat de la carpeta de treball:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>svn<span class="w"> </span>st
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>?<span class="w">       </span>fichero2
+</span></code></pre></div>
+<p>Veiem que existeix un fitxer que no està sota el control de versions, així que l'afegim:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>svn<span class="w"> </span>add<span class="w"> </span>trunk/fichero2<span class="w"> </span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>A<span class="w">         </span>fichero2
+</span></code></pre></div>
+<p>Una vegada afegit, el pugem al servidor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added fichero2&quot;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Password:<span class="w"> </span><span class="o">[</span>introduïm<span class="w"> </span>la<span class="w"> </span>contrasenya<span class="o">]</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Adding<span class="w">         </span>fichero2
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>Transmitting<span class="w"> </span>file<span class="w"> </span>data<span class="w"> </span>.done
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>Committed<span class="w"> </span>revision<span class="w"> </span><span class="m">4</span>.
+</span></code></pre></div>
+<p>Ara, des de la primera còpia de treball del projecte, intentem crear el mateix fitxer amb contingut. Per a això, podem utilitzar l'ordre <strong>echo</strong>, que mostra un missatge, i redirigir-lo al fitxer <strong>trunk/fichero2</strong>. Amb això, aconseguim escriure el missatge en el fitxer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Provant l&#39;exercici2&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>trunk/fichero2
+</span></code></pre></div>
+<p>Ara afegim el fitxer al control de versions:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>svn<span class="w"> </span>add<span class="w"> </span>trunk/fichero2<span class="w"> </span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>A<span class="w">         </span>trunk/fichero2
+</span></code></pre></div>
+<p>I intentem pujar-lo al servidor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Fichero2 des de la primera còpia&quot;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>Password:<span class="w"> </span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>Adding<span class="w">         </span>trunk/fichero2
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>Transmitting<span class="w"> </span>file<span class="w"> </span>data<span class="w"> </span>.done
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>svn:<span class="w"> </span>E160020:<span class="w"> </span>Commit<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>details<span class="w"> </span>follow<span class="o">)</span>:
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>svn:<span class="w"> </span>E160020:<span class="w"> </span>File<span class="w"> </span>already<span class="w"> </span>exists:<span class="w"> </span>filesystem<span class="w"> </span><span class="s1">&#39;c4543e9e-acd8-420a-86bb-cb6327f0ec99&#39;</span><span class="w"> </span>transaction<span class="w"> </span><span class="s1">&#39;4-4&#39;</span><span class="w"> </span>path<span class="w"> </span><span class="s1">&#39;/trunk/fichero2&#39;</span>
+</span></code></pre></div>
+<p>Com era d'esperar, la transacció falla, ja que el fitxer que volem escriure ja es troba en el repositori.</p>
+<p>Això és un problema habitual quan treballem juntament amb diversos desenvolupadors en un projecte. Per això és una bona pràctica actualitzar el repositori abans de començar a modificar el codi.</p>
+<p>Veiem en quin estat es troba el directori de treball mitjançant <strong>svn st</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>svn<span class="w"> </span>st
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>A<span class="w">       </span>trunk/fichero2
+</span></code></pre></div>
+<p>Com veiem, el fitxer està en el control de versions, però encara no s'ha pujat al servidor.</p>
+<p>Si ara intentem actualitzar el contingut amb l'ordre <strong>update</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>svn<span class="w"> </span>up
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>Updating<span class="w"> </span><span class="s1">&#39;.&#39;</span>:
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Password:<span class="w"> </span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">   </span>C<span class="w"> </span>trunk/fichero2
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>At<span class="w"> </span>revision<span class="w"> </span><span class="m">4</span>.
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>Summary<span class="w"> </span>of<span class="w"> </span>conflicts:
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span>Tree<span class="w"> </span>conflicts:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>Searching<span class="w"> </span>tree<span class="w"> </span>conflict<span class="w"> </span>details<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;trunk/fichero2&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>repository:
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>Password:
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>Checking<span class="w"> </span>r4...<span class="w"> </span><span class="k">done</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>Tree<span class="w"> </span>conflict<span class="w"> </span>on<span class="w"> </span><span class="s1">&#39;trunk/fichero2&#39;</span>:
+</span></code></pre></div>
+<p>Això ens indica que tenim els següents conflictes en el repositori, i ens demana què desitgem fer, si postposar la resolució del conflicte, marcar-lo com resolt (manualment) o mesclar els fitxers (merge). Triarem esta última:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>A<span class="w"> </span>new<span class="w"> </span>file<span class="w"> </span>appeared<span class="w"> </span>during<span class="w"> </span>update<span class="w"> </span>to<span class="w"> </span>r4<span class="p">;</span><span class="w"> </span>it<span class="w"> </span>was<span class="w"> </span>added<span class="w"> </span>by<span class="w"> </span>alumno-dam-mgh<span class="w"> </span><span class="k">in</span><span class="w"> </span>r4.
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>A<span class="w"> </span>file<span class="w"> </span>scheduled<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>next<span class="w"> </span>commit<span class="w"> </span>was<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>working<span class="w"> </span>copy.
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>Select:<span class="w"> </span><span class="o">(</span>p<span class="o">)</span><span class="w"> </span>Postpone,<span class="w"> </span><span class="o">(</span>r<span class="o">)</span><span class="w"> </span>Mark<span class="w"> </span>as<span class="w"> </span>resolved,<span class="w"> </span><span class="o">(</span>m<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>the<span class="w"> </span>files,<span class="w"> </span><span class="o">(</span>h<span class="o">)</span><span class="w"> </span>Help,<span class="w"> </span><span class="o">(</span>q<span class="o">)</span><span class="w"> </span>Quit<span class="w"> </span>resolution:<span class="w"> </span>m
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>Reverted<span class="w"> </span><span class="s1">&#39;trunk/fichero2&#39;</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>G<span class="w">   </span>trunk/fichero2
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>Tree<span class="w"> </span>conflict<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;trunk/fichero2&#39;</span><span class="w"> </span>marked<span class="w"> </span>as<span class="w"> </span>resolved.
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>Summary<span class="w"> </span>of<span class="w"> </span>conflicts:
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span>Tree<span class="w"> </span>conflicts:<span class="w"> </span><span class="m">0</span><span class="w"> </span>remaining<span class="w"> </span><span class="o">(</span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>already<span class="w"> </span>resolved<span class="o">)</span>
+</span></code></pre></div>
+<p>Amb la línia <code>G trunk/fichero2</code> se'ns indica que s'ha realitzat la fusió de les versions del fitger <em>(merGed)</em>.</p>
+<p>De tota manera, si ara consultem l'estat del Subversion, veurem que els canvis que hem fet de forma local encara no s'han pujat al servidor (ja que he fussionat el contingut del servidor amb el que tenim localment):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>$<span class="w"> </span>svn<span class="w"> </span>st
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>M<span class="w">   </span>trunk/fichero2
+</span></code></pre></div>
+<p>De maner que farem un últim commit per tal de pujar els canvis al servidor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>$<span class="w"> </span>svn<span class="w"> </span>ci<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Fixed fichero2&quot;</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>Password:
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>Sending
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w"> </span>trunk/fichero2
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>Transmitting<span class="w"> </span>file<span class="w"> </span>data<span class="w"> </span>.done
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>Committing<span class="w"> </span>transaction...
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>Committed<span class="w"> </span>revision<span class="w"> </span><span class="m">5</span>.
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tutorial de Subversion</p>
+<p>Si voleu més informació, disposeu d'un <a href="utorial de subversion en la wiki de Debian: https://wiki.debian.org/SVNTutorial">tutorial de Subversion a la Wiki de Debian</a></p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

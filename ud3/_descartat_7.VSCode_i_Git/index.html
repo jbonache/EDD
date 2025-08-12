@@ -1,0 +1,651 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>7. Git i Visual Studio Code - Sistemes de control de versions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Sistemes de control de versions" class="md-header__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemes de control de versions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Git i Visual Studio Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Sistemes de control de versions" class="md-nav__button md-logo" aria-label="Sistemes de control de versions" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Sistemes de control de versions
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Sistemes de Control de versions
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.scv_local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Sistems de Control de versions locals
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.scv_centralitzat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Sistems de Control de versions centralitzats
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.scv_distribuit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Sistems de Control de versions distribuïts
+    
+      <br>
+      <small>Llenguatges de marques i sistemes de gestió de la informació (LMSGI)</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.svc_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. El sistema de control de versions distribuit git
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.branques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Treballant amb branques
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Repositoris remots amb Git. Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.github_practic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. Treballant en remot amb Git i Github.
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>7. Git i Visual Studio Code</h1>
+
+<!-----
+
+
+D'acord, ací tens l'adaptació dels exercicis "Caso práctico 2. Clientes gráficos de git" i "Ponte a Prueba 2. Trabajando con el cliente gráfico de Git" per a utilitzar el suport a Git que porta Visual Studio Code.
+
+### Cas pràctic 2. Utilitzant el suport a Git de Visual Studio Code
+
+#### Objectiu
+Explora el suport integrat a Git en Visual Studio Code i utilitza'l per gestionar un repositori. 
+
+#### Instruccions
+
+1. **Instal·lació de Git**
+   - Assegura't que tens Git instal·lat en el teu equip. Pots descarregar-lo des de [Git SCM](https://git-scm.com/downloads/guis))))) i seguir les instruccions d'instal·lació per al teu sistema operatiu.
+
+2. **Configuració de Git en VSCode**
+   - Obre Visual Studio Code.
+   - Si és la primera vegada que utilitzes Git, hauràs de configurar el teu nom d'usuari i correu electrònic. Pots fer-ho des de la terminal integrada de VSCode:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;El teu Nom&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;el.teu.email@example.com&quot;</span>
+</span></code></pre></div>
+
+3. **Inicialització d'un nou repositori**
+   - Crea una nova carpeta per al teu projecte i obre-la amb VSCode.
+   - Des de la barra d'activitats de l'esquerra, selecciona la icona de control de codi font.
+   - Fes clic en "Initialize Repository" per inicialitzar un nou repositori Git en aquesta carpeta.
+
+4. **Afegint fitxers al repositori**
+   - Crea un nou fitxer anomenat `fitxer1.md` i afegeix-hi algun contingut.
+   - Des de la vista de control de codi font, veuràs que el fitxer apareix com a "Untracked". Fes clic en el símbol `+` al costat del fitxer per afegir-lo a l'àrea de preparació (staging area).
+
+5. **Fent un commit**
+   - Escriu un missatge de commit en el camp de text de la vista de control de codi font, per exemple, "Afegit fitxer1.md".
+   - Fes clic en el símbol de confirmació (check) per fer el commit.
+
+6. **Modificant fitxers i fent nous commits**
+   - Modifica el contingut de `fitxer1.md`.
+   - Afegeix els canvis a l'àrea de preparació i fes un nou commit amb un missatge descriptiu.
+
+7. **Sincronitzant amb un repositori remot**
+   - Si tens un compte a GitHub, crea un nou repositori (sense inicialitzar-lo amb cap fitxer).
+   - Torna a VSCode i obre la terminal integrada. Afegeix el repositori remot:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/el-teu-usuari/el-teu-repo.git
+</span></code></pre></div>
+   - Puja els teus canvis al repositori remot:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+
+#### Solució
+1. **Instal·lació de Git**
+   - Descarrega i instal·la Git des de [Git SCM](https://git-scm.com/downloads/guis)).
+
+2. **Configuració de Git en VSCode**
+   - Obre VSCode i configura el teu nom d'usuari i correu electrònic des de la terminal integrada:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;El teu Nom&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;el.teu.email@example.com&quot;</span>
+</span></code></pre></div>
+
+3. **Inicialització d'un nou repositori**
+   - Crea una nova carpeta per al teu projecte i obre-la amb VSCode.
+   - Des de la barra d'activitats de l'esquerra, selecciona la icona de control de codi font.
+   - Fes clic en "Initialize Repository".
+
+4. **Afegint fitxers al repositori**
+   - Crea un fitxer `fitxer1.md` i afegeix-hi contingut.
+   - Afegeix el fitxer a l'àrea de preparació des de la vista de control de codi font.
+
+5. **Fent un commit**
+   - Escriu un missatge de commit i fes clic en el símbol de confirmació.
+
+6. **Modificant fitxers i fent nous commits**
+   - Modifica `fitxer1.md`, afegeix els canvis a l'àrea de preparació i fes un nou commit.
+
+7. **Sincronitzant amb un repositori remot**
+   - Crea un repositori a GitHub.
+   - Afegeix el repositori remot i puja els canvis:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/el-teu-usuari/el-teu-repo.git
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+
+### Ponte a Prueba 2. Treballant amb el suport a Git de Visual Studio Code
+
+#### Objectiu
+Practica l'ús del suport a Git integrat en VSCode per gestionar un repositori.
+
+#### Instruccions
+1. **Crea un nou repositori**
+   - Segueix els passos del cas pràctic per inicialitzar un nou repositori en una carpeta del teu equip.
+
+2. **Afegeix fitxers i fes commits**
+   - Crea diversos fitxers i afegeix-los al repositori.
+   - Fes commits amb missatges descriptius per cada canvi.
+
+3. **Sincronitza amb un repositori remot**
+   - Crea un repositori remot a GitHub.
+   - Afegeix el repositori remot a VSCode i puja els teus canvis.
+
+#### Claves de resolución
+- Practica amb el suport a Git integrat en VSCode.
+- No tinguis por de "trencar" res, ja que estàs treballant amb un repositori nou i buit.
+- Utilitza tant la interfície gràfica com la terminal integrada per gestionar el control de versions.
+
+#### Solució
+1. **Crea un nou repositori**
+   - Inicialitza un nou repositori en una carpeta del teu equip seguint els passos del cas pràctic.
+
+2. **Afegeix fitxers i fes commits**
+   - Crea diversos fitxers, afegeix-los al repositori i fes commits amb missatges descriptius.
+
+3. **Sincronitza amb un repositori remot**
+   - Crea un repositori remot a GitHub, afegeix-lo a VSCode i puja els teus canvis.
+
+### Anotacions per a captures de pantalla
+- **Inicialització del repositori**: Captura de la vista de control de codi font amb l'opció "Initialize Repository".
+- **Afegint fitxers**: Captura de la vista de control de codi font amb fitxers "Untracked" i el símbol `+`.
+- **Fent un commit**: Captura de la vista de control de codi font amb el missatge de commit i el símbol de confirmació.
+- **Sincronitzant amb un repositori remot**: Captura de la terminal integrada amb les ordres `git remote add origin` i `git push`.
+
+Si necessites alguna altra cosa o més detalls, fes-m'ho saber! 😊
+
+Origen: Conversación con Copilot 27/10/2024
+(1) MHE_CF_GS_EDD_UD3__CASOS_PRACTICOS. https://gvaedu-my.sharepoint.com/personal/ja_murciaandres_edu_gva_es/Documents/Arxius%20del%20xat%20del%20Microsoft%c2%a0Copilot/MHE_CF_GS_EDD_UD3__CASOS_PRACTICOS.docx?web=1.
+(2) undefined. https://git-scm.com/downloads/guis%29.
+(3) undefined. https://gitahead.github.io/gitahead.com/%29.
+(4) undefined. https://github.com/AlumnoDAM-MGH/mi-primer-repo%29.
+(5) undefined. https://bing.com/search?q=.
+(6) undefined. https://git.io/JcarI.
+(7) undefined. https://marketplace.visualstudio.com/items?itemName=nickheap.vscode-ant.
+(8) undefined. https://github.com/NickHeap2/vscode-ant.
+
+
+----->
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,794 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.llenguatges/">
+      
+      
+        <link rel="next" href="../4.desenvolupament/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Del codi font a l'executable - Desenvolupament de programari</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#del-codi-font-al-codi-executable" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Desenvolupament de programari" class="md-header__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desenvolupament de programari
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Del codi font a l'executable
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Desenvolupament de programari" class="md-nav__button md-logo" aria-label="Desenvolupament de programari" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Desenvolupament de programari
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.programes_informatics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Programes Informàtics
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.llenguatges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Llenguatges de programació
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3. Execució de programes: Del codi font a l'executable
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Execució de programes: Del codi font a l'executable
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-codi-font-al-codi-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Del codi font al codi executable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del codi font al codi executable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traductors-compiladors-i-interprets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traductors, compiladors i intèrprets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codi-font-codi-objecte-i-codi-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Codi font, codi objecte i codi executable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnologies-de-virtualitzacio-java-i-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tecnologies de virtualització: Java i .NET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sobre-codi-font-i-software-lliure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre codi font i software lliure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples-practics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples pràctics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemples pràctics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1. Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2. C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-3-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 3. Java
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.desenvolupament/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Desenvolupament d'aplicacions
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.metodologies_agils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Metodologíes àgils de desenvolupament
+    
+      <br>
+      <small>Entorns de Desenvolupament</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-codi-font-al-codi-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Del codi font al codi executable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del codi font al codi executable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traductors-compiladors-i-interprets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traductors, compiladors i intèrprets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codi-font-codi-objecte-i-codi-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Codi font, codi objecte i codi executable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnologies-de-virtualitzacio-java-i-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tecnologies de virtualització: Java i .NET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sobre-codi-font-i-software-lliure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre codi font i software lliure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples-practics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples pràctics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemples pràctics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1. Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2. C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-3-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 3. Java
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>3. Execució de programes: Del codi font a l'executable</h1>
+
+<h2 id="del-codi-font-al-codi-executable">Del codi font al codi executable</h2>
+<p>Els desenvolupadors solen expressar els programes en llenguatges de programació d'alt nivell, que no poden ser executats directament per un ordinador. Aquests programes requeriran d'un procés de traducció d'aquest codi d'alt nivell a un llenguatge que puga entendre i interpretar el propi ordinador, conegut com a llenguatge màquina. En aquest apartat anem a veure les diferents aproximacions que existeixen per generar aquests programes executables.</p>
+<h3 id="traductors-compiladors-i-interprets">Traductors, compiladors i intèrprets</h3>
+<p>Els programes encarregats de la traducció de llenguatges d'alt nivell a codi màquina es coneixen com a traductors i poden ser de dos tipus:</p>
+<ul>
+<li><strong>Compiladors</strong>: Tradueixen un programa expressat en llenguatge d'alt nivell en la seua totalitat a codi màquina. En aquest procés de traducció, podem detectar certs errors en els programes abans de generar els executables. Alguns dels llenguatges compilats més comuns són C o C++.</li>
+<li><strong>Intèrprets</strong>: Realitzen la traducció i l'execució línia a línia, per la qual cosa no generaran un nou fitxer executable. En aquests traductors, si no hi ha un pre-processat previ, els errors de programació no es detecten fins que el programa ja està en execució.</li>
+</ul>
+<h3 id="codi-font-codi-objecte-i-codi-executable">Codi font, codi objecte i codi executable</h3>
+<p>L'estàndard ISO/IEC/IEEE 24765:2017 ofereix les següents definicions sobre codi, llenguatge i programa font:</p>
+<div class="admonition note">
+<ul>
+<li><strong>Codi font</strong>: Instruccions de computadora i definicions de dades expressades en una forma adequada per a l'entrada a un assemblador, compilador o altre traductor.</li>
+<li><strong>Llenguatge font</strong>: Idioma en el qual es representa l'entrada a un procés de traducció assistida per la màquina.</li>
+<li><strong>Programa font</strong>: Programa d'ordinador que ha de ser compilat, assemblat o traduït d'una altra manera per ser executat per un ordinador.</li>
+</ul>
+</div>
+<p>Per altra banda, l'estàndard defineix el codi objecte com:</p>
+<div class="admonition note">
+<ul>
+<li><strong>Codi objecte</strong>: Instruccions d'un ordinador i definicions de dades produïdes per un assemblador o compilador.</li>
+</ul>
+</div>
+<p>En altres paraules, el codi objecte és el que obtenim mitjançant un procés de compilació del codi font. Aquest codi objecte generalment és llenguatge màquina o bytecode, i es distribueix en un o diversos fitxers, però no és encara executable per l'ordinador. Perquè siga executable, requereix d'una última fase d'enllaçat on es combinen els diferents fitxers en codi objecte, juntament amb les biblioteques del sistema necessàries.</p>
+<p>Aquest procés general es mostra en el següent diagrama:</p>
+<p><a class="glightbox" href="../img/edicio_traduccio_enlla%C3%A7at.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama del procés" src="../img/edicio_traduccio_enlla%C3%A7at.png" width="90%" /></a></p>
+<p>Com podem veure, el procés per obtenir un executable passa per tres fases:</p>
+<ol>
+<li><strong>Fase d'edició</strong>: Generem el codi font del programa en un llenguatge d'alt nivell i utilitzant un editor de codi.</li>
+<li><strong>Fase de traducció o compilació</strong>: Un compilador genera el codi objecte a partir del codi font.</li>
+<li><strong>Fase d'enllaçat</strong>: Es combinen els diferents fitxers en codi objecte, enllaçant les biblioteques necessàries i generant el codi executable de l'aplicació.</li>
+</ol>
+<h3 id="tecnologies-de-virtualitzacio-java-i-net">Tecnologies de virtualització: Java i .NET</h3>
+<p>Quan parlem de virtualització, ens referim a la possibilitat d'executar una o diverses màquines virtuals sobre una única màquina física, abstraient així els seus recursos hardware.</p>
+<p>Aquesta virtualització pot ser de dos tipus: de sistema o de procés. Les màquines virtuals de sistema, o de hardware, permeten que cada màquina posseïsca el seu propi sistema operatiu, mentre que les màquines virtuals de procés o aplicació s'executen com un procés més del sistema operatiu, i serveixen com a pont entre el codi font d'alt nivell i el codi màquina. Aquestes màquines ens proporcionen un entorn d'execució (runtime) independent del hardware i del sistema operatiu, de manera que permeten el desenvolupament multiplataforma.</p>
+<p>Basant-se en aquesta idea de màquina virtual de procés, tenim dos grans entorns d'execució: <em>La màquina virtual de Java</em> (Java Virtual Machine, JVM) d'Oracle, i el <em>Runtime de llenguatge comú</em> (Common Language Runtime, CLR) de l'entorn .Net de Microsoft.</p>
+<p>El funcionament d'aquests runtimes es basa en compilar els fonts per a una màquina virtual de procés determinada (JVM o CLR). El resultat d'aquesta compilació és un codi intermedi, anomenat bytecode: Java bytecode en el cas de la JVM i Common Intermediate Language o CIL en el cas del CLR de Microsoft.</p>
+<p>Aquest codi intermedi és el mateix per a qualsevol plataforma, sent la pròpia màquina virtual (JVM o CLR) la que s'encarrega d'interpretar-lo i executar-lo en el sistema operatiu subjacent.</p>
+<p><a class="glightbox" href="../img/edicio_traduccio_execucio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama del codi intermedi" src="../img/edicio_traduccio_execucio.png" width="90%" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">El concepte de multiplataforma</p>
+<p>En informàtica, amb el terme <strong>plataforma</strong> ens referim a la combinació entre l'ordinador o dispositiu hardware i el seu sistema operatiu, sobre el qual podrem instal·lar i executar software.</p>
+<p>Així doncs, quan parlem de multiplataforma, ens referim a aquell software que pot ser executat en diferents plataformes. Una aplicació multiplataforma serà doncs aquella que puga executar-se en diferents plataformes. Com a exemple d'algunes de les aplicacions multiplataforma més comunes, podríem citar LibreOffice, Mozilla Firefox o l'editor gràfic Gimp.</p>
+</div>
+<h3 id="sobre-codi-font-i-software-lliure">Sobre codi font i software lliure</h3>
+<p>En Sistemes Informàtics es parla de <em>software lliure</em> i propietari. Recordeu que el software lliure es basa en quatre llibertats: d'execució, d'adaptació, de redistribució i de millora. Algunes d'elles, com la d'adaptació i millora, es diu que requereixen del codi font.</p>
+<p>Després del que hem vist en aquest apartat, has d'entendre millor aquest concepte de software lliure o de fonts obertes, enfront del software propietari, on l'únic que es distribueix és el codi executable, i no el font.</p>
+<h2 id="exemples-practics">Exemples pràctics</h2>
+<p>Anem a començar amb alguna cosa pràctica ja. A continuació se us proporcionaran diversos fragments de codi font en diferents llenguatges. No és necessari que enteneu ara el què fan, només els necessitarem per veure el procés per arribar als executables.</p>
+<h3 id="exemple-1-python">Exemple 1. Python</h3>
+<p>El següent fragment, escriu el missatge "Hola Món" per la pantalla:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Hola Món!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Copieu el contingut a un fitxer anomentat <code>hola.py</code>, i obriu una <em>terminal</em> en la carpet aon es troba. </p>
+<p>Per llançar l'intèrpret de <em>Python</em>, escriviu:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>python3<span class="w"> </span>hola.py
+</span></code></pre></div>
+<div class="admonition question">
+<p>Obseveu el resultat de l'execució anteror. S'ha generat algun fitxer addicional?</p>
+<p>Executeu l'ordre <code>file</code> sobre el fitxer (<code>file hola.py</code>). De quin tipus de fitxer es tracta?</p>
+</div>
+<h3 id="exemple-2-c">Exemple 2. C</h3>
+<p>Creeu altre fitxer de text amb el següent contingut:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Guardeu-lo amb el nom <code>hola.c</code>, i executeu el següent des de la mateixa carpeta on es troba el fitxer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cc<span class="w"> </span>hola.c
+</span></code></pre></div>
+<div class="admonition question">
+<p>Ha fet alguna cosa? Comproveu ara si s'ha generat algun fitxer. Si és així, podríeu provar a executar-lo directament? Quin tipus de fitxer és cadascun?</p>
+</div>
+<div class="admonition note">
+<p>Si voleu que en lloc de generar <code>a.out</code> genere altre nom, podem fer ús del paràmetre <code>-o</code>, per exemple: <code>cc hola.c -o hola.exe</code></p>
+</div>
+<h3 id="exemple-3-java">Exemple 3. Java</h3>
+<p>Fem ara el mateix amb el següent contingut, i el guardem com a <code>Hola.java</code> (la majúscula és important!):</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Hola</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola Món!&quot;</span><span class="p">);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Fet això, ens tornem a situar en la mateixa carpeta on tinguem guardat l'arxiu i llancem la següent ordre:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>javac<span class="w"> </span>Hola.java
+</span></code></pre></div>
+<div class="admonition question">
+<p>S'ha generat algun fitxer nou? Quin contingut té? De quin tipus és?</p>
+</div>
+<p>Ara podeu llançar:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>java<span class="w"> </span>Hola
+</span></code></pre></div>
+<p>Per veure'n el resultat. S'ha generat algun fitxer nou en aquest cas?</p>
+<div class="admonition question">
+<p class="admonition-title">Conclussions</p>
+<p>Quines conclussions extreus dels exemples anteriors? Per a què serveix l'ordre <code>python3</code>? I <code>cc</code>? I <code>java</code> i <code>javac</code>?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Curiositat: examinant el bytecode</p>
+<p>Si voleu examinar el bytecode generat per Java, podeu fer ús de:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ javap -c Hola.class 
+</span></code></pre></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

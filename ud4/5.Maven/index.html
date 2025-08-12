@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4.Eines_Automatitzacio/">
+      
+      
+        <link rel="next" href="../6.gradle/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Maven - La plataforma Java. Eines d’automatització.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maven-i-gradle" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-header__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            La plataforma Java. Eines d’automatització.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Maven
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-nav__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    La plataforma Java. Eines d’automatització.
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. La plataforma Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. VSCode i Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.netbeans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Netbeans
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.Eines_Automatitzacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Eines d'automatització
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#maven-i-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maven i Gradle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-practic-amb-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple pràctic amb Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empaquetat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Empaquetat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-mode-interactiu-de-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      El mode interactiu de *Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-plugin-de-maven-per-a-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      El plugin de Maven per a VSCode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.gradle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#maven-i-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maven i Gradle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-practic-amb-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple pràctic amb Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empaquetat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Empaquetat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-mode-interactiu-de-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      El mode interactiu de *Maven
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-plugin-de-maven-per-a-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      El plugin de Maven per a VSCode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>5. Apache Maven</h1>
+
+<h3 id="maven-i-gradle">Maven i Gradle</h3>
+<p>Maven va sorgir en el si d'Apache, amb la finalitat de simplificar els processos de construcció en el Projecte Jakarta Turbine. Este projecte estava compost de diversos subprojectes, cadascun amb una estructura particular, i els seus respectius arxius de compilació d'<em>Ant</em>, diferents entre ells. En este context, es va decidir desenvolupar una forma estàndard de construcció de projectes que oferira a més una forma senzilla de publicar les aplicacions. El resultat va ser <em>Maven</em>, que es va integrar inicialment a Jakarta, i posteriorment es va alliberar com a projecte de nivell superior de l'<em>Apache Software Foundation</em>.</p>
+<p>Mitjançant <em>Maven</em>, podem doncs generar aplicacions que seguixen una <strong>estructura</strong> i un <strong>procés de construcció</strong> ben definits i coneguts, seguint a més bones pràctiques. No obstant això, a vegades este mecanisme és massa rígid, i resulta bastant complicat abordar el desenvolupament d'aplicacions que no seguisquen un model estándard. És ací on apareix <em>Gradle</em>, aprofitant les bondats d'<em>Ant</em> i <em>Maven</em> i evitant els seus defectes.</p>
+<p>En els següents apartats veurem una xicoteta introducció als conceptes més rellevants de cadascuna d'estes eines, i es plantejaran un parell d'exemples pràctics on es posaran en pràctica.</p>
+<h3 id="apache-maven">Apache Maven</h3>
+<p><em>Apache Maven</em> és una eina que ens permet crear i gestionar projectes Java, de manera similar a com féiem amb <em>Ant</em>, però des d'un punt de partida diferent. La idea subjacent d'Apache Maven és <strong>oferir suport al cicle de vida de construcció segons estàndards</strong>, de manera que les nostres aplicacions siguen més homogènies i tinguen en compte bones pràctiques. Seguix el <strong>principi de convenció sobre configuració</strong> (CoC), segons el qual, s'establixen unes certes <em>convencions</em> que simplifiquen la presa de decisions per part del programador.</p>
+<p>D'esta manera, es promou la construcció de solucions de programari homogènies, i que reduïxen la variabilitat.</p>
+<p>Entre les diferents ajudes que oferix Maven trobem la construcció d'aplicacions, el manteniment de la documentació, la gestió de dependències, de versions i la distribució de l'aplicació.</p>
+<p>Un dels conceptes que treballa Maven, i amb el qual ens trobarem llegint la seua documentació és el de <em>artifact</em>, la traducció literal del qual seria <em>artefacte</em>. Este concepte fa referència al que anomenarem una <em>solució</em>, o un <em>producte programari reutilitzable</em>, que és gestionat per Maven. Això implicarà que tinga una estructura concreta i seguisca unes certes convencions.</p>
+<h4 id="arquetips">Arquetips</h4>
+<p>Com hem comentat, el principal objectiu de Maven és homogeneïtzar l'estructura de pràcticament qualsevol tipus d'aplicació. Per a això introduïx el concepte d'arquetip.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un arquetipus (archetype) en Maven és un model original, a partir del qual creem l'esquelet de solucions que segueixen el mateix patró o són del mateix tipus.</p>
+</div>
+<p>Els arquetips ens ofereixen una forma consistent d'aplicar bones pràctiques. Mitjançant ells, podem tindre un projecte en funcionament de manera ràpida i amb una estructura ben definida i coneguda, amb el que a més es facilitarà el manteniment posterior i el treball en equip.</p>
+<p>Entre els arquetips més rellevants podríem trobar <code>maven-archetype-quickstart</code>, per a generar un projecte de tipus <em>Hola Món</em>,  <code>maven-archetype-simple</code>, per a generar un projecte simple, o bé <code>maven-archetype-webapp</code>, per a una aplicació web.</p>
+<!-- La creació d'un projecte basada en un arquetip la veurem de manera pràctica en el cas pràctic ampliat 5.-->
+
+<h4 id="el-cicle-de-vida-de-construccio">El cicle de vida de construcció</h4>
+<p>Maven introduïx el concepte de cicle de vida de construcció (que no hem de confondre amb el cicle de vida de desenvolupament). El cicle de vida de construcció es podria definir com:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un procés ben definit per a la construcció i distribució de solucions (artifats).</p>
+</div>
+<p>Maven distingix tres cicles de vida en el procés de construcció:</p>
+<ul>
+<li><strong>Default</strong>: El cicle de vida per defecte que gestiona la construcció en si de la solució,</li>
+<li><strong>Clean</strong>: El cicle de vida que s'encarrega de la neteja del projecte,</li>
+<li><strong>Site</strong>: El cicle de vida per a la generació de documentació.</li>
+</ul>
+<p>Cadascun d'estos cicle de vida es compon de diferents etapes, i en cadascuna d'elles es realitzen diferents accions. El cicle de vida més important és el <em>Default</em>, que es compon de 22 fases, encara que les més importants són:</p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Tasques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate</td>
+<td>Comprova que l'estructura del projecte és correcta i tota la informació necessària es troba en el seu lloc.</td>
+</tr>
+<tr>
+<td>compile</td>
+<td>Compila els fonts, generant el bytecode corresponent.</td>
+</tr>
+<tr>
+<td>test</td>
+<td>Realitza proves unitàries sobre els fonts generats amb JUnit. Parlarem d'estes proves en la següent unitat.</td>
+</tr>
+<tr>
+<td>package</td>
+<td>Empaqueta tots els <code>.class</code> obtinguts en un format <em>distribuible</em> , mitjançant un arxiu <em>JAR</em>.</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>Realitza les comprovacions corresponents a les proves d'integració, per a garantir criteris de qualitat.</td>
+</tr>
+<tr>
+<td>install</td>
+<td>Instal·la el paquet en un directori local que fa de repositori, de manera que puga usar-se en altres projectes de manera local.</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>Desplega el paquet generat en un repositori remot, de manera que puga usar-se amb altres desenvolupadors i projectes.</td>
+</tr>
+</tbody>
+</table>
+<p>Estes fases podran llançar-se de manera individual, però tenint en consideració que per a llançar una fase s'ha de passar per les anteriors. És a dir, si volem compilar el projecte (sense empaquetar ni desplegar), deurem primer passar per la fase de validació i després per la fase de compilació.</p>
+<p>Quan desenvolupem aplicacions d'escriptori que no requerisquen la seua instal·lació en un servidor, serà suficient amb llançar la fase <em>verify</em>, per a realitzar la compilació, empaquetat i verificar la integració.</p>
+<h4 id="complements-plugins-i-objectius-goals">Complements (plugins) i objectius (goals)</h4>
+<p>Com hem comentat, cadascuna de les fases del cicle de vida fa diverses tasques, més conegudes com a objectius  o <em>goals</em>.</p>
+<p>Els objectius (<em>goals</em>) representen doncs una tasca específica, que contribuïx a la construcció o gestió d'una solució, i s'organitzen en complements (<em>plugins</em>).</p>
+<p>Encara que cada fase del cicle de vida es componga, de diversos objectius, pot ser que existisquen objectius no vinculats a cap fase del cicle de vida o vinculats a més d'una fase. Un objectiu no vinculat a cap fase pot invocar-se directament fora del cicle de vida, de manera que no passe per cap fase prèviament.</p>
+<p>Vegem en la següent taula la relació d'algunes de les fases del cicle de vida per defecte i alguns objectius que es llancen en ella, al costat del complement en què estos es troben.</p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Objectiu (<em>Goal</em>)</th>
+<th>Complement (<em>plugin</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>compiler:compile</td>
+<td>maven-compiler-plugin</td>
+</tr>
+<tr>
+<td>test-compile</td>
+<td>compiler:testCompile</td>
+<td>maven-compiler-plugin</td>
+</tr>
+<tr>
+<td>test</td>
+<td>surefire:test</td>
+<td>maven-surefire-plugin</td>
+</tr>
+<tr>
+<td>package</td>
+<td>jar:jar</td>
+<td>maven-jar-plugin</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>verifier:verify</td>
+<td>maven-verifier-plugin</td>
+</tr>
+<tr>
+<td>install</td>
+<td>install:install</td>
+<td>maven-install-plugin</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>deploy:deploy</td>
+<td>maven-deploy-plugin</td>
+</tr>
+</tbody>
+</table>
+<p>Com podem veure, s'ha inclòs, a tall d'exemple, la fase test-compile, de la qual no hem parlat abans. Esta fase s'encarrega de compilar el codi font de les proves. Com veiem, l'objectiu <em>testCompile</em> que llança es troba en el complement <em>maven-</em>compiler-<em>plugin, que també inclou l'objectiu compile de la fase de compilació. Així doncs, tenim un </em>plugin* que conté objectius que es llancen en dos fases diferents.</p>
+<h4 id="el-pom">El POM</h4>
+<p>El Model d'Objectes del Projecte (<em>Project Object Model, POM</em>) és un fitxer XML que descriu la configuració del projecte en Maven, i proporciona la major part d'informació necessària per a la seua construcció. Pot arribar a ser un arxiu llarg i complex, però no és necessari entendre tot el seu contingut per a traure tota l'efectivitat de Maven.</p>
+<p>El model conté valors predeterminats per a la majoria de projectes, com poden ser el directori de compilació (<em>target</em>), el directori dels fonts (<em>src/main/java</em>), el directori dels fonts de les proves (<em>src/test/java</em>), etc.</p>
+<p>Quan es llança un objectiu, Maven llig este fitxer per a obtindre la informació necessària i després executar l'objectiu.</p>
+<p>A més dels valors per defecte, podem especificar les dependències del projecte, especificar objectius, perfils de compilació, o informació com el nom, l'organització, la descripció o la versió entre altres.</p>
+<p>Maven proporciona molts valors per defecte a través del que es coneix com el <em>Super POM</em>. Estos valors per defecte es combinaran amb els valors definits en el fitxer en l'arrel del projecte <em>pom.xml</em> per a obtindre el que es coneix com el <em>POM efectiu</em>, que és el que s'aplicarà al projecte en qüestió.</p>
+<h3 id="exemple-practic-amb-maven">Exemple pràctic amb Maven</h3>
+<p>Anem a vore com fer ús de Maven per gestionar els nostres projecte Java. Per a això partirem d'una distribució Linux basada en Ubuntu 24.</p>
+<p>El primer que haurem de fer és instal·lar l'eina. Si som administradors del sistema, podem actualitzar la llista de paquets de la nostra distribució (<code>sudo apt update</code>), i instal·lar el paquet <em>maven</em> (<code>sudo apt install maven</code>).</p>
+<p>Ara bé, si no disposem de permís d'administrador o volem instal·lar una versió més actualitzada que la dels repositoris d'Ubuntu, podem fer la instal·lació al nostre <em>Home</em> d'usuari, descarregant els binaris i incloent les rutes als executables des del PATH.</p>
+<p>Per a això seguim els següents pasos:</p>
+<ol>
+<li>
+<p>Descarreguem <a href="https://maven.apache.org/download.cgi">Apache Maven des de la web</a>. Anem a descarregar, per exemple el fitxer <a href="https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz">apache-maven-3.9.9-bin.tar.gz</a>, i el deixarem a la nostra carpeta <code>~/devtools</code>.</p>
+</li>
+<li>
+<p>Fet això, ans situem en aquesta carpeta i descomprimim el fitxer:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>~$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/devtools/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>~/devtools$<span class="w"> </span>tar<span class="w"> </span>-xvzf<span class="w"> </span>apache-maven-3.9.9-src.tar.gz
+</span></code></pre></div>
+<ol>
+<li>Afegim al fitxer .bashrc el següent fragment:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Maven</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/devtools/apache-maven-3.9.9/bin&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/devtools/apache-maven-3.9.9/bin:<span class="nv">$PATH</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">fi</span>
+</span></code></pre></div>
+<p>Fet això, ja podem obrir una nova terminal i comprovar la versió:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>-v
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Apache<span class="w"> </span>Maven<span class="w"> </span><span class="m">3</span>.9.9<span class="w"> </span><span class="o">(</span>8e8579a9e76f7d015ee5ec7bfcdc97d260186937<span class="o">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Maven<span class="w"> </span>home:<span class="w"> </span>/home/usuari/devtools/apache-maven-3.9.9
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Java<span class="w"> </span>version:<span class="w"> </span><span class="m">21</span>.0.5,<span class="w"> </span>vendor:<span class="w"> </span>Ubuntu,<span class="w"> </span>runtime:<span class="w"> </span>/usr/lib/jvm/java-21-openjdk-amd64
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Default<span class="w"> </span>locale:<span class="w"> </span>ca_ES,<span class="w"> </span>platform<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>OS<span class="w"> </span>name:<span class="w"> </span><span class="s2">&quot;linux&quot;</span>,<span class="w"> </span>version:<span class="w"> </span><span class="s2">&quot;6.8.0-49-generic&quot;</span>,<span class="w"> </span>arch:<span class="w"> </span><span class="s2">&quot;amd64&quot;</span>,<span class="w"> </span>family:<span class="w"> </span><span class="s2">&quot;unix&quot;</span>
+</span></code></pre></div>
+<p>Com podem veure, hem instal·lat la versió 3.9.9.</p>
+<p>L'ordre <code>mvn -v</code> a més d'informació sobre la versió, ens mostra la ubicació de les instal·lacions de <em>Maven</em> i la màquina virtual de Java, així com informació genèrica sobre el sistema i la configuració de l'idioma.</p>
+<h4 id="creacio-del-projecte">Creació del projecte</h4>
+<p>Per a crear un projecte en <em>Maven</em> hem d'utilitzar el mecanisme d'arquetips que ens oferix. Per a això, utilitzarem l'orde <code>mvn archetype:generate</code>, la qual admet un mode interactiu i un altre no interactiu. El mode interactiu el tractarem posteriorment. En este apartat veurem el mode no interactiu, en el qual li oferirem a l'ordre de generació del projecte algunes opcions, i deixarem unes altres amb les seues opcions per defecte.</p>
+<h5 id="pas-1-creacio-del-projecte-a-partir-de-larquetip">Pas 1. Creació del projecte a partir de l'arquetip</h5>
+<p>Per a crear el projecte amb Maven, a partir d'un arquetip, ens situem en la carpeta on desitgem crear la carpeta amb el projecte, i llancem la següent orde:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>com.ieseljust.edd<span class="w"> </span>-DartifactId<span class="o">=</span>saludaMaven<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-quickstart<span class="w"> </span>-DarchetypeVersion<span class="o">=</span><span class="m">1</span>.5<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span><span class="w"> </span>
+</span></code></pre></div>
+<p>Vegem les diferents opcions:</p>
+<ul>
+<li><code>Archetype:generate</code>: Indiquem a Maven que volem executar l'objectiu (<em>goal</em>) <code>generate</code> del plugin <code>archetype</code>. Recordem que <strong>en Maven, els goals són equiparables als tasks de'Ant</strong>: Este objectiu en concret, ens genera un projecte simple basat en un arquetip. Podem dir que un <em>plugin</em> és una col·lecció d'objectius amb un propòsit comú.</li>
+<li><code>DgroupId</code>: Indiquem l'identificador únic de l'organització que crea el projecte, basat normalment en el domini completament qualificat de l'organització (<em>fully qualified domain</em>), en este cas <code>com.ieseljust.edd</code>.</li>
+<li><code>DartifactID</code>: Indica el nom del recurs (<em>artifact</em>) que generarem. També ha de ser un nom únic per al projecte. En este cas, <em>saludaMaven</em>.</li>
+<li><code>DarchetypeArtifactId</code>: Indica el nom del recurs d'arquetip a partir del qual triar la plantilla per al nostre projecte. En este cas, indiquem el recurs <em>maven-archetipe-quickstart</em>, que generarà una aplicació senzilla i ràpida, del tipus <em>Hola Món</em>.</li>
+<li><code>DinteractiveMode</code>: Indica si volem utilitzar o no el mode interactiu. En este cas, hem indicat <em>false</em>, per a agilitzar la tasca, i que certs paràmetres prenguen els seus valors per defecte.</li>
+</ul>
+<p>Amb tot això, l'eixida de l'orde anterior (i després de descarregar algun programari addicional ...) és la següent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>...
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>----------------------------------------------------------------------------
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>----------------------------------------------------------------------------
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>following<span class="w"> </span>parameters<span class="w"> </span><span class="k">for</span><span class="w"> </span>creating<span class="w"> </span>project<span class="w"> </span>from<span class="w"> </span>Archetype:<span class="w"> </span>maven-archetype-quickstart:1.5
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>----------------------------------------------------------------------------
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>groupId,<span class="w"> </span>Value:<span class="w"> </span>com.ieseljust.edd
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>artifactId,<span class="w"> </span>Value:<span class="w"> </span>saludaMaven
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>version,<span class="w"> </span>Value:<span class="w"> </span><span class="m">1</span>.0-SNAPSHOT
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>package,<span class="w"> </span>Value:<span class="w"> </span>com.ieseljust.edd
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>packageInPathFormat,<span class="w"> </span>Value:<span class="w"> </span>com/ieseljust/edd
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>junitVersion,<span class="w"> </span>Value:<span class="w"> </span><span class="m">5</span>.11.0
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>package,<span class="w"> </span>Value:<span class="w"> </span>com.ieseljust.edd
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>groupId,<span class="w"> </span>Value:<span class="w"> </span>com.ieseljust.edd
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>artifactId,<span class="w"> </span>Value:<span class="w"> </span>saludaMaven
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>javaCompilerVersion,<span class="w"> </span>Value:<span class="w"> </span><span class="m">17</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Parameter:<span class="w"> </span>version,<span class="w"> </span>Value:<span class="w"> </span><span class="m">1</span>.0-SNAPSHOT
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="o">[</span>WARNING<span class="o">]</span><span class="w"> </span>Don<span class="s1">&#39;t override file /tmp/proves_Maven/saludaMaven/src/main/java/com/ieseljust/edd</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s1">[WARNING] Don&#39;</span>t<span class="w"> </span>override<span class="w"> </span>file<span class="w"> </span>/tmp/proves_Maven/saludaMaven/src/test/java/com/ieseljust/edd
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="o">[</span>WARNING<span class="o">]</span><span class="w"> </span>CP<span class="w"> </span>Don<span class="err">&#39;</span>t<span class="w"> </span>override<span class="w"> </span>file<span class="w"> </span>/tmp/proves_Maven/saludaMaven/.mvn
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Project<span class="w"> </span>created<span class="w"> </span>from<span class="w"> </span>Archetype<span class="w"> </span><span class="k">in</span><span class="w"> </span>dir:<span class="w"> </span>/tmp/proves_Maven/saludaMaven
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>BUILD<span class="w"> </span>SUCCESS
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Total<span class="w"> </span>time:<span class="w">  </span><span class="m">3</span>.546<span class="w"> </span>s
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span><span class="m">2024</span>-11-25T11:45:06+01:00
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span></code></pre></div>
+<p>Com podrem veure, ens mostra algunes alertes i missatges informatius, amb els valors que ha establit per a alguns paràmetres. A més, es realitzen algunes descàrregues des de <code>repo.maven.apache.org</code>. Aquesta adreça és el repositori de <em>Maven</em>, i conté totes les plantilles i eines que podem utilitzar amb ella.</p>
+<p>Vegem què ens ha generat esta orde:</p>
+<p><a class="glightbox" href="../img/maven/estructura.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Estructura creada" src="../img/maven/estructura.png" width="400dx" /></a></p>
+<p>Com veiem, s'ha creat la carpeta del projecte saludaMaven amb el fitxer <code>pom.xml</code>, que descriu el projecte segons el <em>Project Ojbect Model (POM)</em>. Dins d'esta carpeta tenim la carpeta <code>src</code>, amb els arxius font i de proves, degudament organitzats en carpetes segons el nom de domini completament qualificat.</p>
+<h6 id="analitzant-el-pom">Analitzant el POM</h6>
+<p>Com ja s'ha comentat anteriorment, el fitxer pom.xml descriu la configuració del projecte en <em>Maven</em>, i proporciona la major part d'informació necessària per a la seua construcció. Pot arribar a ser un arxiu llarg i complex, però no és necessari entendre tot el seu contingut per a traure tota l'efectivitat de <em>Maven</em>.</p>
+<p>Vegem el contingut del nostre arxiu <code>pom.xml</code>:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nt">&lt;groupId&gt;</span>com.ieseljust.edd<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>saludaMaven<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">&lt;name&gt;</span>saludaMaven<span class="nt">&lt;/name&gt;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="cm">&lt;!-- FIXME change it to the project&#39;s website --&gt;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="nt">&lt;url&gt;</span>http://www.example.com<span class="nt">&lt;/url&gt;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="nt">&lt;properties&gt;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nt">&lt;maven.compiler.release&gt;</span>17<span class="nt">&lt;/maven.compiler.release&gt;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nt">&lt;/properties&gt;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="nt">&lt;dependencyManagement&gt;</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.junit<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>junit-bom<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="nt">&lt;version&gt;</span>5.11.0<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">      </span><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="nt">&lt;/dependencyManagement&gt;</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>junit-jupiter-api<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">      </span><span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span><span class="cm">&lt;!-- Optionally: parameterized tests support --&gt;</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>junit-jupiter-params<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">      </span><span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">  </span><span class="nt">&lt;build&gt;</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">    </span><span class="nt">&lt;pluginManagement&gt;</span><span class="cm">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">      </span><span class="nt">&lt;plugins&gt;</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">        </span><span class="cm">&lt;!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle --&gt;</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.4.0<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">        </span><span class="cm">&lt;!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging --&gt;</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-resources-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.3.1<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.13.0<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.3.0<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-install-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.1.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-deploy-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.1.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-78"><a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="w">        </span><span class="cm">&lt;!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle --&gt;</span>
+</span><span id="__span-5-79"><a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-80"><a id="__codelineno-5-80" name="__codelineno-5-80" href="#__codelineno-5-80"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-site-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-81"><a id="__codelineno-5-81" name="__codelineno-5-81" href="#__codelineno-5-81"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.12.1<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-82"><a id="__codelineno-5-82" name="__codelineno-5-82" href="#__codelineno-5-82"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-83"><a id="__codelineno-5-83" name="__codelineno-5-83" href="#__codelineno-5-83"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-5-84"><a id="__codelineno-5-84" name="__codelineno-5-84" href="#__codelineno-5-84"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-project-info-reports-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-85"><a id="__codelineno-5-85" name="__codelineno-5-85" href="#__codelineno-5-85"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.6.1<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-86"><a id="__codelineno-5-86" name="__codelineno-5-86" href="#__codelineno-5-86"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-5-87"><a id="__codelineno-5-87" name="__codelineno-5-87" href="#__codelineno-5-87"></a><span class="w">      </span><span class="nt">&lt;/plugins&gt;</span>
+</span><span id="__span-5-88"><a id="__codelineno-5-88" name="__codelineno-5-88" href="#__codelineno-5-88"></a><span class="w">    </span><span class="nt">&lt;/pluginManagement&gt;</span>
+</span><span id="__span-5-89"><a id="__codelineno-5-89" name="__codelineno-5-89" href="#__codelineno-5-89"></a><span class="w">  </span><span class="nt">&lt;/build&gt;</span>
+</span><span id="__span-5-90"><a id="__codelineno-5-90" name="__codelineno-5-90" href="#__codelineno-5-90"></a><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></div>
+<p>I la descripció d'alguns elements:</p>
+<ul>
+<li><code>project</code>: És l'etiqueta arrel del document. Consistix en una capçalera XML, on es definix el tipus de document a través del seu espai de noms.</li>
+<li><code>modelVersion</code>: Indica la versió de <em>POM</em> que es descriu el document.</li>
+<li><code>groupId</code>, <code>artifactId</code> i <code>name</code>: fan referència a l'identificador de l'organització (groupId), al nom de la solució (artifactId) i al de l'aplicació (name)</li>
+<li><code>version</code>: Indica la versió de l'aplicació. El sufix <code>SNAPSHOT</code>, indica que es tracta de l'últim codi en una branca de desenvolupament, la qual cosa no garantix l'estabilitat d'este. Generalment, s'usa quan estem en fase de desenvolupament i proves, fins que alliberem una release estable.</li>
+<li><code>properties</code>: Establix algunes propietats per al projecte, com ara:<ul>
+<li><code>project.build.sourceEncoding</code>: Especifica la codificació dels arxius font, en este cas UTF-8.</li>
+<li><code>maven.compiler.source</code> i <code>maven.compiler.target</code>: Especifica les propietats per al compilador, indicant que tant els fonts com el <em>bytecode</em> es correspondrà com a mínim amb la plataforma Java 1.7. Això es deu al fet que <em>Maven</em> ja no suporta versions de Java anteriors a la 1.6.</li>
+<li><code>dependencies</code>: Indica les dependències que té la nostra aplicació. Com veiem, ho fa indicant per a cadascuna el seu identificador d'organització (groupId), de recurs (artifactId), i la versió. A més, especifica l'àmbit (scope) en què s'aplica la dependència. En este cas, l'arquetip a partir del que hem generat la nostra aplicació incorpora la dependència de JUnit per a realitzar els tests.</li>
+<li>Secció <code>build</code> i <code>plugins</code>: En esta secció es definixen alguns paràmetres de la construcció i els plugins utilitzats per a això. Podem veure els plugins utilitzats en els diferents cicles de vida (clean, default, site, etcètera)</li>
+</ul>
+</li>
+</ul>
+<p>En principi, si no necessitem afegir cap dependència o alguna característica específica per al nostre projecte, no serà necessari fer canvis en el fitxer.</p>
+<h6 id="compilar-i-executar-el-projecte-generat">Compilar i executar el projecte generat</h6>
+<p>L'arquetip que hem utilitzat per a generar l'aplicació, <code>maven-Archetype-quickstart</code>, ens crea directament un esquelet d'aplicació del tipus Hola Món. Si accedim a l'arxiu <code>src/main/java/com/ieseljust/edd/App.java</code>, veurem un codi bastant familiar:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.ieseljust.edd</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cm">/**</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm"> * Hello world!</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="cm"> *</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="cm"> */</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> </span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Per a compilar i executar este codi utilitzarem l'ordre  <code>maven compile</code>, i realitzarem la invocació a la màquina virtual de java. Vegem-ho per parts.</p>
+<ul>
+<li><strong>Pas 1. Compilació</strong></li>
+</ul>
+<p>Ens situem en l'arrel del projecte, i executem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>compile<span class="w"> </span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Compiling<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>file<span class="w"> </span>with<span class="w"> </span>javac<span class="w"> </span><span class="o">[</span>debug<span class="w"> </span>release<span class="w"> </span><span class="m">17</span><span class="o">]</span><span class="w"> </span>to<span class="w"> </span>target/classes
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>BUILD<span class="w"> </span>SUCCESS
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Total<span class="w"> </span>time:<span class="w">  </span><span class="m">5</span>.062<span class="w"> </span>s
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span><span class="m">2024</span>-11-25T11:47:17+01:00
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span></code></pre></div>
+<p>Amb això es genera una nova carpeta <em>target</em> en l'arrel del projecte, amb les classes generades, seguint la següent estructura:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>target/
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── classes
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│   └── com
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│       └── ieseljust
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│           └── edd
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│               └── App.class
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>├── generated-sources
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│   └── annotations
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>└── maven-status
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    └── maven-compiler-plugin
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>        └── compile
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>            └── default-compile
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>                ├── createdFiles.lst
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>                └── inputFiles.lst
+</span></code></pre></div>
+<p>Com veiem, es genera la carpeta <em>classes</em>, amb els fitxers <code>.class</code> en <em>bytecode</em>, segons l'estructura del paquet, i a més un parell de carpetes més. Una amb recursos, que contindrà una carpeta <em>annotations</em> buida, i una altra <em>maven-status</em>, amb l'estat o resultats dels <em>plugins</em>. En este cas, el resum del <em>plugin</em> de compilació ens indica quins fitxers es van crear i quins van ser els fitxers d'entrada.</p>
+<h5 id="pas-2-execucio">Pas 2. Execució</h5>
+<p>Per executar l'aplicació, haurem d'indicar el classpath a java, mitjançant la'opcion -cp, i executar esta, indicant el nom de la classe completament qualificat:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>java<span class="w"> </span>-cp<span class="w"> </span>target/classes<span class="w"> </span>com.ieseljust.edd.App<span class="w"> </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Hello<span class="w"> </span>World!
+</span></code></pre></div>
+<p><strong>Neteja del projecte</strong></p>
+<p>Per netejar el projecte, utilitzarem l'orde <code>mvn clean</code>, invocant-la des de l'arrel del propi projecte.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ mvn clean 
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[INFO] Scanning for projects...
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>[INFO] 
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>[INFO] -------------------&lt; com.ieseljust.edd:saludaMaven &gt;--------------------
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>[INFO] Building saludaMaven 1.0-SNAPSHOT
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>[INFO]   from pom.xml
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>[INFO] --------------------------------[ jar ]---------------------------------
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.pom
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.pom (5.5 kB at 11 kB/s)
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.jar
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.4.0/maven-clean-plugin-3.4.0.jar (36 kB at 495 kB/s)
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>[INFO] 
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>[INFO] --- clean:3.4.0:clean (default-clean) @ saludaMaven ---
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>[INFO] Deleting /tmp/proves_Maven/saludaMaven/target
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>[INFO] ------------------------------------------------------------------------
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>[INFO] BUILD SUCCESS
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>[INFO] ------------------------------------------------------------------------
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>[INFO] Total time:  1.115 s
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>[INFO] Finished at: 2024-11-25T11:50:40+01:00
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>[INFO] ------------------------------------------------------------------------
+</span></code></pre></div>
+<p>Com veiem, amb <code>mvn clean</code>, hem esborrat la carpeta <em>target</em>.</p>
+<h3 id="empaquetat">Empaquetat</h3>
+<p>Les aplicacions Java solen distribuir-se empaquetades en un fitxer de tipus <em>JAR</em> (Java Arxive), que continga tots els <code>.*class</code> de l'aplicació.</p>
+<p>Per a crear este fitxer, utilitzarem l'ordre <code>mvn package</code>. Vegem com fer-ho:</p>
+<ul>
+<li><strong>Pas 1</strong>. Creació del JAR</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>package<span class="w"> </span>
+</span></code></pre></div>
+<p>O bé, si desitgem netejar abans el projecte:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>package<span class="w"> </span>
+</span></code></pre></div>
+<p>Per a completar el cicle de construcció de l'empaquetat, es passa prèviament per la compilació i els tests, generant la carpeta <em>target</em> amb una mica més de contingut que únicament per a la compilació:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>target/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── classes
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>│   └── com
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│       └── ieseljust
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>│           └── edd
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>│               └── App.class
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>├── generated-sources
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>│   └── annotations
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>├── generated-test-sources
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>│   └── test-annotations
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>├── maven-archiver
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>│   └── pom.properties
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>├── maven-status
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>│   └── maven-compiler-plugin
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>│       ├── compile
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>│       │   └── default-compile
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>│       │       ├── createdFiles.lst
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>│       │       └── inputFiles.lst
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>│       └── testCompile
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>│           └── default-testCompile
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>│               ├── createdFiles.lst
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>│               └── inputFiles.lst
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>├── saludaMaven-1.0-SNAPSHOT.jar
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>├── surefire-reports
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>│   ├── com.ieseljust.edd.AppTest.txt
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>│   └── TEST-com.ieseljust.edd.AppTest.xml
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>└── test-classes
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>    └── com
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>        └── ieseljust
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>            └── edd
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>                └── AppTest.class
+</span></code></pre></div>
+<p>A part de les carpetes <em>classes</em>, amb els <code>.*class</code> resultat de la compilació, i les carpetes que ja vam veure que es generen quan es realitza la compilació, s'han generat altres carpetes com <code>maven-archiver</code>, que conté un fitxer <code>pom.properties</code>, amb el <em>groupid</em>, l'<em>artifactid</em> i la versió del projecte, així com la carpeta <em>surefire-reports</em>, amb informes sobre els tests. De totes maneres, el que ens interessa és el fitxer generat <em>saludaMaven-1.0-SNAPSHOT.jar</em>, amb l'arxiu de l'aplicació.</p>
+<ul>
+<li><strong>Pas 2.</strong> Executant el JAR</li>
+</ul>
+<p>Per a executar-ho, podem fer-ho amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>java<span class="w"> </span>-cp<span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar<span class="w"> </span>com.ieseljust.edd.App<span class="w"> </span>
+</span></code></pre></div>
+<p>Amb això, indiquem com <em>classpath</em> el fitxer <em>JAR</em>, ja que és ell qui conté les classes, i a més, la classe principal.</p>
+<p>No obstant això, la forma habitual d'executar en JAR serà amb l'opció <code>-jar</code> de java:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>target/saludaMaven-1.0-*SNAPSHOT.jar<span class="w"> </span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>no<span class="w"> </span>main<span class="w"> </span>manifest<span class="w"> </span>attribute,<span class="w"> </span><span class="k">in</span><span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar
+</span></code></pre></div>
+<p>Com veiem, ens mostra un error, indicant que no existix un atribut <code>main</code> en el <em>manifest</em> (és a dir, no s'indica quina és la classe principal). El <em>Manifest</em>, en un fitxer <em>JAR</em> és un fitxer situat dins de l'arxiu <em>JAR</em> que definix algunes característiques d'aquest. Si obrim el <em>JAR</em> generat amb una aplicació de compressió i descompressió d'arxius, el trobarem en <em>META-INF/MANIFEST.MF</em>, i el seu contingut és el següent:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Manifest-Version: 1.0
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Created-By: Maven JAR Plugin 3.4.2
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Build-Jdk-Spec: 21
+</span></code></pre></div>
+<p>Com veiem, conté informació sobre la versió del manifest i el JDK, però no s'indica quina és la classe principal de l'aplicació.</p>
+<p>Per tal que Maven afisca ací la classe prinipal, haurem d'indicar-li-ho en el <em>pom.xml</em>. Per a això, editem el fitxer i busquem el <em>plugin</em> <code>maven-jar-plugin</code>:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w"> </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nt">&lt;/plugin&gt;</span>
+</span></code></pre></div>
+<p>Ara, el que farem serà afegir una nova etiqueta de configuració, per a indicar-li que s'incloga en el manifest el *Classpath i especificar la classe principal de l'aplicació. Així doncs, ens quedaria:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="nt">&lt;configuration&gt;</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="nt">&lt;archive&gt;</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">      </span><span class="nt">&lt;manifest&gt;</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nt">&lt;mainClass&gt;</span>com.ieseljust.edd.App<span class="nt">&lt;/mainClass&gt;</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">      </span><span class="nt">&lt;/manifest&gt;</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="nt">&lt;/archive&gt;</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">  </span><span class="nt">&lt;/configuration&gt;</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="nt">&lt;/plugin&gt;</span>
+</span></code></pre></div>
+<p>Amb això ja podem generar de nou el JAR:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$ mvn clean package 
+</span></code></pre></div>
+<p>I executar-lo amb el paràmetre <code>-jar</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar<span class="w">  </span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Hello<span class="w"> </span>World!
+</span></code></pre></div>
+<p>Si tornem a extraure el fitxer de Manifest, veurem que ara sí que conté el nom de la classe principal:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Manifest-Version: 1.0
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>Created-By: Maven JAR Plugin 3.4.2
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>Build-Jdk-Spec: 21
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>Main-Class: com.ieseljust.edd.App
+</span></code></pre></div>
+<h3 id="el-mode-interactiu-de-maven">El mode interactiu de *Maven</h3>
+<p>Com ja hem comentat, a part del mode <em>batch</em> que hem vist, <em>Maven</em> oferix un mode de funcionament interactiu, que ens va guiant en la creació dels nostres projectes.</p>
+<p>Per a crear un projecte <em>Maven</em> des del mode interactiu, només haurem d'indicar que desitgem executar l'objectiu <code>generate</code> del plugin <code>archerype</code>, sense res més. Així doncs, per a generar un altre projecte, ens situem fora de l'anterior, i executem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>
+</span></code></pre></div>
+<p>Després d'alguns possibles avisos i missatges informatius ens oferix una llista de totes les plantilles disponibles en Maven (en estos moments 3500). De manera predeterminada proposa la creació d'un projecte de tipus <em>maven-archetype-quickstart</em> (2204), que seria el mateix que hem utilitzat, amb una estructura d'Hola Món. <strong>Haureu de tindre en compte que este número pot variar en diferents versions de Maven.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>archetype:generate.
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Choose<span class="w"> </span>a<span class="w"> </span>number<span class="w"> </span>or<span class="w"> </span>apply<span class="w"> </span>filter<span class="w"> </span><span class="o">(</span>format:<span class="w"> </span><span class="o">[</span>groupId:<span class="o">]</span>artifactId,<span class="w"> </span><span class="k">case</span><span class="w"> </span>sensitive<span class="w"> </span>contains<span class="o">)</span>:<span class="w"> </span><span class="m">2204</span>
+</span></code></pre></div>
+<p>Després ens demana el número de versió de l'aplicació. Seleccionem el 5 (la 1.0):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Choose<span class="w"> </span>org.apache.maven.archetypes:maven-archetype-quickstart<span class="w"> </span>version:<span class="w"> </span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="m">1</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-1
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="m">2</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-2
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="m">3</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-3
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="m">4</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-4
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="m">5</span>:<span class="w"> </span><span class="m">1</span>.0
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="m">6</span>:<span class="w"> </span><span class="m">1</span>.1
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="m">7</span>:<span class="w"> </span><span class="m">1</span>.3
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="m">8</span>:<span class="w"> </span><span class="m">1</span>.4
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="m">9</span>:<span class="w"> </span><span class="m">1</span>.5
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>Choose<span class="w"> </span>a<span class="w"> </span>number:<span class="w"> </span><span class="m">9</span>:<span class="w"> </span><span class="m">5</span>
+</span></code></pre></div>
+<p>Després ens pregunta altres dades, com el <code>groupId</code>, <code>artifact</code>, etc.. Per als quals ja ens oferix un valor vàlid predeterminat, no farà falta reescriure'ls, i podrem polsar Intro per a acceptar estos valors.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Define value for property &#39;groupId&#39;: com.ieseljust.edd
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>Define value for property &#39;artifactId&#39;: Saluda2
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>Define value for property &#39;version&#39; 1.0-SNAPSHOT: 
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>Define value for property &#39;package&#39; com.ieseljust.edd: 
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>Confirm properties configuration:
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>groupId: com.ieseljust.edd
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>artifactId: Saluda2
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>version: 1.0-SNAPSHOT
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>package: com.ieseljust.edd
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a> Y: y
+</span></code></pre></div>
+<p>Després de demanar la confirmació de tot, ja ens mostra el resultat de la creació.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>[INFO] ----------------------------------------------------------------------------
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-quickstart:1.0
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>[INFO] ----------------------------------------------------------------------------
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>[INFO] Parameter: basedir, Value: /tmp/proves
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>[INFO] Parameter: package, Value: com.ieseljust.edd
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>[INFO] Parameter: groupId, Value: com.ieseljust.edd
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>[INFO] Parameter: artifactId, Value: Saluda2
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>[INFO] Parameter: packageName, Value: com.ieseljust.edd
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>[INFO] project created from Old (1.x) Archetype in dir: /tmp/proves/Saluda2
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>[INFO] ------------------------------------------------------------------------
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>[INFO] BUILD SUCCESS
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>[INFO] ------------------------------------------------------------------------
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>[INFO] Total time:  03:51 min
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>[INFO] Finished at: 2024-12-03T06:33:22+01:00
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>[INFO] ------------------------------------------------------------------------
+</span></code></pre></div>
+<p>En este cas, el <em>pom.xml</em> generat és possible que es genere d'una plantilla diferent, i diferisca del que hem generat anteriorment. Les principals diferències poden ser que no s'especifique les opcions <code>maven.compiler.source</code> i <code>maven.compiler.target</code>, així com la configuració dels <em>plugins</em>.</p>
+<p>Així doncs, en primer lloc, haurem d'afegir les opcions relatives al compilador. I en segon, només aquells <em>plugins</em> que vulguem configurar, ja que la resta prendrà les opcions per defecte. En el nostre cas, es tractaria d'afegir la configuració a l'empaquetat.</p>
+<p>En resum, hauríem de modificar el nou <em>pom.xml</em> amb el següent contingut:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="nt">&lt;groupId&gt;</span>com.ieseljust.edd<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>Saluda2<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span><span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">  </span><span class="nt">&lt;name&gt;</span>Saluda2<span class="nt">&lt;/name&gt;</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">  </span><span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">  </span><span class="cm">&lt;!-- Aquest bloc properties és nou --&gt;</span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">  </span><span class="nt">&lt;properties&gt;</span>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span><span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span><span class="nt">&lt;maven.compiler.release&gt;</span>17<span class="nt">&lt;/maven.compiler.release&gt;</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">  </span><span class="nt">&lt;/properties&gt;</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+</span><span id="__span-27-21"><a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-27-22"><a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-27-23"><a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">      </span><span class="nt">&lt;version&gt;</span>3.8.1<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="w">      </span><span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+</span><span id="__span-27-26"><a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-27-27"><a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+</span><span id="__span-27-28"><a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>
+</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="w">  </span><span class="cm">&lt;!-- Aquest bloc build també és nou --&gt;</span>
+</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="w">  </span><span class="nt">&lt;build&gt;</span>
+</span><span id="__span-27-31"><a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">    </span><span class="nt">&lt;pluginManagement&gt;</span>
+</span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a><span class="w">      </span><span class="nt">&lt;plugins&gt;</span>
+</span><span id="__span-27-33"><a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
+</span><span id="__span-27-34"><a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a><span class="w">          </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-27-35"><a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a><span class="w">          </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-27-36"><a id="__codelineno-27-36" name="__codelineno-27-36" href="#__codelineno-27-36"></a><span class="w">          </span><span class="nt">&lt;configuration&gt;</span>
+</span><span id="__span-27-37"><a id="__codelineno-27-37" name="__codelineno-27-37" href="#__codelineno-27-37"></a><span class="w">            </span><span class="nt">&lt;archive&gt;</span>
+</span><span id="__span-27-38"><a id="__codelineno-27-38" name="__codelineno-27-38" href="#__codelineno-27-38"></a><span class="w">              </span><span class="nt">&lt;manifest&gt;</span>
+</span><span id="__span-27-39"><a id="__codelineno-27-39" name="__codelineno-27-39" href="#__codelineno-27-39"></a><span class="w">                </span><span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+</span><span id="__span-27-40"><a id="__codelineno-27-40" name="__codelineno-27-40" href="#__codelineno-27-40"></a><span class="w">                </span><span class="nt">&lt;mainClass&gt;</span>com.ieseljust.edd.App<span class="nt">&lt;/mainClass&gt;</span>
+</span><span id="__span-27-41"><a id="__codelineno-27-41" name="__codelineno-27-41" href="#__codelineno-27-41"></a><span class="w">              </span><span class="nt">&lt;/manifest&gt;</span>
+</span><span id="__span-27-42"><a id="__codelineno-27-42" name="__codelineno-27-42" href="#__codelineno-27-42"></a><span class="w">            </span><span class="nt">&lt;/archive&gt;</span>
+</span><span id="__span-27-43"><a id="__codelineno-27-43" name="__codelineno-27-43" href="#__codelineno-27-43"></a><span class="w">          </span><span class="nt">&lt;/configuration&gt;</span>
+</span><span id="__span-27-44"><a id="__codelineno-27-44" name="__codelineno-27-44" href="#__codelineno-27-44"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+</span><span id="__span-27-45"><a id="__codelineno-27-45" name="__codelineno-27-45" href="#__codelineno-27-45"></a><span class="w">      </span><span class="nt">&lt;/plugins&gt;</span>
+</span><span id="__span-27-46"><a id="__codelineno-27-46" name="__codelineno-27-46" href="#__codelineno-27-46"></a><span class="w">    </span><span class="nt">&lt;/pluginManagement&gt;</span>
+</span><span id="__span-27-47"><a id="__codelineno-27-47" name="__codelineno-27-47" href="#__codelineno-27-47"></a><span class="w">  </span><span class="nt">&lt;/build&gt;</span>
+</span><span id="__span-27-48"><a id="__codelineno-27-48" name="__codelineno-27-48" href="#__codelineno-27-48"></a>
+</span><span id="__span-27-49"><a id="__codelineno-27-49" name="__codelineno-27-49" href="#__codelineno-27-49"></a><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></div>
+<p>Amb això ja podrem compilar i empaquetar el projecte tal com vam fer en el projecte anterior.</p>
+<h3 id="el-plugin-de-maven-per-a-vscode">El plugin de Maven per a VSCode</h3>
+<p>Com ja sabem, en instal·lar el plugin <em>Extension Pack for Java</em>, una de les extensions que ens arrossega és l'extensió <em>Maven for Java</em>. Esta extensió ens oferix un explorador de projectes <em>Maven</em> i afig les següent funcionalitats:</p>
+<ol>
+<li>Suport per a la generació de projectes a partir d'arquetips Maven,</li>
+<li>Suport per a generar POM de manera eficient,</li>
+<li>Oferix dreceres de teclat per a llançar objectius de Maven comuns: clean, validate, compile test, package, verify, install, site i deploy,</li>
+<li>Manteniment d'un historial d'ordes per a tornar a llançar ordes recents.</li>
+</ol>
+<h4 id="lexplorador-de-projectes-maven">L'explorador de projectes Maven</h4>
+<p>Quan obrim una carpeta o espai de treball que conté un fitxer <code>pom.xml</code>, VSCode ens mostra una nova secció en la barra lateral anomenada <em>Maven Projects</em>, amb els projectes <em>Maven</em> del <em>worksapce</em>  i els seus mòduls.</p>
+<p><a class="glightbox" href="../img/maven/estructura_vscode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Contingut de la pestanya Maven" src="../img/maven/estructura_vscode.png" width="400px" /></a></p>
+<p>Com veiem en la figura anterior, després d'obrir la carpeta on tenim el projecte de <em>saludaMaven</em>, este se'ns obrirà en la pestanya <em>MAVEN</em>. Si fem clic en el nom del projecte, se'ns despleguen els diferents cicles de vida, que podrem executar directament mitjançant la icona <em>Run</em> que ens apareix al costat de cada cicle, així com accedir al fitxer <em>pom.xml</em> des de la icona <em>Open POM File</em>.</p>
+<p>Si ara fem clic amb el botó dret sobre el projecte <em>saludaMaven</em> (o <em>Saluda2</em>), veurem diferents opcions, algunes d'elles relacionades amb els objectius del <em>LifeCycle</em> (clean, validate, etc.), a més d'accés a l'historial (History), entre altres opcions. Una de les més interessants és <em>Show Effective POM</em>.</p>
+<p><a class="glightbox" href="../img/maven/effective_pom.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Mostrar el POM efectiu" src="../img/maven/effective_pom.png" width="300px" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Què és l'Efective POM?</p>
+</div>
+<p>Quan creem un projecte Maven a partir d'un arquetip, definim per al mateix un conjunt de propietats com ara el <em>groupID</em>, l'<em>artifactID</em> i la versió. Estos tres camps són els que es requerixen per a tot projecte, i són el que conformen el POM més simple que podríem generar. El POM d'un projecte, a més, hereta certes propietats del que es coneix com el Super POM, que vindria a ser com la classe base de la que hereten tots els POM. És a dir, un POM es compon dels atributs que definim explícitament en funció de l'arquetip que hem utilitzat, i a més, posseïx un conjunt de valors per defecte compartits per tots els projectes, i que no apareixen explícitament en el fitxer <code>pom.xml</code>.</p>
+<p>Tenint tot això en compte, el <em>POM Efectiu</em> (Effective POM)s'entén com <strong>la combinació de tots dos POM, el Super POM i el POM més simple</strong>. A efectes pràctics, si consultem el POM efectiu del nostre projecte, veurem que es tracta d'un fitxer XML bastant més extens que l'original, i en el qual tindrem totes les característiques que teníem definides explícitament més totes aquelles que hi havia implícitament i que són comunes a tots els projectes.</p>
+<h4 id="generacio-dun-projecte-maven-des-de-vscode">Generació d'un projecte Maven des de VSCode</h4>
+<p><em>Visual Studio Code</em> ens permet crear projectes <em>Maven</em> a partir d'arquetips de diferents repositoris. Simplement, el que fa és llançar per nosaltres les ordes que hem vist anteriorment en la terminal de <em>VSCode</em>.</p>
+<p>Vegem com fer-ho. Partint d'una finestra nova de <em>VSCode</em> (<code>Arxiu &gt; Nova Finestra</code>):</p>
+<ul>
+<li><strong>Pas 1</strong>. En l'activitat de l'Explorador, busquem la pestanya desplegable <em>MAVEN</em>, i el símbol "+" que apareix a la seua dreta.</li>
+<li><strong>Pas 2</strong>. Fem clic en este símbol "+" per a crear un projecte Maven nou.</li>
+</ul>
+<p><a class="glightbox" href="../img/maven/new_maven.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació d'un projecte nou amb Maven" src="../img/maven/new_maven.png" width="300px" /></a></p>
+<ul>
+<li><strong>Pas 3</strong>. En la paleta d'ordes ens apareixerà els diferents arquetips de què disposem. Busquem <em>quickstart</em>, i seleccionem <code>maven-Archetype-quickstart</code>.</li>
+</ul>
+<p><a class="glightbox" href="../img/maven/mvn_Quickstart.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecció de l'arquetipus" src="../img/maven/mvn_Quickstart.png" width="450px" /></a></p>
+<ul>
+<li><strong>Pas 4.</strong> Indiquem la <em>versió</em> (<code>1.0</code>), el <em>groupId</em> (<code>com.ieseljust.edd</code>), i el <em>nom</em> (<code>Salud3)</code> del projecte</li>
+<li><strong>Pas 5</strong>. Fet això, se'ns obrirà la terminal integrada de <em>VSCode</em>, i ens demanarà la propietat <em>version</em> que falta per configurar. Deixem el valor predeterminat <em>1.0-SNAPSHOT</em>, i polsem Intro per a crear el projecte:</li>
+</ul>
+<p><a class="glightbox" href="../img/maven/version_snapshot.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació d'un projecte nou amb Maven" src="../img/maven/version_snapshot.png" width="400px" /></a></p>
+<p>Una vegada generat el projecte, si donem una ullada a l'estructura de carpetes generada i al <em>pom.xml</em> , veurem que és pràcticament el mateix que havíem definit per consola.</p>
+<h4 id="actualitzacio-de-la-cache-darquetips">Actualització de la caché d'arquetips</h4>
+<p>Una altra opció que podem realitzar amb VSCode, és actualitzar la caché local dels diferents arquetips des del repositori Maven Central. Per a això, accedirem a la Consola d'Ordes mitjançant <em>Ctrl +Shift + P</em>, i quan se'ns òbriga esta, començarem a escriure <em>Maven:...</em> per a filtrar les diferents opcions, fins a tindre a la vista l'opció de <em>Update Maven Archetype Catalog.</em></p>
+<p><a class="glightbox" href="../img/maven/mvn_update.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Actualitzacó de la caché" src="../img/maven/mvn_update.png" width="400px" /></a></p>
+<div class="admonition question">
+<p class="admonition-title">Activitats</p>
+<ol>
+<li>Segueix els passos anteriors i configura un projecte Maven des de la línia d'ordres. Modifica el codi font amb el de la teua calculadora. El nom del paquet serà el teu nom i cognoms, en el format com.cognom2.cognom1.nom. Documenta el procés i crea una entrada al teu devlog.</li>
+<li>Fes el mateix, però ara generant el projecte Maven des de VSCode. Documenta el procés i afig-lo en una entrada al devlog.</li>
+<li>Explora les opcions de Netbeans per crear un projecte Maven i crea un projecte amb les mateixes característiques, documentant el procés.</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,1069 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../5.Maven/">
+      
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>6. Gradle - La plataforma Java. Eines d’automatització.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gradle" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-header__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            La plataforma Java. Eines d’automatització.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Gradle
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="La plataforma Java. Eines d’automatització." class="md-nav__button md-logo" aria-label="La plataforma Java. Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    La plataforma Java. Eines d’automatització.
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. La plataforma Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. VSCode i Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.netbeans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Netbeans
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.Eines_Automatitzacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Eines d'automatització
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projectes-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projectes en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tasques en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicle-de-vida-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cicle de vida en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-en-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle en la pràctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-i-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle i Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projectes-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projectes en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tasques en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicle-de-vida-en-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cicle de vida en Gradle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-en-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle en la pràctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-i-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle i Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>6. Gradle</h1>
+
+<h2 id="gradle">Gradle</h2>
+<p>Com hem vist anteriorment, Ant és una eina molt versàtil, però que descarrega molta responsabilitat en el desenvolupador. En canvi, Maven ofereix mitjançant els arquetips una estructura pràcticament predefinida d'aplicació, donant suport a tot el cicle de vida de construcció. Això pot ser que siga un inconvenient quan el nostre projecte no s'ajusta a cap arquetip.</p>
+<p>En este context, en 2008 va aparéixer Gradle, que pretén integrar el millor de cada eina: les tasques i facilitat de personalització d'Ant, i la potència i el suport al cicle vida de construcció i de proves de Maven.</p>
+<p>Igual que Maven, Gradle també seguix el paradigma de convenció sobre configuració, on totes les opcions de configuració tindran valors predeterminats comuns o útils, de manera que únicament hàgem de modificar-los en casos especials.</p>
+<p>Una altra diferència important respecte a Ant i Maven és que Gradle no utilitza el format XML en la seua configuració, sinó que els scripts de compilació s'expressen mitjançant un llenguatge específic de domini (Domain Specific Language, o DSL) basats en Groovy o Kotlin.</p>
+<p>A més, Gradle permet utilitzar altres llenguatges, a més de Java, com a C++, Scala, Swift o Kotlin, i és el sistema de compilació utilitzat en projectes Android.</p>
+<h3 id="projectes-en-gradle">Projectes en Gradle</h3>
+<p>Un projecte es compon d'un conjunt de recursos ben organitzats. Estos recursos inclouran, entre altres el codi font i la lògica per a la seua construcció.</p>
+<p>Gradle a més, permet que un projecte continga subprojectes (multiprojecte), de manera que tots ells formen part en conjunt de l'aplicació. Per exemple, una aplicació de missatgeria pot estar compost per dos projectes: un per a l'aplicació client, i un altre per al servidor.</p>
+<p>A més, els projectes es registraran en un fitxer anomenat <em>settings.gradle</em> (o <em>settings.gradle.kts</em>), i els subprojectes o submòduls tindran els seus respectius fitxers <em>build.gradle</em> (o <em>build.gradle.kts</em>).</p>
+<h3 id="tasques-en-gradle">Tasques en Gradle</h3>
+<p>Una tasca representa una acció, bé siga predeterminada o personalitzada, que s'executarà durant el procés de construcció dels nostres projectes.</p>
+<p>El script de construcció del projecte (fitxers <code>build.gradle</code>) permet definir tasques, així com dependències entre elles. Una dependència entre tasques significa que per a fer una tasca, és necessari que s'haja executat una altra prèviament. Per exemple, per a poder llançar la tasca d'executar l'aplicació, prèviament ha d'haver-se llançat la tasca de compilació.</p>
+<p>Durant la construcció, <em>Gradle</em> garantirà que aquestes tasques s'executen de manera única i ordenada. És a dir, cada tasca s'executarà una vegada, i totes les tasques de les quals esta depén s'hauran executat prèviament.</p>
+<h3 id="cicle-de-vida-en-gradle">Cicle de vida en Gradle</h3>
+<p>El cicle de vida de construcció descriu les fases per les quals passem per a construir un projecte. En <em>Gradle</em>, aquest cicle consta únicament de tres fases: inicialització, configuració execució.</p>
+<ul>
+<li>
+<p><strong>Inicialització</strong>: <em>Gradle</em> determina quins projectes estaran involucrats en el procés de construcció. Per a això, examina el fitxer del projecte <code>settings.gradle</code>, a la recerca dels subprojectes i dels seus respectius fitxers de construcció <code>build.gradle</code>. En finalitzar esta fase, es crea una instància de projecte (<code>org.gradle.api.Project</code>) per a cadascun d'ells.</p>
+</li>
+<li>
+<p><strong>Configuració</strong>: S'analitzen els <em>scripts</em> de construcció dels projectes identificats en la inicialització, i les diferents tasques que componen cadascun. A partir d'aquest anàlisi, <em>Gradle</em> genera un Graf Acíclic Dirigit (<em>GAD</em>) de tasques. Un graf és la representació d'un conjunt d'elements (en esta case les tasques), i la relació entre elles (en este cas la relació de dependència). El fet que siga dirigit significa que la relació és unidireccional, en el sentit de la dependència, i el que siga acíclic indica que no es produïxen bucles en el graf. Amb això assegurem que les tasques s'executaran en l'orde corresponent i solament una vegada.</p>
+</li>
+</ul>
+<p>Vegem, a mode d'exemple el següent grup de tasques i les dependències entre elles, i el grau acíclic dirigit que formen. Com podeu observar, les dependències van en una única direcció, i les tasques només s'executen una vegada, encara que depenguen de diverses tasques posteriors.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>tasca Compilar { }
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>tasca TestUnitari{
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> depenDe Compilar
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>}
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>tasca Empaquetar{
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> depenDe Compilar
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>}
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>tasca Construir{
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> depenDe TestUnitario, Empaquetar
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>}
+</span></code></pre></div>
+<pre class="mermaid"><code>graph BT
+    TestUnitari --&gt; Compilar
+    Empaquetar --&gt; Compilar 
+    Construir --&gt; TestUnitari
+    Construir --&gt; Empaquetar</code></pre>
+<ul>
+<li><strong>Execució</strong>: En esta fase es llancen les diferents tasques segons l'orde de dependència generat en el graf de tasques que va obtindre en la fase anterior. En este punt és on realment es realitza tot el treball de construcció: compilació, còpia de recursos, neteja del projecte, generar empaquetats, etc.</li>
+</ul>
+<h3 id="gradle-en-la-practica">Gradle en la pràctica</h3>
+<p>Després d'aprendre a generar projectes mitjançant <em>Maven</em>, aprendrem ara a fer-ho amb <em>Gradle</em>.</p>
+<h4 id="installacio">Instal·lació</h4>
+<p><em>Gradle</em> es troba en els repositoris d'Ubuntu, però amb una versió bastant desactualitzada (4.4.1-20), si es compara amb la versió actual (8.11.1 a desembre de 2024).</p>
+<p>Així doncs, la millor manera de realitzar la instal·lació és <a href="https://gradle.org/install/#manually">fent-ho de manera manual</a> al nostre <em>Home</em> i configurant el <em>path</em>, de manera que tampoc necessitem permís d'administrador al sistema.</p>
+<p>Per a això, ens basarem en les instruccions sobre la instal·lació indicades en la web de <em>Gradle</em>: https://gradle.org/install/, Podeu consultar l'enllaç per a unes instruccions més detallades.</p>
+<p>Per a això seguim els següents pasos:</p>
+<h5 id="pas-1-descarrega-dels-binaris">Pas 1. Descàrrega dels binaris</h5>
+<p>Descarreguem els binaris <a href="https://gradle.org/releases/">Gradle des de la web</a>. Al nostre cas, la última és <a href="https://gradle.org/next-steps/?version=8.11.1&amp;format=bin">la versió 8.11.1, del 20 de novembre</a>, encara que pot ser posterior. </p>
+<p>Descarregarem aquest fitxer i el deixarem a la nostra carpeta <code>~/devtools</code>.</p>
+<h5 id="pas-2-descompressio">Pas 2. Descompressió</h5>
+<p>Una vegada descarregat, ens situem en la carpeta <em>devtools</em> i descomprimim el fitxer, ja siga des de l'explorador de fitxers o des de la línia d'ordres amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>~$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/devtools/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>~/devtools$<span class="w"> </span>unzip<span class="w"> </span>gradle-8.11.1-bin.zip<span class="w"> </span>
+</span></code></pre></div>
+<h5 id="pas-3-configurar-el-path">Pas 3. Configurar el Path</h5>
+<p>Per afegir la ruta al <em>Path</em> de forma permanent, caldrà afegir al final del fitxer <code>~/.bashrc</code> el següent codi:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Gradle</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$HOME</span>/devtools/gradle-8.11.1/bin<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/devtools/gradle-8.11.1/bin:<span class="nv">$PATH</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">fi</span>
+</span></code></pre></div>
+<h5 id="pas-4-comprovacio">Pas 4. Comprovació</h5>
+<p>Fet això, ja podem obrir una nova terminal (o en la mateixa fer un <code>source ~/.bashrc</code>) i comprovar la versió:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>-v
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>------------------------------------------------------------
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Gradle<span class="w"> </span><span class="m">8</span>.11.1
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>------------------------------------------------------------
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Build<span class="w"> </span>time:<span class="w">    </span><span class="m">2024</span>-11-20<span class="w"> </span><span class="m">16</span>:56:46<span class="w"> </span>UTC
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Revision:<span class="w">      </span>481cb05a490e0ef9f8620f7873b83bd8a72e7c39
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Kotlin:<span class="w">        </span><span class="m">2</span>.0.20
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Groovy:<span class="w">        </span><span class="m">3</span>.0.22
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Ant:<span class="w">           </span>Apache<span class="w"> </span>Ant<span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.10.14<span class="w"> </span>compiled<span class="w"> </span>on<span class="w"> </span>August<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">2023</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>Launcher<span class="w"> </span>JVM:<span class="w">  </span><span class="m">21</span>.0.5<span class="w"> </span><span class="o">(</span>Ubuntu<span class="w"> </span><span class="m">21</span>.0.5+11-Ubuntu-1ubuntu124.04<span class="o">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>Daemon<span class="w"> </span>JVM:<span class="w">    </span>/usr/lib/jvm/java-21-openjdk-amd64<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>JDK<span class="w"> </span>specified,<span class="w"> </span>using<span class="w"> </span>current<span class="w"> </span>Java<span class="w"> </span>home<span class="o">)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>OS:<span class="w">            </span>Linux<span class="w"> </span><span class="m">6</span>.8.0-49-generic<span class="w"> </span>amd64
+</span></code></pre></div>
+<p>Com podem veure, ens mostra informació sobre les versions tant de <em>Gradle</em> (8.11.1), com de <em>Kotlin</em> (2.0.20), <em>Groovy</em> (3.0.22), <em>Ant</em> (1.10.14), la <em>JVM</em> (21.0.5), o el sistema operatiu.</p>
+<h4 id="creacio-dun-projecte-en-gradle">Creació d'un projecte en Gradle</h4>
+<p>Veiem com generar un projecte de tipus Hola Món típic en <em>Gradle</em>. Ho farem primer amb el <strong>mode interactiu</strong>.</p>
+<p>En primer lloc, ens situem en la carpeta on volem crear el projecte, i crearem una carpeta per a aquest, ja que <em>Gradle</em> generarà tota l'estructura d'este en la carpeta on ens trobem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>HelloGradle<span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>HelloGradle<span class="w"> </span>
+</span></code></pre></div>
+<p>I ja dins d'esta, utilitzem l'orde <code>gradle init</code> per a iniciar l'assistent (en Windows serà <em>gradle.bat</em>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>init<span class="w"> </span>
+</span></code></pre></div>
+<p>Veiem pas a pas aquest assistent:</p>
+<h5 id="pas-1-tipus-de-projecte">Pas 1. Tipus de projecte</h5>
+<p>El primer que se'ns pregunta és el tipus de projecte a construir: Una aplicació, una llibreria, un plugin de Gradle, o només una estructura bàsica. Seleccionarem la primera opció: Una aplicació:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Select type of build to generate:
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  1: Application
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  2: Library
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  3: Gradle plugin
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  4: Basic (build structure only)
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Enter selection (default: Application) [1..4] 1
+</span></code></pre></div>
+<h5 id="pas-2-llenguatge-de-programacio">Pas 2. Llenguatge de programació</h5>
+<p>En segon lloc, ens pregunta pel llenguatge de programació del projecte. Seleccionarem l'opció corresponent a Java:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Select implementation language:
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  1: Java
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  2: Kotlin
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  3: Groovy
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  4: Scala
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  5: C++
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  6: Swift
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Enter selection (default: Java) [1..6] 1
+</span></code></pre></div>
+<p>Una vegada triat el llenguatge, ens demanarà quina versió, de les que tenim disponibles anem a utilitzar. Triem la 21.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Enter target Java version (min: 7, default: 21): 21
+</span></code></pre></div>
+<h5 id="pas-3-nom-del-projecte">Pas 3. Nom del projecte</h5>
+<p>Ara haurem d'indicar el nom del projecte. Gradle ens suggerix el nom de la carpeta on estem (i que hem generat específicament per añ projecte). Podem utilitzar aquest mateix nom (confirmant-ho o tornant-ho a escriure) o utilitzar un altre qualsevol:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Project name (default: HelloGradle): 
+</span></code></pre></div>
+<h5 id="pas-4-estructura-de-laplicacio-en-subprojectes">Pas 4. Estructura de l'aplicació en subprojectes</h5>
+<p>Després ens demana l'estructura de l'aplicació: si anem a crear una aplicació única o va a tindre subprojectes, ja que això determinarà l'estructura final d'aquesta.</p>
+<p>Triarem de moment que serà una aplicació única (<em>Single application project</em>)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Select application structure:
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  1: Single application project
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  2: Application and library project
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Enter selection (default: Single application project) [1..2] 1
+</span></code></pre></div>
+<h5 id="pas-5-llenguatde-dsl-per-a-lscript-de-construccio">Pas 5. Llenguatde DSL per a l'script de construcció</h5>
+<p>Ara ens demana quin llenguatge específic de domini (<em>Domain Script Language</em>) anem a utilitzar. Podem fer ús de Groovy o de Kotlin. Seleccionarem Groovy.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Select build script DSL:
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  1: Kotlin
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  2: Groovy
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Enter selection (default: Kotlin) [1..2] 2
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Per què Groovy i no Kotlin?</p>
+<p>Quan creem una aplicació en Android, aquesta s'organitza com un projecte Gradle. Des de 2018, el llenguatge de programació recomanat per Google per crear aplicacions natives per a Android va ser Kotlin, en detriment de Java.</p>
+<p>Aleshores, <em>¿utilitza Android Kotlin Scripts (KTS) per a l'script de construcció del projecte?</em> Avui en dia, encara no. Tot i que avui tant Gradle com Google estan promovent l'ús de Kotlin, quan generem l'esquelet d'una aplicació per a Android, encara segueix usant-se Groovy com a DSL, principalment per compatibilitat i raons històriques.</p>
+</div>
+<h5 id="pas-6-framework-per-als-tests">Pas 6. Framework per als tests</h5>
+<p>El següent pas, ens demana que indiquem el <em>framework</em> que utilitzarem per als tests unitaris. Aprofundireu més en ells en unitats posteriors. De moment, seleccionarem l'opció predeterminada (4).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Select test framework:
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  1: JUnit 4
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  2: TestNG
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  3: Spock
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  4: JUnit Jupiter
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Enter selection (default: JUnit Jupiter) [1..4].
+</span></code></pre></div>
+<h5 id="pas-7-seleccio-de-les-apis">Pas 7. Selecció de les APIs</h5>
+<p>Ara ens pregunta si volem utilitzar les APIs i els comportaments més novedosos. De manera predeterminada, i per crear projectes més estables ens recomana no utilitzar aquestes APIs. Ho deixarem així:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Generate build using new APIs and behavior (some features may change in the next minor release)? (default: no) [yes, no] 
+</span></code></pre></div>
+<h4 id="analitzant-lestructura-del-projecte">Analitzant l'estructura del projecte</h4>
+<p>Una vegada finalitzat l'assistent, se'ns generarà la següent estructura de fitxers:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>HelloGradle/
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>├── app
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>│   ├── build.gradle
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>│   └── src
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>│       ├── main
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>│       │   ├── java
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>│       │   │   └── org
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>│       │   │       └── example
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>│       │   │           └── App.java
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>│       │   └── resources
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>│       └── test
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>│           ├── java
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>│           │   └── org
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>│           │       └── example
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>│           │           └── AppTest.java
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>│           └── resources
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>├── gradle
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>│   ├── libs.versions.toml
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>│   └── wrapper
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>│       ├── gradle-wrapper.jar
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>│       └── gradle-wrapper.properties
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>├── gradle.properties
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>├── gradlew
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>├── gradlew.bat
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>└── settings.gradle
+</span></code></pre></div>
+<p>Com veiem, tenim la carpeta app amb la carpeta de codi de l'aplicació (<code>src</code>), la qual conté les carpetes <code>main</code> amb el codi principal, i <code>test</code> amb el codi dels tests. Com podeu veure, dins d'eixes carpetes tenim la carpeta <code>java</code> amb l'estructura de carpetes corresponent al paquet de l'aplicació (<code>org.example</code>), i amb el fitxer font <code>App.java</code> per al codi i <code>AppTest.java</code> per als tests.</p>
+<p>Centrant-nos en la part del codi, si observem el contingut del fitxer <code>App.java</code>, veurem que es tracta, encara que expressat utilitzant funcions, del codi per a mostrar un missatge d'<em>Hola Món</em> per pantalla.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cm">/*</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="cm"> * This source file was generated by the Gradle &#39;init&#39; task</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="cm"> */</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kn">package</span><span class="w"> </span><span class="nn">org.example</span><span class="p">;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getGreeting</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">App</span><span class="p">().</span><span class="na">getGreeting</span><span class="p">());</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>L'altre fitxer important dins d'esta carpeta app és el fitxer <code>build.gradle</code>, que és l'<em>script</em> de construcció de l'aplicació:</p>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cm">/*</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="cm"> * This file was generated by the Gradle &#39;init&#39; task.</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="cm"> *</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="cm"> * This generated file contains a sample Java application project to get you started.</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="cm"> * For more details on building Java &amp; JVM projects, please refer to https://docs.gradle.org/8.11.1/userguide/building_java_projects.html in the Gradle documentation.</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="cm"> */</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="c1">// Apply the application plugin to add support for building a CLI application in Java.</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;application&#39;</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="o">}</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="c1">// Use Maven Central for resolving dependencies.</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="n">mavenCentral</span><span class="o">()</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="o">}</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">    </span><span class="c1">// Use JUnit Jupiter for testing.</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">    </span><span class="n">testImplementation</span><span class="w"> </span><span class="n">libs</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">    </span><span class="n">testRuntimeOnly</span><span class="w"> </span><span class="s1">&#39;org.junit.platform:junit-platform-launcher&#39;</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">    </span><span class="c1">// This dependency is used by the application.</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">libs</span><span class="o">.</span><span class="na">guava</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="o">}</span>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="c1">// Apply a specific Java toolchain to ease working on different environments.</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="n">java</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="w">    </span><span class="n">toolchain</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="w">        </span><span class="n">languageVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JavaLanguageVersion</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">21</span><span class="o">)</span>
+</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="w">    </span><span class="o">}</span>
+</span><span id="__span-16-33"><a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a><span class="o">}</span>
+</span><span id="__span-16-34"><a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>
+</span><span id="__span-16-35"><a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="n">application</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-36"><a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a><span class="w">    </span><span class="c1">// Define the main class for the application.</span>
+</span><span id="__span-16-37"><a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org.example.App&#39;</span>
+</span><span id="__span-16-38"><a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="o">}</span>
+</span><span id="__span-16-39"><a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a>
+</span><span id="__span-16-40"><a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a><span class="n">tasks</span><span class="o">.</span><span class="na">named</span><span class="o">(</span><span class="s1">&#39;test&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-41"><a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a><span class="w">    </span><span class="c1">// Use JUnit Platform for unit tests.</span>
+</span><span id="__span-16-42"><a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a><span class="w">    </span><span class="n">useJUnitPlatform</span><span class="o">()</span>
+</span><span id="__span-16-43"><a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a><span class="o">}</span>
+</span></code></pre></div>
+<p>Com podem veure, es tracta d'una sintaxi relativament intuïtiva, en la qual definim uns certs paràmetres dins en diferents seccions, acotades per claus (<code>{}</code>):</p>
+<p><em>. </em><em><code>plugins</code></em><em>: Gradle en si proporciona molt poques funcionalitats d'automatització, i aquestes s'oferixen mitjançant </em>plugins<em>. En aquest cas, s'inclou el </em>plugin<em> <code>application</code>, per tal d'afegir suport a la construcció d'aplicacions Java en mode </em>CLI<em> (Console Line Interface).
+</em>. <strong><code>repositories</code></strong>: En aquesta secció es carreguen els diferents repositoris per a descarregar llibreries i dependències. Per defecte, veiem que carrega <code>mavenCentral()</code>, ja que <em>Gradle</em> és compatible amb totes les llibreries de <em>Maven</em>.
+<em>. </em><em><code>dependencies</code></em><em>: Ací especificarem les llibreries de les quals depén el nostre projecte. En este cas, únicament depén d'un parell de llibreries necessàries per als tests i l'aplicació, però podem afegir tantes dependències com desitgem. Quan busquem una llibreria en </em>Maven Central<em>, ens indicarà com afegir-la a aquest fitxer.
+</em>. <strong><code>application</code></strong>: Defineix alguns aspectes sobre l'aplicació. En aquest cas, indica el valor <code>mainClass</code>, amb el nom completament qualificat de la classe principal (<code>org.example.app</code>). D'esta manera, <em>Gradle</em> sap ja quina classe ha de carregar quan executem l'aplicació.</p>
+<p>A més del contingut en la carpeta app, en l'arrel del projecte tenim alguns fitxers més d'interés:</p>
+<ul>
+<li><strong><code>settings.gradle</code></strong>: Conté la configuració del projecte o projectes dels quals consta l'aplicació. En aquest cas, únicament s'inclou l'aplicació <em>HelloGradle</em>, que es troba e la carpeta app.</li>
+</ul>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cm">/*</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="cm"> * This file was generated by the Gradle &#39;init&#39; task.</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="cm"> *</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="cm"> * The settings file is used to specify which projects to include in your build.</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="cm"> * For more detailed information on multi-project builds, please refer to https://docs.gradle.org/8.11.1/userguide/multi_project_builds.html in the Gradle documentation.</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="cm"> */</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="c1">// Apply the foojay-resolver plugin to allow automatic download of JDKs</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;org.gradle.toolchains.foojay-resolver-convention&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;0.8.0&#39;</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="o">}</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="n">rootProject</span><span class="o">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;HelloGradle&#39;</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="n">include</span><span class="o">(</span><span class="s1">&#39;app&#39;</span><span class="o">)</span>
+</span></code></pre></div>
+<ul>
+<li>
+<p><strong><code>gradlew</code>, <code>gradlew.bat</code>, i la carpeta <code>gradle/wrapper</code></strong>: El <em>wrapper</em> de <em>Gradle</em> és una instal·lació portable de <em>Gradle</em> dins del projecte, de manera que no es requerix, per exemple, tindre <em>Gradle</em> instal·lat en el nostre equip si només anem a construir el projecte. A més, això proporciona també una versió fixa de <em>Gradle</em> per al projecte, de manera que no hi haja cap incompatibilitat entre versions.</p>
+</li>
+<li>
+<p><strong><code>gradle/libs.versions.toml</code></strong>: És el fitxer que gestiona les versions de dependències declarades de forma centralitzada.</p>
+</li>
+</ul>
+<h4 id="canviant-el-nom-del-paquet">Canviant el nom del paquet</h4>
+<p>En versions anteriors de Gradle, se'ns permetia especificar el nom del paquet, que determinava l'estructura de directoris del codi font. Actualment, Gradle assumeix una estructura predeterminada <code>org.example</code> en lloc de demanar explícitament el nom del paquet per fer que el procés siga més ràpid, estandarditzat i consistent amb altres eines de desenvolupament.</p>
+<p>Això ens obliga a que, si volem personalitzar aquest nom, ho hàgem de fer de manera manual després de la inicialització.</p>
+<p>Així, per tal de canviar el nom del paquet de manera consistent, haurem de:</p>
+<ul>
+<li>Canviar l'estructura de la carpeta <code>org/example</code>, ubicada en <code>app/src/main/java</code>.</li>
+<li>Canviar l'estructura de la carpeta <code>org/example</code> dins la carpeta de tests en <code>app/src/test/java</code>.</li>
+<li>Canviar el nom dels <em>packages</em> i referències a tots els fonts Java.</li>
+<li>Canviar la propietat <code>mainClass</code> del fitxer <code>build.gradle</code> perquè faça referència al paquet generat.</li>
+</ul>
+<p>Així doncs, per reemplaçar el nom del paquet predeterminat <code>org.example</code> per <code>com.ieseljust.edd</code>, farem els següents pasos:</p>
+<ol>
+<li>Creem l'estructura de carpetes <code>com/ieseljust/edd</code> dins la carpeta <code>app/src/main/java</code>. Si estem a l'arrel del projecte, podem fer:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>app/src/main/java/com/ieseljust/edd
+</span></code></pre></div>
+<ol>
+<li>Creem l'estructura de carpetes <code>com/ieseljust/edd</code> dins <code>app/src/test</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>app/src/test/java/com/ieseljust/edd
+</span></code></pre></div>
+<p>Després d'això tindrem l'estructura de carpetes de la següent manera dins de app:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>app/
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>├── build.gradle
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>└── src
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    ├── main
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    │   ├── java
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    │   │   ├── com
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    │   │   │   └── ieseljust
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    │   │   │       └── edd
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    │   │   │           └── hellogradle
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    │   │   └── org
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    │   │       └── example
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>    │   │           └── App.java
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>    │   └── resources
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>    └── test
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>        ├── java
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>        │   ├── com
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>        │   │   └── ieseljust
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        │   │       └── edd
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>        │   │           └── hellogradle
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>        │   └── org
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>        │       └── example
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>        │           └── AppTest.java
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>        └── resources
+</span></code></pre></div>
+<p>Ens quedarà doncs moure els fitxers Java a la nova ubicació (o crear el codi de nou per a ells si ja volem donar-los una nova funcionalitat):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>mv<span class="w"> </span>app/src/main/java/org/example/App.java<span class="w"> </span>app/src/main/java/com/ieseljust/edd/hellogradle
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>mv<span class="w"> </span>app/src/test/java/org/example/AppTest.java<span class="w"> </span>app/src/test/java/com/ieseljust/edd/hellogradle
+</span></code></pre></div>
+<p>I eliminar la carpeta <code>org.example</code> (assegureu-vos abans que no continga res!):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>app/src/main/java/org
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>$<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>app/src/test/java/org
+</span></code></pre></div>
+<p>Amb això l'estructura del projecte deu haver quedat:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>.
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>├── app
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>│   ├── build.gradle
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>│   └── src
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>│       ├── main
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>│       │   ├── java
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>│       │   │   └── com
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>│       │   │       └── ieseljust
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>│       │   │           └── edd
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>│       │   │               └── App.java
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>│       │   └── resources
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>│       └── test
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>│           ├── java
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>│           │   └── com
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>│           │       └── ieseljust
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>│           │           └── edd
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>│           │               └── AppTest.java
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>│           └── resources
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>├── gradle
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>│   ├── libs.versions.toml
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>│   └── wrapper
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>│       ├── gradle-wrapper.jar
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>│       └── gradle-wrapper.properties
+</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>├── gradle.properties
+</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>├── gradlew
+</span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>├── gradlew.bat
+</span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>└── settings.gradle
+</span></code></pre></div>
+<ol>
+<li>Canviem el nom dels <em>packages</em> i referències a tots els fonts Java.</li>
+</ol>
+<p>Per a això, editem els fitxers <code>App.java</code> i <code>AppTest.java</code>, i reemplacem la línia:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">org.example</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Per:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.ieseljust.edd.hellogradle</span><span class="p">;</span>
+</span></code></pre></div>
+<ol>
+<li>I finalment, ens queda ajustar la propietat <code>mainClass</code> del fitxer <code>build.gradle</code>.</li>
+</ol>
+<p>Per a això, editem aquest fitxer i busquem la línia:</p>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">application</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="c1">// Define the main class for the application.</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org.example.App&#39;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="o">}</span>
+</span></code></pre></div>
+<p>I la reemplacem per:</p>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">application</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="c1">// Define the main class for the application.</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;com.ieseljust.edd.hellogradle.App&#39;</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="o">}</span>
+</span></code></pre></div>
+<h4 id="construccio-i-execucio-del-projecte">Construcció i execució del projecte</h4>
+<p>Una vegada hem modificat l'estructura d'un projecte, podem construir-lo amb l'ordre <code>gradle build</code>, des de la carpeta principal del projecte.</p>
+<p>Si ho hem fet tot correctament, tindrem una eixida semblant a la següent:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a> gradle build
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>Calculating task graph as no cached configuration is available for tasks: build
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>BUILD SUCCESSFUL in 5s
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>7 actionable tasks: 7 executed
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>Configuration cache entry stored.
+</span></code></pre></div>
+<p>Amb això, compila, processa els recursos i genera les classes i l'empaquetat <em>jar</em> de l'aplicació.</p>
+<p>L'estructura del nostre projecte haurà crescut considerablement, i trobem nous directoris i fitxers:</p>
+<ul>
+<li><code>app/build/</code>, conté tot el que Gradle genera durant el procés de construcció:</li>
+<li><code>classes/</code>: Conté els fitxers <code>.class</code> amb el bytecode generat a partir del codi font i dels tests.</li>
+<li><code>distributions/</code>: Conté els arxius empaquetats del projecte <code>app.tar</code> i <code>app.zip</code>, necessaris pe distribuir l'aplicació.</li>
+<li><code>generated/</code>: Conté fitxers que s'han generat automàticament, com podrien ser fonts derivades de processadors d’anotacions o headers, si n'hi ha.</li>
+<li><code>libs/</code>: Conté el fitxer <code>.jar</code> de l'empaquetat del projecte, amb el codi executable i els recursos de l'aplicació.</li>
+<li><code>reports/</code>:, amb els informes generats durant l'execució del build i dels tests.</li>
+<li><code>scripts/</code>: Amb els scripts generats pe a l'execució de l'aplicació <code>app</code> i <code>app.bat</code> per a Unix/Linux i Windows.</li>
+</ul>
+<p>També s'inclouen altres directoris com <code>test-results</code> amb els resultat en brut dels tets, <code>binary</code> amb els binaris dels tests, el directori temporal <code>tmp/</code> utilitzat per GRadle durant la compilació o el fitxer <code>Manifest</code> utilitzat per al jar, entre altres.</p>
+<div class="admonition note">
+<p class="admonition-title">Fases de construcció</p>
+<p>Si volem veure les diferents fases per les quals passa la construcció de l'aplicació, podem utilitzar l'opció <code>-i</code> de Gradle: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>build<span class="w"> </span>-i
+</span></code></pre></div>
+<p>O bé, amb el <em>wrapper</em>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>./*gradlew<span class="w"> </span>build<span class="w"> </span>-i<span class="w"> </span>
+</span></code></pre></div>
+<p>Podeu provar a llançar l'ordre i identificar les diferents fases per les quals es passa en el projecte de construcció: compilació dels fonts, incorporació dels recursos, creació de classes, empaquetat jar, generació d'scripts i arxiud distribuïbles, compilació, etc</p>
+</div>
+<h4 id="neteja-del-projecte">Neteja del projecte</h4>
+<p>D'altra banda, si volem netejar el projecte, eliminant la carpeta <code>build</code>, utilitzarem l'ordre <code>clean</code> de *Gradle:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>clean<span class="w"> </span>
+</span></code></pre></div>
+o bé mitjançant el wrapper:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>$<span class="w"> </span>./gradlew<span class="w"> </span>clean<span class="w"> </span>
+</span></code></pre></div>
+<h4 id="execucio">Execució</h4>
+<p>Finalment, per tal d'executar l'aplicació, haurem d'invocar l'ordre <code>run</code> de <code>gradle</code> o del wrapper <code>gradlew</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>run
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>Calculating<span class="w"> </span>task<span class="w"> </span>graph<span class="w"> </span>as<span class="w"> </span>no<span class="w"> </span>cached<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span><span class="k">for</span><span class="w"> </span>tasks:<span class="w"> </span>run
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>&gt;<span class="w"> </span>Task<span class="w"> </span>:app:run
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>Hello<span class="w"> </span>World!
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>BUILD<span class="w"> </span>SUCCESSFUL<span class="w"> </span><span class="k">in</span><span class="w"> </span>1s
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="m">2</span><span class="w"> </span>actionable<span class="w"> </span>tasks:<span class="w"> </span><span class="m">2</span><span class="w"> </span>executed
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>Configuration<span class="w"> </span>cache<span class="w"> </span>entry<span class="w"> </span>stored.
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Pas d'arguments</p>
+<p>Si intentem incorporar arguments a la línia d'execució del <code>gradle run</code>, veurem que ens llança un error, ja que l'ordre que estem executant és <code>gradle</code>, i no <code>java</code>. Per tal de passar els arguments a la nostra aplicació <em>java</em>, a través de <code>gradle</code> haurem d'indicar-los amb l'argument <code>--args</code> de gradle.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>$<span class="w"> </span>gradle<span class="w"> </span>run<span class="w"> </span>--args<span class="o">=</span><span class="s2">&quot;arguments&quot;</span><span class="w"> </span>
+</span></code></pre></div>
+</div>
+<h3 id="gradle-i-visual-studio-code">Gradle i Visual Studio Code</h3>
+<p>En Visual Studio Code disposem del complement <em>Gradle Extension Pack</em>, que es compon de les extensions <em>Gradle Language support</em>, amb suport a la sintaxi de <em>Gradle</em> i ajuda a la generació de l'arxiu, així com de <em>Gradle Tasks</em>, que ens permet executar les diferents tasques.</p>
+<p>Per a instal·lar l'exstensió, només haurem de buscar-la en l'activitat d'extensions i fer clic en el botó d'<em>Install</em>.</p>
+<p>Una vegada instal·lades, l'extensió <em>Gradle Language Support</em> ens permetrà ressaltar la sintaxi dels scripts de construcció, a més d'aportar suggeriments i detectar duplicats. Per la seua part, <em>Gradle Tasks</em> ens mostrarà una nova activitat en la interfície de Visual Studio Code, des de la qual podrem veure en forma d'arbre i llançar totes les tasques relacionades amb el projecte.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
