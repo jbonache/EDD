@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+      <link rel="stylesheet" href="../css/material-just.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -209,6 +209,28 @@
   
   
     <li class="md-nav__item">
+      <a href="https://jbonache.github.io/EDD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Índex Curs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href=".." class="md-nav__link">
         
   
@@ -307,10 +329,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -323,8 +345,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             4. Patrons de disseny
           </label>
@@ -659,7 +681,7 @@
 <h4 id="diagrama-uml-per-visualitzar-la-solucio"><strong>Diagrama UML per visualitzar la solució</strong></h4>
 <p>Els patrons de disseny solen ser més senzills d'entendre quan els acompanyem dels corresponents diagrames de classes UML, on veiem gràficament l relació entre les diferents classes.</p>
 <p>Al <a href="https://refactoring.guru/es/design-patterns/factory-method">lloc web de Refactoring Guru sobre el patró Factory Method</a>, podem trobar els diagrames de classes de forma conceptual. Anem a veure ara el diagrama de classes aplicat al nostre exemple:</p>
-<p><a class="glightbox" href="../diagrames/4.1.patrons_creacionals/diagram_5920029729588779201.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.1.patrons_creacionals/diagram_5920029729588779201.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/4.1.patrons_creacionals/diagram_4735306680068097503.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.1.patrons_creacionals/diagram_4735306680068097503.svg" /></a></p>
 <p>El mètode <code>createEviament</code> és un mètode abstracte en <code>EnviamentFactory</code>, i les subclasses concretes (<code>EnviamentDomiciliFactory</code> i <code>RecollidaFactory</code>) implementen aquest mètode per crear els tipus d'enviament concrets.</p>
 <p>Això ens permetrà afegir més tipus d'enviament sense haver de modificar el codi de la fàbrica ni la lògica principal de l'aplicació, només afegint noves fàbriques.</p>
 <div class="admonition question">
@@ -674,7 +696,7 @@
 <p>El patró <strong>Singleton</strong> assegura que <strong>només hi haurà una instància d’una classe</strong> durant tota l'execució del programa i proporciona un punt global d'accés a aquesta mateixa instància.</p>
 <p>Això ens és de gran utilitat en tots aquells casos que necessitem tindre, per exemple una instància única d'una connexió a una base de dades, o un accés únic a un <em>Repositori</em> d'informació.</p>
 <p>Podem veure el funcionament en el següent diagrama de classes:</p>
-<p><a class="glightbox" href="../diagrames/4.1.patrons_creacionals/diagram_5652903977373806623.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.1.patrons_creacionals/diagram_5652903977373806623.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/4.1.patrons_creacionals/diagram_8684403894954810099.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.1.patrons_creacionals/diagram_8684403894954810099.svg" /></a></p>
 <h4 id="exemple"><strong>Exemple</strong></h4>
 <p>Suposem que volem gestionar la connexió a la base de dades de manera que només hi haja una instància de la connexió durant tota l'aplicació.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">DatabaseConnection</span><span class="w"> </span><span class="p">{</span>
