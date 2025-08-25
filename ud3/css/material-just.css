@@ -130,10 +130,9 @@ img {
 
 /* Cambiar color solo al enlace del Índex Curs */
 .md-nav__link[href="https://jbonache.github.io/EDD/"] {
-  color:  purple !important;       /* texto */
+  color:  mediumvioletred !important;       /* texto */
 /*  font-weight: bold; */
 }
 
 .md-nav__link[href="https://jbonache.github.io/EDD/"]:hover {
-  color: red !important;
-
+  color: deepPink !important;
