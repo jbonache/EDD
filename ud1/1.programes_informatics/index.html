@@ -327,6 +327,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#representacio-dalgoritmes-amb-dfd-diagrana-de-flux-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació d'algoritmes amb DFD (Diagrana de Flux de Dades)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -474,6 +483,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#representacio-dalgoritmes-amb-dfd-diagrana-de-flux-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació d'algoritmes amb DFD (Diagrana de Flux de Dades)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -532,6 +550,46 @@
 <li>Seqüència d'operacions per a realitzar una tasca específica.</li>
 </ol>
 </div>
+<p>Un algorisme ha de complir <strong>tres premisses fonamentals</strong> per a ser considerat correcte i útil:</p>
+<p><strong>Definit:</strong><br />
+Cada pas ha d’estar clarament especificat, sense ambigüitats. Davant de la mateixa entrada, l’algorisme sempre ha de produir la mateixa sortida.</p>
+<p><strong>Finit:</strong><br />
+Ha de finalitzar després d’un nombre limitat de passos. Un algorisme que mai no acaba o que entra en un bucle infinit no compleix aquesta premissa.</p>
+<p><strong>Precís (o efectiu):</strong><br />
+Les instruccions han de ser simples i executables, és a dir, realitzables en un temps raonable i amb els recursos disponibles.</p>
+<p>🔹 <strong>Exemple 1: Recepta de cuina (fer un ou fregit)</strong></p>
+<p><strong>Algorisme (simplificat):</strong></p>
+<ol>
+<li>Escalfar una paella amb una mica d’oli.  </li>
+<li>Trencar un ou i abocar-lo a la paella.  </li>
+<li>Cuinar fins que la clara estiga quallada.  </li>
+<li>Retirar amb una espàtula i servir.</li>
+</ol>
+<p>✅ <strong>Definit:</strong> si una altra persona segueix els mateixos passos, obtindrà sempre un ou ferrat.<br />
+✅ <strong>Finit:</strong> després de 4 passos, l’ou està llest; no continua indefinidament.<br />
+✅ <strong>Precís:</strong> les accions són clares i executables (trencar, escalfar, cuinar, servir).  </p>
+<p>🔹 <strong>Exemple 2: Algorisme matemàtic (sumar dos números)</strong></p>
+<p><strong>Algorisme (simplificat):</strong></p>
+<ol>
+<li>Llegir dos números (A i B).  </li>
+<li>Calcular la suma (S = A + B).  </li>
+<li>Mostrar el resultat S.</li>
+</ol>
+<p>✅ <strong>Definit:</strong> sempre que A = 3 i B = 5, el resultat serà 8.<br />
+✅ <strong>Finit:</strong> es resol en 3 passos.<br />
+✅ <strong>Precís:</strong> l’operació suma és clara i realitzable per qualsevol sistema que entenga matemàtiques.</p>
+<div class="admonition alert">
+<p class="admonition-title">Nota aclaridora</p>
+<p>La premissa que un algorisme ha de ser efectiu o precís significa que cada instrucció ha de poder executar-se de manera clara, concreta i realitzable, sense ambigüitats ni passos impossibles.</p>
+<p>🔹 Exemple amb recepta (incorrecte vs correcte)</p>
+<p><strong>NO precís/efectiu:</strong><br />
+“Cuinar l’ou fins que estiga bo”<br />
+🔴 Problema: “bo” és subjectiu; cada persona ho interpreta diferent.</p>
+<p><strong>Sí precís/efectiu:</strong><br />
+“Cuinar l’ou durant 2 minuts a foc mitjà, fins que la clara estiga blanca i ferma”<br />
+✅ Avantatge: no hi ha dubte sobre què s’ha de fer; qualsevol ho pot executar.</p>
+</div>
+<p><strong>Més exemples d'algoritmes</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Per exemple, i tornant a la nostra analogia gastronòmica, l'<a href="https://concursodepaella.com/la-recepta/">algorisme per a preparar una paella sería</a></p>
 <p><strong>Dades:</strong></p>
@@ -596,6 +654,40 @@
 <li>Saltar 3 posicions (o Saltar 1 i saltar 2)</li>
 </ol>
 </details>
+</div>
+<h2 id="representacio-dalgoritmes-amb-dfd-diagrana-de-flux-de-dades">Representació d'algoritmes amb DFD (Diagrana de Flux de Dades)</h2>
+<p>Un <strong>DFD (Diagrama de Flux de Dades)</strong> utilitza símbols estàndard per representar de manera clara les operacions, entrades, sortides i decisions d’un algorisme.</p>
+<p>🔹 <strong>Símbols bàsics d’un DFD</strong></p>
+<p><strong>⭕ Òval → Inici / Fi</strong><br />
+Representa el punt d’inici o de finalització de l’algorisme.<br />
+Exemple: “Inici”, “Fi”.</p>
+<p><strong>🟫 Rectangle → Procés / Acció</strong><br />
+Indica una operació o acció a realitzar.<br />
+Exemple: “Calcular S = A + B”, “Cuinar ou 2 minuts”.</p>
+<p><strong>⏹️ Paral·lelograma → Entrada / Sortida (I/O)</strong><br />
+S’utilitza per indicar que s’introdueixen dades (entrada) o que es mostren resultats (sortida).<br />
+Exemple: “Introduir número A”, “Mostrar resultat”.</p>
+<p><strong>🔷 Rombe → Decisió / Condició</strong><br />
+Representa una bifurcació, una pregunta la resposta de la qual pot ser “Sí” o “No”.<br />
+Exemple: “La clara està quallada?”<br />
+A partir d’aquí, es ramifiquen dos camins diferents.</p>
+<p><strong>➡️ Fletxes → Flux de dades / Seqüència</strong><br />
+Indiquen la direcció en la qual avança el procés.</p>
+<p>🔹 <strong>Exemple visual amb símbols més grans</strong></p>
+<ul>
+<li>⭕ Òval: Inici / Fi  </li>
+<li>🟫 Rectangle: Procés  </li>
+<li>⏹️ Paral·lelograma: Entrada / Sortida  </li>
+<li>🔷 Rombe: Decisió  </li>
+</ul>
+<p>👉 <strong>Aplicació als exemples anteriors:</strong></p>
+<ul>
+<li>L’ou fregit podria enriquir-se amb un rombe: “La clara està quallada?”.  </li>
+<li>L’algorisme de suma de nombres no necessita decisions, només entrades, procés i sortida. </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Control de dades d'entrada</p>
+<p>Haure'm d'incloure decisions per tal de fer comprovacions (sols suma de números sencers i no admetre cap altre tipus de dades, etc)</p>
 </div>
 
 
