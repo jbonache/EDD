@@ -72,7 +72,7 @@
     grid-column: span 2; /* ocupa las dos columnas */
     margin-bottom: 25px;
     padding-bottom: 10px; /* espacio interno antes de la línea */
-    border-bottom: 10px solid blue; /* línea divisoria */
+    border-bottom: 10px solid purple; /* línea divisoria */
 }
 
 .card {
@@ -87,7 +87,7 @@
 }
 .card-header {
   padding: 16px;
-  background-color: blue;
+  background-color: purple;
   color: white;
   font-weight: bold;
   font-size: 18px;

@@ -78,7 +78,7 @@
   grid-column: span 2;
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 10px solid blue;
+  border-bottom: 10px solid purple;
 }
 
 /* --- TARJETAS --- */
@@ -96,7 +96,7 @@
 
 .card-header {
   padding: 16px;
-  background-color: blue;
+  background-color: purple;
   color: white;
   font-weight: bold;
   font-size: 18px;
