@@ -127,13 +127,3 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
-
-/* Cambiar color solo al enlace del Índex Curs */
-.md-nav__link[href="https://jbonache.github.io/EDD/"] {
-  color:  mediumvioletred !important;       /* texto */
-/*  font-weight: bold; */
-}
-
-.md-nav__link[href="https://jbonache.github.io/EDD/"]:hover {
-  color: deepPink !important;
-
