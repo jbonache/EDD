@@ -12,7 +12,7 @@
         <link rel="prev" href="../code/">
       
       
-        <link rel="next" href="../annex1_cmd/">
+        <link rel="next" href="../netbeans/">
       
       
       <link rel="icon" href="../img/logo.png">
@@ -364,12 +364,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../annex1_cmd/" class="md-nav__link">
+      <a href="../netbeans/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Annex 1. Eines bàsiques des de l'intèrpret d'ordres
+    Entorns Integrats de Denvolupament. Netbeans
     
   </span>
   
@@ -386,12 +386,78 @@
   
   
     <li class="md-nav__item">
-      <a href="../annex2_vim/" class="md-nav__link">
+      <a href="../java/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Annex 2. Editors de fitxers de text: vim
+    Netbeans i Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../altresIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Altres IDE: IntelliJ IDEA i PyCharm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex I. Sistema de gestor de paquets per a Linux: APT i SNAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annex2_cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annex II. Eines bàsiques des de l'intèrpret d'ordres
     
   </span>
   
@@ -479,9 +545,42 @@
 <p><a class="glightbox" href="../img/python_dbg.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/python_dbg.png" width="500px" /></a></p>
 <p>Des de VSCode, de manera nativa podem inspeccionar variables o establir punts d'interrrupció, que són tasques de depuració independents del llenguatge.</p>
 <h4 id="depurant-codi">Depurant codi</h4>
-<p>De manera predeterminada, el depurador utilitza el mateix intèrpret seleccionat a l'espai de espai de treball, igual que altres funcions de l'extensió Python per a VS Code. PPer utilitzar un intèrpret diferent per a la depuració específicament, podriem fer-ho configurant el fitxer <code>launch.json</code>.</p>
+<p>De manera predeterminada, el depurador utilitza el mateix intèrpret seleccionat a l'espai de treball, igual que altres funcions de l'extensió Python per a VS Code. Per utilitzar un intèrpret diferent per a la depuració específicament, podriem fer-ho configurant el fitxer <code>launch.json</code>.</p>
 <p>Per depurar un script de python, la manera més senzilla és seleccionar la fletxa cap avall al costat del botó d'execució de l'editor i seleccionar <em>Python Debugger: Debug Python File.</em></p>
+<p>Per tal de fer una depuració de codi haurem d'establir punts de ruptura en el codi per tal d'analitzar la seua execuació.</p>
+<h5 id="establint-breakpoints">Establint Breakpoints</h5>
+<p>VSCode ens permet establir punts de ruptura en el codi. Per a això, disposem d’una columna, que ens permet establir els punts fent clic al costat esquerre del número de línia corresponent.</p>
+<p>Quan fem clic, veurem com apareix un punt roig marcant el breakpoint. Ara podrem executar el codi en mode depuració (F5) i veure quin és l’efecte que té. Ho podem veure a la figura:</p>
+<p><a class="glightbox" href="../img/breakpointVSC.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img 350px="350px" alt="breakpoint" src="../img/breakpointVSC.png" width:="width:" /></a></p>
+<p>Si ens situem damunt de la <strong>columna de l’esquerra</strong> (al costat dels números de línia) i fem clic amb el <strong>botó dret del ratolí</strong>, apareixerà un <strong>menú contextual</strong> amb diverses opcions, que varien segons si ja existeix o no un <em>breakpoint</em> en aquella línia:</p>
+<ul>
+<li>
+<p>Si la línia ja disposa d’un <em>breakpoint</em>, podem:</p>
+<ul>
+<li><strong>Eliminar el breakpoint</strong></li>
+<li><strong>Editar el breakpoint</strong></li>
+<li><strong>Desactivar el breakpoint</strong></li>
+</ul>
+</li>
+<li>
+<p>Si la línia no té cap <em>breakpoint</em>, podem:</p>
+<ul>
+<li><strong>Afegir un breakpoint</strong></li>
+<li><strong>Afegir un breakpoint condicional</strong></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h5 id="afegir-un-breakpoint-de-log">Afegir un <em>breakpoint</em> de log</h5>
+<p>Si volem afegir un <strong>punt de ruptura condicional</strong>, només cal seleccionar l’opció <strong>d’afegir</strong> o <strong>editar el breakpoint</strong>.<br />
+En aquest moment, NetBeans ens demanarà una <strong>expressió condicional</strong>.<br />
+L’escrivim i premem <strong>Enter</strong> perquè els canvis tinguen efecte.</p>
+<p><a class="glightbox" href="/img/break_cond.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 23: Afegir un breakpoint condicional a NetBeans" src="/img/break_cond.png" /></a></p>
+<p>Fet açò, si tornem a depurar, veurem com atura l’execució en el moment que es compleix l’expressió que li hem indicat. </p>
+<p>Finalment, recordar, que a la part de l’esquerra, tenim disponibles les finestres que ens mostren l’estat de la variable en el punt de ruptura que hem establert (secció Variables), o bé que indiquem explícitament (Watch).</p>
+<p><a class="glightbox" href="../img/watch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="breakpoint" height="150px" src="../img/watch.png" width="200px" /></a></p>
 <p>Quan estem depurant, podem veure a la part superior les opcions habituals de depuració <em>Continue</em>, <em>Step Over</em>, <em>Step Into</em>, o <em>Step Out</em>:</p>
+<p><a class="glightbox" href="../img/paleta_debug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img 100px="100px" alt="breakpoint" src="../img/paleta_debug.png" width:="width:" /></a></p>
 <table>
 <thead>
 <tr>
@@ -494,7 +593,7 @@
 <tr>
 <td>Continue</td>
 <td>Indica al depurador que continue l'execució del programa fins que arribe al següent punt d'interrupció (breakpoint) o fins que el programa acabe.</td>
-<td>Auan vols seguir l'execució completa sense anar pas a pas.</td>
+<td>Quan vols seguir l'execució completa sense anar pas a pas.</td>
 </tr>
 <tr>
 <td>Step Over</td>
@@ -508,11 +607,14 @@
 </tr>
 <tr>
 <td>Step Out</td>
-<td>Si estàs dins d'una funció, aquesta opció permet que el depurador continue executant fins que acabe la funció actual i torne al nivell superior (la funció que la va cridar).</td>
-<td>Quan ja no t'interessa seguir la depuració dins d'una funció i vols veure què passa després de sortir d'ella.</td>
+<td>Si estàs dins d'una funció o bucle iteratiu, aquesta opció permet que el depurador continue executant fins que acabe la funció o bucle iteratiu actual i torne al nivell superior (la funció que la va cridar o a la instrucció següent al bucle iteratiu).</td>
+<td>Quan ja no t'interessa seguir la depuració dins d'una funció o bucle iteratiu i vols veure què passa després de sortir d'ella.</td>
 </tr>
 </tbody>
 </table>
+<h4 id="execucio-des-de-consola">Execució des de consola</h4>
+<p>Per altra banda, també cal destacar que podem compilar i llançar el nostre programa python des de la pròpia terminal integrada en VSCode o la terminal del sistema, com podem veure a la figura.</p>
+<p><a class="glightbox" href="../img/exec_terminal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img 350px="350px" alt="terminal" src="../img/exec_terminal.png" width:="width:" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Informació addicional</p>
 <p>Disposeu de més informació a l'article <a href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">Getting Started with Python in VS Code</a>.</p>
@@ -528,7 +630,7 @@
 <p>I fer la instal·lació d'aquest amb <code>pip</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">(</span>mkdocsenv<span class="o">)</span><span class="w"> </span>usuari@hist:~$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipykernel
 </span></code></pre></div>
-<p>Amb això descarregarà tots els paquets necessaris per a l'execució de quaderns de Jupyter en l'entorn escollit, en aquest cas, el mkdocsenv (o si ho desitgeu, podeu generra altre entorn).</p>
+<p>Amb això descarregarà tots els paquets necessaris per a l'execució de quaderns de Jupyter en l'entorn escollit, en aquest cas, el mkdocsenv (o si ho desitgeu, podeu generar altre entorn).</p>
 <p>Anem ara amb les extensions de VSCode per a Jupyter. Si ja tenim instal·lat l'editor al nostre equip, podem instal·lar l'extensió <em>Jupyter</em>:</p>
 <p><a class="glightbox" href="../img/jupyter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img 550px="550px" alt="Extensió Jupyter Notebook" src="../img/jupyter.png" width:="width:" /></a></p>
 <p>Aquesta extensió és un pack compost per quatre extensions: <em>Jupyter Keymap</em>, per a les dreceres de teclat de Jupyter, <em>Jupyter Notebook Renderers</em>, per a la visualitazació dels quaderns, <em>Jupyter Slide Show</em>, per al suport de diapositives i <em>Jupyter Cell Tags</em>, per tal de donar suport a certs paquets que requereixen d'etiquetes a les cel·les.</p>
@@ -553,10 +655,10 @@
 <p>Si ara afegim un bloc de codi amb python, amb el botó <code>+ Código</code>, podem incorporar codi python, per exemple un senzill Hola Món:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Hola Món&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<p>:::note
-<strong><em>Recursos</em></strong></p>
-<p>Disposeu del quadern <a href="rsc/ipynb/exemple1.PytonWidgets.ipynb">exemple1.PytonWidgets.ipynb</a> amb el que anem a treballar en aquet apartat. <strong><em>Feu clic amb el botó dret i seleccioneu "Anomena i desa el contingut de l'enllaç"</em></strong>
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Recursos</p>
+<p>Disposeu del quadern <a href="../rsc/exemple1.PytonWidgets.ipynb">exemple1.PytonWidgets.ipynb</a> amb el que anem a treballar en aquest apartat. <strong><em>Feu clic amb el botó dret i seleccioneu "Anomena i desa el contingut de l'enllaç"</em></strong></p>
+</div>
 <h3 id="execucio-del-codi">Execució del codi</h3>
 <p>Per tal d'executar el codi necessitarem un <em>Kernel</em> de Python, que podem trobar bé en el nostre sistema, en algun entorn de Python o en el núvol. Per tal de seleccionar el kernel, ho fem des de l'opció corresponent a la part superior dreta de VSCode:</p>
 <p><a class="glightbox" href="../img/selKernel.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecció del kernel" src="../img/selKernel.png" width="400px" /></a></p>
@@ -572,14 +674,16 @@
 <p class="admonition-title">Important!</p>
 <p>El codi que creem dins les diferents cel·les estarà relacionat entre sí, de manera que podem, per exemple definir variables, classes o funcions en un bloc de codi, i fer ús d'elles en altres blocs de codi.</p>
 </div>
-<p>!!! warning "Compte!
-    Si executem el codi en un entorn que no disposa del paquet <code>ipykernel</code>, ens donaria error. No obstant això, el propi entorn ens avisa que per executar-se en un entorn, ha de tindre instal·lat <code>ipykernel</code>, i que aquest serà instal·lat quan l'activem.</p>
+<div class="admonition warning">
+<p class="admonition-title">Compte!</p>
+<p>Si executem el codi en un entorn que no disposa del paquet <code>ipykernel</code>, ens donaria error. No obstant això, el propi entorn ens avisa que per executar-se en un entorn, ha de tindre instal·lat <code>ipykernel</code>, i que aquest serà instal·lat quan l'activem.</p>
+</div>
 <h4 id="altres-opcions-dexecucio">Altres opcions d'execució</h4>
-<p>A banda d'executar el contingut de la cel·la, Jupyter ens permet realitzar diverses accioins amb l'execució, que tenim accessibles tant a la part superior de l'editor com de manera flotant en la pròpia cel·la:</p>
+<p>A banda d'executar el contingut de la cel·la, Jupyter ens permet realitzar diverses accions amb l'execució, que tenim accessibles tant a la part superior de l'editor com de manera flotant en la pròpia cel·la:</p>
 <p><a class="glightbox" href="../img/barraSupExec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/barraSupExec.png" width="600px" /></a></p>
 <p>Com veiem, tenim l'opció d'executar totes les cel·les de codi o esborrar totes les eixides</p>
 <p><a class="glightbox" href="../img/cel_laExec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/cel_laExec.png" width="300px" /></a></p>
-<p>I des d'aci podem executar línia per línia, els blocs fins el bloc actual, o els blocs a partir del  bloc actual.</p>
+<p>I des d'ací podem executar línia per línia, els blocs fins el bloc actual, o els blocs a partir del  bloc actual.</p>
 
 
 
