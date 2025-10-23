@@ -573,6 +573,25 @@ El contingut és el següent:</p>
 </ul>
 </li>
 </ul>
+<div class="admonition alert">
+<p class="admonition-title">Important</p>
+<p>Abans d’instal·lar NetBeans (o qualsevol IDE per a desenvolupar en <em>Java</em>), assegureu-vos de tindre <strong>Java JDK</strong> instal·lat al vostre sistema, ja que és necessari per a l’execució de NetBeans.</p>
+<p>Es recomana utilitzar el paquet <strong>OpenJDK</strong> per a la majoria de necessitats de desenvolupament, ja que és fàcil d’instal·lar i té una <strong>llicència de codi obert</strong>. Pots instal·lar la versió per defecte (la + actual) o una versió concreta: </p>
+<ol>
+<li><strong>Instal·lació de la versió per defecte del JDK</strong>  </li>
+</ol>
+<p>Per instal·lar la versió per defecte del JDK, utilitza la següent ordre:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>default-jdk
+</span></code></pre></div>
+2. <strong>Instal·lació de versions específiques d’OpenJDK</strong>  </p>
+<p>És possible que necessites una versió concreta de Java per motius de compatibilitat.
+Per instal·lar una versió específica d’OpenJDK en Ubuntu, primer busca les versions disponibles amb la següent ordre:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>apt search openjdk
+</span></code></pre></div>
+A continuació, instal·la la versió d’OpenJDK que desitges, per exemple OpenJDK 23, utilitzant:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-23-jdk
+</span></code></pre></div></p>
+</div>
 <hr />
 <h4 id="metode-1-installar-netbeans-amb-el-paquet-debian">🔹 Mètode 1: Instal·lar NetBeans amb el paquet Debian</h4>
 <p>El primer mètode per instal·lar NetBeans és utilitzar el <strong>paquet Debian (.deb)</strong>.<br />
@@ -585,7 +604,7 @@ El procés d’instal·lació a través d’aquest paquet es descriu als passos 
 <p><a class="glightbox" href="../img/netbeans_install2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 1: Descàrrega del paquet .deb" src="../img/netbeans_install2.jpg" /></a></p>
 <h5 id="pas-2-installar-el-paquet-debian">Pas 2: Instal·lar el paquet Debian</h5>
 <p>Ara, instal·leu el <strong>paquet Debian</strong> utilitzant l’ordre següent:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;/home/ruta_del_paquet.deb&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;/home/ruta_del_paquet.deb&#39;</span>
 </span></code></pre></div>
 <p><a class="glightbox" href="../img/netbeans_install3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 3: Descàrrega del paquet .deb" src="../img/netbeans_install3.jpg" /></a></p>
 <p>Després d’executar l’ordre anterior, Apache NetBeans s’instal·larà al vostre sistema operatiu.
@@ -593,14 +612,11 @@ Per a executar-lo, simplement escriviu el comandament següent a la terminal:</p
 <p><a class="glightbox" href="../img/netbeans_install4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 4: Descàrrega del paquet .deb" src="../img/netbeans_install4.jpg" /></a></p>
 <h5 id="desinstallar-netbeans">Desinstal·lar NetBeans</h5>
 <p>Per eliminar NetBeans instal·lat mitjançant el <strong>paquet Debian</strong>, s’ha d’executar l’ordre següent:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>--purge<span class="w"> </span>apache-netbeans
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>--purge<span class="w"> </span>apache-netbeans
 </span></code></pre></div>
 <p><a class="glightbox" href="../img/netbeans_uninstall.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 5: Descàrrega del paquet .deb" src="../img/netbeans_uninstall.jpg" /></a></p>
 <p>Després de completar el procés, <strong>NetBeans s’ha eliminat correctament</strong> del sistema operatiu.<br />
 Passem ara al <strong>mètode 2</strong> per instal·lar NetBeans.</p>
-<blockquote>
-<p><strong>Nota:</strong> Abans d’instal·lar NetBeans mitjançant el <strong>paquet Snap (Mètode 2)</strong>, assegureu-vos de tindre <strong>Java JDK</strong> instal·lat al vostre sistema, ja que és necessari per a l’execució de NetBeans.</p>
-</blockquote>
 <hr />
 <h4 id="metode-2-installar-netbeans-amb-el-paquet-snap">🔹 Mètode 2: Instal·lar NetBeans amb el paquet Snap</h4>
 <p>El paquet <strong>Snap</strong> també ofereix suport per a NetBeans, i permet instal·lar-lo de dues maneres:<br />
@@ -610,7 +626,7 @@ Vegem ambdues opcions.</p>
 <h5 id="metode-21-us-de-cli">Mètode 2.1: Ús de CLI</h5>
 <p>El paquet Snap de NetBeans es pot instal·lar fàcilment des de la <strong>terminal</strong>.<br />
 Per fer-ho, executeu l’ordre següent:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>netbeans<span class="w"> </span>--classic
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>netbeans<span class="w"> </span>--classic
 </span></code></pre></div>
 <a class="glightbox" href="../img/netbeans_snap1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 6: Descàrrega del paquet .deb" src="../img/netbeans_snap1.jpg" /></a></p>
 <h5 id="metode-22-us-de-gui">Mètode 2.2: Ús de GUI</h5>
@@ -619,7 +635,7 @@ Per fer-ho, executeu l’ordre següent:</p>
 <p><a class="glightbox" href="../img/netbeans_gui1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 7: Cerca de NetBeans al Centre de Programari Discover" src="../img/netbeans_gui1.jpg" /></a></p>
 <h4 id="eliminar-el-paquet-snap-de-netbeans">Eliminar el paquet Snap de NetBeans</h4>
 <p>Per eliminar els paquets Snap de <strong>NetBeans</strong>, executeu l’ordre següent a la terminal:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>snap<span class="w"> </span>remove<span class="w"> </span>netbeans
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>snap<span class="w"> </span>remove<span class="w"> </span>netbeans
 </span></code></pre></div>
 <a class="glightbox" href="../img/netbeans_uninstall_snap.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Figura 8: Cerca de NetBeans al Centre de Programari Discover" src="../img/netbeans_uninstall_snap.jpg" /></a></p>
 <p>Aquesta ordre eliminarà completament el paquet Snap de NetBeans del sistema.</p>
