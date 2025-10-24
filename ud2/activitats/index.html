@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../annex2_cmd/">
+      
       
       
       <link rel="icon" href="../img/logo.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>1. Edició de codi amb vim - Entorns Integrats de Denvolupament.</title>
+        <title>Activitats - Entorns Integrats de Denvolupament.</title>
       
     
     
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#annex-2-editors-de-fitxers-de-text-vim" class="md-skip">
+        <a href="#activitats-entorns-integrats-de-denvolupament" class="md-skip">
           Salta el contingut
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. Edició de codi amb vim
+              Activitats
             
           </span>
         </div>
@@ -402,10 +404,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../activitats/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Activitats
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -416,6 +438,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#activitats-entorns-integrats-de-denvolupament" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Activitats — Entorns Integrats de Denvolupament
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -445,35 +494,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#annex-2-editors-de-fitxers-de-text-vim" class="md-nav__link">
+  <a href="#activitats-entorns-integrats-de-denvolupament" class="md-nav__link">
     <span class="md-ellipsis">
-      Annex 2. Editors de fitxers de text: vim
+      🧩 Activitats — Entorns Integrats de Denvolupament
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Annex 2. Editors de fitxers de text: vim">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#introduccio-a-vim" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introducció a vim
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modes-de-vim" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modes de Vim
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -496,174 +521,59 @@
 
 
 
-  <h1>1. Edició de codi amb vim</h1>
+  <h1>Activitats</h1>
 
-<h2 id="annex-2-editors-de-fitxers-de-text-vim">Annex 2. Editors de fitxers de text: vim</h2>
-<p>Quan treballem des de la línia d'ordres, sovint cal editar fitxers, bé per tal de realitzar alguna modificació en un programa o directament, per programar a través de la consola.</p>
-<p>En apartats posteriors veurem eines per editar els nostres programes dins un entorn gràfic, però ara anem a fer ús d'un editor de fitxers en mode text: <strong>vim</strong>. Tot i que al principi pot resultar una miqueta costós i <em>dur</em>, quan ens acostumem a ell solem ser més productius, ja que ens permet editar fitxers sense moure pràcticament els dits del teclat. A més, en algunes ocasions, com quan ens connectem remotament a un ordinador, no disposem d'eines gràfiques per a l'edició de text, i aquest tipus d'editors ens poden ser de gran ajuda.</p>
+<h2 id="activitats-entorns-integrats-de-denvolupament">🧩 Activitats — Entorns Integrats de Denvolupament</h2>
+<hr />
 <div class="admonition note">
-<p class="admonition-title">Font original</p>
-<p>Aquesta pràctica es basa en el *webinar <a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">Vim, manual de uso básico*</a>, però d'una forma més simplificada. </p>
+<p class="admonition-title">Activitat 1 — Comparativa entre APT i SNAP</p>
+<p>🧠 Investiga i crea un article en el teu <strong>MkDocs</strong> on es faça una <strong>comparativa entre APT i SNAP</strong>, indicant: <br />
+     - Diferències principals<br />
+     - Avantatges i inconvenients de cadascuna  </p>
+<p>Fes el lliurament en l'activitat corresponent en la plataforma aules mostrant una captura de pantalla del teu <em>MkDocs</em>.</p>
 </div>
-<h3 id="introduccio-a-vim">Introducció a vim</h3>
-<p><em>Vim</em> és una versió millorada de l'editor <em>vi</em>, el primer editor de text a pantalla completa de sistemes Unix.</p>
-<p>Si al nostre ordinador no tenim instal·lat <em>vim</em>, podem fer-ho amb:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>vim
-</span></code></pre></div>
-<p>Quan ja disposem del <em>vim</em> instal·lat al sistema, per tal d'accedir només haurem d'invocar l'ordre <code>vim</code> des de la terminal. Si no indiquem res, se'ns mostrarà informació sobre algunes ordres bàsiques i sobre la versió. El més habitual, per contra, serà invocar <em>vim</em> passant-li el nom de fitxer que volem editar o crear:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ vim fitxer
-</span></code></pre></div>
-<p>Si <code>fitxer</code> existeix, l'obrirà per editar-lo, i si no, obrirà l'editor en blanc, i guardarà el fitxer quan indiquem l'ordre de guardar.</p>
-<h3 id="modes-de-vim">Modes de Vim</h3>
-<p>Vim té tres modes principals de treball:</p>
-<ul>
-<li>El <strong>mode ordres</strong>, que ens permet navegar pel document i introduïr ordres a executar dins el propi fitxer (buscar, reemplaçar, guardar). En aquest mode <strong>no s'interpreten les tecles del teclar pels seus caràcters, sinò per les funcions o ordres assignades a cada tecla</strong>. Aquestes ordres seran combinacions de lletres sensible a les majúscules, i podran anar precedides pel nombre de vegades que desitgem repetir l'acció a executar. <strong>Per accedir a aquest mode des de qualsevol altre, polsarem la tecla <code>Esc</code> (escape)</strong>.</li>
-<li>El <strong>mode ex</strong>, que ens permet manipular els fitxers (guardar, eixir, etc.). Per accedir a aquest mètode escrivim dos punts <code>:</code> seguit pel nom de l'ordre <code>ex</code> que volem executar. Després d'executar l'ordre, torna automàticament al mode comando.</li>
-<li>El <strong>mode inserció</strong>, que serveix per afegir text al fitxer. Per tal d'accedir a aquest mode, des del <em>mode d'ordres</em>, polsem la tecla <code>i</code> (<em>de insert</em>) o bé la tecla d'inserció <code>Ins</code>. Per tal de tornar de nou al mode d'ordres, utilitzarem la tecla <code>Esc</code>.</li>
-</ul>
-<h4 id="el-mode-dordres">El mode d'ordres</h4>
-<p>Les ordres de més utilitat en el mode d'ordres són:</p>
-<table>
-<thead>
-<tr>
-<th>Ordre</th>
-<th>Significat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>h</td>
-<td>Desplaçament cap a  l'esquerra (igual que el cursor)</td>
-</tr>
-<tr>
-<td>l</td>
-<td>Desplaçament cap a la dreata (igual que el cursor)</td>
-</tr>
-<tr>
-<td>j</td>
-<td>Desplaçament cap avall (igual que el cursor avall)</td>
-</tr>
-<tr>
-<td>k</td>
-<td>Desplaçament cap amunt (igual queel cursos cap amunt)</td>
-</tr>
-<tr>
-<td>w</td>
-<td>Desplaça una paraula a la dreta</td>
-</tr>
-<tr>
-<td>b</td>
-<td>Desplaça una paraula a  l'esquerra</td>
-</tr>
-<tr>
-<td>0</td>
-<td>Mou el cursor al principi de la línia actual</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Mou el cursos al final de la línia actual</td>
-</tr>
-<tr>
-<td>i</td>
-<td>Permet <strong>passar a mode d'inserció</strong>, i començar a escriure text en la posició actual del cursor</td>
-</tr>
-<tr>
-<td>I</td>
-<td>Permet <strong>passar a mode d'inserció</strong>, i començar a escriure text a principi de la línia en què ens trobem</td>
-</tr>
-<tr>
-<td>O</td>
-<td>Permet <strong>passar a mode d'inserció</strong>, afegint una línia en blanc davant d'on estem, per començar a escriure</td>
-</tr>
-<tr>
-<td>o</td>
-<td>Permet <strong>passar a mode d'inserció</strong>, afegint una línia en blanc després d'on estem, per començar a escriure</td>
-</tr>
-<tr>
-<td>dd</td>
-<td>Retalla la línia actual, i la deixa al portapapers</td>
-</tr>
-<tr>
-<td>P</td>
-<td>Apega el contingut del portapapers en la línia d'abans d'on ens trobem</td>
-</tr>
-<tr>
-<td>p</td>
-<td>Apega el contingut del portapapers en la línia de després d'on ens trobem</td>
-</tr>
-<tr>
-<td>u</td>
-<td>Desfà l'última ordre</td>
-</tr>
-<tr>
-<td>n</td>
-<td>Troba la següent coincidència en una búsqueda</td>
-</tr>
-<tr>
-<td>n</td>
-<td>Troba la coincidència anterior en una búsqueda</td>
-</tr>
-<tr>
-<td>:w</td>
-<td>Guarda el fitxer actual. Amb <code>:w Fitxer</code> el guarda amb altre nom</td>
-</tr>
-<tr>
-<td>:q</td>
-<td>Ix de <em>Vim</em> si no hi ha canvis pendents al fitxer</td>
-</tr>
-<tr>
-<td>:q!</td>
-<td>Ix de <em>Vim</em> encara que hi hagen canvis pendents al fitxer</td>
-</tr>
-<tr>
-<td>:wq</td>
-<td>Guarda els canvis i ix de <em>Vim</em></td>
-</tr>
-<tr>
-<td>:<em>número</em></td>
-<td>Va directament al número de línia indicat</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Buscar i reemplaçar text</strong></p>
-<p>Per tal de buscar i reemplaçar text en vim, fem ús de <code>/</code>, que porta el cursor directament a la ubicació que li indiquem. A més, també podem indicar fent ús de <code>%s</code> que reemplace text. De forma ressumida, tenim:</p>
-<table>
-<thead>
-<tr>
-<th>Ordre</th>
-<th>Significat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/<em>patró</em></td>
-<td>Busca el patró en el fitxer a mesura que escrivim</td>
-</tr>
-<tr>
-<td>:/<em>patró</em></td>
-<td>Busca el patró en el text. Cal que donem a la tecla <em>intro</em> per comencar a buscar</td>
-</tr>
-<tr>
-<td>:%s/<em>patró</em>/<em>text</em></td>
-<td>Busca el patró i el reemplaça pel text indicat, %s indica que busca en tot el document</td>
-</tr>
-<tr>
-<td>:%s/<em>patró</em>/<em>text</em>/gc</td>
-<td>Com l'anterior, però ara ens demanarà confirmació</td>
-</tr>
-</tbody>
-</table>
-<p>Quan busquem un text per reemplaçar-lo amb <code>gc</code> ens demana confirmació, donant diverses opcions:</p>
-<ul>
-<li><code>y</code>: Confirma l'acció</li>
-<li><code>n</code>: No fa la substitució i segueix buscant</li>
-<li><code>a</code>: Confirmem l'acció per a totes le següents coincidències</li>
-<li><code>q</code>: Aturem la búsqueda</li>
-<li><code>l</code>: Confirmem la substitució i parem la búsqueda, tornant al mode editor</li>
-<li><code>Ctrl+e</code>: Avancem cap avall en el document per localitzar el context de la coincidència</li>
-<li><code>Ctrl+y</code>: Retrocedim per localitzar el context de la coincidència</li>
-</ul>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Activitat 2 — Notebook de Jupyter</p>
+<ol>
+<li>Obri <strong>Jupyter Notebook</strong></li>
+<li>Crea un fitxer nou anomenat <code>activitat2.ipynb</code>.</li>
+<li>realitza l'execució de l'exemple del temari: <code>exemple1.PytonWidgets.ipynb</code></li>
+<li>Fes el lliurament en l'activitat corresponent en la plataforma aules i segons les instruccions indicades.</li>
+</ol>
+</div>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Activitat — Instal·lació i ús de NetBeans</p>
+<p>Crea un document on mostres pas a pas les següents tasques i que lliuraràs per aules:</p>
+<p>1) Instal·lació i desinstal·lació de NetBeans com s'explica al temari.<br />
+ - instal·lació i desinstal·lació de NetBeans amb el mètode 1 (paquet Debian ".deb" oficial)<br />
+ - instal·lació i desinstal·lació de NetBeans amb el mètode 2 (snap)  </p>
+<p>2) Reinstal·lació (la que preferiu) i creació del primer projecte on es mostre per l'eixida estàndar el missatge:
+ "Hola, sóc XXXX i aquest és el meu primer programa amb Netbeans"</p>
+</div>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Activitat — Instal·lació i ús de PyCharm Professional</p>
+<p>Crea un document on mostres pas a pas les següents tasques i que lliuraràs per aules:</p>
+<p>1) Instal·lació de PyCharm Professional  </p>
+<p>2) Activació de la llicència educativa  </p>
+<p>3) Creació del primer programa <code>Hola.py</code> on es mostre per eixida estàndar el missatge: "Hola, sóc XXXX i aquest és el meu primer programa amb PyCharm"</p>
+<p><strong>Nota:</strong><br />
+ - Recorda que abans, en primer lloc, has de verificar la teua llicència educativa.<br />
+ - Consulta la guia d'instal·lació que tens al temari de la unitat.  </p>
+</div>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Activitat — Instal·lació i ús de IntelliJ Ultimate</p>
+<p>Crea un document on mostres pas a pas les següents tasques i que lliuraràs per aules:</p>
+<p>1) Instal·lació de IntelliJ Ultimate  </p>
+<p>2) Activació de la llicència educativa  </p>
+<p>3) Creació del primer projecte on es mostre per eixida estàndar el missatge: "Hola, sóc XXXX i aquest és el meu primer programa amb IntelliJ"</p>
+<p><strong>Nota:</strong><br />
+ - Recorda que abans, en primer lloc, has de verificar la teua llicència educativa.<br />
+ - Consulta la guia d'instal·lació que tens al temari de la unitat.  </p>
+</div>
 
 
 
