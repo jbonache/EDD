@@ -142,6 +142,10 @@ img {
   color: #188425 !important;
 }
 
+.md-nav__link[href$="ud2/activitats/"] {
+  color: #188425 !important;
+}
+
 .md-nav__link[href$="activitats/"]:hover {
   color:  #22cc35 !important;      
 }
