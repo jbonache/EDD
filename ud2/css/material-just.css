@@ -137,18 +137,20 @@ img {
   color: deepPink !important;
 }
 
-.md-nav__link[href="https://jbonache.github.io/EDD/ud2/activitats/"] {
-  color:  deepPink !important;      
+
+.md-nav__link[href$="activitats/"] {
+  color: #188425 !important;
 }
 
-.md-nav__link[href="https://jbonache.github.io/EDD/ud2/activitats/"]:hover {
-  color:  deepPink !important;      
+.md-nav__link[href$="activitats/"]:hover {
+  color:  #22cc35 !important;      
 }
 
-.md-nav__link[href="https://jbonache.github.io/EDD/ud2/practiques_debug/"] {
-  color: deepPink !important;
+
+.md-nav__link[href$="practiques_debug/"] {
+  color: #f25d3f !important;
 }
 
-.md-nav__link[href="https://jbonache.github.io/EDD/ud2/practiques_debug/"]:hover {
-  color: deepPink !important;
+.md-nav__link[href$="practiques_debug/"]:hover {
+  color:  #f42e06 !important;      
 }
