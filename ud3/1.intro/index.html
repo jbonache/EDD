@@ -477,7 +477,7 @@
   
   
   <span class="md-ellipsis">
-    Annex 1. Sistemes de Control de Versions locals
+    Annex 1. El SCV de RCS
     
   </span>
   
@@ -500,7 +500,7 @@
   
   
   <span class="md-ellipsis">
-    Annex 2. Sistemes de Control de Versions centralitzats
+    Annex 2. El SCV de Subversion
     
   </span>
   
@@ -657,7 +657,7 @@
 <p>Com veiem, en un primer moment es crea una instantània d'un fitxer o conjunt de fitxers en el nostre equip local (versió 1). Posteriorment, es realitzen canvis i es genera una altra instantània. En aquest moment, el SCV guarda les diferències entre aquesta segona instantània i la primera, de manera que, des d'aquesta segona versió, podem tornar a la primera revertint aquests canvis. Finalment, es crea una tercera instantània guardant també les diferències respecte a la segona en la base de dades del SCV.</p>
 <div class="admonition example">
 <p class="admonition-title">Cas pràctic 2: RCS (Revision Control System)</p>
-<p>Consulta a l'annex 1 el sistema de control de versions de tipus local <strong>RCS</strong> del projecte <strong>GNU</strong> (<a href="https://www.gnu.org/software/rcs/">https://www.gnu.org/software/rcs/</a>).</p>
+<p>Consulta a <a href="../a1.scv_local/">l'annex 1</a> el sistema de control de versions de tipus local <strong>RCS</strong> i posa'l en pràctica.</p>
 </div>
 <h4 id="sistemes-de-control-de-versions-centralitzats">Sistemes de control de versions centralitzats</h4>
 <p>Amb l'arribada d'Internet, va sorgir la possibilitat que diversos programadors pogueren treballar conjuntament en un projecte, gestionant el control de versions amb els canvis que cadascun feia. Aleshores apareix la necessitat de centralitzar el control de versions en un únic servidor que emmagatzene les diferents versions dels arxius.</p>
@@ -669,7 +669,7 @@
 <p>Amb aquesta arquitectura, guanyem en versatilitat, ja que diversos desenvolupadors poden treballar de forma conjunta. El principal inconvenient que suposa aquest model és que, en cas de fallada, no podrem compartir les modificacions de codi i, si perdem la informació del servidor, també es perdrà tot l'historial de versions.</p>
 <div class="admonition example">
 <p class="admonition-title">Cas pràctic 3: Subversion</p>
-<p>Consulta a l'annex 2 el sistema de control de versions <strong>Subversion</strong>.</p>
+<p>Consulta a <a href="../a2.scv_centralitzat/">l'annex 2</a> el sistema de control de versions <strong>Subversion</strong>  i posa'l en pràctica.</p>
 </div>
 <h4 id="sistemes-de-control-de-versions-distribuits">Sistemes de control de versions distribuïts</h4>
 <p>Els sistemes de control de versions distribuïts adopten un enfocament més semblant a una arquitectura <em>peer-to-peer</em> (P2P o xarxa entre iguals) que a una arquitectura client-servidor. En lloc de disposar d'un únic repositori centralitzat amb el qual es sincronitzen els clients, cada equip té una còpia completa de tot el repositori, en lloc de l'última instantània del projecte. El fet que tots els equips guarden una còpia del repositori no impedeix que hi haja un equip que adopte el rol de servidor i que s'encarregarà, en general, de mantenir diversos repositoris.</p>
