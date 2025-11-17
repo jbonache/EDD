@@ -1040,31 +1040,25 @@ O bé en forma de grafo amb (hem simulat un 2n commit per veure la diferència a
 </span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="o">[</span>master<span class="w"> </span>6dc5cad<span class="o">]</span><span class="w"> </span>Eliminat<span class="w"> </span>tmp1.md
 </span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
 </span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="w"> </span>delete<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>tmp1.md
-</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="w"> </span><span class="sb">```</span>
-</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>
-</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a><span class="c1">### Esborrat directament del repositori</span>
-</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>
-</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>En<span class="w"> </span>aquesta<span class="w"> </span>segona<span class="w"> </span>opció<span class="w"> </span>veurem<span class="w"> </span>com<span class="w"> </span>esborrar<span class="w"> </span>directament<span class="w"> </span>el<span class="w"> </span>fitxer<span class="w"> </span>del<span class="w"> </span>repositori<span class="w"> </span>i<span class="w"> </span>provocar<span class="w"> </span>el<span class="w"> </span>seu<span class="w"> </span>esborrat<span class="w"> </span>en<span class="w"> </span>la<span class="w"> </span>zona<span class="w"> </span>de<span class="w"> </span>treball<span class="w"> </span>i<span class="w"> </span>preparació.<span class="w"> </span>Utilitzarem<span class="w"> </span>el<span class="w"> </span>fitxer<span class="w"> </span><span class="sb">`</span>tmp2.md<span class="sb">`</span><span class="w"> </span>creat<span class="w"> </span>anteriorment.
-</span><span id="__span-42-12"><a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>
-</span><span id="__span-42-13"><a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>**Pas<span class="w"> </span><span class="m">1</span>.<span class="w"> </span>Eliminem<span class="w"> </span>el<span class="w"> </span>fitxer<span class="w"> </span>del<span class="w"> </span>repositori**
-</span><span id="__span-42-14"><a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>
-</span><span id="__span-42-15"><a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>Per<span class="w"> </span>eliminar<span class="w"> </span>el<span class="w"> </span>fitxer<span class="w"> </span>del<span class="w"> </span>repositori<span class="w"> </span>directament,<span class="w"> </span>fem:
-</span><span id="__span-42-16"><a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a>
-</span><span id="__span-42-17"><a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a><span class="sb">```</span>bash
-</span><span id="__span-42-18"><a id="__codelineno-42-18" name="__codelineno-42-18" href="#__codelineno-42-18"></a>$<span class="w"> </span>git<span class="w"> </span>rm<span class="w"> </span>tmp2.md
+</span></code></pre></div>
+<h4 id="esborrat-directament-del-repositori">Esborrat directament del repositori</h4>
+<p>En aquesta segona opció veurem com esborrar directament el fitxer del repositori i provocar el seu esborrat en la zona de treball i preparació. Utilitzarem el fitxer <code>tmp2.md</code> creat anteriorment.</p>
+<p><strong>Pas 1. Eliminem el fitxer del repositori</strong></p>
+<p>Per eliminar el fitxer del repositori directament, fem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>$<span class="w"> </span>git<span class="w"> </span>rm<span class="w"> </span>tmp2.md
 </span></code></pre></div>
 <p>Si ara observem l’estat d’aquest fitxer, veurem que ja únicament hem de fer el commit perquè s’aplique l’esborrat.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
-</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>
-</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
-</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
-</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
-</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a><span class="w">    </span>deleted:<span class="w"> </span>tmp2.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="w">    </span>deleted:<span class="w"> </span>tmp2.md
 </span></code></pre></div>
 <p>Observeu també que el fitxer ha desaparegut de l’àrea de treball.</p>
 <p><strong>Pas 2. Confirmem els canvis</strong></p>
 <p>Per confirmar els canvis, com sempre:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Eliminat tmp2.md&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Eliminat tmp2.md&quot;</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Esborrant arxius en VSCode</p>
@@ -1086,11 +1080,11 @@ Per moure o reanomenar fitxers podem utilitzar els dos mateixos mecanismes que p
 
 Com a pas previ, creem un fitxer que serà el que moguem en el directori de treball, i l’afegim al repositori:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>$<span class="w"> </span>touch<span class="w"> </span>tmp_mv.md
-</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
-</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
-</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>
-</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;creat tmp_mv.md&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>$<span class="w"> </span>touch<span class="w"> </span>tmp_mv.md
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;creat tmp_mv.md&quot;</span>
 </span></code></pre></div>
 
 ### Reanomenat local i extensió al repositori
@@ -1099,23 +1093,23 @@ Com a pas previ, creem un fitxer que serà el que moguem en el directori de treb
 
 Per reanomenar el fitxer utilitzem l’ordre `mv` (*move*), que reanomena el fitxer:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>mv<span class="w"> </span>tmp_mv.md<span class="w"> </span>tmp_mv_1.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>mv<span class="w"> </span>tmp_mv.md<span class="w"> </span>tmp_mv_1.md
 </span></code></pre></div>
 
 Si observem l’estat del SCV:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
-</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>
-</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
-</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>On<span class="w"> </span>branch<span class="w"> </span>master
-</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
-</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add/rm &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
-</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
-</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="w">    </span>deleted:<span class="w"> </span>tmp_mv.md
-</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>Untracked<span class="w"> </span>files:
-</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
-</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="w">    </span>tmp_mv_1.md
-</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add/rm &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="w">    </span>deleted:<span class="w"> </span>tmp_mv.md
+</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a>Untracked<span class="w"> </span>files:
+</span><span id="__span-48-10"><a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+</span><span id="__span-48-11"><a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a><span class="w">    </span>tmp_mv_1.md
+</span><span id="__span-48-12"><a id="__codelineno-48-12" name="__codelineno-48-12" href="#__codelineno-48-12"></a>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
 </span></code></pre></div>
 
 Com veiem, ens està indicant que s'ha eliminat el fitxer `tmp_mv.md`, i s'ha creat un fitxer nou, que està sense seguiment, que és `tmp_mv_1.md`. Bàsicament, una operació de reanomenat podria considerar-se això, un esborrat de l'original, i la creació d'un nou fitxer amb el contingut del primer.
@@ -1124,22 +1118,22 @@ Com veiem, ens està indicant que s'ha eliminat el fitxer `tmp_mv.md`, i s'ha cr
 
 Així doncs, ara el que ens queda seria afegir l'esborrat del fitxer en la següent confirmació:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
 </span></code></pre></div>
 
 Així com afegir el fitxer nou al control de versions:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv_1.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>tmp_mv_1.md
 </span></code></pre></div>
 
 Amb això, l’estat del SCV serà:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
-</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>
-</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
-</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
-</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
-</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="w">    </span>renamed:<span class="w"> </span>tmp_mv.md<span class="w"> </span>-&gt;<span class="w"> </span>tmp_mv_1.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a><span class="w">    </span>renamed:<span class="w"> </span>tmp_mv.md<span class="w"> </span>-&gt;<span class="w"> </span>tmp_mv_1.md
 </span></code></pre></div>
 
 Com veiem, ací ja ens indica que s’ha reanomenat el fitxer.
@@ -1148,48 +1142,48 @@ Com veiem, ací ja ens indica que s’ha reanomenat el fitxer.
 
 Per confirmar els canvis:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Reanomenat tmp_mv.md a tmp_mv_1.md&quot;</span>
-</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
-</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="o">[</span>master<span class="w"> </span><span class="m">9913681</span><span class="o">]</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
-</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
-</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="w"> </span>rename<span class="w"> </span>tmp_mv.md<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>tmp_mv_1.md<span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Reanomenat tmp_mv.md a tmp_mv_1.md&quot;</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="o">[</span>master<span class="w"> </span><span class="m">9913681</span><span class="o">]</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a><span class="w"> </span>rename<span class="w"> </span>tmp_mv.md<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>tmp_mv_1.md<span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
 </span></code></pre></div>
 
 ### Reanomenat directe en el repositori
 
 Seguint l’exemple anterior, creem de nou el fitxer `tmp_mv.md` per reanomenar-lo com `tmp_mv_2.md`:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>touch<span class="w"> </span>tmp_mv.md
-</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
-</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit tmp_mv.md per al seu segon reanomenat&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>touch<span class="w"> </span>tmp_mv.md
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>git<span class="w"> </span>add<span class="w"> </span>tmp_mv.md
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit tmp_mv.md per al seu segon reanomenat&quot;</span>
 </span></code></pre></div>
 
 **Pas 1. Movem directament el fitxer en el SCV**
 
 Per reanomenar el fitxer en el SCV, utilitzarem git mv:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>$<span class="w"> </span>git<span class="w"> </span>mv<span class="w"> </span>tmp_mv.md<span class="w"> </span>tmp_mv_2.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>$<span class="w"> </span>git<span class="w"> </span>mv<span class="w"> </span>tmp_mv.md<span class="w"> </span>tmp_mv_2.md
 </span></code></pre></div>
 
 Això seria l’equivalent a haver fet el reanomenat de forma local i haver incorporat ja els canvis i arxius generats per al següent commit. Si observem l’estat del SCV:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
-</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>
-</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
-</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
-</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
-</span><span id="__span-54-6"><a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="w">    </span>renamed:<span class="w"> </span>tmp_mv.md<span class="w"> </span>-&gt;<span class="w"> </span>tmp_mv_2.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="w">    </span>renamed:<span class="w"> </span>tmp_mv.md<span class="w"> </span>-&gt;<span class="w"> </span>tmp_mv_2.md
 </span></code></pre></div>
 
 Veiem que estem en el pas 2 de l’apartat anterior. Així doncs, només quedaria confirmar aquests canvis.
 
 **Pas 2. Confirmant els canvis**
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Reanomenat tmp_mv.md a tmp_mv_2.md&quot;</span>
-</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>
-</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="o">[</span>master<span class="w"> </span>42803e7<span class="o">]</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
-</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
-</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="w"> </span>rename<span class="w"> </span>tmp_mv.md<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>tmp_mv_2.md<span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Reanomenat tmp_mv.md a tmp_mv_2.md&quot;</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="o">[</span>master<span class="w"> </span>42803e7<span class="o">]</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="w"> </span>rename<span class="w"> </span>tmp_mv.md<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>tmp_mv_2.md<span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
 </span></code></pre></div>
 
 !!! note "Renomenant fitxers en VSCode"
@@ -1210,24 +1204,24 @@ Veiem que estem en el pas 2 de l’apartat anterior. Així doncs, només quedari
 <h3 id="desfent-canvis-entre-la-zona-de-preparacio-i-la-zona-de-treball">Desfent canvis entre la zona de preparació i la zona de treball</h3>
 <p>Quan tenim canvis pendents en la zona de preparació (staged), podem desfer-los utilitzant el subcomandament de <code>git checkout</code>.</p>
 <p>Per exemple, anem a modificar el fitxer <code>tmp_mv_1.md</code> i afegir-li una línia (utilitzarem l'ordre <code>echo</code> i una redirecció per afegir línies al fitxer):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prova per desfer canvis&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>tmp_mv_1.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prova per desfer canvis&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>tmp_mv_1.md
 </span></code></pre></div>
 <p>Si ara consultem l’estat del SCV:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>$ git status
-</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>
-</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>On branch master
-</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>Changes not staged for commit:
-</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a> (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a> (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
-</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a>    modified: tmp_mv_1.md
-</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>$ git status
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>On branch master
+</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>Changes not staged for commit:
+</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a> (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+</span><span id="__span-58-6"><a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a> (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+</span><span id="__span-58-7"><a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a>    modified: tmp_mv_1.md
+</span><span id="__span-58-8"><a id="__codelineno-58-8" name="__codelineno-58-8" href="#__codelineno-58-8"></a>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </span></code></pre></div>
 <p>Veiem que marca el fitxer com a modificat. Si ara el que volem és desfer aquests canvis, tal com ens indica git, podem utilitzar l'ordre <code>git restore fitxer</code>, per restaurar-lo:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>tmp_mv_1.md
-</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="nv">$git</span><span class="w"> </span>status
-</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>
-</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>On<span class="w"> </span>branch<span class="w"> </span>master
-</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>tmp_mv_1.md
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="nv">$git</span><span class="w"> </span>status
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>
+</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-59-5"><a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
 </span></code></pre></div>
 <p>L'ordre <code>git restore</code> va aparèixer en la versió 2.23 de git (2019). Anteriorment, s’utilitzava l'ordre <code>git checkout</code> (que podem utilitzar també), utilitzat també per treballar amb diferents branques. Amb la introducció de <code>git restore</code> i <code>git switch</code> en la versió 2.23, es va eliminar aquesta ambigüitat.</p>
 <h3 id="ignorant-fitxers-en-git-el-fitxer-gitignore">Ignorant fitxers en git. El fitxer .gitignore.</h3>
@@ -1244,55 +1238,55 @@ Veiem que estem en el pas 2 de l’apartat anterior. Així doncs, només quedari
 <li>Podem utilitzar expressions regulars tipus <code>[0-9]</code>, <code>[ao]</code>.</li>
 </ul>
 <p>Veiem un exemple d’aquest tipus de fitxer <code>.gitignore</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a># Ignorar els fitxers amb nom temporal_6.txt i temporal_7.zip
-</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>temporal_6.txt
-</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>temporal_7.zip
-</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>
-</span><span id="__span-59-5"><a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a># Ignorar els fitxers amb extensió zip, gz, changes o deb:
-</span><span id="__span-59-6"><a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>*.zip
-</span><span id="__span-59-7"><a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a>*.gz
-</span><span id="__span-59-8"><a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>*.changes
-</span><span id="__span-59-9"><a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a>*.deb
-</span><span id="__span-59-10"><a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>
-</span><span id="__span-59-11"><a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a># Ignorar els fitxers amb extensió .log de la carpeta log, així
-</span><span id="__span-59-12"><a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a># com les extensions .log0, .log1, log2...
-</span><span id="__span-59-13"><a id="__codelineno-59-13" name="__codelineno-59-13" href="#__codelineno-59-13"></a>log/*.log
-</span><span id="__span-59-14"><a id="__codelineno-59-14" name="__codelineno-59-14" href="#__codelineno-59-14"></a>log/*.log[0-9]
-</span><span id="__span-59-15"><a id="__codelineno-59-15" name="__codelineno-59-15" href="#__codelineno-59-15"></a>
-</span><span id="__span-59-16"><a id="__codelineno-59-16" name="__codelineno-59-16" href="#__codelineno-59-16"></a># Ignorar tots els fitxers del directori imatges
-</span><span id="__span-59-17"><a id="__codelineno-59-17" name="__codelineno-59-17" href="#__codelineno-59-17"></a>imatges/*
-</span><span id="__span-59-18"><a id="__codelineno-59-18" name="__codelineno-59-18" href="#__codelineno-59-18"></a>
-</span><span id="__span-59-19"><a id="__codelineno-59-19" name="__codelineno-59-19" href="#__codelineno-59-19"></a># Ignorar tots els fitxers que acaben en &#39;a&#39; o &#39;o&#39; de la 
-</span><span id="__span-59-20"><a id="__codelineno-59-20" name="__codelineno-59-20" href="#__codelineno-59-20"></a># carpeta compilats
-</span><span id="__span-59-21"><a id="__codelineno-59-21" name="__codelineno-59-21" href="#__codelineno-59-21"></a>compilats/*[ao]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a># Ignorar els fitxers amb nom temporal_6.txt i temporal_7.zip
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>temporal_6.txt
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>temporal_7.zip
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a># Ignorar els fitxers amb extensió zip, gz, changes o deb:
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>*.zip
+</span><span id="__span-60-7"><a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>*.gz
+</span><span id="__span-60-8"><a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a>*.changes
+</span><span id="__span-60-9"><a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>*.deb
+</span><span id="__span-60-10"><a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>
+</span><span id="__span-60-11"><a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a># Ignorar els fitxers amb extensió .log de la carpeta log, així
+</span><span id="__span-60-12"><a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a># com les extensions .log0, .log1, log2...
+</span><span id="__span-60-13"><a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>log/*.log
+</span><span id="__span-60-14"><a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>log/*.log[0-9]
+</span><span id="__span-60-15"><a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>
+</span><span id="__span-60-16"><a id="__codelineno-60-16" name="__codelineno-60-16" href="#__codelineno-60-16"></a># Ignorar tots els fitxers del directori imatges
+</span><span id="__span-60-17"><a id="__codelineno-60-17" name="__codelineno-60-17" href="#__codelineno-60-17"></a>imatges/*
+</span><span id="__span-60-18"><a id="__codelineno-60-18" name="__codelineno-60-18" href="#__codelineno-60-18"></a>
+</span><span id="__span-60-19"><a id="__codelineno-60-19" name="__codelineno-60-19" href="#__codelineno-60-19"></a># Ignorar tots els fitxers que acaben en &#39;a&#39; o &#39;o&#39; de la 
+</span><span id="__span-60-20"><a id="__codelineno-60-20" name="__codelineno-60-20" href="#__codelineno-60-20"></a># carpeta compilats
+</span><span id="__span-60-21"><a id="__codelineno-60-21" name="__codelineno-60-21" href="#__codelineno-60-21"></a>compilats/*[ao]
 </span></code></pre></div>
 <p>Ara només quedaria afegir aquest fitxer al control de versions i confirmar els canvis.</p>
 <details class="question">
 <summary>Exercici 3. Crea un fitxer <code>.gitignore</code> de manera que s’ignoren tots els fitxers compilats de java. Afegeix-lo al repositori. Posteriorment, crea un fitxer font senzill en Java, compila’l, i prepara tot per confirmar-ho en un commit. Comprova si els fitxers compilats s’han afegit o no.`</summary>
 <p>Creem en primer lloc el fitxer .gitignore, amb el següent contingut:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a># Ignorem els compilats de java
-</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>*.class
+<div class="language-text highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a># Ignorem els compilats de java
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>*.class
 </span></code></pre></div>
 <p>Preparem el fitxer per al següent <em>commit</em> i el confirmem:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.gitignore
-</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit .gitignore&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.gitignore
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit .gitignore&quot;</span>
 </span></code></pre></div>
 <p>Ara, creem un fitxer en java, per exemple un <code>Hello.java</code> que siga un Hola Món.</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="kd">class</span> <span class="nc">Hello</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola Món!&quot;</span><span class="p">);</span><span class="w"> </span>
-</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="p">}</span>
-</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a><span class="p">}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="kd">class</span> <span class="nc">Hello</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola Món!&quot;</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="p">}</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Compilem:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>$<span class="w"> </span>javac<span class="w"> </span>Hello.java
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>$<span class="w"> </span>javac<span class="w"> </span>Hello.java
 </span></code></pre></div>
 <p>Preparem tot per al següent commit, i veiem com ens indica que s’ignorarà el .class:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>*
-</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>
-</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>The<span class="w"> </span>following<span class="w"> </span>paths<span class="w"> </span>are<span class="w"> </span>ignored<span class="w"> </span>by<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>your<span class="w"> </span>.gitignore<span class="w"> </span>files:
-</span><span id="__span-64-4"><a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a>Hello.class
-</span><span id="__span-64-5"><a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>Use<span class="w"> </span>-f<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>really<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>them.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>*
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>The<span class="w"> </span>following<span class="w"> </span>paths<span class="w"> </span>are<span class="w"> </span>ignored<span class="w"> </span>by<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>your<span class="w"> </span>.gitignore<span class="w"> </span>files:
+</span><span id="__span-65-4"><a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a>Hello.class
+</span><span id="__span-65-5"><a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>Use<span class="w"> </span>-f<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>really<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>them.
 </span></code></pre></div>
 </details>
 <!--
@@ -1300,7 +1294,7 @@ Veiem que estem en el pas 2 de l’apartat anterior. Així doncs, només quedari
 
 Per revertir l’estat d’un commit, utilitzem l'ordre git revert, de la següent manera:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>SHA-1_CURT_DEL_COMMIT_A_REVERTIR
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>SHA-1_CURT_DEL_COMMIT_A_REVERTIR
 </span></code></pre></div>
 
 Vegem-ho amb un exemple.
@@ -1309,78 +1303,78 @@ Vegem-ho amb un exemple.
 
 Tal com ja hem fet anteriorment, per veure els commits realitzats, utilitzem l'ordre git log:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
-</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>b885874<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Added<span class="w"> </span>Hello.java
-</span><span id="__span-66-3"><a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>963f385<span class="w"> </span>Added<span class="w"> </span>.gitignore
-</span><span id="__span-66-4"><a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>42803e7<span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
-</span><span id="__span-66-5"><a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>fd760e3<span class="w"> </span>Afegit<span class="w"> </span>tmp_mv.md<span class="w"> </span>per<span class="w"> </span>al<span class="w"> </span>seu<span class="w"> </span>segon<span class="w"> </span>reanomenat
-</span><span id="__span-66-6"><a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a><span class="m">9913681</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
-</span><span id="__span-66-7"><a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a>562aa01<span class="w"> </span>creat<span class="w"> </span>tmp_mv.md
-</span><span id="__span-66-8"><a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>a380964<span class="w"> </span>Eliminat<span class="w"> </span>tmp2.md
-</span><span id="__span-66-9"><a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a>6dc5cad<span class="w"> </span>Eliminat<span class="w"> </span>tmp1.md
-</span><span id="__span-66-10"><a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a>c04b46e<span class="w"> </span>Afegits<span class="w"> </span>dos<span class="w"> </span>fitxers<span class="w"> </span>de<span class="w"> </span>prova
-</span><span id="__span-66-11"><a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a>0f89bda<span class="w"> </span>Modificat<span class="w"> </span>fitxer1.md
-</span><span id="__span-66-12"><a id="__codelineno-66-12" name="__codelineno-66-12" href="#__codelineno-66-12"></a>c7e8b82<span class="w"> </span>Afegint<span class="w"> </span>el<span class="w"> </span>primer<span class="w"> </span>commit
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>b885874<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Added<span class="w"> </span>Hello.java
+</span><span id="__span-67-3"><a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>963f385<span class="w"> </span>Added<span class="w"> </span>.gitignore
+</span><span id="__span-67-4"><a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a>42803e7<span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
+</span><span id="__span-67-5"><a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>fd760e3<span class="w"> </span>Afegit<span class="w"> </span>tmp_mv.md<span class="w"> </span>per<span class="w"> </span>al<span class="w"> </span>seu<span class="w"> </span>segon<span class="w"> </span>reanomenat
+</span><span id="__span-67-6"><a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a><span class="m">9913681</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
+</span><span id="__span-67-7"><a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a>562aa01<span class="w"> </span>creat<span class="w"> </span>tmp_mv.md
+</span><span id="__span-67-8"><a id="__codelineno-67-8" name="__codelineno-67-8" href="#__codelineno-67-8"></a>a380964<span class="w"> </span>Eliminat<span class="w"> </span>tmp2.md
+</span><span id="__span-67-9"><a id="__codelineno-67-9" name="__codelineno-67-9" href="#__codelineno-67-9"></a>6dc5cad<span class="w"> </span>Eliminat<span class="w"> </span>tmp1.md
+</span><span id="__span-67-10"><a id="__codelineno-67-10" name="__codelineno-67-10" href="#__codelineno-67-10"></a>c04b46e<span class="w"> </span>Afegits<span class="w"> </span>dos<span class="w"> </span>fitxers<span class="w"> </span>de<span class="w"> </span>prova
+</span><span id="__span-67-11"><a id="__codelineno-67-11" name="__codelineno-67-11" href="#__codelineno-67-11"></a>0f89bda<span class="w"> </span>Modificat<span class="w"> </span>fitxer1.md
+</span><span id="__span-67-12"><a id="__codelineno-67-12" name="__codelineno-67-12" href="#__codelineno-67-12"></a>c7e8b82<span class="w"> </span>Afegint<span class="w"> </span>el<span class="w"> </span>primer<span class="w"> </span>commit
 </span></code></pre></div>
 
 **Pas 2. Localitzem el commit on es va produir el canvi i el revertim**
 
 Si desitgem, per exemple, recuperar el fitxer tmp1.md eliminat en el commit `6dc5cad`, farem:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>6dc5cad
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>6dc5cad
 </span></code></pre></div>
 
 Que ens demanarà un nou missatge per al registre i automàticament crearà un nou commit amb aquest missatge i els canvis aplicats.
 
 Si ara inspeccionem de nou el llistat de commits:
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
-</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>
-</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>ed0ed9c<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Revert<span class="w"> </span><span class="s2">&quot;esborrat tmp1&quot;</span>
-</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>b885874<span class="w"> </span>Added<span class="w"> </span>Hello.java
-</span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a>963f385<span class="w"> </span>Added<span class="w"> </span>.gitignore
-</span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a>42803e7<span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
-</span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a>fd760e3<span class="w"> </span>Afegit<span class="w"> </span>tmp_mv.md<span class="w"> </span>per<span class="w"> </span>al<span class="w"> </span>seu<span class="w"> </span>segon<span class="w"> </span>reanomenat
-</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="m">9913681</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
-</span><span id="__span-68-9"><a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a>562aa01<span class="w"> </span>creat<span class="w"> </span>tmp_mv.md
-</span><span id="__span-68-10"><a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>a380964<span class="w"> </span>Eliminat<span class="w"> </span>tmp2.md
-</span><span id="__span-68-11"><a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a>6dc5cad<span class="w"> </span>Eliminat<span class="w"> </span>tmp1.md
-</span><span id="__span-68-12"><a id="__codelineno-68-12" name="__codelineno-68-12" href="#__codelineno-68-12"></a>c04b46e<span class="w"> </span>Afegits<span class="w"> </span>dos<span class="w"> </span>fitxers<span class="w"> </span>de<span class="w"> </span>prova
-</span><span id="__span-68-13"><a id="__codelineno-68-13" name="__codelineno-68-13" href="#__codelineno-68-13"></a>0f89bda<span class="w"> </span>Modificat<span class="w"> </span>fitxer1.md
-</span><span id="__span-68-14"><a id="__codelineno-68-14" name="__codelineno-68-14" href="#__codelineno-68-14"></a>c7e8b82<span class="w"> </span>Afegint<span class="w"> </span>el<span class="w"> </span>primer<span class="w"> </span>commit
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>ed0ed9c<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Revert<span class="w"> </span><span class="s2">&quot;esborrat tmp1&quot;</span>
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>b885874<span class="w"> </span>Added<span class="w"> </span>Hello.java
+</span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>963f385<span class="w"> </span>Added<span class="w"> </span>.gitignore
+</span><span id="__span-69-6"><a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>42803e7<span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_2.md
+</span><span id="__span-69-7"><a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>fd760e3<span class="w"> </span>Afegit<span class="w"> </span>tmp_mv.md<span class="w"> </span>per<span class="w"> </span>al<span class="w"> </span>seu<span class="w"> </span>segon<span class="w"> </span>reanomenat
+</span><span id="__span-69-8"><a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a><span class="m">9913681</span><span class="w"> </span>Reanomenat<span class="w"> </span>tmp_mv.md<span class="w"> </span>a<span class="w"> </span>tmp_mv_1.md
+</span><span id="__span-69-9"><a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>562aa01<span class="w"> </span>creat<span class="w"> </span>tmp_mv.md
+</span><span id="__span-69-10"><a id="__codelineno-69-10" name="__codelineno-69-10" href="#__codelineno-69-10"></a>a380964<span class="w"> </span>Eliminat<span class="w"> </span>tmp2.md
+</span><span id="__span-69-11"><a id="__codelineno-69-11" name="__codelineno-69-11" href="#__codelineno-69-11"></a>6dc5cad<span class="w"> </span>Eliminat<span class="w"> </span>tmp1.md
+</span><span id="__span-69-12"><a id="__codelineno-69-12" name="__codelineno-69-12" href="#__codelineno-69-12"></a>c04b46e<span class="w"> </span>Afegits<span class="w"> </span>dos<span class="w"> </span>fitxers<span class="w"> </span>de<span class="w"> </span>prova
+</span><span id="__span-69-13"><a id="__codelineno-69-13" name="__codelineno-69-13" href="#__codelineno-69-13"></a>0f89bda<span class="w"> </span>Modificat<span class="w"> </span>fitxer1.md
+</span><span id="__span-69-14"><a id="__codelineno-69-14" name="__codelineno-69-14" href="#__codelineno-69-14"></a>c7e8b82<span class="w"> </span>Afegint<span class="w"> </span>el<span class="w"> </span>primer<span class="w"> </span>commit
 </span></code></pre></div>
 -->
 
 <h3 id="eliminant-arxius-no-seguits">Eliminant arxius no seguits</h3>
 <p>Podem eliminar els arxius que no estiguen sota el control de versions en el directori de treball mitjançant l’ordre:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f
 </span></code></pre></div>
 <p>Per exemple, si creem tres fitxers:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>$<span class="w"> </span>touch<span class="w"> </span>f1<span class="w"> </span>f2<span class="w"> </span>f3
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>$<span class="w"> </span>touch<span class="w"> </span>f1<span class="w"> </span>f2<span class="w"> </span>f3
 </span></code></pre></div>
 <p>Si veiem l’estat de git:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>git<span class="w"> </span>status
-</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>
-</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>HEAD<span class="w"> </span>detached<span class="w"> </span>at<span class="w"> </span>refs/heads/master
-</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>Untracked<span class="w"> </span>files:
-</span><span id="__span-71-5"><a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
-</span><span id="__span-71-6"><a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a><span class="w">    </span>f1
-</span><span id="__span-71-7"><a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a><span class="w">    </span>f2
-</span><span id="__span-71-8"><a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a><span class="w">    </span>f3
-</span><span id="__span-71-9"><a id="__codelineno-71-9" name="__codelineno-71-9" href="#__codelineno-71-9"></a>nothing<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span>but<span class="w"> </span>untracked<span class="w"> </span>files<span class="w"> </span>present<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>to<span class="w"> </span>track<span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>git<span class="w"> </span>status
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>
+</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>HEAD<span class="w"> </span>detached<span class="w"> </span>at<span class="w"> </span>refs/heads/master
+</span><span id="__span-72-4"><a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a>Untracked<span class="w"> </span>files:
+</span><span id="__span-72-5"><a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a><span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+</span><span id="__span-72-6"><a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a><span class="w">    </span>f1
+</span><span id="__span-72-7"><a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a><span class="w">    </span>f2
+</span><span id="__span-72-8"><a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a><span class="w">    </span>f3
+</span><span id="__span-72-9"><a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a>nothing<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span>but<span class="w"> </span>untracked<span class="w"> </span>files<span class="w"> </span>present<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>to<span class="w"> </span>track<span class="o">)</span>
 </span></code></pre></div>
 <p>Podem netejar els fitxers que no estiguen sota control de versions amb:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f
-</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>
-</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>Removing<span class="w"> </span>f1
-</span><span id="__span-72-4"><a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a>Removing<span class="w"> </span>f2
-</span><span id="__span-72-5"><a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a>Removing<span class="w"> </span>f3
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>
+</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>Removing<span class="w"> </span>f1
+</span><span id="__span-73-4"><a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>Removing<span class="w"> </span>f2
+</span><span id="__span-73-5"><a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>Removing<span class="w"> </span>f3
 </span></code></pre></div>
 <p>Si a més volem eliminar també els directoris no utilitzats faríem (suposem que tenim dos directoris buits <code>directory1</code> i <code>directory2</code>):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f<span class="w"> </span>-d
-</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>
-</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>Removing<span class="w"> </span>directory1/
-</span><span id="__span-73-4"><a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>Removing<span class="w"> </span>directory2/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-f<span class="w"> </span>-d
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>
+</span><span id="__span-74-3"><a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>Removing<span class="w"> </span>directory1/
+</span><span id="__span-74-4"><a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>Removing<span class="w"> </span>directory2/
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Eliminant fitxers no seguits des de VSCode</p>
@@ -1397,10 +1391,10 @@ b. Des de la vista del sistema de control de versions, on voràs que s'indica qu
 <div class="admonition question">
 <p class="admonition-title">Acabant l'article de Mkdocs</p>
 <p>Una vegada hages finalitzat, còpia com a codi el resultat de l'ordre:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>git log
+<div class="language-text highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>git log
 </span></code></pre></div>
 <p>I adjunta al final del document també una <strong>captura de pantalla</strong> del resultat de:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>git log --oneline
+<div class="language-text highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>git log --oneline
 </span></code></pre></div>
 </div>
 <h3 id="altres-operacions-git-dinteres">Altres operacions GIT d’interés</h3>
