@@ -428,6 +428,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pujar-repositori-local-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pujar repositori local a Github
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -564,6 +573,15 @@
   <a href="#github" class="md-nav__link">
     <span class="md-ellipsis">
       Github
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pujar-repositori-local-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pujar repositori local a Github
     </span>
   </a>
   
@@ -1011,14 +1029,63 @@ En apartats anteriors ja hem vist com treballar amb repositoris remots. Anem a r
 <p>Aquest concepte de <code>fork</code> és diferent del de crear una branca, ja que genera una còpia física completa del repositori, amb la intenció de començar un desenvolupament independent a l'original. En canvi, una branca suposa una bifurcació, però dins del repositori original, amb la intenció de realitzar canvis que després s'aplequin a la branca principal.</p>
 <p>No obstant això, mitjançant un <code>fork</code>, també podrem col·laborar amb el projecte original, encara que no siguem membres del seu equip de desenvolupament. Quan creiem que els canvis que hem realitzat poden ser positius, o resolen algun error del codi original, podem fer un <code>pull request</code> al projecte original perquè els desenvolupadors considerin combinar el seu codi amb el nostre.</p>
 <details class="question">
-<summary>Exercici 2. Crea un <code>fork</code> en el teu compte d'usuari d'un projecte d'algun company, o bé del propi repositori que s'ha creat d'exemple com AlumnoDAM-MGH. Clona'l en el teu equip, realitza canvis i puja'ls de nou al repositori en el teu compte. Disposes de més informació sobre els forks a <a href="https://docs.github.com/es/get-started/quickstart/fork-a-repo">la documentacio oficial de Github</a></summary>
+<summary>Exercici 2. Crea un <code>fork</code> en el teu compte d'usuari d'un projecte d'algun company (o d'un altre compte de Github). Clona'l en el teu equip, realitza canvis i puja'ls de nou al repositori en el teu compte. Disposes de més informació sobre els forks a <a href="https://docs.github.com/es/get-started/quickstart/fork-a-repo">la documentacio oficial de Github</a></summary>
 <p>Per a aquest exercici hauríem d'obrir la pàgina del repositori que vulguem bifurcar i fer clic en la icona de <code>Fork</code>, ubicada en la part superior dreta:</p>
 <p><a class="glightbox" href="../img/github/github6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github6.png" width="400px" /></a></p>
 <p>Fet això, ens demanarà en quina compte de grup o usuari anem a crear la bifurcació:</p>
 <p><a class="glightbox" href="../img/github/github7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github7.png" width="400px" /></a></p>
-<p>I després d'un breu temps d'espera, tindrem el repositori en el nostre compte, des d'on podrem clonar-lo en el nostre equip i treballar amb ell tal com hem fet al llarg dels exemples.</p>
+<p>I després d'un breu temps d'espera, tindrem el repositori en el nostre compte, des d'on podrem clonar-lo en el nostre equip i treballar amb ell tal i com hem fet al llarg dels exemples.</p>
 <p><a class="glightbox" href="../img/github/github8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/github/github8.png" width="400px" /></a></p>
 </details>
+<h3 id="pujar-repositori-local-a-github">Pujar repositori local a Github</h3>
+<p>Abans de començar, <strong>ja s’ha creat prèviament el repositori a GitHub</strong> (buit, sense README ni altres fitxers).<br />
+En aquest exemple, el repositori remot és: <code>https://github.com/AlumnoDAM/segon-repo.git</code></p>
+<p>A continuació es crearà un repositori local senzill, encara que lo seu és partir d'un repositori local ja existent.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>git<span class="w"> </span>init<span class="w"> </span>projecteLocal
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Primer arxiu&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>fitxer1.md
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Afegit fitxer1&quot;</span>
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>commit-raíz<span class="o">)</span><span class="w"> </span>1af4f59<span class="o">]</span><span class="w"> </span>Afegit<span class="w"> </span>fitxer1
+</span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span id="__span-43-10"><a id="__codelineno-43-10" name="__codelineno-43-10" href="#__codelineno-43-10"></a><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>fitxer1.md
+</span></code></pre></div>
+<p>Connectar el repositori local amb el repositori creat a GitHub:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/AlumnoDAM/segon-repo.git
+</span></code></pre></div>
+<p>I podem comprovar que s’ha afegit correctament amb la coneguda ordre <code>remote</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>origin<span class="w">  </span>https://github.com/AlumnoDAM/segon-repositori.git<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>origin<span class="w">  </span>https://github.com/AlumnoDAM/segon-repositori.git<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></div>
+<p>Pujar el projecte a GitHub</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>master<span class="w"> </span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>master
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p>Canvia el nom de la branca principal a main (si cal, per defecte serà master en Github i master en el repo local).
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main<span class="w"> </span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></p>
+</div>
+<p>A continuació ens demanarà les nostres credencials per poder realitzar el <code>push</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>Username<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;https://github.com&#39;</span>:<span class="w"> </span>AlumnoDAM
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>Password<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;https://AlumnoDAM@github.com&#39;</span>:<span class="w"> </span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>Enumerando<span class="w"> </span>objetos:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span>listo.
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>Contando<span class="w"> </span>objetos:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span>listo.
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>Escribiendo<span class="w"> </span>objetos:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">248</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">248</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span>listo.
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reusados<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reusados<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a>To<span class="w"> </span>https://github.com/AlumnoDAM/segon-repositori.git
+</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="w"> </span>*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">      </span>master<span class="w"> </span>-&gt;<span class="w"> </span>master
+</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a>rama<span class="w"> </span><span class="s1">&#39;master&#39;</span><span class="w"> </span>configurada<span class="w"> </span>para<span class="w"> </span>rastrear<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span>.
+</span></code></pre></div>
+<p>I, ara sí, ja tindrem els arxius pujats al repositori remot de Github:</p>
+<p><a class="glightbox" href="../img/local-to-github.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Espai web per al repositori" src="../img/local-to-github.png" width="500px" /></a></p>
+<p>A partir d’ara, els canvis es pujaran com ja saps, amb l'ordre <code>git push</code> que ja coneixes de les pràctiques anteriors.</p>
 
 
 
