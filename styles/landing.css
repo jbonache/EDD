@@ -106,6 +106,12 @@
   color: inherit;
 }
 
+.card.disabled {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    pointer-events: none; /* evita clics */
+}
+
 
 /* Oculta la caja de búsqueda del header SOLO en la portada */
 .md-search {
