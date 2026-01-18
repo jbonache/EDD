@@ -82,9 +82,11 @@
   overflow: hidden;
   transition: transform 0.2s;
 }
+
 .card:hover {
   transform: scale(1.05);
 }
+
 .card-header {
   padding: 16px;
   background-color: purple;
@@ -93,6 +95,7 @@
   font-size: 18px;
   text-align: center;
 }
+
 .card-body {
   padding: 16px;
   color: #333;
@@ -102,6 +105,7 @@
   text-decoration: none;
   color: inherit;
 }
+
 
 /* Oculta la caja de búsqueda del header SOLO en la portada */
 .md-search {
