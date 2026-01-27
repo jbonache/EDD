@@ -793,10 +793,26 @@ classDiagram
 </span></code></pre></div>
 <p>Aquesta eina ens permetrà obrir fitxers amb diverses extensions i representar diagrames.</p>
 <p>Per exemple, creem un fitxer markdown amb el següent contingut. Observeu que el diagrama comença amb <code>@startuml</code> i acaba amb <code>@enduml</code>:</p>
-<p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>![<span class="nt">Diagrama UML</span>](<span class="na">../diagrames/1.UML/diagram_8348428846297743402.svg</span>)
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ni">@startuml</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>class Producte {
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    -String descripció
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    -float preu
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    -int quantitat
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    +String ObteLiniaProducte()
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>}
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>class Cistella {
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    -List&lt;Producte&gt; productes
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    -float preuTotal
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    +void AfigProducte(Producte)
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    +void MostraCistella()
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>}
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>Cistella &quot;1&quot; o-- &quot;0..*&quot; Producte
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="ni">@enduml</span>
 </span></code></pre></div>
-Això ens genera el següent diagrama:</p>
-<p><a class="glightbox" href="../diagrames/1.UML/diagram_8348428846297743402.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_8348428846297743402.svg" /></a></p>
+<p>Això ens genera el següent diagrama:</p>
+<p><a class="glightbox" href="../diagrames/1.UML/diagram_5409870212034332233.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_5409870212034332233.svg" /></a></p>
 <div class="admonition abstract">
 <p class="admonition-title">Extensions per a VSCode</p>
 <p>L'<strong>extensió PlantUML</strong> ens servirà per donar suport a aquest llenguatge en VSCode, amb remarcat de sintaxi i previsualització de diagrames.</p>
