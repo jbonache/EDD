@@ -683,7 +683,7 @@
 <p><strong>Entitats</strong>: Es defineixen amb un identificador i el contingut entre claudàtors o parèntesis:</p>
 <ul>
 <li><code>[Entitat]</code> per a processos.</li>
-<li><code>(Procés/Inici/Fi)</code> per a inici o fi.</li>
+<li><code>((Procés/Inici/Fi))</code> per a inici o fi.</li>
 </ul>
 </li>
 <li>
@@ -717,19 +717,19 @@
 </ul>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">flowchart TD</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">    A(Inici del procés) --&gt; B{Es compleix la condició?}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">    A((Inici del procés)) --&gt; B{Es compleix la condició?}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">    B -- Sí --&gt; C[Executa l&#39;acció A]</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">    B -- No --&gt; D[Executa l&#39;acció B]</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s">    C --&gt; E(Fí del procés)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s">    C --&gt; E((Fí del procés))</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">    D --&gt; E</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="sb">```</span>
 </span></code></pre></div>
 <p>Genera el següent diagrama de flux:</p>
 <pre class="mermaid"><code>flowchart TD
-    A(Inici del procés) --&gt; B{Es compleix la condició?}
+    A((Inici del procés)) --&gt; B{Es compleix la condició?}
     B -- Sí --&gt; C[Executa l'acció A]
     B -- No --&gt; D[Executa l'acció B]
-    C --&gt; E(Fí del procés)
+    C --&gt; E((Fí del procés))
     D --&gt; E</code></pre>
 <ul>
 <li><strong>Exemple de diagrama de classes</strong>. El següent codi Markdown:</li>
@@ -812,7 +812,7 @@ classDiagram
 </span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="ni">@enduml</span>
 </span></code></pre></div>
 <p>Això ens genera el següent diagrama:</p>
-<p><a class="glightbox" href="../diagrames/1.UML/diagram_5409870212034332233.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_5409870212034332233.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/1.UML/diagram_2250134410739633064.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_2250134410739633064.svg" /></a></p>
 <div class="admonition abstract">
 <p class="admonition-title">Extensions per a VSCode</p>
 <p>L'<strong>extensió PlantUML</strong> ens servirà per donar suport a aquest llenguatge en VSCode, amb remarcat de sintaxi i previsualització de diagrames.</p>
