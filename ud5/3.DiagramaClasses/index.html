@@ -659,7 +659,7 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>```
 </span></code></pre></div>
 <p>Que ens genera el següent diagrama:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_6547149395140602936.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_6547149395140602936.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_3413767859314402895.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_3413767859314402895.svg" /></a></p>
 <p>Observeu com es marquen amb un quadre roig els components privats, amb un romb groc els protegits, i amb un cercle verd els públics.</p>
 <p>Per la seua banda, amb Mermaid, ho expressariem així:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="sb">```mermaid</span>
@@ -679,7 +679,7 @@
         +metode_public() : tipus
     }</code></pre>
 <p>Veiem un exemple, amb PlantUML, que podria representar un objecte tipus Nau en un videojoc:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_6634590825579570239.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_6634590825579570239.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_3907820418695074170.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_3907820418695074170.svg" /></a></p>
 <p>Com veiem, es tracta d'una classe <code>Nau</code>, amb dos atributs privats: <code>posicioX</code> i <code>posicioY</code>. Per tal d'accedir a ells, es disposa dels mètodes <code>getPosicioX()</code> i <code>getPosicioY()</code>. A més, la classe defineix el mètode <code>dispara()</code>.</p>
 <h5 id="propietats-i-metodes-estatics">Propietats i mètodes estàtics</h5>
 <p>Un atribut o mètode <strong>estàtic</strong> és aquell que <strong>resideix en la classe</strong>, i no ens els objectes que s'instancien d'ella.</p>
@@ -693,7 +693,7 @@
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="ni">@enduml</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>```
 </span></code></pre></div>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_6193434663559982357.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_6193434663559982357.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_1283353779462054858.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_1283353779462054858.svg" /></a></p>
 <p>I, amb mermaid:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">classDiagram</span>
@@ -927,7 +927,7 @@
 </span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>  ```
 </span></code></pre></div>
 <p>I el resultat:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_8450957829866348592.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_8450957829866348592.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_1424769227060824768.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_1424769227060824768.svg" /></a></p>
 <ul>
 <li><strong>Mermaid</strong>:</li>
 </ul>
@@ -1025,11 +1025,11 @@
 <p>En cas que volguèrem que l'associació fora bidireccional, hauriem d'incloure també un objecte de tipus <em>Nau</em> dins de <em>Pilot</em>. L'inconvenient d'això és que caldria <em>programàticament</em> estar pedent de quan caviem aquesta associació que es modifiquen els dos objectes relacionats. En estos casos, el més pràctic serà determinar quin serà el sentit <em>normal</em> de les relacions, i fer ús d'associacions direccionals incloent només un objecte d'una classe dins l'altra. A l'exemple anterior, ens serà més útil conéixer quin pilot està pilotant una nau en un moment donat, que no quina nau pilota un pilot en un moment donat.</p>
 <div class="admonition question">
 <p class="admonition-title">Associacions amb multiplicitat N</p>
+<p>Quan la multiplicitat de la relació és 1, hem vist que definim objectes d'un tipus dins d'altres. 
+Ara bé, com ho farem quan la relació té multiplicitat N?</p>
 </div>
-<p>Quan la multiplicitat de la relació és 1, hem vist que definim objectes d'un tipus dins d'altres. </p>
-<p>Ara bé, com ho farem quan la relació té multiplicitat N?</p>
 <h5 id="agregacio"><strong>Agregació</strong></h5>
-<p>Les relacions d'agregació (<em>"té un"</em>) indiquen quan un objecte (el conjunt) està format per alters objectes. És a dir, una classe (el conjunt) està formada per altres classes (les parts), però aquestes poden existir independentment.</p>
+<p>Les relacions d'agregació (<em>"té un"</em>) indiquen quan un objecte (el conjunt) està format per altres objectes. És a dir, una classe (el conjunt) està formada per altres classes (les parts), però aquestes poden existir independentment.</p>
 <p>Per exemple, al cas de la nau, una nau pot estar formada per un propulsor, una cabina i un canó:</p>
 <p><a class="glightbox" href="../img/agregacio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'agregació" src="../img/agregacio.png" width="450px" /></a></p>
 <p>Com veiem, la forma de representar açò en Java, serà incorporar com a atributs tres objectes de tipus <em>Cabina</em>, <em>Propulsor</em> i <em>Canó</em> dins la classe <em>Nau</em>.</p>
@@ -1056,7 +1056,7 @@
 </span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>  ```
 </span></code></pre></div>
 <p>Que te la següent representació:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_8196124390437596354.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_8196124390437596354.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_120912993301786519.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_120912993301786519.svg" /></a></p>
 <p><strong>Mermaid</strong>: fa ús també de la seqüència <code>o--</code> per indicar l'agregació:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="s">  classDiagram</span>
@@ -1114,7 +1114,7 @@
 </span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>  <span class="ni">@enduml</span>
 </span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>  ```
 </span></code></pre></div>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_3980308839816724398.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_3980308839816724398.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_9061005581647600619.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_9061005581647600619.svg" /></a></p>
 <p><strong>Mermaid</strong>:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="s">  classDiagram</span>
@@ -1161,7 +1161,7 @@
 </span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>  ```
 </span></code></pre></div>
 <p>Es representa com a:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_6928752630542090177.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_6928752630542090177.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_7061081095451535627.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_7061081095451535627.svg" /></a></p>
 <p>I en mermaid:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="s">  classDiagram</span>
@@ -1215,7 +1215,7 @@
 </span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="ni">@enduml</span>
 </span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>```
 </span></code></pre></div>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_974917951077158524.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_974917951077158524.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_5025498157014014588.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_5025498157014014588.svg" /></a></p>
 <p>Per la seua banda, en Mermaid la sintaxi és pràcticament idèntica:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="sb">```mermaid</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="s">classDiagram</span>
@@ -1423,10 +1423,10 @@
 <h6 id="classes-abstractes">Classes abstractes</h6>
 <p>En principi, podrem instanciar objectes de les quatre classes. En cas que només tinguera sentit definir naus dels tipus de les subclasses, podriem definir la classe <code>Nau</code> com a <em>classe abstracta</em>, indicant que aquesta classe només serveix per definiar altres classes, però no per instanciar objectes.</p>
 <p>Per expressar això en PlantUML fem ús de la paraula <code>abstract</code> davant la classe:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>![<span class="nt">Diagrama UML</span>](<span class="na">../diagrames/3.DiagramaClasses/diagram_7677114220066912771.svg</span>)
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>![<span class="nt">Diagrama UML</span>](<span class="na">../diagrames/3.DiagramaClasses/diagram_7675423589885280677.svg</span>)
 </span></code></pre></div>
 <p>Que queda representat així:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_7677114220066912771.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_7677114220066912771.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_7675423589885280677.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_7675423589885280677.svg" /></a></p>
 <p>Com veiem, en lloc d'una C davant la classe, apareix una A, indicant que és abstracta.</p>
 <p>Per la seua banda, a Mermaid fem ús de la paraula clau <code>&lt;&lt;abstract&gt;&gt;</code> dins la definicó de la classe:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="sb">```mermaid</span>
@@ -1494,7 +1494,7 @@ class Nau {
 </span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>```
 </span></code></pre></div>
 <p>Que es representa marcant la interfície amb una <code>I</code> i una línia discontínua:</p>
-<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_4557066614515487288.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_4557066614515487288.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_3250037785480819195.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_3250037785480819195.svg" /></a></p>
 <p>Per la seua banda, amb Mermaid, no fem ús de la paraula <em>inteface</em> per definir la classe, però podem marcar una classe amb <code>&lt;&lt;interface&gt;&gt;</code> i expressar la relació de <em>implements</em> amb <code>..|&gt;</code>:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>``` mermaid
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>classDiagram
