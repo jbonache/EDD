@@ -584,7 +584,7 @@
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>```
 </span></code></pre></div>
 <p>Que es representa de la següent manera:</p>
-<p><a class="glightbox" href="../diagrames/4.DiagramesSequencia/diagram_1259774658356944880.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.DiagramesSequencia/diagram_1259774658356944880.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/4.DiagramesSequencia/diagram_918290262417249191.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.DiagramesSequencia/diagram_918290262417249191.svg" /></a></p>
 <h4 id="representacio-en-mermaid"><strong>Representació en Mermaid</strong></h4>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>``` mermaid
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sequenceDiagram
@@ -628,10 +628,24 @@
     Sistema--&gt;&gt;Usuari: Compra completada</code></pre>
 <h4 id="creacio-i-destruccio-en-plantuml-i-mermaid">Creació i destrucció en PlantUML i Mermaid</h4>
 <p>Veiem com incorporar la creació i destrucció d'objecte en PlantUml i Mermaid amb el següent exemple:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>![<span class="nt">Diagrama UML</span>](<span class="na">../diagrames/4.DiagramesSequencia/diagram_7351231874845988366.svg</span>)
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>``` plantuml
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>participant Usuari
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>participant Sistema
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>participant Comanda
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Usuari -&gt; Sistema : Crea una nova comanda
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Sistema -&gt; Comanda : Inicialitza comanda
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>activate Comanda
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>Sistema -&gt; Comanda : Guarda detalls
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>Sistema -&gt; Comanda : Finalitza comanda
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>deactivate Comanda
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Sistema --&gt;&gt; Usuari : Comanda completada
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="ni">@enduml</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>```
 </span></code></pre></div>
 <p>Que es representa de la següent forma:</p>
-<p><a class="glightbox" href="../diagrames/4.DiagramesSequencia/diagram_7351231874845988366.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.DiagramesSequencia/diagram_7351231874845988366.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/4.DiagramesSequencia/diagram_8526924680034778122.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/4.DiagramesSequencia/diagram_8526924680034778122.svg" /></a></p>
 <p>En Mermaid, l'exemple anterior es representaria amb:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>``` mermaid
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sequenceDiagram
