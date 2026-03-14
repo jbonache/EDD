@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../1.%20Make/">
       
       
       <link rel="icon" href="../img/logo.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Sdkman - Eines d’automatització.</title>
+        <title>Eines d'automatització - Eines d’automatització.</title>
       
     
     
@@ -76,6 +80,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#introduccio" class="md-skip">
+          Salta el contingut
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sdkman
+              Eines d'automatització
             
           </span>
         </div>
@@ -243,10 +252,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../0.%20Intro/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1. Eines d'automatització
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -257,6 +286,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -389,6 +445,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -406,21 +479,36 @@
 
 
 
-  <h1>Sdkman</h1>
+  <h1>1. Eines d'automatització</h1>
 
-<p>web</p>
-<p>https://sdkman.io/</p>
-<p>descàrrega (sense root)</p>
-<p>curl -s "https://get.sdkman.io" | bash</p>
-<p>després cal fer source:</p>
-<p>source "/home/joamuran/.sdkman/bin/sdkman-init.sh"</p>
-<p>No té netbeans...</p>
+<h2 id="introduccio">Introducció</h2>
+<p>En el desenvolupament de programari modern, els projectes solen estar formats per <strong>molts fitxers font, llibreries i dependències</strong>. A mesura que un projecte creix, també augmenta la complexitat del procés de compilació, prova i preparació de l'aplicació per a la seua distribució. Fer totes aquestes tasques manualment pot resultar lent, repetitiu i propens a errors.</p>
+<p>Per aquest motiu, en el desenvolupament professional s'utilitzen <strong>eines d'automatització</strong> o <strong>eines de build</strong>, que permeten definir i executar de manera automàtica les diferents tasques necessàries per construir un projecte de programari. Aquestes eines ajuden a organitzar millor el procés de compilació, gestionar dependències i garantir que tots els desenvolupadors treballen amb el mateix procés de construcció del projecte.</p>
+<p>En aquest tema estudiarem <strong>quatre eines d'automatització</strong> utilitzades habitualment en el desenvolupament de programari:</p>
+<ul>
+<li><strong>Make</strong>, utilitzada principalment en projectes desenvolupats en <strong>C i C++</strong>.</li>
+<li><strong>Apache Ant</strong>, una eina d'automatització clàssica per a projectes <strong>Java</strong>.</li>
+<li><strong>Maven</strong>, una eina de build i gestió de dependències molt utilitzada en l'ecosistema <strong>Java</strong>.</li>
+<li><strong>Gradle</strong>, una eina més moderna que combina automatització de build amb una gestió flexible de dependències.</li>
+</ul>
+<p>La raó per la qual s'estudien aquestes eines és que <strong>són àmpliament utilitzades en l'entorn professional</strong>. En moltes empreses és habitual treballar amb projectes ja existents que utilitzen alguna d'aquestes tecnologies per gestionar el procés de compilació i construcció del programari.</p>
+<p>Per tant, és possible que, en el futur, es trobeu en situacions on hageu de:</p>
+<ul>
+<li>Compilar projectes existents.</li>
+<li>Modificar o ampliar sistemes de build.</li>
+<li>Entendre com es gestionen les dependències del projecte.</li>
+<li>Mantenir o actualitzar projectes desenvolupats per altres equips.</li>
+</ul>
+<p>Conéixer aquestes eines et permetrà <strong>comprendre millor l'organització dels projectes de programari</strong> i facilitarà el treball amb projectes reals en entorns professionals.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 

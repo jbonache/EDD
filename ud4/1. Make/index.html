@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../0.%20Intro/">
+      
+      
+        <link rel="next" href="../3.%20Ant/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2. L'eina Make per a C/C++ - Eines d’automatització.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installacio" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Eines d’automatització." class="md-header__button md-logo" aria-label="Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Eines d’automatització.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. L'eina Make per a C/C++
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Eines d’automatització." class="md-nav__button md-logo" aria-label="Eines d’automatització." data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Eines d’automatització.
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbonache.github.io/EDD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Índex Curs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.%20Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Eines d'automatització
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2. L'eina Make per a C/C++
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. L'eina Make per a C/C++
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilant-un-programa-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilant un programa C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilitzant-make-per-a-lhola-mon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilitzant make per a l'«Hola Món»
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcions-llibreries-i-fitxers-de-capcalera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions, llibreríes i fitxers de capçalera
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construint-les-nostres-llibreries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Construint les nostres llibreries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilant-amb-llibreries-propies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilant amb llibreries pròpies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacio-dun-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creació d'un Makefile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#altres-tasques-per-a-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres tasques per a Make
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#us-de-variables-al-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús de variables al Makefile
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.Plataforma Java.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. La plataforma Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Apache Ant
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Apache Maven
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Gradle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Gradle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilant-un-programa-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilant un programa C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilitzant-make-per-a-lhola-mon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilitzant make per a l'«Hola Món»
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcions-llibreries-i-fitxers-de-capcalera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions, llibreríes i fitxers de capçalera
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construint-les-nostres-llibreries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Construint les nostres llibreries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilant-amb-llibreries-propies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilant amb llibreries pròpies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacio-dun-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creació d'un Makefile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#altres-tasques-per-a-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres tasques per a Make
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#us-de-variables-al-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús de variables al Makefile
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>2. L'eina Make per a C/C++</h1>
+
+<p><strong>Make</strong> és una eina d'automatització utilitzada habitualment en projectes desenvolupats en <strong>C i C++</strong> que facilita el procés de construcció d'un programa. En lloc d'executar manualment totes les ordres del compilador cada vegada que es vol generar l'executable, Make permet definir aquest procés de manera estructurada i repetir-lo amb una sola ordre.</p>
+<p>S'utilitzen uns fitxers anomenats <strong>Makefile</strong>, que es col·loquen normalment a la carpeta arrel del projecte. En aquests fitxers es descriuen les <strong>regles, dependències i ordres</strong> necessàries per compilar els diferents components del programa. D'aquesta manera, Make sap quins fitxers s'han de generar, quins depenen d'altres i quines accions ha d'executar per obtenir el resultat final.</p>
+<p>Una de les característiques més útils d'aquesta eina és que només recompila els fitxers que han sigut modificats, cosa que fa que el procés siga molt més ràpid i eficient en projectes amb molts fitxers.</p>
+<p>A continuació veurem <strong>com instal·lar Make en el sistema i com utilitzar-lo</strong>, així com la creació dels primers <strong>Makefiles</strong> per automatitzar la compilació de programes en C.</p>
+<h2 id="installacio">Instal·lació</h2>
+<p>Si no tenim <code>make</code> instal·lat al sistema:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>make
+</span></code></pre></div>
+<h2 id="compilant-un-programa-c">Compilant un programa C</h2>
+<p>Si tenim, un programa senzill en C, de l’estil «Hola Món»:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hola món</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Recordem que per compilar aquest fitxer, podem escriure:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gcc<span class="w"> </span>hola.c
+</span></code></pre></div>
+<p>Amb el que obtindrem un fitxer executable anomenat <code>a.out</code>. 
+Si volem que el fitxer d’eixida tinga altre nom, ho podem especificat amb el paràmetre <code>-o</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gcc<span class="w"> </span>hola.c<span class="w"> </span>-o<span class="w"> </span>hola
+</span></code></pre></div>
+<p>Tingueu en compte que podem utilitzar tant <code>gcc</code> com <code>cc</code>.</p>
+<p>També podem usar opcions de compilació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>gcc<span class="w"> </span>-Wall<span class="w"> </span>-g<span class="w"> </span>hola.c<span class="w"> </span>-o<span class="w"> </span>hola
+</span></code></pre></div>
+<ul>
+<li><code>-Wall</code> → mostra warnings</li>
+<li><code>-g</code> → informació de debug</li>
+</ul>
+<h2 id="utilitzant-make-per-a-lhola-mon">Utilitzant make per a l'«Hola Món»</h2>
+<p>Ara anem a veure com utilitzar el make amb la mateixa finalitat que <code>gcc</code> o <code>cc</code>. Si ens situem a la mateixa
+carpeta i llancem <code>make hola</code>, obtindrem:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make<span class="w"> </span>hola
+</span></code></pre></div>
+<p>Obtindre'm:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cc<span class="w"> </span>hola.c<span class="w"> </span>-o<span class="w"> </span>hola
+</span></code></pre></div>
+<p>Make interpreta que volem generar l'executable <code>hola</code> a partir del
+fitxer <code>hola.c</code>.</p>
+<h2 id="funcions-llibreries-i-fitxers-de-capcalera">Funcions, llibreríes i fitxers de capçalera</h2>
+<p>Anem a avançar una miqueta més amb el funcioanment de make. Tenim el següent fitxer de codi en C, anomenat <code>calcula.c</code>:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">+</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">}</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">resta</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">-</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">}</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="kt">int</span><span class="w"> </span><span class="nf">multiplica</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">*</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">}</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="kt">int</span><span class="w"> </span><span class="nf">divideix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">/</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">}</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="p">{</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La suma de %d i %d és %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">suma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">));</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La resta entre %d i %d és %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">resta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">));</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La multiplicació de %d i %d és %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">multiplica</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">));</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La divisió entre %d i %d és %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">divideix</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">));</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Aquest fitxer defineix quatre funcions: <strong>suma</strong>, <strong>resta</strong>, <strong>multiplica</strong> i <strong>divideix</strong> (a banda de la funció principal <code>main</code>). Veiem què vol dir açò.</p>
+<ul>
+<li>
+<p>Les funcions en els llenguatges de programació imperatius són <strong>subprogrames</strong> que reben unes dades, realitzen operacions amb elles i retornen un resultat.</p>
+</li>
+<li>
+<p>Les dades que reben les funcions s’anomenen <strong>arguments</strong>, i s’especifiquen entre parèntesi a la dreta del nom de la funció, indicant el tipus de dada i el nom de la variable que tindrà dins la funció.</p>
+</li>
+<li>
+<p>Si ens fixem, a l’esquerra del nom de la funció s’indica el <strong>tipus de dada</strong> que la funció retorna, i l’última ordre de la funció és un <code>return</code>, amb el qual especifiquem el valor de retorn.</p>
+</li>
+<li>
+<p>Per utilitzar una funció, cal <strong>invocar-la mitjançant el seu nom</strong> i passar-li els valors dels arguments, bé directament o mitjançant variables. Aquests arguments són <strong>posicionals</strong>, és a dir, l’ordre en què els indiquem en la crida és el mateix en què s’utilitzen dins de la funció. Evidentment, els arguments indicats en la crida han de coincidir <strong>en nombre i tipus</strong> amb els definits a la funció.</p>
+</li>
+</ul>
+<p>Com podem veure, hem definit quatre funcions que implementen senzilles operacions matemàtiques, que també podríem haver realitzat sense definir cap funció. No obstant això, les funcions solen contindre codi més extens i realitzar tasques més complexes. La seua finalitat és ajudar-nos a crear <strong>codi més modular</strong> i facilitar que algunes parts del programa es puguen <strong>reutilitzar</strong>.</p>
+<p>Finalment, trobem les <strong>llibreries</strong>. Un fitxer de llibreria és simplement un fitxer que conté <strong>funcions d’utilitat</strong> que poden ser reutilitzades. Les llibreries poden ser del sistema o creades per nosaltres per al nostre projecte. Per exemple, quan indiquem:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span></code></pre></div>
+<p>El que fem és carregar la capçalera de la llibreria <code>stdio.h</code>, que proporciona funcions com <code>printf</code> per escriure informació a la terminal.</p>
+<h2 id="construint-les-nostres-llibreries">Construint les nostres llibreries</h2>
+<p>Anem a simplificar el codi inicial de <code>calcula.c</code> amb l'ús de llibreries per tal de modularitzar el codi i fer-lo reutilitzable per altres programes. </p>
+<p>El que farem és crear una llibreria que continga les funcions que hem vist (<strong>suma</strong>, <strong>resta</strong>, <strong>multiplica</strong> i <strong>divideix</strong>) i que indicarem al nostre codi <code>calcula.c</code>. Per fer-ho, cal tindre en compte que una llibreria es divideix en dos tipus de fitxers:</p>
+<ul>
+<li>
+<p><strong>Fitxer de capçalera (header) (<code>.h</code>)</strong>: conté les definicions de les funcions, sense detalls de la seua implementació. És a dir, indica què fan les funcions de la llibreria.</p>
+</li>
+<li>
+<p><strong>Fitxer d’implementació (<code>.c</code>)</strong>: conté el codi que implementa les funcions, és a dir, com es realitzen. Aquest fitxer no ha d’implementar cap funció <code>main</code>.</p>
+</li>
+</ul>
+<p>Finalment, el fitxer principal del programa haurà d’incloure la llibreria amb un <code>#include</code> del fitxer de capçalera, i així podrà utilitzar les funcions definides en aquesta.</p>
+<h4 id="el-fitxer-calcc-conte-la-implementacio-de-les-funcions">El fitxer <code>calc.c</code> conté la implementació de les funcions:</h4>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">+</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">resta</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">-</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">}</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="kt">int</span><span class="w"> </span><span class="nf">multiplica</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">*</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="p">}</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">divideix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">/</span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="el-fitxer-calch-conte-les-capcaleres-daquestes-funcions-per-tal-de-ser-utilitzades-per-altre-programa">El fitxer <code>calc.h</code> conté les capçaleres d’aquestes funcions, per tal de ser utilitzades per altre programa:</h4>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#ifndef MYCALC</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cp">#define MYCALC</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">resta</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="kt">int</span><span class="w"> </span><span class="nf">multiplica</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">divideix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">);</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<p>Aquestes directives s'anomenen <strong>include guards</strong> per evitar importar una llibreria diverses vegades.</p>
+<h2 id="compilant-amb-llibreries-propies">Compilant amb llibreries pròpies</h2>
+<p>Per tal de compilar i enllaçar l’exemple, hem de tindre en compte la següent relació de dependències entre els fonts:</p>
+<p><a class="glightbox" href="../img/dependenciesC.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dependències" src="../img/dependenciesC.png" width="40%" /></a></p>
+<p>És a dir, <code>calcula</code> necessita tant del seu codi font <code>calcula.c</code> com del fitxer objecte de la llibrería, <code>calc.o</code>, i per tal d’obrindre aquest fitxer objecte, necessitem del fitxer font de la llibrería <code>calc.c</code>.</p>
+<p>Per tal de realitzar la compilació, hauriem de fer:</p>
+<p>1️⃣ Obtindre el fitxer objecte calc.o a partir de <code>calc.c</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>gcc<span class="w"> </span>-c<span class="w"> </span>calc.c<span class="w"> </span>-o<span class="w"> </span>calc.o
+</span></code></pre></div>
+<p>Si ens fixem, hem introduït l’opció <code>-c</code>. Aquesta opció indica que no execute l’enllaçador o linker, i és necessària en el cas de les llibreríes per a que no busque enllaçar la funció <code>main</code>. L’eixida que obtindrem serà doncs un fitxer objecte, sense funció principal.</p>
+<p>2️⃣ Obtenim el fitxer executable <code>calcula</code>, a partir de l’objecte <code>calc.o</code> i el propi font <code>calcula.c</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>gcc<span class="w"> </span>calc.o<span class="w"> </span>calcula.c<span class="w"> </span>-o<span class="w"> </span>calcula
+</span></code></pre></div>
+<p>Com veiem, ara no hem afegit l’opció -c, ja que sí que volem que es realitze la fase de linkat i obtindre l’executable en sí, enllaçant tots els objecte.</p>
+<p>Ara ja podrem executar el nostre programa:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./calcula
+</span></code></pre></div>
+<p>Resultat:</p>
+<div class="language-text highlight"><pre><span></span><code>La suma de 10 i 5 és 15
+La resta entre 10 i 5 és 5
+La multiplicació de 10 i 5 és 50
+La divisió entre 10 i 5 és 2
+</code></pre></div>
+<p>Com veiem, per tal d’obtenir el nostre executable final, hem hagut de compilar, de forma ordenada els diferents fonts. </p>
+<p>Quan treballem amb programes que utilitzen múltiples fitxers fonts, aquesta tasca pot complicar-se bastant, i pot ser bastant tediosa. Aci és on entren en joc la potència de l’eina make, com vorem a l’apartat següent.</p>
+<blockquote>
+<p><strong>TO-DO #1</strong></p>
+<ul>
+<li>Creeu i compileu el primer programa de calcula per verificar que funciona (el complet, sense ús de llibreries pròpies, d'usuari).</li>
+<li>Afegiu una nova funció que es diga <strong><code>major</code></strong>, i que retornarà quin dels dos números és el major.  </li>
+<li>Imprimirem el resultat com en la resta de casos, de forma que l’última línia que mostre siga algo semblant a: <code>El major entre 10 i 5 és 10.</code></li>
+<li>Una vegada comprovat el funcionament, feu el mateix amb el segon exemple (amb lús de llibreries pròpies), afegint les modificacions corresponents a cada fitxer.</li>
+<li>Compileu el segon exemple i verifiqueu que tot funciona correctament.</li>
+</ul>
+</blockquote>
+<h2 id="creacio-dun-makefile">Creació d'un Makefile</h2>
+<p>Els Makefile són fitxers que s’inclouen en la mateixa carpeta arrel d’un projecte, i li indiquen al programa make què ha de fer amb els fitxers font per tal de compilar-los.</p>
+<p>El format d’un Makefile consisteix en un conjunt de regles, generalment amb la següent forma:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">target</span><span class="o">:</span><span class="w"> </span><span class="n">fitxers_necessaris</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span>ordre
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span>ordre
+</span></code></pre></div>
+<p>Components:</p>
+<ul>
+<li><strong>target</strong> → fitxer objectiu</li>
+<li><strong>fitxers_necessaris</strong> → dependències</li>
+<li><strong>ordre</strong> → passos per generar el target. <strong><em>Aquestes línies comencen amb un tabulador, no amb espais</em></strong></li>
+</ul>
+<p>Si tornem ara al gràfic de dependències dels fonts que hem vist abans:</p>
+<p><a class="glightbox" href="../img/dependenciesC.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dependències" src="../img/dependenciesC.png" width="40%" /></a></p>
+<p>Tenim que:</p>
+<p>• Per obtenir calcula necessitem <code>calcula.c</code> i <code>calc.o</code>.<br />
+• Per obtenir calc.o necessitem <code>calc.c</code>.</p>
+<p>Aleshores, tindrem dues regles, que podrem expressar amb el següent <code>Makefile</code>:</p>
+<p><strong>Exemple Makefile</strong></p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">calcula</span><span class="o">:</span><span class="w"> </span><span class="n">calcula</span>.<span class="n">c</span> <span class="n">calc</span>.<span class="n">o</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span>gcc<span class="w"> </span>-Wall<span class="w"> </span>-g<span class="w"> </span>calcula.c<span class="w"> </span>calc.o<span class="w"> </span>-o<span class="w"> </span>calcula
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nf">calc.o</span><span class="o">:</span><span class="w"> </span><span class="n">calc</span>.<span class="n">c</span> <span class="n">calc</span>.<span class="n">h</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span>gcc<span class="w"> </span>-g<span class="w"> </span>-Wall<span class="w"> </span>-c<span class="w"> </span>calc.c<span class="w"> </span>-o<span class="w"> </span>calc.o
+</span></code></pre></div>
+<p>Com veieu, hem afegit a les ordres de compilació els arguments necessaris per tal que ens mostrin també els <em>warnings</em>.  </p>
+<p>Per tal de realitzar la construcció, podem fer ús de <code>make</code> de vàries formes:</p>
+<ul>
+<li><code>make objectiu</code><br />
+  Per construir un objectiu concret. En aquest cas, podríem fer:</li>
+<li><code>make calcula</code> → per generar <code>calcula</code></li>
+<li>
+<p><code>make calc.o</code> → si només volem generar el programa objecte <code>calc.o</code></p>
+</li>
+<li>
+<p><code>make</code> (sense cap objectiu)<br />
+  De manera que, per defecte, construirà el primer objectiu indicat.</p>
+</li>
+</ul>
+<p>Així doncs, en l’exemple, quan fem un <code>make</code> o un <code>make calcula</code>, estarem construint el <em>target</em> <code>calcula</code>.  </p>
+<p>Com veiem, aquest necessita els fitxers <code>calcula.c</code> i <code>calc.o</code>.<br />
+En cas que aquest segon no existisca, <code>make</code> automàticament buscarà la regla per generar-lo i executarà les ordres corresponents.  </p>
+<p>En un principi, no importa l’ordre de les regles, més enllà del requeriment que si no indiquem objectiu, <code>make</code> construeix per defecte el primer que indiquem.</p>
+<blockquote>
+<p><strong>TO-DO #2</strong></p>
+<ul>
+<li>
+<p>Creeu el fitxer <code>Makefile</code> i proveu de construir els diferents objectius, provant el resultat de <code>make</code>, <code>make calcula</code> i <code>make calc.o</code>. Esborreu tots els fitxers objecte i executables entre cada prova.</p>
+</li>
+<li>
+<p>Prova a invertir l’ordre de les regles en el <code>Makefile</code>, primer la regla de <code>calc.o</code> i després <code>calcula</code>. Executa el <code>make</code> amb aquest <code>Makefile</code> i explica els resultats.</p>
+</li>
+<li>
+<p>Restaura el fitxer <code>Makefile</code> amb l’ordre anterior.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="altres-tasques-per-a-make">Altres tasques per a Make</h2>
+<p>A mesura que un projecte creix, amb diferents fitxers font, veurem com se’ns generen molts fitxers objecte intermedis <code>.o</code>, que realment, una vegada obtingut l’executable final, no serveixen per a molt.</p>
+<p>Per tal de mantenir un projecte net, aquests fitxers <code>.o</code> haurien de tindre un caràcter temporal. Amb <code>git</code> hem vist com podem incloure un fitxer <code>.gitignore</code> perquè aquest tipus de fitxers no es puguen pujar als repositoris, però amb <code>make</code> podem fer alguna cosa més.</p>
+<p>Així doncs, una manera de netejar els nostres projectes és esborrar aquests fitxers de forma manual, o també podem crear una tasca dins del <code>Makefile</code> que els esborre. Tingueu en compte que les ordres del <code>Makefile</code> no han de ser només ordres de <code>gcc</code>, sinó que pot ser qualsevol ordre.</p>
+<p>Així doncs, aquesta tasca per netejar el projecte, que per norma general s’anomena <code>clean</code>, tindrà el següent aspecte:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>*.o
+</span></code></pre></div>
+<p>Fixeu-se que és una miqueta diferent a les tasques que hem vist fins ara, ja que el seu comportament és un poc diferent.</p>
+<p>En primer lloc, cal recordar que els noms d’objectius es corresponen amb el nom del fitxer que generen. Ara bé, l’objectiu <code>clean</code> no genera cap fitxer, sinó que els esborra.</p>
+<p>Per indicar això, cal fer-ho amb la línia: <code>.PHONY: clean</code></p>
+<h2 id="us-de-variables-al-makefile">Ús de variables al Makefile</h2>
+<p>Els fitxers <code>Makefile</code> admeten l’ús de variables que podem utilitzar al llarg del fitxer.</p>
+<p>Anem a utilitzar un parell de variables per guardar:</p>
+<ul>
+<li>el nom del compilador <code>gcc</code></li>
+<li>els <em>flags</em> <code>-Wall -g</code></li>
+</ul>
+<p>D’aquesta manera, si en algun moment volem canviar el compilador o afegir <em>flags</em>, no haurem de modificar-ho en tot el fitxer.</p>
+<p>Aquestes variables es defineixen al principi del fitxer, i no cal especificar-ne el tipus ni posar-les entre cometes:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">CC</span><span class="o">=</span>gcc
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">CFLAGS</span><span class="o">=</span>-Wall<span class="w"> </span>-g
+</span></code></pre></div>
+<p>Per tal d’usar-les després al fitxer, caldrà fer-ho amb la sintaxi <code>$(VARIABLE)</code>.  </p>
+<p>Per exemple:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">$(</span><span class="nv">CC</span><span class="k">)</span><span class="w"> </span><span class="k">$(</span><span class="nv">CFLAGS</span><span class="k">)</span><span class="w"> </span><span class="err">fitxers</span><span class="w"> </span><span class="err">-o</span><span class="w"> </span><span class="err">executable</span>
+</span></code></pre></div>
+<p>Amb açó, el nostre make quedaria:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">CC</span><span class="o">=</span>gcc
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nv">CFLAGS</span><span class="o">=</span>-Wall<span class="w"> </span>-g
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nf">calcula</span><span class="o">:</span><span class="w"> </span><span class="n">calcula</span>.<span class="n">c</span> <span class="n">calc</span>.<span class="n">o</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>calcula.c<span class="w"> </span>calc.o<span class="w"> </span>-o<span class="w"> </span>calcula
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nf">calc.o</span><span class="o">:</span><span class="w"> </span><span class="n">calc</span>.<span class="n">c</span> <span class="n">calc</span>.<span class="n">h</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>calc.c<span class="w"> </span>-o<span class="w"> </span>calc.o
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>*.o
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span>rm<span class="w"> </span>calcula
+</span></code></pre></div>
+<hr />
+<!-- 
+# Preparant una distribució
+
+Quan treballem en un entorn real, normalment haurem de distribuir el nostre codi d’alguna manera per tal de deixar-lo preparat per a la seua instal·lació, o bé per distribuir el codi, per exemple comprimit.
+
+Per a això, podem utilitzar un codi semblant al següent:
+
+<div class="language-make highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">dist</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">dist</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span> <span class="n">calcula</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>../dist<span class="p">;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>../dist/usr/bin/calc
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span>cp<span class="w"> </span>calcula<span class="w"> </span>../dist/usr/bin/calc
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">targz</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nf">targz</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nb">source</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">    </span>cp<span class="w"> </span>*.c<span class="w"> </span>*.h<span class="w"> </span>Makefile<span class="w"> </span><span class="nb">source</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">    </span>tar<span class="w"> </span>-cvf<span class="w"> </span>calcula.tar<span class="w"> </span><span class="nb">source</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">    </span>gzip<span class="w"> </span>calcula.tar
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>calcula.tar
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="nb">source</span>
+</span></code></pre></div>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
