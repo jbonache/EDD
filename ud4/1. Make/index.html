@@ -12,7 +12,7 @@
         <link rel="prev" href="../0.%20Intro/">
       
       
-        <link rel="next" href="../3.%20Ant/">
+        <link rel="next" href="../2.%20Plataforma%20Java/">
       
       
       <link rel="icon" href="../img/logo.png">
@@ -418,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.Plataforma Java.md" class="md-nav__link">
+      <a href="../2.%20Plataforma%20Java/" class="md-nav__link">
         
   
   
@@ -468,28 +468,6 @@
   
   <span class="md-ellipsis">
     5. Apache Maven
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5.%20Gradle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    6. Gradle
     
   </span>
   
@@ -666,8 +644,12 @@ carpeta i llancem <code>make hola</code>, obtindrem:</p>
 <p>Obtindre'm:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cc<span class="w"> </span>hola.c<span class="w"> </span>-o<span class="w"> </span>hola
 </span></code></pre></div>
-<p>Make interpreta que volem generar l'executable <code>hola</code> a partir del
-fitxer <code>hola.c</code>.</p>
+<p>Make interpreta que volem generar l'executable <code>hola</code> a partir del fitxer <code>hola.c</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercici 1 — Compilació i execució amb make</p>
+<p>Proveu a compilar i executar el fitxer <code>hola.c</code> amb l'eina <code>make</code> tal i com hem vist. </p>
+</div>
+<hr />
 <h2 id="funcions-llibreries-i-fitxers-de-capcalera">Funcions, llibreríes i fitxers de capçalera</h2>
 <p>Anem a avançar una miqueta més amb el funcioanment de make. Tenim el següent fitxer de codi en C, anomenat <code>calcula.c</code>:</p>
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
@@ -784,16 +766,16 @@ La divisió entre 10 i 5 és 2
 </code></pre></div>
 <p>Com veiem, per tal d’obtenir el nostre executable final, hem hagut de compilar, de forma ordenada els diferents fonts. </p>
 <p>Quan treballem amb programes que utilitzen múltiples fitxers fonts, aquesta tasca pot complicar-se bastant, i pot ser bastant tediosa. Aci és on entren en joc la potència de l’eina make, com vorem a l’apartat següent.</p>
-<blockquote>
-<p><strong>TO-DO #1</strong></p>
-<ul>
+<div class="admonition question">
+<p class="admonition-title">Exercici 2 - Deconstruint codi amb lliberíes pròpies</p>
+<ol>
 <li>Creeu i compileu el primer programa de calcula per verificar que funciona (el complet, sense ús de llibreries pròpies, d'usuari).</li>
 <li>Afegiu una nova funció que es diga <strong><code>major</code></strong>, i que retornarà quin dels dos números és el major.  </li>
 <li>Imprimirem el resultat com en la resta de casos, de forma que l’última línia que mostre siga algo semblant a: <code>El major entre 10 i 5 és 10.</code></li>
 <li>Una vegada comprovat el funcionament, feu el mateix amb el segon exemple (amb lús de llibreries pròpies), afegint les modificacions corresponents a cada fitxer.</li>
 <li>Compileu el segon exemple i verifiqueu que tot funciona correctament.</li>
-</ul>
-</blockquote>
+</ol>
+</div>
 <h2 id="creacio-dun-makefile">Creació d'un Makefile</h2>
 <p>Els Makefile són fitxers que s’inclouen en la mateixa carpeta arrel d’un projecte, i li indiquen al programa make què ha de fer amb els fitxers font per tal de compilar-los.</p>
 <p>El format d’un Makefile consisteix en un conjunt de regles, generalment amb la següent forma:</p>
@@ -838,20 +820,14 @@ La divisió entre 10 i 5 és 2
 <p>Com veiem, aquest necessita els fitxers <code>calcula.c</code> i <code>calc.o</code>.<br />
 En cas que aquest segon no existisca, <code>make</code> automàticament buscarà la regla per generar-lo i executarà les ordres corresponents.  </p>
 <p>En un principi, no importa l’ordre de les regles, més enllà del requeriment que si no indiquem objectiu, <code>make</code> construeix per defecte el primer que indiquem.</p>
-<blockquote>
-<p><strong>TO-DO #2</strong></p>
-<ul>
-<li>
-<p>Creeu el fitxer <code>Makefile</code> i proveu de construir els diferents objectius, provant el resultat de <code>make</code>, <code>make calcula</code> i <code>make calc.o</code>. Esborreu tots els fitxers objecte i executables entre cada prova.</p>
-</li>
-<li>
-<p>Prova a invertir l’ordre de les regles en el <code>Makefile</code>, primer la regla de <code>calc.o</code> i després <code>calcula</code>. Executa el <code>make</code> amb aquest <code>Makefile</code> i explica els resultats.</p>
-</li>
-<li>
-<p>Restaura el fitxer <code>Makefile</code> amb l’ordre anterior.</p>
-</li>
-</ul>
-</blockquote>
+<div class="admonition question">
+<p class="admonition-title">Exercici 3 — Crean l'arxiu Makefile</p>
+<ol>
+<li>Creeu el fitxer <code>Makefile</code> i proveu de construir els diferents objectius, provant el resultat de <code>make</code>, <code>make calcula</code> i <code>make calc.o</code>. Esborreu tots els fitxers objecte i executables entre cada prova.</li>
+<li>Prova a invertir l’ordre de les regles en el <code>Makefile</code>, primer la regla de <code>calc.o</code> i després <code>calcula</code>. Executa el <code>make</code> amb aquest <code>Makefile</code> i explica els resultats.</li>
+<li>Restaura el fitxer <code>Makefile</code> amb l’ordre anterior.</li>
+</ol>
+</div>
 <h2 id="altres-tasques-per-a-make">Altres tasques per a Make</h2>
 <p>A mesura que un projecte creix, amb diferents fitxers font, veurem com se’ns generen molts fitxers objecte intermedis <code>.o</code>, que realment, una vegada obtingut l’executable final, no serveixen per a molt.</p>
 <p>Per tal de mantenir un projecte net, aquests fitxers <code>.o</code> haurien de tindre un caràcter temporal. Amb <code>git</code> hem vist com podem incloure un fitxer <code>.gitignore</code> perquè aquest tipus de fitxers no es puguen pujar als repositoris, però amb <code>make</code> podem fer alguna cosa més.</p>
@@ -895,6 +871,20 @@ En cas que aquest segon no existisca, <code>make</code> automàticament buscarà
 </span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>*.o
 </span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span>rm<span class="w"> </span>calcula
 </span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Exercici 4 — Adaptacions del <em>Makefile</em></p>
+<ol>
+<li>
+<p>Hauràs observat que la utilitat <em>make</em> mostra els comandaments de cada target per consola. Investiga com evitar que es mostren i executa el teu <em>make</em> on es mostre com ja no apareixen els comandaments executats.</p>
+</li>
+<li>
+<p>Investiga com podries crear el teu propi arxiu <em>Makefile</em> amb un <strong>altre nom</strong> i com executar-lo amb <em>make</em>. Crea un nou arxiu <em>Makefile</em> que s'anomene com tu "el teu nom" i executa'l, demostrant que genera els targets. Per exemple: "make Maria"</p>
+</li>
+<li>
+<p>Converteix el teu arxiu <em>Makefile</em> (p.e. MariaV) per a que es faja ús de variables.</p>
+</li>
+</ol>
+</div>
 <hr />
 <!-- 
 # Preparant una distribució

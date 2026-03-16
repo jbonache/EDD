@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../1.%20Make/">
+      
+      
+        <link rel="next" href="../3.%20Ant/">
       
       
       <link rel="icon" href="../img/logo.png">
@@ -292,10 +296,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2.Plataforma Java.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3. La plataforma Java
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -306,6 +330,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#la-plataforma-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      La plataforma Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La plataforma Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacions-del-jdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementacions del JDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installacio-dopenjdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació d'OpenJDK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -345,28 +420,6 @@
   
   <span class="md-ellipsis">
     5. Apache Maven
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5.%20Gradle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    6. Gradle
     
   </span>
   
@@ -452,7 +505,7 @@
 
 
 
-  <h1>La plataforma Java</h1>
+  <h1>3. La plataforma Java</h1>
 
 <h2 id="la-plataforma-java">La plataforma Java</h2>
 <p>La <strong><em>plataforma Java</em></strong> és un entorn per al desenvolupament d’aplicacions multiplataforma, que té com a llenguatge de desenvolupament principal el propi llenguatge Java. Com ja comentàrem en la primera unitat, les aplicacions Java són compilades a un llenguatge intermedi o bytecode, que s’executen sobre la màquina virtual de Java (JVM).</p>
@@ -469,6 +522,8 @@
 <li>JavaSE 21 (LTS), Setembre de 2023.</li>
 <li>JavaSE 22, Març de 2024.</li>
 <li>JavaSE 23, Octubre de 2024.</li>
+<li>JavaSE 24, Març 2025</li>
+<li>JavaSE 25 (LTS), Setembre 2025</li>
 </ul>
 <p>A més, des de Gener de 2019, es requereix d’una llicència d’Oracle per a accedir a les actualitzacions i el suport.</p>
 <p>Per la seua banda, OpenJDK, encara que siga de codi obert, no deixa de ser una implementació oficial de JavaSE. De fet, el JDK d’Oracle es basa en OpenJDK, i igual que aquest, ofereix noves versions cada 6 mesos, corresponent-se el número de versió amb el del JDK d’Oracle.</p>
@@ -483,16 +538,16 @@
 <p>Una vegada tinguem la memòria caché de paquets actualitzada, instal·lem la versió LTS més recent del JDK amb:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt install default-jdk
 </span></code></pre></div>
-<p>En aquest cas, la versió que instal·la de l’OpenJDK és la 21 (<code>openjdk-21-jdk</code>), que es correspon amb l’última LTS. Fixeu-vos que a part d’aquest, la instal·lació arrossega diversos paquets com a dependències (és a dir, que OpenJDK requereix d’ells per a funcionar). Entre ells es troba el paquet <code>openjdk-21-jre</code>, que és el que implementa el <em>Java Runtime Environment</em>, que com hem dit anteriorment, forma part del <em>JDK</em>.</p>
-<p>En Ubuntu, la instal·lació es realitza per defecte en la carpeta <code>/usr/lib/jvm/java-21-openjdk-amd64</code>. A més, es genera l’enllaç <code>/usr/bin/java</code> que apunta a <code>/etc/alternatives/java</code>, que al seu torn és també un enllaç a /<code>usr/lib/jvm/java-21-openjdk-amd64/bin/java</code>. Els <em>alternatives</em> ens serviran per a utilitzar diversos entorns Java en el nostre ordinador. Igual que s’ha fet amb l'ordre <code>java</code>, que és qui invoca la màquina virtual, s’han generat els enllaços corresponents per al compilador <code>javac</code>. Podem comprovar les versions d'ambdós escrivint en un terminal:</p>
+<p>En aquest cas, la versió que instal·la de l’OpenJDK és la 25 (<code>openjdk-25-jdk</code>), que es correspon amb l’última LTS. Fixeu-vos que a part d’aquest, la instal·lació arrossega diversos paquets com a dependències (és a dir, que OpenJDK requereix d’ells per a funcionar). Entre ells es troba el paquet <code>openjdk-25-jre</code>, que és el que implementa el <em>Java Runtime Environment</em>, que com hem dit anteriorment, forma part del <em>JDK</em>.</p>
+<p>En Ubuntu, la instal·lació es realitza per defecte en la carpeta <code>/usr/lib/jvm/java-25-openjdk-amd64</code>. A més, es genera l’enllaç <code>/usr/bin/java</code> que apunta a <code>/etc/alternatives/java</code>, que al seu torn és també un enllaç a /<code>usr/lib/jvm/java-25-openjdk-amd64/bin/java</code>. Els <em>alternatives</em> ens serviran per a utilitzar diversos entorns Java en el nostre ordinador. Igual que s’ha fet amb l'ordre <code>java</code>, que és qui invoca la màquina virtual, s’han generat els enllaços corresponents per al compilador <code>javac</code>. Podem comprovar les versions d'ambdós escrivint en un terminal:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ java --version
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>...
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$javac --version
 </span></code></pre></div>
-<p>Si bé amb això ja tenim disponibles des de qualsevol lloc les ordres java i javac, configurarem la variable d'entorn <code>JAVA_HOME</code>, necessària en algunes aplicacions Java, i que conté la carpeta d'instal·lació. A més, actualitzarem la variable del sistema <code>PATH</code> perquè incloga també aquesta carpeta. Per això, a la nostra carpet ad'usuari editaríem el fitxer <code>~/.bashrc</code> i afegirem al final les següents línies (no ho feu encara!):</p>
+<p>Si bé amb això ja tenim disponibles des de qualsevol lloc les ordres java i javac, configurarem la variable d'entorn <code>JAVA_HOME</code>, necessària en algunes aplicacions Java, i que conté la carpeta d'instal·lació. A més, actualitzarem la variable del sistema <code>PATH</code> perquè incloga també aquesta carpeta. Per això, a la nostra carpeta d'usuari editaríem el fitxer <code>~/.bashrc</code> i afegirem al final les següents línies (no ho feu encara!):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># JAVA_HOME</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/usr/lib/jvm/java-21-openjdk-amd64/<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;/usr/lib/jvm/java-21-openjdk-amd64/&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/usr/lib/jvm/java-25-openjdk-amd64/<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;/usr/lib/jvm/java-25-openjdk-amd64/&quot;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">fi</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Afegim el path dels binaris per a Java</span>
@@ -500,16 +555,16 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">fi</span>
 </span></code></pre></div>
-<p>Amb això establiríem Java 21 com a Java predeterminat. Ara bé, si modifiquem la versió de java predeterminada amb:</p>
+<p>Amb això establiríem Java 25 com a Java predeterminat. Ara bé, si modifiquem la versió de java predeterminada amb:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>Selecció<span class="w">    </span>Camí<span class="w">                                        </span>Prioritat<span class="w">  </span>Estat
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>------------------------------------------------------------
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>*<span class="w"> </span><span class="m">0</span><span class="w">            </span>/usr/lib/jvm/java-21-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>automàtic
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="m">1</span><span class="w">            </span>/usr/lib/jvm/java-17-openjdk-amd64/bin/java<span class="w">   </span><span class="m">1711</span><span class="w">      </span>mode<span class="w"> </span>manual
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="m">2</span><span class="w">            </span>/usr/lib/jvm/java-21-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>manual
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>*<span class="w"> </span><span class="m">0</span><span class="w">            </span>/usr/lib/jvm/java-25-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>automàtic
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="m">1</span><span class="w">            </span>/usr/lib/jvm/java-21-openjdk-amd64/bin/java<span class="w">   </span><span class="m">1711</span><span class="w">      </span>mode<span class="w"> </span>manual
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="m">2</span><span class="w">            </span>/usr/lib/jvm/java-25-openjdk-amd64/bin/java<span class="w">   </span><span class="m">2111</span><span class="w">      </span>mode<span class="w"> </span>manual
 </span></code></pre></div>
-<p>I seleccionem una versió diferent a la 21, el <code>$JAVA_HOME</code> ja no es modificaría. Una forma diferent de fer-ho seria afegint al <code>~/.bashrc</code> el següent:</p>
+<p>I seleccionem una versió diferent a la 25, el <code>$JAVA_HOME</code> ja no es modificaría. Una forma diferent de fer-ho seria afegint al <code>~/.bashrc</code> el següent:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Estableix JAVA_HOME basat en l&#39;alternativa seleccionada</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>java<span class="k">))))</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -521,16 +576,16 @@
 </span></code></pre></div>
 <p>O bé obrir una terminal nova.</p>
 <h4 id="installacio-a-windows">Instal·lació a Windows</h4>
-<p>Per a la instal·lació i configuració del JDK a Windows començarem descarregant l'OpenJDK des del lloc web de l'arxiu de version: <a href="https://jdk.java.net/archive/">https://jdk.java.net/archive/</a>. Els binaris de la versió 21 estaran a <a href="https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_windows-x64_bin.zip">l'apartat 21.0.2 (build 21.0.2+13)</a>.</p>
-<p><a class="glightbox" href="../img/java_win1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Descàrrega del JDK per a Windows" src="../img/java_win1.png" width="400px" /></a></p>
-<p>Des d'aquesta pàgina, descarreguem el binari per a Windows/x64, i el descomprimim des d'on l'hàgem descarregat (botó dret del ratolí, i Extraure-ho tot). Si, per exemple, ho hem descomprimit a C:\java, de manera que ens genera la carpeta per al JDK C:\java\jdk-21.0.1. Podem descomprimir-lo on siga, sempre que recordem aquesta ruta per establir les variables corresponents.</p>
+<p>Per a la instal·lació i configuració del JDK a Windows començarem descarregant l'OpenJDK des del lloc web de l'arxiu de version: <a href="https://jdk.java.net/archive/">https://jdk.java.net/archive/</a>. Els binaris de la versió 25 estaran a <a href="https://download.java.net/java/GA/jdk25.0.1/2fbf10d8c78e40bd87641c434705079d/8/GPL/openjdk-25.0.1_windows-x64_bin.zip">l'apartat 25.0.1 (build 25.0.1+8)</a>.</p>
+<p><a class="glightbox" href="../img/java_win2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Descàrrega del JDK per a Windows" src="../img/java_win2.png" width="400px" /></a></p>
+<p>Des d'aquesta pàgina, descarreguem el binari per a Windows/x64, i el descomprimim des d'on l'hàgem descarregat (botó dret del ratolí, i Extraure-ho tot). Si, per exemple, ho hem descomprimit a C:\java, de manera que ens genera la carpeta per al JDK C:\java\jdk-25.0.1. Podem descomprimir-lo on siga, sempre que recordem aquesta ruta per establir les variables corresponents.</p>
 <p>Per poder accedir al JDK des de qualsevol lloc, cal crear la variable d'entorn <code>JAVA_HOME</code> i actualitzar el <code>PATH</code>, per llançar java des de qualsevol ubicació.</p>
 <p>Per crear <code>JAVA_HOME</code>, haurem d'obrir la finestra de configuració de variables del sistema. Per això, des del menú d'inici, busquem <em>Sistema de Windows &gt; Panell de Control</em>. I des d'aquest panell de Control, <em>Sistema i Seguretat</em> &gt; <em>Seguretat i Manteniment</em> &gt; <em>Configuració avançada del sistema</em>. I a la finestra que apareix, disposem d'un botó per configurar les variables d'entorn. També podrem accedir-hi més fàcilment cercant amb la lupa Editar les variables d'entorn.</p>
 <p><a class="glightbox" href="../img/path.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint la variable d'entorn JAVA_HOME" src="../img/path.png" width="100%" /></a></p>
-<p>A la finestra per establir les variables, ens situarem a la part de Variables del Sistema, i seleccionarem Nova. El nom d'aquesta nova variable serà <code>JAVA_HOME</code>, i us donarem per valor la ubicació de la carpeta on es va instal·lar el JDK (en el nostre cas <code>C:\java\jdk-21.0.1</code>):</p>
-<p><a class="glightbox" href="../img/path2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 21" src="../img/path2.png" width="500px" /></a></p>
+<p>A la finestra per establir les variables, ens situarem a la part de Variables del Sistema, i seleccionarem Nova. El nom d'aquesta nova variable serà <code>JAVA_HOME</code>, i us donarem per valor la ubicació de la carpeta on es va instal·lar el JDK (en el nostre cas <code>C:\java\jdk-25.0.1</code>):</p>
+<p><a class="glightbox" href="../img/path2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 25" src="../img/path2.png" width="500px" /></a></p>
 <p>Ara ens queda modificar la variable PATH. Per això, des de la finestra anterior, busquem la variable Path a les variables del sistema, la seleccionem i fem clic al botó d'Editar. A la finestra d'edició de la variable, seleccionarem l'opció Examinar per cercar el directori bin de la instal·lació del JDK i afegir-lo al Path.</p>
-<p><a class="glightbox" href="../img/path3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 21" src="../img/path3.png" width="500px" /></a></p>
+<p><a class="glightbox" href="../img/path3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Establint les variables d'entorn JAVA_HOME. Compte que aquestes captures fan referència a la versió 16, no a la 25" src="../img/path3.png" width="500px" /></a></p>
 <p>Donem a acceptar a totes les finestres, i ja tindrem disponible el nostre JDK en tot el sistema. Per exemple, podem obrir una terminal i escriure:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>C:\Users\Alumne&gt; java --version
 </span></code></pre></div>

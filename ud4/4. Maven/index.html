@@ -12,8 +12,6 @@
         <link rel="prev" href="../3.%20Ant/">
       
       
-        <link rel="next" href="../5.%20Gradle/">
-      
       
       <link rel="icon" href="../img/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#maven-i-gradle" class="md-skip">
+        <a href="#apache-maven" class="md-skip">
           Salta el contingut
         </a>
       
@@ -299,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.Plataforma Java.md" class="md-nav__link">
+      <a href="../2.%20Plataforma%20Java/" class="md-nav__link">
         
   
   
@@ -389,15 +387,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#maven-i-gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maven i Gradle
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#apache-maven" class="md-nav__link">
     <span class="md-ellipsis">
       Apache Maven
@@ -424,50 +413,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#el-mode-interactiu-de-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      El mode interactiu de *Maven
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#el-plugin-de-maven-per-a-vscode" class="md-nav__link">
-    <span class="md-ellipsis">
-      El plugin de Maven per a VSCode
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5.%20Gradle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    6. Gradle
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -497,15 +446,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#maven-i-gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maven i Gradle
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#apache-maven" class="md-nav__link">
     <span class="md-ellipsis">
       Apache Maven
@@ -532,24 +472,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#el-mode-interactiu-de-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      El mode interactiu de *Maven
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#el-plugin-de-maven-per-a-vscode" class="md-nav__link">
-    <span class="md-ellipsis">
-      El plugin de Maven per a VSCode
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -571,14 +493,20 @@
 
   <h1>5. Apache Maven</h1>
 
-<h3 id="maven-i-gradle">Maven i Gradle</h3>
-<p>Maven va sorgir en el si d'Apache, amb la finalitat de simplificar els processos de construcció en el Projecte Jakarta Turbine. Este projecte estava compost de diversos subprojectes, cadascun amb una estructura particular, i els seus respectius arxius de compilació d'<em>Ant</em>, diferents entre ells. En este context, es va decidir desenvolupar una forma estàndard de construcció de projectes que oferira a més una forma senzilla de publicar les aplicacions. El resultat va ser <em>Maven</em>, que es va integrar inicialment a Jakarta, i posteriorment es va alliberar com a projecte de nivell superior de l'<em>Apache Software Foundation</em>.</p>
-<p>Mitjançant <em>Maven</em>, podem doncs generar aplicacions que seguixen una <strong>estructura</strong> i un <strong>procés de construcció</strong> ben definits i coneguts, seguint a més bones pràctiques. No obstant això, a vegades este mecanisme és massa rígid, i resulta bastant complicat abordar el desenvolupament d'aplicacions que no seguisquen un model estándard. És ací on apareix <em>Gradle</em>, aprofitant les bondats d'<em>Ant</em> i <em>Maven</em> i evitant els seus defectes.</p>
-<p>En els següents apartats veurem una xicoteta introducció als conceptes més rellevants de cadascuna d'estes eines, i es plantejaran un parell d'exemples pràctics on es posaran en pràctica.</p>
+<!--
+## Maven i Gradle
+
+Maven va sorgir en el si d'Apache, amb la finalitat de simplificar els processos de construcció en el Projecte Jakarta Turbine. Este projecte estava compost de diversos subprojectes, cadascun amb una estructura particular, i els seus respectius arxius de compilació d'*Ant*, diferents entre ells. En este context, es va decidir desenvolupar una forma estàndard de construcció de projectes que oferira a més una forma senzilla de publicar les aplicacions. El resultat va ser *Maven*, que es va integrar inicialment a Jakarta, i posteriorment es va alliberar com a projecte de nivell superior de l'*Apache Software Foundation*.
+
+Mitjançant *Maven*, podem doncs generar aplicacions que seguixen una **estructura** i un **procés de construcció** ben definits i coneguts, seguint a més bones pràctiques. No obstant això, a vegades este mecanisme és massa rígid, i resulta bastant complicat abordar el desenvolupament d'aplicacions que no seguisquen un model estándard. És ací on apareix *Gradle*, aprofitant les bondats d'*Ant* i *Maven* i evitant els seus defectes.
+
+En els següents apartats veurem una xicoteta introducció als conceptes més rellevants de cadascuna d'estes eines, i es plantejaran un parell d'exemples pràctics on es posaran en pràctica.
+-->
+
 <h3 id="apache-maven">Apache Maven</h3>
 <p><em>Apache Maven</em> és una eina que ens permet crear i gestionar projectes Java, de manera similar a com féiem amb <em>Ant</em>, però des d'un punt de partida diferent. La idea subjacent d'Apache Maven és <strong>oferir suport al cicle de vida de construcció segons estàndards</strong>, de manera que les nostres aplicacions siguen més homogènies i tinguen en compte bones pràctiques. Seguix el <strong>principi de convenció sobre configuració</strong> (CoC), segons el qual, s'establixen unes certes <em>convencions</em> que simplifiquen la presa de decisions per part del programador.</p>
 <p>D'esta manera, es promou la construcció de solucions de programari homogènies, i que reduïxen la variabilitat.</p>
-<p>Entre les diferents ajudes que oferix Maven trobem la construcció d'aplicacions, el manteniment de la documentació, la gestió de dependències, de versions i la distribució de l'aplicació.</p>
+<p>Entre les diferents ajudes que ofereix Maven trobem la construcció d'aplicacions, el manteniment de la documentació, la gestió de dependències, de versions i la distribució de l'aplicació.</p>
 <p>Un dels conceptes que treballa Maven, i amb el qual ens trobarem llegint la seua documentació és el de <em>artifact</em>, la traducció literal del qual seria <em>artefacte</em>. Este concepte fa referència al que anomenarem una <em>solució</em>, o un <em>producte programari reutilitzable</em>, que és gestionat per Maven. Això implicarà que tinga una estructura concreta i seguisca unes certes convencions.</p>
 <h4 id="arquetips">Arquetips</h4>
 <p>Com hem comentat, el principal objectiu de Maven és homogeneïtzar l'estructura de pràcticament qualsevol tipus d'aplicació. Per a això introduïx el concepte d'arquetip.</p>
@@ -591,7 +519,7 @@
 <!-- La creació d'un projecte basada en un arquetip la veurem de manera pràctica en el cas pràctic ampliat 5.-->
 
 <h4 id="el-cicle-de-vida-de-construccio">El cicle de vida de construcció</h4>
-<p>Maven introduïx el concepte de cicle de vida de construcció (que no hem de confondre amb el cicle de vida de desenvolupament). El cicle de vida de construcció es podria definir com:</p>
+<p>Maven introdueïx el concepte de cicle de vida de construcció (que no hem de confondre amb el cicle de vida de desenvolupament). El cicle de vida de construcció es podria definir com:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Un procés ben definit per a la construcció i distribució de solucions (artifats).</p>
@@ -694,7 +622,7 @@
 </tr>
 </tbody>
 </table>
-<p>Com podem veure, s'ha inclòs, a tall d'exemple, la fase test-compile, de la qual no hem parlat abans. Esta fase s'encarrega de compilar el codi font de les proves. Com veiem, l'objectiu <em>testCompile</em> que llança es troba en el complement <em>maven-</em>compiler-<em>plugin, que també inclou l'objectiu compile de la fase de compilació. Així doncs, tenim un </em>plugin* que conté objectius que es llancen en dos fases diferents.</p>
+<p>Com podem veure, s'ha inclòs, a tall d'exemple, la fase test-compile, de la qual no hem parlat abans. Esta fase s'encarrega de compilar el codi font de les proves. Com veiem, l'objectiu <em>testCompile</em> que llança es troba en el complement <em>maven-</em>compiler-<em>plugin</em>, que també inclou l'objectiu compile de la fase de compilació. Així doncs, tenim un <em>plugin</em> que conté objectius que es llancen en dos fases diferents.</p>
 <h4 id="el-pom">El POM</h4>
 <p>El Model d'Objectes del Projecte (<em>Project Object Model, POM</em>) és un fitxer XML que descriu la configuració del projecte en Maven, i proporciona la major part d'informació necessària per a la seua construcció. Pot arribar a ser un arxiu llarg i complex, però no és necessari entendre tot el seu contingut per a traure tota l'efectivitat de Maven.</p>
 <p>El model conté valors predeterminats per a la majoria de projectes, com poden ser el directori de compilació (<em>target</em>), el directori dels fonts (<em>src/main/java</em>), el directori dels fonts de les proves (<em>src/test/java</em>), etc.</p>
@@ -737,14 +665,14 @@
 <p>Com podem veure, hem instal·lat la versió 3.9.9.</p>
 <p>L'ordre <code>mvn -v</code> a més d'informació sobre la versió, ens mostra la ubicació de les instal·lacions de <em>Maven</em> i la màquina virtual de Java, així com informació genèrica sobre el sistema i la configuració de l'idioma.</p>
 <h4 id="creacio-del-projecte">Creació del projecte</h4>
-<p>Per a crear un projecte en <em>Maven</em> hem d'utilitzar el mecanisme d'arquetips que ens oferix. Per a això, utilitzarem l'orde <code>mvn archetype:generate</code>, la qual admet un mode interactiu i un altre no interactiu. El mode interactiu el tractarem posteriorment. En este apartat veurem el mode no interactiu, en el qual li oferirem a l'ordre de generació del projecte algunes opcions, i deixarem unes altres amb les seues opcions per defecte.</p>
+<p>Per a crear un projecte en <em>Maven</em> hem d'utilitzar el mecanisme d'arquetips que ens ofereix. Per a això, utilitzarem l'orde <code>mvn archetype:generate</code>, la qual admet un mode interactiu i un altre no interactiu. El mode interactiu el tractarem posteriorment. En este apartat veurem el mode no interactiu, en el qual li oferirem a l'ordre de generació del projecte algunes opcions, i deixarem unes altres amb les seues opcions per defecte.</p>
 <h5 id="pas-1-creacio-del-projecte-a-partir-de-larquetip">Pas 1. Creació del projecte a partir de l'arquetip</h5>
 <p>Per a crear el projecte amb Maven, a partir d'un arquetip, ens situem en la carpeta on desitgem crear la carpeta amb el projecte, i llancem la següent orde:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>com.ieseljust.edd<span class="w"> </span>-DartifactId<span class="o">=</span>saludaMaven<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-quickstart<span class="w"> </span>-DarchetypeVersion<span class="o">=</span><span class="m">1</span>.5<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Vegem les diferents opcions:</p>
 <ul>
-<li><code>Archetype:generate</code>: Indiquem a Maven que volem executar l'objectiu (<em>goal</em>) <code>generate</code> del plugin <code>archetype</code>. Recordem que <strong>en Maven, els goals són equiparables als tasks de'Ant</strong>: Este objectiu en concret, ens genera un projecte simple basat en un arquetip. Podem dir que un <em>plugin</em> és una col·lecció d'objectius amb un propòsit comú.</li>
+<li><code>Archetype:generate</code>: Indiquem a Maven que volem executar l'objectiu (<em>goal</em>) <code>generate</code> del plugin <code>archetype</code>. Recordem que <strong>en Maven, els goals són equiparables als tasks d'Ant</strong>: este objectiu en concret, ens genera un projecte simple basat en un arquetip. Podem dir que un <em>plugin</em> és una col·lecció d'objectius amb un propòsit comú.</li>
 <li><code>DgroupId</code>: Indiquem l'identificador únic de l'organització que crea el projecte, basat normalment en el domini completament qualificat de l'organització (<em>fully qualified domain</em>), en este cas <code>com.ieseljust.edd</code>.</li>
 <li><code>DartifactID</code>: Indica el nom del recurs (<em>artifact</em>) que generarem. També ha de ser un nom únic per al projecte. En este cas, <em>saludaMaven</em>.</li>
 <li><code>DarchetypeArtifactId</code>: Indica el nom del recurs d'arquetip a partir del qual triar la plantilla per al nostre projecte. En este cas, indiquem el recurs <em>maven-archetipe-quickstart</em>, que generarà una aplicació senzilla i ràpida, del tipus <em>Hola Món</em>.</li>
@@ -778,10 +706,10 @@
 </span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span><span class="m">2024</span>-11-25T11:45:06+01:00
 </span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
 </span></code></pre></div>
-<p>Com podrem veure, ens mostra algunes alertes i missatges informatius, amb els valors que ha establit per a alguns paràmetres. A més, es realitzen algunes descàrregues des de <code>repo.maven.apache.org</code>. Aquesta adreça és el repositori de <em>Maven</em>, i conté totes les plantilles i eines que podem utilitzar amb ella.</p>
+<p>Com podrem veure, ens mostra algunes alertes i missatges informatius, amb els valors que ha establit per a alguns paràmetres. A més, es realitzen algunes descàrregues des de <code>repo.maven.apache.org</code>, la primera vegada. Aquesta adreça és el repositori de <em>Maven</em>, i conté totes les plantilles i eines que podem utilitzar amb ella.</p>
 <p>Vegem què ens ha generat esta orde:</p>
 <p><a class="glightbox" href="../img/maven/estructura.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Estructura creada" src="../img/maven/estructura.png" width="400dx" /></a></p>
-<p>Com veiem, s'ha creat la carpeta del projecte saludaMaven amb el fitxer <code>pom.xml</code>, que descriu el projecte segons el <em>Project Ojbect Model (POM)</em>. Dins d'esta carpeta tenim la carpeta <code>src</code>, amb els arxius font i de proves, degudament organitzats en carpetes segons el nom de domini completament qualificat.</p>
+<p>Com veiem, s'ha creat la carpeta del projecte saludaMaven amb el fitxer <code>pom.xml</code>, que descriu el projecte segons el <em>Project Object Model (POM)</em>. Dins d'esta carpeta tenim la carpeta <code>src</code>, amb els arxius font i de proves, degudament organitzats en carpetes segons el nom de domini completament qualificat.</p>
 <h6 id="analitzant-el-pom">Analitzant el POM</h6>
 <p>Com ja s'ha comentat anteriorment, el fitxer pom.xml descriu la configuració del projecte en <em>Maven</em>, i proporciona la major part d'informació necessària per a la seua construcció. Pot arribar a ser un arxiu llarg i complex, però no és necessari entendre tot el seu contingut per a traure tota l'efectivitat de <em>Maven</em>.</p>
 <p>Vegem el contingut del nostre arxiu <code>pom.xml</code>:</p>
@@ -882,11 +810,11 @@
 <li><code>modelVersion</code>: Indica la versió de <em>POM</em> que es descriu el document.</li>
 <li><code>groupId</code>, <code>artifactId</code> i <code>name</code>: fan referència a l'identificador de l'organització (groupId), al nom de la solució (artifactId) i al de l'aplicació (name)</li>
 <li><code>version</code>: Indica la versió de l'aplicació. El sufix <code>SNAPSHOT</code>, indica que es tracta de l'últim codi en una branca de desenvolupament, la qual cosa no garantix l'estabilitat d'este. Generalment, s'usa quan estem en fase de desenvolupament i proves, fins que alliberem una release estable.</li>
-<li><code>properties</code>: Establix algunes propietats per al projecte, com ara:<ul>
+<li><code>properties</code>: Estableix algunes propietats per al projecte, com ara:<ul>
 <li><code>project.build.sourceEncoding</code>: Especifica la codificació dels arxius font, en este cas UTF-8.</li>
 <li><code>maven.compiler.source</code> i <code>maven.compiler.target</code>: Especifica les propietats per al compilador, indicant que tant els fonts com el <em>bytecode</em> es correspondrà com a mínim amb la plataforma Java 1.7. Això es deu al fet que <em>Maven</em> ja no suporta versions de Java anteriors a la 1.6.</li>
 <li><code>dependencies</code>: Indica les dependències que té la nostra aplicació. Com veiem, ho fa indicant per a cadascuna el seu identificador d'organització (groupId), de recurs (artifactId), i la versió. A més, especifica l'àmbit (scope) en què s'aplica la dependència. En este cas, l'arquetip a partir del que hem generat la nostra aplicació incorpora la dependència de JUnit per a realitzar els tests.</li>
-<li>Secció <code>build</code> i <code>plugins</code>: En esta secció es definixen alguns paràmetres de la construcció i els plugins utilitzats per a això. Podem veure els plugins utilitzats en els diferents cicles de vida (clean, default, site, etcètera)</li>
+<li>Secció <code>build</code> i <code>plugins</code>: En esta secció es defineixen alguns paràmetres de la construcció i els plugins utilitzats per a això. Podem veure els plugins utilitzats en els diferents cicles de vida (clean, default, site, etcètera)</li>
 </ul>
 </li>
 </ul>
@@ -940,7 +868,7 @@
 </span></code></pre></div>
 <p>Com veiem, es genera la carpeta <em>classes</em>, amb els fitxers <code>.class</code> en <em>bytecode</em>, segons l'estructura del paquet, i a més un parell de carpetes més. Una amb recursos, que contindrà una carpeta <em>annotations</em> buida, i una altra <em>maven-status</em>, amb l'estat o resultats dels <em>plugins</em>. En este cas, el resum del <em>plugin</em> de compilació ens indica quins fitxers es van crear i quins van ser els fitxers d'entrada.</p>
 <h5 id="pas-2-execucio">Pas 2. Execució</h5>
-<p>Per executar l'aplicació, haurem d'indicar el classpath a java, mitjançant la'opcion -cp, i executar esta, indicant el nom de la classe completament qualificat:</p>
+<p>Per executar l'aplicació, haurem d'indicar el classpath a java, mitjançant l'opció <em>-cp</em>, i executar esta, indicant el nom de la classe completament qualificat:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>java<span class="w"> </span>-cp<span class="w"> </span>target/classes<span class="w"> </span>com.ieseljust.edd.App<span class="w"> </span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Hello<span class="w"> </span>World!
 </span></code></pre></div>
@@ -1037,7 +965,7 @@
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nt">&lt;/plugin&gt;</span>
 </span></code></pre></div>
-<p>Ara, el que farem serà afegir una nova etiqueta de configuració, per a indicar-li que s'incloga en el manifest el *Classpath i especificar la classe principal de l'aplicació. Així doncs, ens quedaria:</p>
+<p>Ara, el que farem serà afegir una nova etiqueta de configuració, per a indicar-li que s'incloga en el manifest el <em>Classpath</em> i especificar la classe principal de l'aplicació. Així doncs, ens quedaria:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">&lt;plugin&gt;</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
@@ -1064,17 +992,25 @@
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>Build-Jdk-Spec: 21
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>Main-Class: com.ieseljust.edd.App
 </span></code></pre></div>
-<h3 id="el-mode-interactiu-de-maven">El mode interactiu de *Maven</h3>
-<p>Com ja hem comentat, a part del mode <em>batch</em> que hem vist, <em>Maven</em> oferix un mode de funcionament interactiu, que ens va guiant en la creació dels nostres projectes.</p>
-<p>Per a crear un projecte <em>Maven</em> des del mode interactiu, només haurem d'indicar que desitgem executar l'objectiu <code>generate</code> del plugin <code>archerype</code>, sense res més. Així doncs, per a generar un altre projecte, ens situem fora de l'anterior, i executem:</p>
+<!--
+## El mode interactiu de *Maven* 
+
+Com ja hem comentat, a part del mode *batch* que hem vist, *Maven* oferix un mode de funcionament interactiu, que ens va guiant en la creació dels nostres projectes.
+
+Per a crear un projecte *Maven* des del mode interactiu, només haurem d'indicar que desitgem executar l'objectiu `generate` del plugin `archerype`, sense res més. Així doncs, per a generar un altre projecte, ens situem fora de l'anterior, i executem:
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>
 </span></code></pre></div>
-<p>Després d'alguns possibles avisos i missatges informatius ens oferix una llista de totes les plantilles disponibles en Maven (en estos moments 3500). De manera predeterminada proposa la creació d'un projecte de tipus <em>maven-archetype-quickstart</em> (2204), que seria el mateix que hem utilitzat, amb una estructura d'Hola Món. <strong>Haureu de tindre en compte que este número pot variar en diferents versions de Maven.</strong></p>
+
+Després d'alguns possibles avisos i missatges informatius ens oferix una llista de totes les plantilles disponibles en Maven (en estos moments 3500). De manera predeterminada proposa la creació d'un projecte de tipus *maven-archetype-quickstart* (2204), que seria el mateix que hem utilitzat, amb una estructura d'Hola Món. **Haureu de tindre en compte que este número pot variar en diferents versions de Maven.**
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>archetype:generate.
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Choose<span class="w"> </span>a<span class="w"> </span>number<span class="w"> </span>or<span class="w"> </span>apply<span class="w"> </span>filter<span class="w"> </span><span class="o">(</span>format:<span class="w"> </span><span class="o">[</span>groupId:<span class="o">]</span>artifactId,<span class="w"> </span><span class="k">case</span><span class="w"> </span>sensitive<span class="w"> </span>contains<span class="o">)</span>:<span class="w"> </span><span class="m">2204</span>
 </span></code></pre></div>
-<p>Després ens demana el número de versió de l'aplicació. Seleccionem el 5 (la 1.0):</p>
+
+Després ens demana el número de versió de l'aplicació. Seleccionem el 5 (la 1.0):
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Choose<span class="w"> </span>org.apache.maven.archetypes:maven-archetype-quickstart<span class="w"> </span>version:<span class="w"> </span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="m">1</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-1
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="m">2</span>:<span class="w"> </span><span class="m">1</span>.0-alpha-2
@@ -1087,7 +1023,10 @@
 </span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="m">9</span>:<span class="w"> </span><span class="m">1</span>.5
 </span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>Choose<span class="w"> </span>a<span class="w"> </span>number:<span class="w"> </span><span class="m">9</span>:<span class="w"> </span><span class="m">5</span>
 </span></code></pre></div>
-<p>Després ens pregunta altres dades, com el <code>groupId</code>, <code>artifact</code>, etc.. Per als quals ja ens oferix un valor vàlid predeterminat, no farà falta reescriure'ls, i podrem polsar Intro per a acceptar estos valors.</p>
+
+Després ens pregunta altres dades, com el `groupId`, `artifact`, etc.. Per als quals ja ens oferix un valor vàlid predeterminat, no farà falta reescriure'ls, i podrem polsar Intro per a acceptar estos valors.
+
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Define value for property &#39;groupId&#39;: com.ieseljust.edd
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>Define value for property &#39;artifactId&#39;: Saluda2
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>Define value for property &#39;version&#39; 1.0-SNAPSHOT: 
@@ -1099,7 +1038,9 @@
 </span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>package: com.ieseljust.edd
 </span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a> Y: y
 </span></code></pre></div>
-<p>Després de demanar la confirmació de tot, ja ens mostra el resultat de la creació.</p>
+
+Després de demanar la confirmació de tot, ja ens mostra el resultat de la creació.
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>[INFO] ----------------------------------------------------------------------------
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-quickstart:1.0
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>[INFO] ----------------------------------------------------------------------------
@@ -1117,9 +1058,13 @@
 </span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>[INFO] Finished at: 2024-12-03T06:33:22+01:00
 </span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>[INFO] ------------------------------------------------------------------------
 </span></code></pre></div>
-<p>En este cas, el <em>pom.xml</em> generat és possible que es genere d'una plantilla diferent, i diferisca del que hem generat anteriorment. Les principals diferències poden ser que no s'especifique les opcions <code>maven.compiler.source</code> i <code>maven.compiler.target</code>, així com la configuració dels <em>plugins</em>.</p>
-<p>Així doncs, en primer lloc, haurem d'afegir les opcions relatives al compilador. I en segon, només aquells <em>plugins</em> que vulguem configurar, ja que la resta prendrà les opcions per defecte. En el nostre cas, es tractaria d'afegir la configuració a l'empaquetat.</p>
-<p>En resum, hauríem de modificar el nou <em>pom.xml</em> amb el següent contingut:</p>
+
+En este cas, el *pom.xml* generat és possible que es genere d'una plantilla diferent, i diferisca del que hem generat anteriorment. Les principals diferències poden ser que no s'especifique les opcions `maven.compiler.source` i `maven.compiler.target`, així com la configuració dels *plugins*.
+
+Així doncs, en primer lloc, haurem d'afegir les opcions relatives al compilador. I en segon, només aquells *plugins* que vulguem configurar, ja que la resta prendrà les opcions per defecte. En el nostre cas, es tractaria d'afegir la configuració a l'empaquetat.
+
+En resum, hauríem de modificar el nou *pom.xml* amb el següent contingut:
+
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
 </span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
@@ -1133,8 +1078,8 @@
 </span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">  </span><span class="nt">&lt;name&gt;</span>Saluda2<span class="nt">&lt;/name&gt;</span>
 </span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">  </span><span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
 </span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
-</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">  </span><span class="cm">&lt;!-- Aquest bloc properties és nou --&gt;</span>
-</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">  </span><span class="nt">&lt;properties&gt;</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">  </span><span class="cp">&lt;!-- Aquest bloc properties és nou </span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="cp">  &lt;properties&gt;</span>
 </span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span><span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
 </span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span><span class="nt">&lt;maven.compiler.release&gt;</span>17<span class="nt">&lt;/maven.compiler.release&gt;</span>
 </span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">  </span><span class="nt">&lt;/properties&gt;</span>
@@ -1148,8 +1093,8 @@
 </span><span id="__span-27-26"><a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 </span><span id="__span-27-27"><a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
 </span><span id="__span-27-28"><a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>
-</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="w">  </span><span class="cm">&lt;!-- Aquest bloc build també és nou --&gt;</span>
-</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="w">  </span><span class="nt">&lt;build&gt;</span>
+</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="w">  </span><span class="cp">&lt;!-- Aquest bloc build també és nou </span>
+</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="cp">  &lt;build&gt;</span>
 </span><span id="__span-27-31"><a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">    </span><span class="nt">&lt;pluginManagement&gt;</span>
 </span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a><span class="w">      </span><span class="nt">&lt;plugins&gt;</span>
 </span><span id="__span-27-33"><a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
@@ -1170,54 +1115,82 @@
 </span><span id="__span-27-48"><a id="__codelineno-27-48" name="__codelineno-27-48" href="#__codelineno-27-48"></a>
 </span><span id="__span-27-49"><a id="__codelineno-27-49" name="__codelineno-27-49" href="#__codelineno-27-49"></a><span class="nt">&lt;/project&gt;</span>
 </span></code></pre></div>
-<p>Amb això ja podrem compilar i empaquetar el projecte tal com vam fer en el projecte anterior.</p>
-<h3 id="el-plugin-de-maven-per-a-vscode">El plugin de Maven per a VSCode</h3>
-<p>Com ja sabem, en instal·lar el plugin <em>Extension Pack for Java</em>, una de les extensions que ens arrossega és l'extensió <em>Maven for Java</em>. Esta extensió ens oferix un explorador de projectes <em>Maven</em> i afig les següent funcionalitats:</p>
-<ol>
-<li>Suport per a la generació de projectes a partir d'arquetips Maven,</li>
-<li>Suport per a generar POM de manera eficient,</li>
-<li>Oferix dreceres de teclat per a llançar objectius de Maven comuns: clean, validate, compile test, package, verify, install, site i deploy,</li>
-<li>Manteniment d'un historial d'ordes per a tornar a llançar ordes recents.</li>
-</ol>
-<h4 id="lexplorador-de-projectes-maven">L'explorador de projectes Maven</h4>
-<p>Quan obrim una carpeta o espai de treball que conté un fitxer <code>pom.xml</code>, VSCode ens mostra una nova secció en la barra lateral anomenada <em>Maven Projects</em>, amb els projectes <em>Maven</em> del <em>worksapce</em>  i els seus mòduls.</p>
-<p><a class="glightbox" href="../img/maven/estructura_vscode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Contingut de la pestanya Maven" src="../img/maven/estructura_vscode.png" width="400px" /></a></p>
-<p>Com veiem en la figura anterior, després d'obrir la carpeta on tenim el projecte de <em>saludaMaven</em>, este se'ns obrirà en la pestanya <em>MAVEN</em>. Si fem clic en el nom del projecte, se'ns despleguen els diferents cicles de vida, que podrem executar directament mitjançant la icona <em>Run</em> que ens apareix al costat de cada cicle, així com accedir al fitxer <em>pom.xml</em> des de la icona <em>Open POM File</em>.</p>
-<p>Si ara fem clic amb el botó dret sobre el projecte <em>saludaMaven</em> (o <em>Saluda2</em>), veurem diferents opcions, algunes d'elles relacionades amb els objectius del <em>LifeCycle</em> (clean, validate, etc.), a més d'accés a l'historial (History), entre altres opcions. Una de les més interessants és <em>Show Effective POM</em>.</p>
-<p><a class="glightbox" href="../img/maven/effective_pom.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Mostrar el POM efectiu" src="../img/maven/effective_pom.png" width="300px" /></a></p>
-<div class="admonition note">
-<p class="admonition-title">Què és l'Efective POM?</p>
-</div>
-<p>Quan creem un projecte Maven a partir d'un arquetip, definim per al mateix un conjunt de propietats com ara el <em>groupID</em>, l'<em>artifactID</em> i la versió. Estos tres camps són els que es requerixen per a tot projecte, i són el que conformen el POM més simple que podríem generar. El POM d'un projecte, a més, hereta certes propietats del que es coneix com el Super POM, que vindria a ser com la classe base de la que hereten tots els POM. És a dir, un POM es compon dels atributs que definim explícitament en funció de l'arquetip que hem utilitzat, i a més, posseïx un conjunt de valors per defecte compartits per tots els projectes, i que no apareixen explícitament en el fitxer <code>pom.xml</code>.</p>
-<p>Tenint tot això en compte, el <em>POM Efectiu</em> (Effective POM)s'entén com <strong>la combinació de tots dos POM, el Super POM i el POM més simple</strong>. A efectes pràctics, si consultem el POM efectiu del nostre projecte, veurem que es tracta d'un fitxer XML bastant més extens que l'original, i en el qual tindrem totes les característiques que teníem definides explícitament més totes aquelles que hi havia implícitament i que són comunes a tots els projectes.</p>
-<h4 id="generacio-dun-projecte-maven-des-de-vscode">Generació d'un projecte Maven des de VSCode</h4>
-<p><em>Visual Studio Code</em> ens permet crear projectes <em>Maven</em> a partir d'arquetips de diferents repositoris. Simplement, el que fa és llançar per nosaltres les ordes que hem vist anteriorment en la terminal de <em>VSCode</em>.</p>
-<p>Vegem com fer-ho. Partint d'una finestra nova de <em>VSCode</em> (<code>Arxiu &gt; Nova Finestra</code>):</p>
-<ul>
-<li><strong>Pas 1</strong>. En l'activitat de l'Explorador, busquem la pestanya desplegable <em>MAVEN</em>, i el símbol "+" que apareix a la seua dreta.</li>
-<li><strong>Pas 2</strong>. Fem clic en este símbol "+" per a crear un projecte Maven nou.</li>
-</ul>
-<p><a class="glightbox" href="../img/maven/new_maven.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació d'un projecte nou amb Maven" src="../img/maven/new_maven.png" width="300px" /></a></p>
-<ul>
-<li><strong>Pas 3</strong>. En la paleta d'ordes ens apareixerà els diferents arquetips de què disposem. Busquem <em>quickstart</em>, i seleccionem <code>maven-Archetype-quickstart</code>.</li>
-</ul>
-<p><a class="glightbox" href="../img/maven/mvn_Quickstart.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecció de l'arquetipus" src="../img/maven/mvn_Quickstart.png" width="450px" /></a></p>
-<ul>
-<li><strong>Pas 4.</strong> Indiquem la <em>versió</em> (<code>1.0</code>), el <em>groupId</em> (<code>com.ieseljust.edd</code>), i el <em>nom</em> (<code>Salud3)</code> del projecte</li>
-<li><strong>Pas 5</strong>. Fet això, se'ns obrirà la terminal integrada de <em>VSCode</em>, i ens demanarà la propietat <em>version</em> que falta per configurar. Deixem el valor predeterminat <em>1.0-SNAPSHOT</em>, i polsem Intro per a crear el projecte:</li>
-</ul>
-<p><a class="glightbox" href="../img/maven/version_snapshot.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creació d'un projecte nou amb Maven" src="../img/maven/version_snapshot.png" width="400px" /></a></p>
-<p>Una vegada generat el projecte, si donem una ullada a l'estructura de carpetes generada i al <em>pom.xml</em> , veurem que és pràcticament el mateix que havíem definit per consola.</p>
-<h4 id="actualitzacio-de-la-cache-darquetips">Actualització de la caché d'arquetips</h4>
-<p>Una altra opció que podem realitzar amb VSCode, és actualitzar la caché local dels diferents arquetips des del repositori Maven Central. Per a això, accedirem a la Consola d'Ordes mitjançant <em>Ctrl +Shift + P</em>, i quan se'ns òbriga esta, començarem a escriure <em>Maven:...</em> per a filtrar les diferents opcions, fins a tindre a la vista l'opció de <em>Update Maven Archetype Catalog.</em></p>
-<p><a class="glightbox" href="../img/maven/mvn_update.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Actualitzacó de la caché" src="../img/maven/mvn_update.png" width="400px" /></a></p>
+
+Amb això ja podrem compilar i empaquetar el projecte tal com vam fer en el projecte anterior.
+
+## El plugin de Maven per a VSCode 
+
+Com ja sabem, en instal·lar el plugin *Extension Pack for Java*, una de les extensions que ens arrossega és l'extensió *Maven for Java*. Esta extensió ens oferix un explorador de projectes *Maven* i afig les següent funcionalitats:
+
+1. Suport per a la generació de projectes a partir d'arquetips Maven,
+2. Suport per a generar POM de manera eficient,
+3. Oferix dreceres de teclat per a llançar objectius de Maven comuns: clean, validate, compile test, package, verify, install, site i deploy,
+4. Manteniment d'un historial d'ordes per a tornar a llançar ordes recents.
+
+### L'explorador de projectes Maven
+
+Quan obrim una carpeta o espai de treball que conté un fitxer `pom.xml`, VSCode ens mostra una nova secció en la barra lateral anomenada *Maven Projects*, amb els projectes *Maven* del *worksapce*  i els seus mòduls.
+
+![Contingut de la pestanya Maven](img/maven/estructura_vscode.png){ width=400px }
+
+
+Com veiem en la figura anterior, després d'obrir la carpeta on tenim el projecte de *saludaMaven*, este se'ns obrirà en la pestanya *MAVEN*. Si fem clic en el nom del projecte, se'ns despleguen els diferents cicles de vida, que podrem executar directament mitjançant la icona *Run* que ens apareix al costat de cada cicle, així com accedir al fitxer *pom.xml* des de la icona *Open POM File*.
+
+Si ara fem clic amb el botó dret sobre el projecte *saludaMaven* (o *Saluda2*), veurem diferents opcions, algunes d'elles relacionades amb els objectius del *LifeCycle* (clean, validate, etc.), a més d'accés a l'historial (History), entre altres opcions. Una de les més interessants és *Show Effective POM*.
+
+![Mostrar el POM efectiu](img/maven/effective_pom.png){ width=300px }
+
+!!! note "Què és l'Efective POM?"
+  Quan creem un projecte Maven a partir d'un arquetip, definim per al mateix un conjunt de propietats com ara el *groupID*, l'*artifactID* i la versió. Estos tres camps són els que es requerixen per a tot projecte, i són el que conformen el POM més simple que podríem generar. El POM d'un projecte, a més, hereta certes propietats del que es coneix com el Super POM, que vindria a ser com la classe base de la que hereten tots els POM. És a dir, un POM es compon dels atributs que definim explícitament en funció de l'arquetip que hem utilitzat, i a més, posseïx un conjunt de valors per defecte compartits per tots els projectes, i que no apareixen explícitament en el fitxer `pom.xml`.
+
+  Tenint tot això en compte, el *POM Efectiu* (Effective POM)s'entén com **la combinació de tots dos POM, el Super POM i el POM més simple**. A efectes pràctics, si consultem el POM efectiu del nostre projecte, veurem que es tracta d'un fitxer XML bastant més extens que l'original, i en el qual tindrem totes les característiques que teníem definides explícitament més totes aquelles que hi havia implícitament i que són comunes a tots els projectes.
+
+### Generació d'un projecte Maven des de VSCode
+
+*Visual Studio Code* ens permet crear projectes *Maven* a partir d'arquetips de diferents repositoris. Simplement, el que fa és llançar per nosaltres les ordes que hem vist anteriorment en la terminal de *VSCode*.
+
+Vegem com fer-ho. Partint d'una finestra nova de *VSCode* (`Arxiu > Nova Finestra`):
+
+* **Pas 1**. En l'activitat de l'Explorador, busquem la pestanya desplegable *MAVEN*, i el símbol "+" que apareix a la seua dreta.
+* **Pas 2**. Fem clic en este símbol "+" per a crear un projecte Maven nou.
+
+![Creació d'un projecte nou amb Maven](img/maven/new_maven.png){ width=300px }
+
+* **Pas 3**. En la paleta d'ordes ens apareixerà els diferents arquetips de què disposem. Busquem *quickstart*, i seleccionem `maven-Archetype-quickstart`.
+
+![Selecció de l'arquetipus](img/maven/mvn_Quickstart.png){ width=450px }
+
+* **Pas 4.** Indiquem la *versió* (`1.0`), el *groupId* (`com.ieseljust.edd`), i el *nom* (`Salud3)` del projecte
+* **Pas 5**. Fet això, se'ns obrirà la terminal integrada de *VSCode*, i ens demanarà la propietat *version* que falta per configurar. Deixem el valor predeterminat *1.0-SNAPSHOT*, i polsem Intro per a crear el projecte:
+
+![Creació d'un projecte nou amb Maven](img/maven/version_snapshot.png){ width=400px }
+
+Una vegada generat el projecte, si donem una ullada a l'estructura de carpetes generada i al *pom.xml* , veurem que és pràcticament el mateix que havíem definit per consola.
+
+### Actualització de la caché d'arquetips
+
+Una altra opció que podem realitzar amb VSCode, és actualitzar la caché local dels diferents arquetips des del repositori Maven Central. Per a això, accedirem a la Consola d'Ordes mitjançant *Ctrl +Shift + P*, i quan se'ns òbriga esta, començarem a escriure *Maven:...* per a filtrar les diferents opcions, fins a tindre a la vista l'opció de *Update Maven Archetype Catalog.*
+
+![Actualitzacó de la caché](img/maven/mvn_update.png){ width=400px }
+
+-->
+
 <div class="admonition question">
 <p class="admonition-title">Activitats</p>
 <ol>
-<li>Segueix els passos anteriors i configura un projecte Maven des de la línia d'ordres. Modifica el codi font amb el de la teua calculadora. El nom del paquet serà el teu nom i cognoms, en el format com.cognom2.cognom1.nom. Documenta el procés i crea una entrada al teu devlog.</li>
-<li>Fes el mateix, però ara generant el projecte Maven des de VSCode. Documenta el procés i afig-lo en una entrada al devlog.</li>
-<li>Explora les opcions de Netbeans per crear un projecte Maven i crea un projecte amb les mateixes característiques, documentant el procés.</li>
+<li>
+<p>Segueix els passos anteriors i configura un projecte Maven des de la línia d'ordres. Modifica el codi font amb el de la teua calculadora. El nom del paquet serà el teu nom i cognoms, en el format com.cognom2.cognom1.nom. Documenta el procés.</p>
+</li>
+<li>
+<p>Explora les opcions de Netbeans/IntelliJ per crear un projecte Maven i crea un projecte amb les mateixes característiques, documentant el procés.</p>
+</li>
 </ol>
+<p>IMPORTANT: recorda incloure en els arxius pom.xml el properties on indiques la versió java del teu jdk. Per exemple, si utilitzas jdk 17, seria:
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">&lt;properties&gt;</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="nt">&lt;maven.compiler.source&gt;</span>17<span class="nt">&lt;/maven.compiler.source&gt;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">&lt;maven.compiler.target&gt;</span>17<span class="nt">&lt;/maven.compiler.target&gt;</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="nt">&lt;/properties&gt;</span>
+</span></code></pre></div></p>
 </div>
 
 

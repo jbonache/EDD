@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../1.%20Make/">
+        <link rel="prev" href="../2.%20Plataforma%20Java/">
       
       
         <link rel="next" href="../4.%20Maven/">
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduccio-a-apache-ant" class="md-skip">
+        <a href="#apache-ant" class="md-skip">
           Salta el contingut
         </a>
       
@@ -299,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.Plataforma Java.md" class="md-nav__link">
+      <a href="../2.%20Plataforma%20Java/" class="md-nav__link">
         
   
   
@@ -367,16 +367,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccio-a-apache-ant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introducció a Apache Ant
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Introducció a Apache Ant">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#apache-ant" class="md-nav__link">
     <span class="md-ellipsis">
       Apache ant
@@ -384,8 +374,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#ant-i-vscode" class="md-nav__link">
     <span class="md-ellipsis">
       Ant i VSCode
@@ -393,9 +383,22 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-netbeans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i NetBeans
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-intellij" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i IntelliJ
+    </span>
+  </a>
   
 </li>
       
@@ -420,28 +423,6 @@
   
   <span class="md-ellipsis">
     5. Apache Maven
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5.%20Gradle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    6. Gradle
     
   </span>
   
@@ -476,16 +457,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccio-a-apache-ant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introducció a Apache Ant
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Introducció a Apache Ant">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#apache-ant" class="md-nav__link">
     <span class="md-ellipsis">
       Apache ant
@@ -493,8 +464,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#ant-i-vscode" class="md-nav__link">
     <span class="md-ellipsis">
       Ant i VSCode
@@ -502,9 +473,22 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-netbeans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i NetBeans
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ant-i-intellij" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ant i IntelliJ
+    </span>
+  </a>
   
 </li>
       
@@ -529,7 +513,6 @@
 
   <h1>4. Apache Ant</h1>
 
-<h2 id="introduccio-a-apache-ant">Introducció a Apache Ant</h2>
 <p><strong>Apache Ant</strong> és una eina d'automatització utilitzada principalment en projectes desenvolupats amb <strong>Java</strong>. Permet automatitzar tasques habituals del desenvolupament de programari com la <strong>compilació del codi</strong>, l'execució de <strong>tests</strong>, la <strong>generació de paquets</strong> o la <strong>distribució d'aplicacions</strong>.</p>
 <p>Apache Ant forma part del projecte <strong>Apache Software Foundation</strong> i és una de les eines clàssiques de construcció (<em>build tools</em>) dins de l'ecosistema Java.</p>
 <h4 id="exemple-de-partida-un-hola-mon-amb-dos-fitxers-java">Exemple de partida: un Hola Món amb dos fitxers java</h4>
@@ -640,7 +623,7 @@
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>                └── Saluda.java
 </span></code></pre></div>
 <p>Ara, per tal d'executar el nostre codi, caldrà indicar també on es troba el classpath, de manera que farem:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ java -cp build com.ieseljust.edd.Hola 1DAM!
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ java -cp build com.ieseljust.edd.Hola 1DAM/DAW!
 </span></code></pre></div>
 <p>Si no especifiquem el classpath, ens donarà l'error:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Error: Could not find or load main class com.ieseljust.edd.Hola
@@ -649,17 +632,24 @@
 <p>I de fet, no ens deixarà ni autocompletar el nom del paquet.</p>
 <p>De moment, hem utilitzat dos fitxers, i la compilació podria fer-se de forma manual sense problemes, però quan el nostre codi font comença a créixer, i definim subpaquets i llibreries de tercers, el manteniment manual pot resultar més complex. Per a això, i partint d'aquest exemple base, anem a veure com podriem automatitzar tot el procés.</p>
 <div class="admonition question">
-<p class="admonition-title">Activitat</p>
-<p>Crea una classe anomenada <code>Calculadora</code> en un paquet format pel teu nom (per exemple <code>com.jose.edd</code>) amb els següents mètodes (funcions):</p>
+<p class="admonition-title">Activitat 1</p>
+<ol>
+<li>
+<p>Crea una classe anomenada <code>Calculadora</code> en un paquet format pel teu nom (per exemple <code>com.jose.edd</code>) amb els següents mètodes (funcions):  </p>
 <ul>
 <li><code>public static int suma(int a, int b)</code>: Que suma a i b i retorna el resultat,</li>
 <li><code>public static int resta(int a, int b)</code>: Que resta a i b i retorna el resultat,</li>
 <li><code>public static int multiplica(int a, int b)</code>: Que multiplica a i b i retorna el resultat,</li>
 <li><code>public static int divideix(int a, int b)</code>: Que divideix a entre b i retorna el resultat. Si b és 0, mostra l'error i torna un 0.</li>
 </ul>
-<p>I una altra classe que a la funció principal (<em>main</em>) faça ús d'aquests mètodes estàtics, i mostre els resultats per pantalla.</p>
+</li>
+<li>
+<p>Crea la classe principal anomenada <code>Operacions</code> que contindrà la funció principal (<em>main</em>) on es faça ús d'aquests mètodes estàtics, i mostre els resultats per pantalla.</p>
+</li>
+<li>
 <p>Crea el directori build, i fes ús d'aquest com a classpath.</p>
-<p>Indica a un fitxer Markdown el procés que has seguit, incloent el codi font, les ordres per compilar i per executar, i l'estructura de carpetes resultant. Fes una breu explicació de cada cosa.</p>
+</li>
+</ol>
 </div>
 <h3 id="apache-ant">Apache ant</h3>
 <p><em>Apache Ant</em> és una llibreria de Java que ens permet automatitzar el procés de construcció d'aplicacions. Encara que s'utilitza principalment a Java, també suporta altres llenguatges. Inicialment, va formar part del projecte <em>Apache Tomcat</em>, però l'any 2000 es va llançar com a projecte independent.</p>
@@ -790,9 +780,68 @@
 </span></code></pre></div>
 <p>Observeu que a l'ordre <code>ant run</code> hem d'oferir-li els arguments mitjançant <code>Darg0=Jose</code>. És a dir, afegim l'opció <code>-D</code>, seguida del nom d'argument usat en el <code>build.xml</code></p>
 <p>A més, en este cas, com no hem llançat <code>ant clean</code> prèviament, la tasca <code>clean</code> si que ha esborrat la carpeta de classes, posteriorment realitza la compilació i finalment l'execució. Si desitjàrem netejar tot el projecte, sí que realitzaríem ara el  <code>ant clean</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Activitat 2</p>
+<ol>
+<li>
+<p>Creeu el projecte Ant per a la Calculadora i verifiqueu que aquest es neteja, es compila i s’executa correctament amb els targets corresponents en el <code>build.xml</code>. </p>
+</li>
+<li>
+<p>Personalitza algun target del teu projecte, renombrant-lo i comprova que funciona.</p>
+</li>
+<li>
+<p>Investiga altres tasques que pots incloure als teus projectes Ant (<em>targets</em>) des de <a href="https://ant.apache.org/manual/tasksoverview.html">Apache ANT tasks</a> i crea almenys dues tasques diferents i personalitzades per al teu projecte. (No és necessari que tinga sentit estricte, l'objectiu de la pràctica es que familiaritzarse amb l'automatització de tasques).</p>
+</li>
+<li>
+<p>Lliura el teu projecte ANT comprimit en .zip  (ho pots fer amb un target de Ant...)</p>
+</li>
+</ol>
+<p>Nota: aquestes tasques les has de fer per terminal (NO amb un IDE)</p>
+</div>
 <h3 id="ant-i-vscode">Ant i VSCode</h3>
 <p>Com hem vist, <code>ant</code> pot usar-se de forma pràctica des de la línia d'ordres. De totes maneres, podem fer ús d'<code>ant</code> de manera integrada amb l'entorn de desenvolupament.</p>
 <p>La forma més senzilla d'utilitzar <em>ant</em> amb Visual Studio Code és mitjançant la terminal integrada. No obstant això, disposem de l'extensió <em>Ant Target Runner</em>, que ens afig una nova vista en la barra lateral on es mostren els diferents <em>targets</em>, i de forma niuada, les dependències entre estos. A més, en esta vista, si polsem el botó dret del ratolí sobre un <em>target</em> d'esta vista, ens dona la possibilitat d'executar el <em>target</em> (<em>Run Ant Target</em>) o bé d'anar a la seua definició (<em>Reveal Definition</em>).</p>
+<h3 id="ant-i-netbeans">Ant i NetBeans</h3>
+<p><a href="https://ant.apache.org/">Apache Ant</a> està fortament integrat amb <a href="https://netbeans.apache.org/">Apache NetBeans</a>, especialment en projectes Java clàssics.</p>
+<p>Quan es crea un projecte Java estàndard en NetBeans, l’IDE genera automàticament els fitxers de configuració d’Ant, principalment:</p>
+<ul>
+<li><code>build.xml</code></li>
+<li><code>nbproject/build-impl.xml</code></li>
+<li>altres fitxers de configuració dins de <code>nbproject</code></li>
+</ul>
+<p>Encara que aquests scripts es generen automàticament, el desenvolupador pot modificar <code>build.xml</code> per a afegir noves tasques o personalitzar el procés de construcció.</p>
+<p>A més, NetBeans permet executar qualsevol <em>target</em> definida en Ant directament des de l’IDE. </p>
+<hr />
+<h3 id="ant-i-intellij">Ant i IntelliJ</h3>
+<p><a href="https://ant.apache.org/">Apache Ant</a> també es pot utilitzar amb <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>. Encara que IntelliJ no crea projectes Ant per defecte, ofereix suport per a aquesta eina mitjançant un plugin (normalment inclòs o instal·lable des del gestor de plugins de l'IDE).</p>
+<p>Gràcies a aquest plugin, és possible treballar amb fitxers <code>build.xml</code> i executar les tasques definides en els scripts d’Ant directament des de l’entorn de desenvolupament.</p>
+<p>Per a utilitzar Ant en IntelliJ:</p>
+<ol>
+<li>Obrir o importar un projecte que continga un fitxer <code>build.xml</code>.</li>
+<li>IntelliJ detectarà automàticament el fitxer i mostrarà les <strong>targets</strong> disponibles en la finestra d’Ant.</li>
+<li>Les tasques es poden executar fent doble clic sobre la target corresponent.</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title">Activitat 3</p>
+<ol>
+<li>
+<p>Crea el projecte Ant per a la Calculadora amb l'IDE Netbeans o importa'l a IntelliJ</p>
+</li>
+<li>
+<p>Crea un nou target en el fitxer <em>build.xml</em> per a fer que vos empaquete el projecte dins de la carpeta /lib de la següent forma:</p>
+</li>
+</ol>
+<p><div class="language-xml highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;miclean&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">        </span><span class="nt">&lt;delete</span><span class="w"> </span><span class="na">dir=</span><span class="s">&quot;lib&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mipackage&quot;</span><span class="w"> </span><span class="na">depends=</span><span class="s">&quot;miclean&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">        </span><span class="nt">&lt;mkdir</span><span class="w"> </span><span class="na">dir=</span><span class="s">&quot;lib&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">        </span><span class="nt">&lt;jar</span><span class="w"> </span><span class="na">destfile=</span><span class="s">&quot;lib/app.jar&quot;</span><span class="w"> </span><span class="na">basedir=</span><span class="s">&quot;build/classes&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+</span></code></pre></div>
+3. Executa el nou target i comprova que funciona correctament</p>
+</div>
 
 
 
