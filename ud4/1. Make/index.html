@@ -712,7 +712,7 @@ carpeta i llancem <code>make hola</code>, obtindrem:</p>
 <p><strong>Fitxer d’implementació (<code>.c</code>)</strong>: conté el codi que implementa les funcions, és a dir, com es realitzen. Aquest fitxer no ha d’implementar cap funció <code>main</code>.</p>
 </li>
 </ul>
-<p>Finalment, el fitxer principal del programa haurà d’incloure la llibreria amb un <code>#include</code> del fitxer de capçalera, i així podrà utilitzar les funcions definides en aquesta.</p>
+<p>Finalment, el fitxer principal del programa haurà d’incloure la llibreria amb un <code>#include "nom_llibreria.h"</code> del fitxer de capçalera, i així podrà utilitzar les funcions definides en aquesta. <strong>Atenció</strong>, s'ha de posar dobles cometes en el cas de llibreríes pròpies.</p>
 <h4 id="el-fitxer-calcc-conte-la-implementacio-de-les-funcions">El fitxer <code>calc.c</code> conté la implementació de les funcions:</h4>
 <div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">op2</span><span class="p">){</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">op1</span><span class="o">+</span><span class="n">op2</span><span class="p">);</span>
