@@ -504,8 +504,11 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 -->
 
 <h3 id="apache-maven">Apache Maven</h3>
-<p><em>Apache Maven</em> és una eina que ens permet crear i gestionar projectes Java, de manera similar a com féiem amb <em>Ant</em>, però des d'un punt de partida diferent. La idea subjacent d'Apache Maven és <strong>oferir suport al cicle de vida de construcció segons estàndards</strong>, de manera que les nostres aplicacions siguen més homogènies i tinguen en compte bones pràctiques. Seguix el <strong>principi de convenció sobre configuració</strong> (CoC), segons el qual, s'establixen unes certes <em>convencions</em> que simplifiquen la presa de decisions per part del programador.</p>
-<p>D'esta manera, es promou la construcció de solucions de programari homogènies, i que reduïxen la variabilitat.</p>
+<p><em>Apache Maven</em> és una eina que ens permet crear i gestionar projectes Java, de manera similar a com féiem amb <em>Ant</em>, però des d'un punt de partida diferent. La idea subjacent d'Apache Maven és <strong>oferir suport al cicle de vida de construcció segons estàndards</strong>, de manera que les nostres aplicacions siguen més homogènies i tinguen en compte bones pràctiques. </p>
+<!-- Seguix el **principi de convenció sobre configuració** (CoC), segons el qual, s'establixen unes certes *convencions* que simplifiquen la presa de decisions per part del programador.
+D'esta manera, es promou la construcció de solucions de programari homogènies, i que reduïxen la variabilitat.
+-->
+
 <p>Entre les diferents ajudes que ofereix Maven trobem la construcció d'aplicacions, el manteniment de la documentació, la gestió de dependències, de versions i la distribució de l'aplicació.</p>
 <p>Un dels conceptes que treballa Maven, i amb el qual ens trobarem llegint la seua documentació és el de <em>artifact</em>, la traducció literal del qual seria <em>artefacte</em>. Este concepte fa referència al que anomenarem una <em>solució</em>, o un <em>producte programari reutilitzable</em>, que és gestionat per Maven. Això implicarà que tinga una estructura concreta i seguisca unes certes convencions.</p>
 <h4 id="arquetips">Arquetips</h4>
@@ -632,8 +635,11 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 <h3 id="exemple-practic-amb-maven">Exemple pràctic amb Maven</h3>
 <p>Anem a vore com fer ús de Maven per gestionar els nostres projecte Java. Per a això partirem d'una distribució Linux basada en Ubuntu 24.</p>
 <p>El primer que haurem de fer és instal·lar l'eina. Si som administradors del sistema, podem actualitzar la llista de paquets de la nostra distribució (<code>sudo apt update</code>), i instal·lar el paquet <em>maven</em> (<code>sudo apt install maven</code>).</p>
-<p>Ara bé, si no disposem de permís d'administrador o volem instal·lar una versió més actualitzada que la dels repositoris d'Ubuntu, podem fer la instal·lació al nostre <em>Home</em> d'usuari, descarregant els binaris i incloent les rutes als executables des del PATH.</p>
-<p>Per a això seguim els següents pasos:</p>
+<p>L'ordre <code>mvn -v</code> a més d'informació sobre la versió, ens mostra la ubicació de les instal·lacions de <em>Maven</em> i la màquina virtual de Java, així com informació genèrica sobre el sistema i la configuració de l'idioma.</p>
+<div class="admonition note">
+<p class="admonition-title">Instal·lació al Home</p>
+<p>Si no disposem de permís d'administrador o volem instal·lar una versió més actualitzada que la dels repositoris d'Ubuntu, podem fer la instal·lació al nostre <em>Home</em> d'usuari, descarregant els binaris i incloent les rutes als executables des del PATH.
+Per a això seguim els següents pasos:</p>
 <ol>
 <li>
 <p>Descarreguem <a href="https://maven.apache.org/download.cgi">Apache Maven des de la web</a>. Anem a descarregar, per exemple el fitxer <a href="https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz">apache-maven-3.9.9-bin.tar.gz</a>, i el deixarem a la nostra carpeta <code>~/devtools</code>.</p>
@@ -664,6 +670,7 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 </span></code></pre></div>
 <p>Com podem veure, hem instal·lat la versió 3.9.9.</p>
 <p>L'ordre <code>mvn -v</code> a més d'informació sobre la versió, ens mostra la ubicació de les instal·lacions de <em>Maven</em> i la màquina virtual de Java, així com informació genèrica sobre el sistema i la configuració de l'idioma.</p>
+</div>
 <h4 id="creacio-del-projecte">Creació del projecte</h4>
 <p>Per a crear un projecte en <em>Maven</em> hem d'utilitzar el mecanisme d'arquetips que ens ofereix. Per a això, utilitzarem l'orde <code>mvn archetype:generate</code>, la qual admet un mode interactiu i un altre no interactiu. El mode interactiu el tractarem posteriorment. En este apartat veurem el mode no interactiu, en el qual li oferirem a l'ordre de generació del projecte algunes opcions, i deixarem unes altres amb les seues opcions per defecte.</p>
 <h5 id="pas-1-creacio-del-projecte-a-partir-de-larquetip">Pas 1. Creació del projecte a partir de l'arquetip</h5>
@@ -672,11 +679,11 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 </span></code></pre></div>
 <p>Vegem les diferents opcions:</p>
 <ul>
-<li><code>Archetype:generate</code>: Indiquem a Maven que volem executar l'objectiu (<em>goal</em>) <code>generate</code> del plugin <code>archetype</code>. Recordem que <strong>en Maven, els goals són equiparables als tasks d'Ant</strong>: este objectiu en concret, ens genera un projecte simple basat en un arquetip. Podem dir que un <em>plugin</em> és una col·lecció d'objectius amb un propòsit comú.</li>
-<li><code>DgroupId</code>: Indiquem l'identificador únic de l'organització que crea el projecte, basat normalment en el domini completament qualificat de l'organització (<em>fully qualified domain</em>), en este cas <code>com.ieseljust.edd</code>.</li>
-<li><code>DartifactID</code>: Indica el nom del recurs (<em>artifact</em>) que generarem. També ha de ser un nom únic per al projecte. En este cas, <em>saludaMaven</em>.</li>
-<li><code>DarchetypeArtifactId</code>: Indica el nom del recurs d'arquetip a partir del qual triar la plantilla per al nostre projecte. En este cas, indiquem el recurs <em>maven-archetipe-quickstart</em>, que generarà una aplicació senzilla i ràpida, del tipus <em>Hola Món</em>.</li>
-<li><code>DinteractiveMode</code>: Indica si volem utilitzar o no el mode interactiu. En este cas, hem indicat <em>false</em>, per a agilitzar la tasca, i que certs paràmetres prenguen els seus valors per defecte.</li>
+<li><code>Archetype:generate</code>: indiquem a Maven que volem executar l'objectiu (<em>goal</em>) <code>generate</code> del plugin <code>archetype</code>. Recordem que <strong>en Maven, els goals són equiparables als tasks d'Ant</strong>: este objectiu en concret, ens genera un projecte simple basat en un arquetip. Podem dir que un <em>plugin</em> és una col·lecció d'objectius amb un propòsit comú.</li>
+<li><code>DgroupId</code>: indiquem l'identificador únic de l'organització que crea el projecte, basat normalment en el domini completament qualificat de l'organització (<em>fully qualified domain</em>), en este cas <code>com.ieseljust.edd</code>.</li>
+<li><code>DartifactID</code>: indica el nom del recurs (<em>artifact</em>) que generarem. També ha de ser un nom únic per al projecte. En este cas, <em>saludaMaven</em>.</li>
+<li><code>DarchetypeArtifactId</code>: indica el nom del recurs d'arquetip a partir del qual triar la plantilla per al nostre projecte. En este cas, indiquem el recurs <em>maven-archetipe-quickstart</em>, que generarà una aplicació senzilla i ràpida, del tipus <em>Hola Món</em>.</li>
+<li><code>DinteractiveMode</code>: indica si volem utilitzar o no el mode interactiu. En este cas, hem indicat <em>false</em>, per a agilitzar la tasca, i que certs paràmetres prenguen els seus valors per defecte.</li>
 </ul>
 <p>Amb tot això, l'eixida de l'orde anterior (i després de descarregar algun programari addicional ...) és la següent:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>...
@@ -900,7 +907,7 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 <p>Les aplicacions Java solen distribuir-se empaquetades en un fitxer de tipus <em>JAR</em> (Java Arxive), que continga tots els <code>.*class</code> de l'aplicació.</p>
 <p>Per a crear este fitxer, utilitzarem l'ordre <code>mvn package</code>. Vegem com fer-ho:</p>
 <ul>
-<li><strong>Pas 1</strong>. Creació del JAR</li>
+<li><strong>Pas 1. Creació del JAR</strong></li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>package<span class="w"> </span>
 </span></code></pre></div>
@@ -908,7 +915,7 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>package<span class="w"> </span>
 </span></code></pre></div>
 <p>Per a completar el cicle de construcció de l'empaquetat, es passa prèviament per la compilació i els tests, generant la carpeta <em>target</em> amb una mica més de contingut que únicament per a la compilació:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>target/
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>target/
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── classes
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>│   └── com
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│       └── ieseljust
@@ -940,26 +947,27 @@ En els següents apartats veurem una xicoteta introducció als conceptes més re
 </span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>            └── edd
 </span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>                └── AppTest.class
 </span></code></pre></div>
-<p>A part de les carpetes <em>classes</em>, amb els <code>.*class</code> resultat de la compilació, i les carpetes que ja vam veure que es generen quan es realitza la compilació, s'han generat altres carpetes com <code>maven-archiver</code>, que conté un fitxer <code>pom.properties</code>, amb el <em>groupid</em>, l'<em>artifactid</em> i la versió del projecte, així com la carpeta <em>surefire-reports</em>, amb informes sobre els tests. De totes maneres, el que ens interessa és el fitxer generat <em>saludaMaven-1.0-SNAPSHOT.jar</em>, amb l'arxiu de l'aplicació.</p>
+El que ens interessa és el fitxer generat <strong><em>saludaMaven-1.0-SNAPSHOT.jar</em></strong>, amb l'arxiu de l'aplicació.</p>
+<p>A banda, es poden observar les carpetes <em>classes</em>, amb els <code>.*class</code> resultat de la compilació, i les carpetes que ja vam veure que es generen quan es realitza la compilació, s'han generat altres carpetes com <code>maven-archiver</code>, que conté un fitxer <code>pom.properties</code>, amb el <em>groupid</em>, l'<em>artifactid</em> i la versió del projecte, així com la carpeta <em>surefire-reports</em>, amb informes sobre els tests. </p>
 <ul>
-<li><strong>Pas 2.</strong> Executant el JAR</li>
+<li><strong>Pas 2. Executant el JAR</strong></li>
 </ul>
 <p>Per a executar-ho, podem fer-ho amb:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>java<span class="w"> </span>-cp<span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar<span class="w"> </span>com.ieseljust.edd.App<span class="w"> </span>
 </span></code></pre></div>
 <p>Amb això, indiquem com <em>classpath</em> el fitxer <em>JAR</em>, ja que és ell qui conté les classes, i a més, la classe principal.</p>
 <p>No obstant això, la forma habitual d'executar en JAR serà amb l'opció <code>-jar</code> de java:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>target/saludaMaven-1.0-*SNAPSHOT.jar<span class="w"> </span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar<span class="w"> </span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>no<span class="w"> </span>main<span class="w"> </span>manifest<span class="w"> </span>attribute,<span class="w"> </span><span class="k">in</span><span class="w"> </span>target/saludaMaven-1.0-SNAPSHOT.jar
 </span></code></pre></div>
-<p>Com veiem, ens mostra un error, indicant que no existix un atribut <code>main</code> en el <em>manifest</em> (és a dir, no s'indica quina és la classe principal). El <em>Manifest</em>, en un fitxer <em>JAR</em> és un fitxer situat dins de l'arxiu <em>JAR</em> que definix algunes característiques d'aquest. Si obrim el <em>JAR</em> generat amb una aplicació de compressió i descompressió d'arxius, el trobarem en <em>META-INF/MANIFEST.MF</em>, i el seu contingut és el següent:</p>
+<p>Com veiem, ens mostra un error, indicant que no existix un atribut <code>main</code> en el <em>manifest</em> (és a dir, no s'indica quina és la classe principal). El <em>Manifest</em>, en un fitxer <em>JAR</em> és un fitxer situat dins de l'arxiu <em>JAR</em> que defineix algunes característiques d'aquest. Si obrim el <em>JAR</em> generat amb una aplicació de compressió i descompressió d'arxius, el trobarem en <em>META-INF/MANIFEST.MF</em>, i el seu contingut és el següent:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Manifest-Version: 1.0
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Created-By: Maven JAR Plugin 3.4.2
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Build-Jdk-Spec: 21
 </span></code></pre></div>
 <p>Com veiem, conté informació sobre la versió del manifest i el JDK, però no s'indica quina és la classe principal de l'aplicació.</p>
-<p>Per tal que Maven afisca ací la classe prinipal, haurem d'indicar-li-ho en el <em>pom.xml</em>. Per a això, editem el fitxer i busquem el <em>plugin</em> <code>maven-jar-plugin</code>:</p>
+<p>Per tal que Maven afegisca ací la classe principal, haurem d'indicar-li-ho en el <em>pom.xml</em>. Per a això, editem el fitxer i busquem el <em>plugin</em> <code>maven-jar-plugin</code>:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">&lt;plugin&gt;</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w"> </span><span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>3.4.2<span class="nt">&lt;/version&gt;</span>
